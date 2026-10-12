@@ -45,7 +45,7 @@ p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 .wrap { width: var(--wrap); margin-inline: auto; }
 /* Icons load after first paint; reserve their space so nothing shifts when they arrive */
-i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; }
+i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: center; }
 
 /* Placeholder convention: everything waiting on real content */
 [data-placeholder] { position: relative; outline: 1px dashed #a3a9c9; outline-offset: 4px; }

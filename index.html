@@ -18,7 +18,7 @@
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top"><img src="resources/logo.webp" alt="SSPART home"></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="#services">Services</a>
       <a href="#products">Products</a>
@@ -494,8 +494,9 @@
 
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
-  t.onclick = () => t.setAttribute('aria-expanded', n.classList.toggle('open'));
-  n.onclick = e => { if (e.target.tagName === 'A') { n.classList.remove('open'); t.setAttribute('aria-expanded', false); } };
+  const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  t.onclick = () => setMenu(!n.classList.contains('open'));
+  n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 
 
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -69,7 +69,15 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; }
 .nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
 .nav a:hover { color: var(--text); }
 .nav .btn { color: #fff; padding: 9px 18px; }
-.nav-toggle { display: none; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 6px 12px; font: inherit; }
+.nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+/* Burger: three bars that fold into an X while the menu is open */
+.nav-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--text); transition: transform 0.25s, opacity 0.2s; }
+.nav-toggle span:nth-child(1) { top: 15px; }
+.nav-toggle span:nth-child(2) { top: 21px; }
+.nav-toggle span:nth-child(3) { top: 27px; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* Buttons */
 .btn {
@@ -201,7 +209,7 @@ section { padding: 120px 0; }
 .logo.next span { color: var(--text); text-decoration: underline; text-underline-offset: 4px; font-size: 0.95rem; }
 .cases { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .case { padding: 32px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px; }
-.case .tag { display: flex; align-items: center; justify-content: space-between; gap: 12px; white-space: nowrap; color: var(--muted); font-weight: 500; font-size: 0.9rem; }
+.case .tag { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; white-space: nowrap; color: var(--muted); font-weight: 500; font-size: 0.9rem; }
 .case-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.03em; }
 .case-logo i { font-size: 0.8em; }
 .metrics { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
@@ -421,7 +429,8 @@ footer a:hover { color: #fff; }
 .showcase-tabs button { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .logo img { height: 58px; width: auto; max-width: 80%; object-fit: contain; }
 .logo.limitless img { height: 44px; }
-.case-logo img { height: 30px; width: auto; }
+.case-logo { flex: none; }
+.case-logo img { height: 30px; width: auto; max-width: none; flex: none; }
 .case dd a { color: var(--text); }
 
 /* Headline audience word, in step with the showcase */

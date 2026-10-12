@@ -50,7 +50,12 @@
             <button role="tab" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Neel<i></i></button>
             <button role="tab" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Experts Jar<i></i></button>
           </div>
-          <div class="slides"></div>
+          <div class="slides"><!-- First product is in the HTML so it paints with the page; the script adds the rest -->
+            <div class="slide in" style="--c:var(--atlas)"><div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
+          <div class="shots"><img class="on" fetchpriority="high" src="resources/screens/atlas-dashboard-1440.webp" srcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas dashboard: work awaiting review, live agent runs and AI cost" width="1440" height="900" decoding="async"><img class="" data-src="resources/screens/atlas-agent-1440.webp" data-srcset="resources/screens/atlas-agent-720.webp 720w, resources/screens/atlas-agent-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas agent settings: role, quality checklist and model" width="1440" height="900" decoding="async"><img class="" data-src="resources/screens/atlas-workflows-1440.webp" data-srcset="resources/screens/atlas-workflows-720.webp 720w, resources/screens/atlas-workflows-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas workflows chaining agents from spec to pull request" width="1440" height="900" decoding="async"></div>
+          <div class="shot-tabs" role="group" aria-label="Atlas screens"><button class="on" data-act="shot" data-url="atlas / dashboard">Dashboard</button><button class="" data-act="shot" data-url="atlas / agents">Agents</button><button class="" data-act="shot" data-url="atlas / workflows">Workflows</button></div>
+        </div></div></div>
           <div class="presenter" aria-hidden="true"><img src="resources/people/engineer.svg" alt=""><p class="bubble"></p></div>
           <p class="showcase-hint"><svg viewBox="0 0 120 60" aria-hidden="true"><path d="M8 50 C 30 52, 70 48, 96 18" /><path d="M84 16 L97 16 L96 30" /></svg>pick one and explore</p>
         </div>
@@ -523,11 +528,13 @@
     wake(img);
     if (!img || (img.complete && img.naturalWidth)) return Promise.resolve();
     w?.classList.add('loading');
-    return img.decode().catch(() => {}).finally(() => w?.classList.remove('loading'));
+    const loaded = new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); });
+    return loaded.then(() => img.decode()).catch(() => {}).finally(() => w?.classList.remove('loading'));
   };
-  $$('.shots img:not(.on)').forEach(img => { img.dataset.src = img.getAttribute('src'); img.dataset.srcset = img.getAttribute('srcset'); img.removeAttribute('srcset'); img.removeAttribute('src'); });
+  $$('.shots img:not(.on)[src]').forEach(img => { img.dataset.src = img.getAttribute('src'); img.dataset.srcset = img.getAttribute('srcset'); img.removeAttribute('srcset'); img.removeAttribute('src'); });
   const slides = $('.slides'), tabs = [...$$('.showcase-tabs button')];
-  $$('.product').forEach(p => {
+  $$('.product').forEach((p, n) => {
+    if (n === 0 && slides.children.length) return;
     const s = document.createElement('div');
     s.className = 'slide';
     s.style.setProperty('--c', p.style.getPropertyValue('--c'));
@@ -542,7 +549,8 @@
     current = i;
     tabs.forEach((t, j) => { t.classList.toggle('on', j === i); t.setAttribute('aria-selected', j === i); });
     const slide = slides.children[i], live = slides.querySelector('.slide.in');
-    ready(slide.querySelector('.shots img.on'), live && live.querySelector('.window')).then(() => {
+    // The first product shows straight away; later switches wait until their screen is ready
+    (live ? ready(slide.querySelector('.shots img.on'), live.querySelector('.window')) : Promise.resolve()).then(() => {
       if (current !== i) return;
       [...slides.children].forEach((s, j) => s.classList.toggle('in', j === i));
       slide.querySelectorAll('[data-count]').forEach(countUp);
@@ -576,7 +584,7 @@
   show(0);
 
   // Reveal blocks as they scroll in; product mock-ups start "running" when seen
-  $$('.section-head, .service, .standard, .case, .steps > li, .timeline > li, .stack > div, .facts > div, .hero-grid > *, .quotes-rot, .faq details, .logos > *, .fit-grid')
+  $$('.section-head, .service, .standard, .case, .steps > li, .timeline > li, .stack > div, .facts > div, .hero-grid > :first-child, .quotes-rot, .faq details, .logos > *, .fit-grid')
     .forEach(el => { el.classList.add('reveal'); el.style.setProperty('--i', [...el.parentNode.children].indexOf(el) % 6); });
   $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => c.style.setProperty('--i', i)));
   const seen = new IntersectionObserver(es => es.forEach(e => {

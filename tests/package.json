@@ -1,0 +1,17 @@
+{
+  "name": "sspart-website-tests",
+  "private": true,
+  "description": "Browser tests for sspart-enterprise.com: layout, components, links, speed and slow networks on 5 screen sizes in Chromium and WebKit.",
+  "scripts": {
+    "setup": "playwright install chromium webkit",
+    "test": "npm run test:behaviour && npm run test:speed",
+    "test:behaviour": "playwright test --project=chromium-* --project=webkit-*",
+    "test:speed": "playwright test --project=speed-* --project=network --workers=1",
+    "test:chromium": "playwright test --project=chromium-*",
+    "test:webkit": "playwright test --project=webkit-*",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}

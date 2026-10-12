@@ -361,6 +361,7 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
 .showcase.manual .showcase-tabs .on i { transform: scaleX(1); }
 @keyframes fill { to { transform: scaleX(1); } }
 .slides { display: grid; }
+.slides:empty { aspect-ratio: 16 / 10; padding-bottom: 96px; box-sizing: content-box; }
 .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(12px) scale(0.985); transition: opacity 0.5s, transform 0.6s cubic-bezier(.2,.7,.2,1), visibility 0.5s; }
 .slide.in { opacity: 1; visibility: visible; transform: none; }
 .slide .window { box-shadow: 0 50px 90px -50px color-mix(in srgb, var(--c) 55%, transparent), 0 2px 8px rgb(19 22 46 / 0.06); }

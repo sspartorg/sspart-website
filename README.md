@@ -8,6 +8,11 @@ Company site for SSPART Enterprise Private Limited (sspart-enterprise.com), serv
 python -m http.server 8080   # then open http://localhost:8080
 ```
 
+## Tests
+
+Browser tests live in `tests/` (Playwright, five screen sizes, Chromium and WebKit, plus speed and slow-network budgets).
+See `tests/README.md`; in short: `cd tests && npm install && npm run setup && npm test`.
+
 ## Files
 
 - `index.html` — the home page: products (Atlas, DheQuest, Neel, Experts Jar), clients, story, contact

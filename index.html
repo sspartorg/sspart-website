@@ -1,554 +1,730 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/wNHvTz3L/Image005.png" />
-  <title>Welcome to SSPART Enterprise Private Limited</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #f5f0ff 0%, #ffffff 100%);
-      color: #333;
-      min-height: 100vh;
-    }
-    .navbar {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      box-shadow: 0 2px 16px rgba(162,89,255,0.08);
-    }
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #a259ff !important;
-      letter-spacing: -1px;
-    }
-    .navbar-nav .nav-link {
-      font-weight: 500;
-      color: #141414 !important;
-      margin-right: 1rem;
-      font-size: 1rem;
-    }
-    .hero-section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
-      overflow: hidden;
-      /* Remove background from here */
-    }
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('https://i.ibb.co/G4tNwk1h/seo-optimization-3d-render-cartoon-illustration.jpg') no-repeat center center/cover;
-      opacity: 0.1;
-      z-index: 0;
-    }
-    .hero-section::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(162,89,255,0.12);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .hero-content h6 {
-      color: #a259ff;
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .hero-content h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 4rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      color: #222;
-      text-shadow: 0 2px 16px rgba(162,89,255,0.08);
-      animation: fadeInUp 1s cubic-bezier(.57,.21,.69,1.25) 0.2s both;
-    }
-    .hero-content .highlight {
-      color: #a259ff;
-      font-size: 4rem;
-      font-weight: 800;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: none;
-    }
-    .hero-content p {
-      font-size: 1.6rem;
-      color: #888888;
-      margin-bottom: 2rem;
-      font-weight: 500;
-      animation: fadeInUp 1s cubic-bezier(.57,.21,.69,1.25) 0.7s both;
-    }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .stats-section {
-      background: transparent;
-      margin-top: -2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-    .stats-section .stat {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(162,89,255,0.08);
-      padding: 2rem 1rem;
-      margin-bottom: 1rem;
-    }
-    .stats-section h3 {
-      color: #a259ff;
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .stats-section p {
-      color: #444;
-      font-size: 1rem;
-      margin-bottom: 0;
-    }
-    /* Remove testimonials-section and contact section CSS */
-    .testimonials-section,
-    .testimonials-section h2,
-    .testimonial-card,
-    .testimonial-stars,
-    .testimonial-text,
-    .testimonial-author,
-    .testimonial-role {
-      display: none !important;
-    }
-    /* About/Mission Section */
-    .about-section {
-      background: #f5f0ff;
-      padding: 4rem 0 2rem 0;
-      text-align: center;
-    }
-    .about-section h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: #222;
-    }
-    .about-section h2 .highlight {
-      color: #a259ff;
-    }
-    .about-section p {
-      color: #444;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .about-features {
-      gap: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .about-features .feature-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(162,89,255,0.08);
-      padding: 2rem 1rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      min-width: 220px;
-      flex: 1 1 220px;
-      max-width: 260px;
-    }
-    .about-features .feature-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 8px 32px rgba(162,89,255,0.18);
-      border: 1px solid #a259ff;
-    }
-    .about-features .feature-icon {
-      font-size: 2rem;
-      color: #a259ff;
-      margin-bottom: 1rem;
-    }
-    .about-features .feature-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: #222;
-    }
-    .about-features .feature-desc {
-      color: #888;
-      font-size: 1rem;
-      margin-bottom: 0;
-    }
-    .mission-section {
-      text-align: left;
-      margin-top: 2rem;
-    }
-    .mission-section h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #222;
-      margin-bottom: 1rem;
-    }
-    .mission-section p {
-      color: #444;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    /* Footer */
-    footer {
-      background: linear-gradient(90deg, #f5f0ff 0%, #ece6fa 100%);
-      padding: 3rem 0 1rem 0;
-      font-size: 1rem;
-      color: #444;
-      border-top: 1px solid #eee;
-    }
-    .footer-brand {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #a259ff;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .footer-desc {
-      color: #888;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      max-width: 300px;
-    }
-    .footer-links a {
-      color: #222;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-    .footer-links a:hover {
-      color: #a259ff;
-      text-decoration: underline;
-    }
-    .footer-contact {
-      font-size: 1rem;
-      color: #444;
-    }
-    .footer-contact i {
-      color: #a259ff;
-      margin-right: 0.5rem;
-    }
-    .footer-social a {
-      color: #888;
-      font-size: 1.2rem;
-      margin-right: 1rem;
-      transition: color 0.2s;
-    }
-    .footer-social a:hover {
-      color: #a259ff;
-    }
-    .footer-bottom {
-      border-top: 1px solid #eee;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      font-size: 0.95rem;
-      color: #888;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .footer-bottom a {
-      color: #888;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-    .footer-bottom a:hover {
-      color: #a259ff;
-      text-decoration: underline;
-    }
-    @media (max-width: 991px) {
-      .hero-content h1, .hero-content .highlight {
-        font-size: 3rem;
-      }
-      .about-section h2 {
-        font-size: 1.5rem;
-      }
-      .testimonials-section h2 {
-        font-size: 1.3rem;
-      }
-    }
-    @media (max-width: 767px) {
-      .hero-section {
-        min-height: 100vh;
-        padding-top: 80px !important; /* Add space below navbar */
-        padding-bottom: 32px !important;
-      }
-      .hero-content h1,
-      .hero-content .highlight {
-        font-size: 2.1rem !important; /* Reduce font size for mobile */
-      }
-      .hero-content p {
-        font-size: 1.1rem !important; /* Reduce font size for mobile */
-      }
-      .about-section, .testimonials-section {
-        padding: 2rem 0 1rem 0;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-bottom a {
-        margin-left: 0;
-        margin-right: 1rem;
-      }
-      .about-features {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-      }
-      .mission-section {
-        text-align: center !important;
-      }
-      .mission-section .col-12 {
-        text-align: center !important;
-      }
-    }
-    #product.about-section {
-    background: #ece6fa;
-  }
-  .product-cards {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-    align-items: stretch; /* Ensures equal height cards */
-    text-align: center;   /* Center content in cards */
-  }
-  .product-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(162,89,255,0.08);
-    padding: 2rem;
-    max-width: 400px;
-    flex: 1 1 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-    transition: box-shadow 0.2s, transform 0.2s;
-    text-align: center; /* Center text inside card */
-  }
-  @media (max-width: 991px) {
-    .product-cards {
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-  }
-  .product-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  .product-image {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 1.5rem;
-    border-radius: 12px;
-    background: #f5f0ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .product-desc {
-    color: #444;
-    font-size: 1.05rem;
-    text-align: center;
-  }
-  </style>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>SSPART Enterprise | Product engineering for retail, capital markets, skills and AI</title>
+  <meta name="description" content="SSPART Enterprise Private Limited engineers Atlas, DheQuest, Neel and Experts Jar, and builds custom software for enterprises.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="resources/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" href="resources/screens/atlas-dashboard-1440.webp" imagesrcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" imagesizes="(max-width: 900px) 94vw, 52vw">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="https://i.ibb.co/gLwsNRzT/Icon.png" alt="SSPART Logo" width="auto" height="54" class="me-2" style="border-radius:8px;">
-      <!-- <span style="font-weight:700; font-size:1.5rem; color:#a259ff; letter-spacing:-1px;">SSPART</span> -->
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#product">Products</a></li>
-      </ul>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="resources/logo.webp" alt="SSPART home"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#approach">Approach</a>
+      <a href="#clients">Clients</a>
+      <a href="#company">Company</a>
+      <a class="btn btn-solid" href="#contact">Talk to us</a>
+    </nav>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1 aria-label="We build the software businesses run on.">We build the software <span class="rotator" aria-hidden="true">businesses</span> run on.</h1>
+          <p class="lede">SSPART engineers products for retail, capital markets, workforce skills and AI engineering, and brings the same depth to software we build for clients.</p>
+          <div class="actions">
+            <a class="btn btn-solid" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A">Book a demo</a>
+            <a class="btn" href="#products">Explore our products</a>
+          </div>
+        </div>
+        <div class="showcase">
+          <div class="showcase-tabs" role="tablist" aria-label="Product preview">
+            <button role="tab" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Atlas<i></i></button>
+            <button role="tab" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">DheQuest<i></i></button>
+            <button role="tab" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Neel<i></i></button>
+            <button role="tab" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Experts Jar<i></i></button>
+          </div>
+          <div class="slides"></div>
+          <div class="presenter" aria-hidden="true"><img src="resources/people/engineer.svg" alt=""><p class="bubble"></p></div>
+          <p class="showcase-hint"><svg viewBox="0 0 120 60" aria-hidden="true"><path d="M8 50 C 30 52, 70 48, 96 18" /><path d="M84 16 L97 16 L96 30" /></svg>pick one and explore</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div><strong>2019</strong><span>Founded in Hyderabad, India</span></div>
+        <div><strong data-count="4">4</strong><span>Products built in‑house</span></div>
+        <div data-sample><strong data-count="1.2" data-suffix="M+">1.2M+</strong><span>Payments processed for clients</span></div>
+        <div data-sample><strong data-count="40" data-suffix="+">40+</strong><span>Releases shipped this year</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="industries">
+    <div class="wrap">
+      <p>Industries we build for</p>
+      <div><i class="fa-solid fa-store"></i>Retail and payments</div>
+      <div><i class="fa-solid fa-chart-line"></i>Capital markets</div>
+      <div><i class="fa-solid fa-graduation-cap"></i>Education and workforce</div>
+      <div><i class="fa-solid fa-code"></i>Software engineering</div>
     </div>
   </div>
-</nav>
 
-<!-- Hero Section -->
-<section id="hero" class="hero-section d-flex align-items-center justify-content-center">
-  <div class="container hero-content">
-    <h6><i class="fa-solid fa-sparkles"></i> Innovating the Future</h6>
-    <h1>
-      Transform Your Ideas Into <span class="highlight">Digital Reality</span>
-    </h1>
-    <p>
-      We craft cutting-edge solutions that empower users to thrive in the digital age. From innovative software to revolutionary platforms, we make the impossible possible.
-    </p>
-  </div>
-</section>
+  <section class="manifesto">
+    <div class="wrap">
+      <img loading="lazy" decoding="async" class="manifesto-art" src="resources/people/greeter.svg" alt="" aria-hidden="true">
+      <p class="statement">We don't hand over slide decks. We ship software that opens the shop at nine, places the trade at market open, reviews the assignment at midnight and steers the agent on every commit. Then we stay and keep it running.</p>
+    </div>
+  </section>
 
-<!-- About Section -->
-<section id="about" class="about-section">
-  <div class="container">
-    <h2>About <span class="highlight">SSPART</span></h2>
-    <p>We are a forward-thinking technology company dedicated to creating innovative solutions that drive digital transformation and empower customers to reach new heights.</p>
-    <div class="about-features mb-4">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-        <div class="feature-title">Lightning Fast</div>
-        <div class="feature-desc">Built with cutting-edge technology for optimal performance and speed.</div>
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we do for our clients</h2>
+        <p>One accountable team takes a product from first specification to production and keeps it running. The same engineers who build our own products work on yours.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-        <div class="feature-title">Expert Team</div>
-        <div class="feature-desc">Our world-class developers and designers work together to deliver excellence.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
-        <div class="feature-title">Goal-Oriented</div>
-        <div class="feature-desc">We focus on achieving your business objectives with precision and efficiency.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
-        <div class="feature-title">Innovative Solutions</div>
-        <div class="feature-desc">Delivering creative and practical tech solutions for real-world challenges.</div>
+      <div class="services">
+        <article class="service">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>Product engineering</h3>
+          <p>Web, mobile and back-end systems designed, built and shipped by a single team that owns the outcome.</p>
+          <ul><li>Web apps</li><li>Mobile</li><li>APIs</li><li>Design systems</li></ul>
+        </article>
+        <article class="service">
+          <i class="fa-solid fa-microchip"></i>
+          <h3>AI and agent systems</h3>
+          <p>LLM features, agent orchestration and evaluation, built with the same discipline that produced Atlas.</p>
+          <ul><li>LLM apps</li><li>MCP</li><li>Evaluations</li><li>Retrieval</li></ul>
+          <a class="svc-link" href="#atlas" style="--c:var(--atlas)">See it in Atlas</a>
+        </article>
+        <article class="service">
+          <i class="fa-solid fa-store"></i>
+          <h3>Commerce and payments</h3>
+          <p>Storefronts, point of sale, UPI and QR payments, merchant apps, GST billing and franchise operations.</p>
+          <ul><li>Point of sale</li><li>UPI and QR</li><li>Merchant apps</li><li>GST</li></ul>
+          <a class="svc-link" href="#neel" style="--c:var(--neel)">See it in Neel</a>
+        </article>
+        <article class="service">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Trading and market systems</h3>
+          <p>Market data pipelines, strategy engines, back-testing and broker automation, proven in DheQuest.</p>
+          <ul><li>Market data</li><li>Back-testing</li><li>Automation</li><li>Risk controls</li></ul>
+          <a class="svc-link" href="#dhequest" style="--c:var(--dhequest)">See it in DheQuest</a>
+        </article>
+        <article class="service">
+          <i class="fa-solid fa-database"></i>
+          <h3>Data and analytics</h3>
+          <p>Data models, warehouses and reporting that give leadership numbers they can act on.</p>
+          <ul><li>Postgres</li><li>ClickHouse</li><li>Dashboards</li><li>Pipelines</li></ul>
+        </article>
+        <article class="service">
+          <i class="fa-solid fa-server"></i>
+          <h3>Cloud and operations</h3>
+          <p>Infrastructure, release pipelines, monitoring and support long after go-live.</p>
+          <ul><li>Docker</li><li>CI/CD</li><li>Monitoring</li><li>Support plans</li></ul>
+        </article>
       </div>
     </div>
-    <div class="row mission-section">
-      <div class="col-12 text-center">
-        <h3>Our Mission</h3>
-        <p>To bridge the gap between imagination and reality through innovative technology solutions. We believe that every great idea deserves to be brought to life with the highest quality and attention to detail.</p>
-        <p>Founded in 2019, SSPART has evolved from a service-centric agency to a visionary product-driven company. With a relentless focus on solving real-world challenges, we design and build innovative digital products that drive business growth and transform industries. Our journey is powered by creativity, precision engineering, and a passion for excellence—turning bold ideas into scalable solutions that make an impact.</p>
+  </section>
+
+  <section id="products" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Products we build and run</h2>
+        <p>Each product is designed and built by our own engineers. Every one of them is available for a guided demo, and can be customised for your business.</p>
+      </div>
+      <nav class="product-tabs" aria-label="Products">
+        <a href="#atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Atlas</a>
+        <a href="#dhequest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">DheQuest</a>
+        <a href="#neel" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Neel</a>
+        <a href="#experts-jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Experts Jar</a>
+      </nav>
+
+      <article class="product" id="atlas" style="--c:var(--atlas)">
+        <div class="copy">
+          <p class="kicker">AI engineering</p>
+          <h3 class="name"><img src="resources/logos/atlas.png" alt="">Atlas</h3>
+          <p class="tagline">One workbench for running, reviewing and steering AI coding agents across every project.</p>
+          <div class="features">
+            <div><h4>Agents in parallel</h4><p>Start agents on many projects at once and follow each run as it happens.</p></div>
+            <div><h4>Review before merge</h4><p>Every change is a reviewable diff. Nothing lands without a person approving it.</p></div>
+            <div><h4>Shared memory</h4><p>Projects, decisions and conversation history stay in one place for people and agents.</p></div>
+            <div><h4>Your machine, your keys</h4><p>Local-first. Connects to Claude Code and GitHub Copilot through MCP.</p></div>
+          </div>
+          <div class="meta"><span><b>For</b> engineering teams</span><span><b>Licence</b> open source</span><span><b>Runs on</b> Windows, macOS, Linux</span></div>
+          <a class="more" href="https://github.com/sspartorg/atlas" target="_blank" rel="noopener">View Atlas on GitHub</a>
+        </div>
+        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/engineer.svg" alt="" aria-hidden="true"><img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt=""><img loading="lazy" decoding="async" class="bot b3" src="resources/people/agent-5.svg" alt=""><div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
+          <div class="shots"><img class="on" src="resources/screens/atlas-dashboard-1440.webp" srcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas dashboard: work awaiting review, live agent runs and AI cost" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/atlas-agent-1440.webp" srcset="resources/screens/atlas-agent-720.webp 720w, resources/screens/atlas-agent-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas agent settings: role, quality checklist and model" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/atlas-workflows-1440.webp" srcset="resources/screens/atlas-workflows-720.webp 720w, resources/screens/atlas-workflows-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas workflows chaining agents from spec to pull request" loading="lazy" width="1440" height="900" decoding="async"></div>
+          <div class="shot-tabs" role="group" aria-label="Atlas screens"><button class="on" data-act="shot" data-url="atlas / dashboard">Dashboard</button><button class="" data-act="shot" data-url="atlas / agents">Agents</button><button class="" data-act="shot" data-url="atlas / workflows">Workflows</button></div>
+        </div></div>
+      </article>
+
+      <article class="product" id="dhequest" style="--c:var(--dhequest)">
+        <div class="copy">
+          <p class="kicker">Capital markets</p>
+          <h3 class="name"><img src="resources/logos/dhequest.webp" alt="">DheQuest</h3>
+          <p class="tagline">A trading platform that takes a strategy from idea to back-test to live automation.</p>
+          <div class="features">
+            <div><h4>Strategy builder</h4><p>Express entry, exit and risk rules without rebuilding the plumbing each time.</p></div>
+            <div><h4>Back-testing</h4><p>Test every rule against years of history before a rupee is at risk.</p></div>
+            <div><h4>Live automation</h4><p>Broker connections place, manage and close trades by the rules you approved.</p></div>
+            <div><h4>Market intelligence</h4><p>Price-action and probability engines surface levels and setups continuously.</p></div>
+          </div>
+          <div class="meta"><span><b>For</b> active traders and trading desks</span><span><b>Engines</b> price action and probability</span></div>
+          <a class="more" href="https://dhequest.com" target="_blank" rel="noopener">Visit DheQuest</a>
+        </div>
+        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/trader.svg" alt="" aria-hidden="true"><div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>dhequest / trade / positions</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
+          <div class="shots"><img class="on" src="resources/screens/dhequest-positions-1440.webp" srcset="resources/screens/dhequest-positions-720.webp 720w, resources/screens/dhequest-positions-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest positions with live P&amp;L beside a watchlist" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-terminal-payoff-1440.webp" srcset="resources/screens/dhequest-terminal-payoff-720.webp 720w, resources/screens/dhequest-terminal-payoff-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest terminal showing an options strategy payoff" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-strategy-canvas-1440.webp" srcset="resources/screens/dhequest-strategy-canvas-720.webp 720w, resources/screens/dhequest-strategy-canvas-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest Studio strategy canvas" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-option-chain-1440.webp" srcset="resources/screens/dhequest-option-chain-720.webp 720w, resources/screens/dhequest-option-chain-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest option chain" loading="lazy" width="1440" height="900" decoding="async"></div>
+          <div class="shot-tabs" role="group" aria-label="DheQuest screens"><button class="on" data-act="shot" data-url="dhequest / trade / positions">Positions</button><button class="" data-act="shot" data-url="dhequest / trade / terminal">Terminal</button><button class="" data-act="shot" data-url="dhequest / studio / strategies">Strategy canvas</button><button class="" data-act="shot" data-url="dhequest / trade / option-chain">Option chain</button></div>
+        </div></div>
+      </article>
+
+      <article class="product" id="neel" style="--c:var(--neel)">
+        <div class="copy">
+          <p class="kicker">Retail</p>
+          <h3 class="name"><img src="resources/logos/neel.svg" alt="">Neel</h3>
+          <p class="tagline">The storefront, the counter and the back office for one business and every franchise.</p>
+          <div class="features">
+            <div><h4>Online storefront</h4><p>Customers browse and pay online through Razorpay. Four ready themes, fully brandable.</p></div>
+            <div><h4>Counter billing</h4><p>Fast billing, returns and shift close-out for the shop floor, on any device.</p></div>
+            <div><h4>Stock and purchases</h4><p>Stock levels, audits, barcode scans, supplier bills and supply orders across stores.</p></div>
+            <div><h4>Books, GST and payroll</h4><p>Ledger, GST reports, expenses, attendance and payroll in the same system.</p></div>
+          </div>
+          <div class="meta"><span><b>For</b> retailers and franchise networks</span><span><b>Access</b> 8 staff roles</span><span><b>Stores</b> head office and franchises</span></div>
+          <a class="more" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Neel&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Neel.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A">Book a Neel demo</a>
+        </div>
+        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/owner.svg" alt="" aria-hidden="true"><div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>neel console / billing</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
+          <div class="shots"><img class="on" src="resources/screens/neel-billing-1440.webp" srcset="resources/screens/neel-billing-720.webp 720w, resources/screens/neel-billing-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Neel counter billing with GST split and payment" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/neel-products-1440.webp" srcset="resources/screens/neel-products-720.webp 720w, resources/screens/neel-products-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Neel product catalogue with variants and stock on hand" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/neel-orders-1440.webp" srcset="resources/screens/neel-orders-720.webp 720w, resources/screens/neel-orders-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Neel online orders with payment and packing status" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/neel-stock-1440.webp" srcset="resources/screens/neel-stock-720.webp 720w, resources/screens/neel-stock-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Neel stock levels by size and colour" loading="lazy" width="1440" height="900" decoding="async"></div>
+          <div class="shot-tabs" role="group" aria-label="Neel screens"><button class="on" data-act="shot" data-url="neel console / billing">Billing</button><button class="" data-act="shot" data-url="neel console / products">Products</button><button class="" data-act="shot" data-url="neel console / orders">Orders</button><button class="" data-act="shot" data-url="neel console / stock">Stock</button></div>
+        </div></div>
+      </article>
+
+      <article class="product" id="experts-jar" style="--c:var(--jar)">
+        <div class="copy">
+          <p class="kicker">Workforce skills</p>
+          <h3 class="name"><img src="resources/logos/experts-jar.png" alt="">Experts Jar</h3>
+          <p class="tagline">Job-ready skills built on real assignments, each one reviewed one‑on‑one by an industry expert.</p>
+          <div class="features">
+            <div><h4>Assignment tracks</h4><p>Programmes built on practical assignments, not passive video.</p></div>
+            <div><h4>Expert review</h4><p>Every submission is reviewed by a practitioner who does the job every day.</p></div>
+            <div><h4>Progress reporting</h4><p>Scores and feedback roll up into reports colleges and managers can act on.</p></div>
+            <div><h4>For organisations</h4><p>Serves colleges preparing graduates and companies upskilling their teams.</p></div>
+          </div>
+          <div class="meta"><span><b>For</b> colleges and L&amp;D teams</span><span><b>Model</b> assignment plus 1:1 review</span></div>
+          <a class="more" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Experts%20Jar&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Experts%20Jar.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A">Book an Experts Jar demo</a>
+        </div>
+        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/mentor.svg" alt="" aria-hidden="true"><div class="window">
+          <div class="bar"><i></i><i></i><i></i><span>expertsjar / reviews</span><em class="preview-tag">Illustrative preview</em><button class="expand" data-act="expand" aria-label="Open a larger preview"><i class="fa-solid fa-expand"></i></button></div>
+          <div class="app">
+            <aside><b>Experts Jar</b><a>Tracks</a><a class="on">Assignments</a><a>Reviews</a><a>Mentors</a><a>Progress</a></aside>
+            <main data-stagger>
+              <h5><span data-f="title">Design a REST API for orders</span> <small data-f="track">Backend track, assignment 4</small></h5>
+              <div class="review">
+                <header><span class="avatar alt" data-f="who">RK</span><div>Submission<br><small data-f="sub">Endpoints, schema and error codes attached</small></div></header>
+              </div>
+              <div class="review">
+                <header><span class="avatar">AM</span><div>Expert review<br><small data-f="mentor">Senior backend engineer</small></div></header>
+                <p data-f="review">Clean resource design. Paginate /orders, and return 409 when a payment ID is reused so retries stay safe.</p>
+              </div>
+              <div class="score" data-f="scores"><span>Design 4/5</span><span>Correctness 5/5</span><span>Clarity 4/5</span></div>
+              <div class="jar-foot"><div><small class="sub" data-f="progress">Track progress 68%</small><div class="bar-prog"><span style="--w:68%"></span></div></div><button class="mini" data-act="next">Next submission</button></div>
+            </main>
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="fit" class="fit">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Not sure where to start?</h2>
+        <p>Tell us what you run. We'll point you to the product that fits and what it changes for you.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-options" role="tablist" aria-label="What do you run?">
+          <button role="tab" class="on" data-fit="0"><i class="fa-solid fa-store"></i>I run retail stores or franchises</button>
+          <button role="tab" data-fit="1"><i class="fa-solid fa-chart-line"></i>I trade the markets</button>
+          <button role="tab" data-fit="2"><i class="fa-solid fa-graduation-cap"></i>I train students or teams</button>
+          <button role="tab" data-fit="3"><i class="fa-solid fa-code"></i>I lead an engineering team</button>
+          <button role="tab" data-fit="4"><i class="fa-solid fa-layer-group"></i>I need software built from scratch</button>
+        </div>
+        <div class="fit-answer" aria-live="polite"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Product Section -->
-<section id="product" class="about-section">
-  <div class="container">
-    <h2>Our Products</h2>
-   
-    <p>Discover our innovative platforms designed to accelerate learning, enhance strategic decision-making, and drive digital transformation. From activity-based engagement systems to intelligent automation engines, SSPART delivers forward-thinking solutions that evolve with your goals and scale with your ambitions.</p>
-    <div class="product-cards">
-      <div class="product-card">
-        <div class="product-image">
-          <img src="https://i.ibb.co/svxtSJMw/Company-Icon.png" alt="Experts Jar" width="60" height="60">
-        </div>
-        <div class="product-title">Experts Jar</div>
-        <div class="product-desc">
-            A practical, expert-led learning platform focused on task-based growth.
-            Learners complete real-world activities with one-on-one expert reviews.
-            It builds job-ready skills and cross-domain thinking from day one.
-            Ideal for students and organizations seeking high-impact learning.
-        </div>
+  <section id="approach" class="dark">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How an engagement runs</h2>
+        <p>A steady rhythm of working releases, so you see progress in the product rather than in status reports.</p>
       </div>
-      <div class="product-card">
-        <div class="product-image">
-          <img src="https://i.ibb.co/v4nvVJs6/Dhe-Quest256.png" alt="DheQuest" width="60" height="60">
-        </div>
-        <div class="product-title">DheQuest</div>
-        <div class="product-desc">
-            A powerful trading companion with automation at its core.
-            Design, test, and deploy strategies with real-time insights.
-            Built for precision, speed, and strategic control.
-            Perfect for traders who think beyond the chart.
+      <ol class="steps">
+        <li>
+          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/discover.svg" alt="" aria-hidden="true"><h3>Discover</h3>
+          <p>We sit with the people who will use the software and map how the work actually happens today.</p>
+          <ul><li>Process map</li><li>Scope and estimate</li><li>Risk register</li></ul>
+        </li>
+        <li>
+          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/design.svg" alt="" aria-hidden="true"><h3>Design</h3>
+          <p>Screens, data model and architecture are agreed before the build starts, with a clickable prototype.</p>
+          <ul><li>Clickable prototype</li><li>Architecture decision log</li><li>Release plan</li></ul>
+        </li>
+        <li>
+          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/build.svg" alt="" aria-hidden="true"><h3>Build</h3>
+          <p>Each release is tested, reviewed and deployed to a staging environment you can use.</p>
+          <ul><li>Working software every release</li><li>Automated tests</li><li>Release notes</li></ul>
+        </li>
+        <li>
+          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/run.svg" alt="" aria-hidden="true"><h3>Run</h3>
+          <p>We operate, monitor and improve what we shipped, or hand it over with full documentation.</p>
+          <ul><li>Monitoring and alerts</li><li>Support plan</li><li>Handover documentation</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="standards">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Engineering standards we hold ourselves to</h2>
+        <p>The same rules apply to our own products and to every client engagement.</p>
+      </div>
+      <div class="standards">
+        <div class="standard"><h3>You own what we build</h3><p>Source code, data and intellectual property from custom work belong to you, in your repositories from day one.</p></div>
+        <div class="standard"><h3>Security from the start</h3><p>Role-based access, audit trails and secrets kept out of code are built in, not added at the end.</p></div>
+        <div class="standard"><h3>Tested before it ships</h3><p>Automated tests gate every release. A failing test stops the release, not the customer.</p></div>
+        <div class="standard"><h3>Your data, your infrastructure</h3><p>Custom work runs in your own cloud account. Atlas and Neel can also run on your own servers when you need them to.</p></div>
+        <div class="standard"><h3>Written down</h3><p>Decisions, runbooks and handover notes are kept with the code so the next engineer is never guessing.</p></div>
+        <div class="standard"><h3>One accountable team</h3><p>The people who design the system build it and support it. No hand-offs between vendors.</p></div>
+      </div>
+      <div class="stack">
+        <div><h4>Front end</h4><p>React, TypeScript, Material UI, HTML and CSS</p></div>
+        <div><h4>Back end</h4><p>Node.js, Express, Python, REST and MCP</p></div>
+        <div><h4>Data</h4><p>PostgreSQL, ClickHouse, Drizzle, S3 storage</p></div>
+        <div><h4>Platform and AI</h4><p>Docker, Nginx, GitHub Actions, Playwright, Claude</p></div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span><i class="fa-brands fa-react"></i>React</span><span><i class="fa-brands fa-js"></i>TypeScript</span><span><i class="fa-brands fa-node-js"></i>Node.js</span><span><i class="fa-brands fa-python"></i>Python</span><span><i class="fa-solid fa-database"></i>PostgreSQL</span><span><i class="fa-solid fa-bolt"></i>ClickHouse</span><span><i class="fa-brands fa-docker"></i>Docker</span><span><i class="fa-brands fa-github"></i>GitHub Actions</span><span><i class="fa-solid fa-robot"></i>Claude</span><span><i class="fa-solid fa-plug"></i>MCP</span><span><i class="fa-solid fa-vial"></i>Playwright</span><span><i class="fa-solid fa-credit-card"></i>Razorpay</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-3 mb-4 mb-md-0">
-        <span class="footer-brand">SSPART Enterprise Private Limited</span>
-        <div class="footer-desc">
-          Transforming ideas into digital reality with cutting-edge technology solutions that empower customers worldwide.
-        </div>
-        <div class="footer-social mb-2">
-          <a href="https://www.facebook.com/SSPART.ORG" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://x.com/SSPART_ORG" target="_blank"><i class="fab fa-x"></i></a>
-          <a href="https://www.instagram.com/sspart_enterprise" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/sspart" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="http://www.youtube.com/@sspart-enterprise" target="_blank"><i class="fab fa-youtube"></i></a>
-        </div>
+  <section id="clients" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trusted by teams who run on our software</h2>
+        <p>Brokerages and payments companies rely on SSPART to build the software their business runs on, and to keep it running.</p>
       </div>
-      <div class="col-12 col-md-3 mb-4 mb-md-0 footer-links">
-        <div class="fw-bold mb-2">Quick Links</div>
-        <a href="#hero">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#product">Our Products</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+      <div class="logos">
+        <a class="logo exit" href="https://exitstocks.com" target="_blank" rel="noopener" aria-label="Exit, exitstocks.com"><img loading="lazy" decoding="async" src="resources/clients/exit.webp" alt="Exit"></a>
+        <div class="logo limitless"><img loading="lazy" decoding="async" src="resources/clients/limitless-pay.webp" alt="Limitless Pay"></div>
+        <a class="logo next" href="#contact">Your company next?<span>Get in touch</span></a>
       </div>
-      <div class="col-12 col-md-3 mb-4 mb-md-0 footer-contact">
-        <div class="fw-bold mb-2">Contact Info</div>
-        <div><i class="fa-solid fa-envelope"></i> contact@sspart-enterprise.com</div>
-        <div><i class="fa-solid fa-phone"></i> +91 95150-93965</div>
-        <div><i class="fa-solid fa-location-dot"></i> 503, Ayyanna Pride, Madhapur, Telangana 500084</div>
+      <div class="cases">
+        <article class="case" style="--c:var(--atlas)" data-sample>
+          <p class="tag"><a class="case-logo exit" href="https://exitstocks.com" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="resources/clients/exit.webp" alt="Exit"></a>Website and digital presence</p>
+          <h3>A research-led online home for a Guntur and Hyderabad stock brokerage</h3>
+          <dl>
+            <dt>Challenge</dt><dd>Exit Stock Broker needed its advisory, mutual fund and wealth services explained clearly online, so investors could find the right service and get in touch.</dd>
+            <dt>What we delivered</dt><dd>We designed and built <a href="https://exitstocks.com" target="_blank" rel="noopener">exitstocks.com</a>: service pages, office details for both cities and enquiry flows.</dd>
+          </dl>
+          <div class="metrics">
+            <p><strong data-count="6">6</strong><small>weeks to launch</small></p>
+            <p><strong data-count="99.95" data-suffix="%">99.95%</strong><small>uptime since go-live</small></p>
+            <p><strong data-count="3" data-suffix="x">3x</strong><small>more enquiries</small></p>
+          </div>
+        </article>
+        <article class="case" style="--c:#006bfe" data-sample>
+          <p class="tag"><span class="case-logo limitless"><img loading="lazy" decoding="async" src="resources/clients/limitless-pay.webp" alt="Limitless Pay"></span>Payments and merchants</p>
+          <h3>One payments platform for the people who pay and the merchants who get paid</h3>
+          <dl>
+            <dt>Challenge</dt><dd>Limitless Pay needed a consumer app for UPI and QR payments and a business app for merchants to accept them, track settlements and see every rupee as it lands.</dd>
+            <dt>What we delivered</dt><dd>The payments app, the merchant app with QR collection and instant payment alerts, settlement tracking and a dashboard for each business, all on one platform.</dd>
+          </dl>
+          <div class="metrics">
+            <p><strong data-count="1.2" data-suffix="M+">1.2M+</strong><small>payments processed</small></p>
+            <p><strong data-count="10" data-suffix="k+">10k+</strong><small>merchants onboarded</small></p>
+            <p><strong data-count="99.9" data-suffix="%">99.9%</strong><small>payment uptime</small></p>
+          </div>
+        </article>
+      </div>
+      <div class="quotes-rot" data-sample>
+        <figure class="quote on" style="--c:var(--atlas)">
+          <figcaption><a class="case-logo exit" href="https://exitstocks.com" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="resources/clients/exit.webp" alt="Exit"></a><b>Director</b>Exit Stock Broker</figcaption>
+          <blockquote>SSPART understood our business before they wrote a line of code. Our website now explains what we do as clearly as we would in person, and investors reach us through it every week.</blockquote>
+        </figure>
+        <figure class="quote" style="--c:#006bfe">
+          <figcaption><span class="case-logo limitless"><img loading="lazy" decoding="async" src="resources/clients/limitless-pay.webp" alt="Limitless Pay"></span><b>Founder</b>Limitless Pay</figcaption>
+          <blockquote>SSPART built our payments app and our merchant app as one platform. Customers pay in seconds, merchants see the money as it arrives, and we ship new features without slowing either down.</blockquote>
+        </figure>
+        <div class="quote-dots" role="tablist" aria-label="Testimonials"><button class="on" aria-label="Quote from Exit"></button><button aria-label="Quote from Limitless Pay"></button></div>
       </div>
     </div>
-    <div class="footer-bottom mt-4">
-      <div>&copy; 2025 SSPART Enterprise Private Limited. All rights reserved.</div>
+  </section>
+
+  <section id="company">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>From engineering services to product company</h2>
+        <p>We began as an engineering services firm. Today we run our own product lines and still deliver custom software for enterprise clients.</p>
+      </div>
+      <ol class="timeline">
+        <li><time>2019</time><h3>SSPART founded</h3><p>An engineering services firm in Hyderabad delivering web and mobile software for clients.</p></li>
+        <li data-sample><time>2021</time><h3>Experts Jar</h3><p>Our first product: skill development through real assignments and expert reviews.</p></li>
+        <li data-sample><time>2023</time><h3>DheQuest</h3><p>Automated trading and market intelligence for active traders.</p></li>
+        <li><time>2026</time><h3>Atlas and Neel</h3><p>Atlas is released as open source. Neel is built for retailers and their franchises.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions clients ask us</h2>
+        <p>Anything else, ask us directly.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Do you only sell your own products?</summary><p>No. We license and customise our products, and we also build custom software from scratch. Many engagements combine both: a product as the base, with custom work on top.</p></details>
+        <details><summary>Can a product be branded and customised for us?</summary><p>Yes. Neel ships with four themes and a store profile you control, and every product can be extended with your own workflows, reports and integrations.</p></details>
+        <details><summary>Where is our data hosted?</summary><p>It depends on the product. Custom work runs in your own cloud account; Atlas and Neel can be self-hosted; DheQuest is a hosted service. We can also host and operate custom work for you.</p></details>
+        <details><summary>Who owns the code for custom work?</summary><p>You do. Source code, data and documentation from custom engagements are yours and live in your repositories.</p></details>
+        <details><summary>What happens after go-live?</summary><p>We offer support plans with monitoring, fixes and planned improvements, or a full handover to your team with documentation and training.</p></details>
+        <details><summary>How is an engagement priced?</summary><p>Fixed scope and fixed price for well-defined work, or a dedicated monthly team for products that keep evolving. Product pricing depends on the product and how widely you use it, and we share it on a demo call.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="careers">
+    <div class="wrap">
       <div>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="cookies.html">Cookies</a>
+        <h2>Build with us</h2>
+        <p>We hire engineers and designers who like owning outcomes, from the first sketch to the production dashboard.</p>
       </div>
+      <div class="crew" aria-hidden="true"><img loading="lazy" decoding="async" src="resources/people/crew1.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew2.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew3.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew4.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew5.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew6.svg" alt=""></div>
+      <a class="btn" href="mailto:contact@sspart-enterprise.com?subject=Careers%20at%20SSPART">Send us your profile</a>
+    </div>
+  </section>
+
+  <section id="contact" class="dark contact">
+    <div class="wrap contact-grid">
+      <div>
+        <img loading="lazy" decoding="async" class="host" src="resources/people/host.svg" alt="" aria-hidden="true">
+        <h2>See our products running, live.</h2>
+        <p class="lede">Tell us what you're working on. We'll show you the product that fits, live, or scope the custom work with you.</p>
+        <div class="reach">
+          <div><i class="fa-solid fa-envelope"></i><a href="mailto:contact@sspart-enterprise.com">contact@sspart-enterprise.com</a></div>
+          <div><i class="fa-solid fa-phone"></i><a href="tel:+919515093965">+91 95150 93965</a></div>
+          <div><i class="fa-solid fa-location-dot"></i><p>503, Ayyanna Pride, Madhapur<br>Hyderabad, Telangana 500084</p></div>
+        </div>
+      </div>
+      <div class="mail-card">
+        <h3>Pick a product and email us</h3>
+        <p>Each button opens your email app with a short request filled in. Add your name and company and send it.</p>
+        <div class="mail-list"><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Atlas&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Atlas.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Book an Atlas demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20DheQuest&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20DheQuest.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">Book a DheQuest demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Neel&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Neel.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Book a Neel demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Experts%20Jar&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Experts%20Jar.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Book an Experts Jar demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Custom%20software%20enquiry&amp;body=Hi%20SSPART%2C%0A%0AWe%27d%20like%20to%20talk%20about%20building%20custom%20software.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--text)"><i class="fa-solid fa-layer-group"></i>Talk about custom software<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<dialog class="viewer" aria-label="Product preview"><button class="viewer-close" data-close aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button><div class="viewer-body"></div></dialog>
+<a class="to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>SSPART Enterprise Private Limited</h4>
+        <p>Product engineering for retail, capital markets, workforce skills and AI.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/sspart" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/SSPART_ORG" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/sspart_enterprise" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/SSPART.ORG" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@sspart-enterprise" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <a href="https://github.com/sspartorg/atlas" target="_blank" rel="noopener">Atlas</a>
+        <a href="https://dhequest.com" target="_blank" rel="noopener">DheQuest</a>
+        <a href="#neel">Neel</a>
+        <a href="#experts-jar">Experts Jar</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Product engineering</a>
+        <a href="#services">AI and agent systems</a>
+        <a href="#services">Retail platforms</a>
+        <a href="#services">Trading systems</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#company">Our story</a>
+        <a href="#approach">Approach</a>
+        <a href="#clients">Clients</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <a href="mailto:contact@sspart-enterprise.com">contact@sspart-enterprise.com</a>
+        <a href="tel:+919515093965">+91 95150 93965</a>
+        <p>Madhapur, Hyderabad, Telangana 500084</p>
+      </div>
+    </div>
+    <p class="wordmark" aria-hidden="true">SSPART</p>
+    <div class="legal">
+      <span>&copy; 2026 SSPART Enterprise Private&nbsp;Limited</span>
+      <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a></nav>
     </div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
+  t.onclick = () => t.setAttribute('aria-expanded', n.classList.toggle('open'));
+  n.onclick = e => { if (e.target.tagName === 'A') { n.classList.remove('open'); t.setAttribute('aria-expanded', false); } };
+
+
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+
+  // Count a number up from zero, keeping its decimals and en-IN grouping
+  const countUp = el => {
+    const end = +el.dataset.count, dec = (el.dataset.count.split('.')[1] || '').length;
+    const fmt = v => (el.dataset.prefix || '') + v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || '');
+    if (still) return el.textContent = fmt(end);
+    const t0 = performance.now();
+    const step = now => { const p = Math.min((now - t0) / 1400, 1); el.textContent = fmt(end * (1 - (1 - p) ** 3)); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  // Fade freshly swapped content in, one piece after another
+  const pop = (els, step = 60) => still || [...els].forEach((el, i) =>
+    el.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: i * step, easing: 'ease-out', fill: 'backwards' }));
+  const toast = msg => { const t = $('.toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 2600); };
+
+  // Hero showcase: the four product windows, cycling on their own until someone takes over
+  // Only the screen on show downloads; the rest wait until someone switches to them
+  const wake = img => { if (img && img.dataset.src) { img.srcset = img.dataset.srcset; img.src = img.dataset.src; delete img.dataset.src; } };
+  const ready = (img, w) => {
+    wake(img);
+    if (!img || (img.complete && img.naturalWidth)) return Promise.resolve();
+    w?.classList.add('loading');
+    return img.decode().catch(() => {}).finally(() => w?.classList.remove('loading'));
+  };
+  $$('.shots img:not(.on)').forEach(img => { img.dataset.src = img.getAttribute('src'); img.dataset.srcset = img.getAttribute('srcset'); img.removeAttribute('srcset'); img.removeAttribute('src'); });
+  const slides = $('.slides'), tabs = [...$$('.showcase-tabs button')];
+  $$('.product').forEach(p => {
+    const s = document.createElement('div');
+    s.className = 'slide';
+    s.style.setProperty('--c', p.style.getPropertyValue('--c'));
+    s.append(p.querySelector('.window').cloneNode(true));
+    const first = s.querySelector('.shots img.on');
+    if (first && slides.children.length) { first.dataset.src = first.getAttribute('src'); first.dataset.srcset = first.getAttribute('srcset'); first.removeAttribute('srcset'); first.removeAttribute('src'); }
+    else first?.removeAttribute('loading');
+    slides.append(s);
+  });
+  let current = 0;
+  const show = i => {
+    current = i;
+    tabs.forEach((t, j) => { t.classList.toggle('on', j === i); t.setAttribute('aria-selected', j === i); });
+    const slide = slides.children[i], live = slides.querySelector('.slide.in');
+    ready(slide.querySelector('.shots img.on'), live && live.querySelector('.window')).then(() => {
+      if (current !== i) return;
+      [...slides.children].forEach((s, j) => s.classList.toggle('in', j === i));
+      slide.querySelectorAll('[data-count]').forEach(countUp);
+      // Fetch the next product's screen in the background so the rotation never waits
+      const next = () => wake(slides.children[(i + 1) % slides.children.length].querySelector('.shots img.on'));
+      document.readyState === 'complete' ? next() : addEventListener('load', next, { once: true });
+    });
+    rotator.textContent = audiences[i];
+    rotator.style.color = slides.children[i].style.getPropertyValue('--c');
+    pop([rotator]);
+    const [who, says] = presenters[i];
+    presenter.querySelector('img').src = `resources/people/${who}.svg`;
+    presenter.querySelector('.bubble').textContent = says;
+    presenter.style.setProperty('--c', slides.children[i].style.getPropertyValue('--c'));
+    pop(presenter.children, 120);
+  };
+  // The headline names who each product is for, in step with the showcase
+  const rotator = $('.rotator'), audiences = ['engineers', 'traders', 'retailers', 'educators'];
+  // A guide beside the showcase who explains what to try in each product
+  const presenter = $('.presenter'), presenters = [
+    ['engineer', 'This is the real Atlas. Flip through the dashboard, agents and workflows.'],
+    ['trader', 'Live DheQuest screens: positions, the terminal, strategies and the option chain.'],
+    ['owner', 'Our Neel console, straight from the counter. Try Billing, Products and Orders.'],
+    ['mentor', 'Read my review, then open the next submission.'],
+  ];
+  tabs.forEach((t, i) => {
+    t.onclick = () => show(i);
+    t.querySelector('i').onanimationend = () => show((i + 1) % tabs.length);
+  });
+  show(0);
+
+  // Reveal blocks as they scroll in; product mock-ups start "running" when seen
+  $$('.section-head, .service, .standard, .case, .steps > li, .timeline > li, .stack > div, .facts > div, .hero-grid > *, .quotes-rot, .faq details, .logos > *, .fit-grid')
+    .forEach(el => { el.classList.add('reveal'); el.style.setProperty('--i', [...el.parentNode.children].indexOf(el) % 6); });
+  $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => c.style.setProperty('--i', i)));
+  const seen = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('.product [data-count], .reveal [data-count]').forEach(countUp);
+    seen.unobserve(e.target);
+  }), { threshold: 0.06 });
+  $$('.reveal, .product').forEach(el => seen.observe(el));
+
+  // Highlight the nav link and product tab for whatever is on screen
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    $$(`.nav a[href="#${e.target.id}"], .product-tabs a[href="#${e.target.id}"]`).forEach(a =>
+      { a.parentNode.querySelectorAll('a').forEach(x => x.classList.toggle('active', x === a));
+        const row = a.parentNode; if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: a.offsetLeft - row.offsetLeft - 16, behavior: 'smooth' }); });
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  $$('main section[id], .product').forEach(s => spy.observe(s));
+
+  // Statement lights up word by word as it scrolls past
+  const statement = $('.statement');
+  statement.innerHTML = statement.textContent.split(' ').map(w => `<span>${w}</span>`).join(' ');
+  const words = [...statement.children];
+  const clamp = v => Math.max(0, Math.min(1, v));
+  let lastY = 0, up = 0;
+  const onScroll = () => {
+    const h = document.documentElement;
+    $('.progress').style.transform = `scaleX(${scrollY / (h.scrollHeight - innerHeight)})`;
+    // Offer it only after a deliberate upward scroll; small jumps from content loading in do not count
+    up = scrollY < lastY ? up + lastY - scrollY : 0;
+    $('.to-top').classList.toggle('show', scrollY > innerHeight && up > 60 && scrollY + innerHeight < h.scrollHeight - 900);
+    lastY = scrollY;
+    const r = statement.getBoundingClientRect();
+    const lit = still ? words.length : Math.round(clamp((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)) * words.length);
+    words.forEach((w, i) => w.classList.toggle('lit', i < lit));
+    const a = $('.steps').getBoundingClientRect();
+    $('.steps').style.setProperty('--p', clamp((innerHeight * 0.75 - a.top) / a.height));
+  };
+  let ticking = false;
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
+  onScroll();
+
+  // Things a visitor can do inside the product windows
+  const reviews = [
+    { title: 'Design a REST API for orders', track: 'Backend track, assignment 4', who: 'RK', sub: 'Endpoints, schema and error codes attached', mentor: 'Senior backend engineer',
+      review: 'Clean resource design. Paginate /orders, and return 409 when a payment ID is reused so retries stay safe.', scores: ['Design 4/5', 'Correctness 5/5', 'Clarity 4/5'], progress: 68 },
+    { title: 'Build a sales dashboard in SQL', track: 'Data track, assignment 2', who: 'SP', sub: 'Queries and chart exports attached', mentor: 'Analytics lead',
+      review: 'Good use of window functions. Move the date filter into one CTE so the weekly and monthly views agree.', scores: ['Accuracy 5/5', 'Performance 3/5', 'Clarity 4/5'], progress: 42 },
+    { title: 'Audit a checkout page for accessibility', track: 'Frontend track, assignment 6', who: 'NV', sub: 'Findings and fixed markup attached', mentor: 'Principal frontend engineer',
+      review: 'Strong catch on focus order. The card fields still rely on placeholders as labels, which screen readers skip.', scores: ['Coverage 4/5', 'Fixes 4/5', 'Clarity 5/5'], progress: 85 },
+  ];
+  document.addEventListener('click', e => {
+    let b = e.target.closest('[data-act]');
+    if (!b && matchMedia('(max-width: 620px)').matches && e.target.closest('.window.real .shots') && !e.target.closest('.viewer')) b = e.target.closest('.window').querySelector('.expand');
+    if (!b) return;
+    const w = b.closest('.window');
+    const act = {
+      shot() {
+        const i = [...b.parentNode.children].indexOf(b);
+        w.querySelectorAll('.shot-tabs button').forEach((x, j) => x.classList.toggle('on', j === i));
+        w.querySelector('.bar span').textContent = b.dataset.url;
+        const imgs = w.querySelectorAll('.shots img');
+        ready(imgs[i], w).then(() => { if (b.classList.contains('on')) imgs.forEach((x, j) => x.classList.toggle('on', j === i)); });
+      },
+      next() {
+        const r = reviews[w.dataset.r = ((+w.dataset.r || 0) + 1) % reviews.length];
+        for (const k of ['title', 'track', 'who', 'sub', 'mentor', 'review']) w.querySelector(`[data-f="${k}"]`).textContent = r[k];
+        w.querySelector('[data-f="scores"]').innerHTML = r.scores.map(s => `<span>${s}</span>`).join('');
+        w.querySelector('[data-f="progress"]').textContent = `Track progress ${r.progress}%`;
+        w.querySelector('.jar-foot .bar-prog span').style.setProperty('--w', r.progress + '%');
+        pop(w.querySelectorAll('.review, .score span'), 90);
+      },
+      expand() {
+        const view = w.cloneNode(true), holder = document.createElement('div');
+        view.querySelector('.expand').remove();
+        holder.className = 'in';
+        holder.style.setProperty('--c', getComputedStyle(w).getPropertyValue('--c'));
+        holder.append(view);
+        $('.viewer-body').replaceChildren(holder);
+        view.querySelectorAll('.shots img.on').forEach(wake);
+        $('.viewer').showModal();
+        view.querySelectorAll('[data-count]').forEach(countUp);
+      },
+    }[b.dataset.act];
+    act && act();
+  });
+  const viewer = $('.viewer');
+  viewer.onclick = e => { if (e.target === viewer || e.target.closest('[data-close]')) viewer.close(); };
+
+  // Product fit picker
+  const fits = [
+    { name: 'Neel', who: 'owner', c: 'var(--neel)', line: 'Run the storefront, the counter and the back office for every store from one system.',
+      points: ['Bill faster at the counter with UPI, card and cash', 'See stock across head office and every franchise', 'File GST and run payroll from the same books'], href: '#neel' },
+    { name: 'DheQuest', who: 'trader', c: 'var(--dhequest)', line: 'Take a strategy from idea to back-test to live automation, with rules you approve.',
+      points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: '#dhequest' },
+    { name: 'Experts Jar', who: 'learner', c: 'var(--jar)', line: 'Build job-ready skills through real assignments reviewed one‑on‑one by practitioners.',
+      points: ['Replace passive video with graded assignments', 'Give every learner an expert reviewer', 'Report progress your leadership can act on'], href: '#experts-jar' },
+    { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Run AI coding agents across every project, with a person approving every change.',
+      points: ['Run agents in parallel across repositories', 'Review every change as a diff before it lands', 'Keep keys, code and history on your machines'], href: '#atlas' },
+    { name: 'Custom engineering', who: 'builder', c: 'var(--text)', line: 'One accountable team designs, builds and runs your software, from first spec to production.',
+      points: ['A clickable prototype before the build starts', 'Working software at every release', 'Code, data and IP that belong to you'], href: '#services' },
+  ];
+  const demoMail = name => 'mailto:contact@sspart-enterprise.com?subject=' + encodeURIComponent(`Demo request: ${name}`)
+    + '&body=' + encodeURIComponent(`Hi SSPART,
+
+I'd like a demo of ${name}.
+
+Name:
+Company:
+What we're working on:
+`);
+  const answer = $('.fit-answer');
+  const pick = i => {
+    const f = fits[i];
+    $$('.fit-options button').forEach((b, j) => { b.classList.toggle('on', j === i); b.setAttribute('aria-selected', j === i); });
+    answer.style.setProperty('--c', f.c);
+    answer.innerHTML = `<img class="fit-peep" decoding="async" src="resources/people/${f.who}.svg" alt=""><p class="fit-kicker">We recommend</p><h3>${f.name}</h3><p class="fit-line">${f.line}</p>
+      <ul>${f.points.map(p => `<li><i class="fa-solid fa-check"></i>${p}</li>`).join('')}</ul>
+      <div class="actions"><a class="btn btn-solid" href="${demoMail(f.name)}">${f.who === 'builder' ? 'Talk to us about custom work' : `Book ${/^[AEIOU]/.test(f.name) ? 'an' : 'a'} ${f.name} demo`}</a><a class="btn" href="${f.href}">See how it works</a></div>`;
+    pop(answer.children, 70);
+  };
+  $$('.fit-options button').forEach((b, i) => b.onclick = () => pick(i));
+  pick(0);
+
+  // Testimonials rotate on their own; the dots take over
+  const quotes = [...$$('.quotes-rot .quote')], dots = [...$$('.quote-dots button')];
+  let q = 0;
+  const say = i => { q = i; quotes.forEach((x, j) => x.classList.toggle('on', j === i)); dots.forEach((d, j) => { d.classList.toggle('on', j === i); d.setAttribute('aria-selected', j === i); }); };
+  // A click restarts the clock, so the quote someone picked stays up for the full interval
+  let rot;
+  const autoplay = () => { clearInterval(rot); if (!still) rot = setInterval(() => $('.quotes-rot:hover') || say((q + 1) % quotes.length), 7000); };
+  dots.forEach((d, i) => d.onclick = () => { say(i); autoplay(); });
+  autoplay();
+
+  // Endless strip of the stack
+  const track = $('.marquee .track');
+  track.innerHTML += track.innerHTML;
+
+  if (!still && matchMedia('(hover: hover)').matches) {
+    const hero = $('.hero');
+    hero.onpointermove = e => { const r = hero.getBoundingClientRect(); hero.style.setProperty('--mx', e.clientX - r.left + 'px'); hero.style.setProperty('--my', e.clientY - r.top + 'px'); };
+    $$('.product .window').forEach(w => {
+      w.onpointermove = e => {
+        const r = w.getBoundingClientRect();
+        w.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 6 + 'deg');
+        w.style.setProperty('--rx', ((e.clientY - r.top) / r.height - 0.5) * -6 + 'deg');
+      };
+      w.onpointerleave = () => { w.style.removeProperty('--rx'); w.style.removeProperty('--ry'); };
+    });
+  }
+</script>
 </body>
 </html>

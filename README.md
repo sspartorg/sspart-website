@@ -1,41 +1,39 @@
-# sppart-website
+# sspart-website
 
-## Project Overview
-The `sppart-website` project is a responsive website built using HTML, CSS, and Bootstrap. It features a modern design with a focus on user experience and mobile compatibility.
+Company site for SSPART Enterprise Private Limited (sspart-enterprise.com), served by GitHub Pages. Plain HTML and CSS, no build.
 
-## File Structure
-```
-sppart-website
-├── index.html          # Main HTML structure of the website
-├── css
-│   └── styles.css     # Custom CSS styles for branding and aesthetics
-└── README.md          # Documentation for the project
+## Run locally
+
+```bash
+python -m http.server 8080   # then open http://localhost:8080
 ```
 
-## Features
-- **Responsive Navbar**: A navigation bar that adapts to different screen sizes.
-- **Hero Section**: A visually appealing hero section with a background image and call-to-action buttons.
-- **Stats Section**: Displays key metrics about the company in a visually engaging manner.
-- **Footer**: Contains copyright information and additional links.
+## Files
 
-## Setup Instructions
-1. Clone the repository to your local machine.
-   ```bash
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory.
-   ```bash
-   cd sppart-website
-   ```
-3. Open `index.html` in your web browser to view the website.
+- `index.html` — the home page: products (Atlas, DheQuest, Neel, Experts Jar), clients, story, contact
+- `css/styles.css` — all styles; colours are the tokens at the top
+- `privacy.html`, `terms.html`, `cookies.html` — legal pages
 
-## Technologies Used
-- HTML
-- CSS
-- Bootstrap
+## Placeholders
 
-## Custom Styles
-The custom styles are located in the `css/styles.css` file. You can modify this file to change the appearance of the website elements.
+Anything waiting on real content carries `data-placeholder="..."` and shows a dashed outline with a tag.
+The product windows show real screenshots from `resources/screens/` (Experts Jar is still an HTML mock-up, as it has
+no screenshots yet). The hero showcase clones each product's window, so editing it once updates both.
+Neel screens were captured from its console running locally with the seeded demo data (`admin@neel.test`).
 
-## Contribution
-Feel free to fork the repository and submit pull requests for any improvements or features you would like to add.
+## Sample data (replace before going live)
+
+Invented numbers, case-study details and testimonials carry `data-sample` (no visual marker). Search for
+`data-sample` and confirm or replace each one, and get each client's sign-off on any quote or logo shown.
+
+## Illustrations
+
+`resources/people/` holds the characters, generated once with DiceBear 9.2.2 and committed as plain SVGs (no runtime dependency):
+
+- People: "Notionists" by Zoish, CC0 1.0.
+- Robots (`agent-*.svg`): "Bottts" by Pablo Stanley, free for personal and commercial use.
+
+## Fonts
+
+`resources/fonts/` holds Geist, Geist Mono and Caveat (Latin subsets, woff2), served from this site instead of Google Fonts
+so text shows without extra third-party round trips. All three are under the SIL Open Font License 1.1.

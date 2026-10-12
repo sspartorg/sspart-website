@@ -212,9 +212,12 @@ section { padding: 120px 0; }
 .case .tag { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; white-space: nowrap; color: var(--muted); font-weight: 500; font-size: 0.9rem; }
 .case-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.03em; }
 .case-logo i { font-size: 0.8em; }
-.metrics { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
+.metrics { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); padding-top: 22px; border-top: 1px solid var(--line); }
+/* Each figure is centred in its own column, with a hairline between columns, so uneven label lengths still read as a balanced row */
+.metrics p { text-align: center; padding: 0 10px; }
+.metrics p + p { border-left: 1px solid var(--line); }
 .metrics strong { display: block; font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--text); }
-.metrics small { display: block; color: var(--muted); font-size: 0.88rem; text-wrap: balance; }
+.metrics small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.88rem; line-height: 1.35; text-wrap: balance; }
 .case h3 { font-size: 1.3rem; }
 .case dl { margin: 0; display: grid; gap: 12px; }
 .case dt { font-size: 0.85rem; color: var(--muted); }
@@ -354,6 +357,8 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
 .showcase-tabs i { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--c); transform: scaleX(0); transform-origin: left; }
 .showcase-tabs .on i { animation: fill 6s linear forwards; }
 .showcase:hover .showcase-tabs .on i { animation-play-state: paused; }
+.showcase.manual .showcase-tabs i { animation: none; }
+.showcase.manual .showcase-tabs .on i { transform: scaleX(1); }
 @keyframes fill { to { transform: scaleX(1); } }
 .slides { display: grid; }
 .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(12px) scale(0.985); transition: opacity 0.5s, transform 0.6s cubic-bezier(.2,.7,.2,1), visibility 0.5s; }
@@ -515,6 +520,7 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
   background: var(--card); border: 1px solid var(--line); color: var(--text); text-decoration: none; box-shadow: 0 8px 24px -10px rgb(19 22 46 / 0.3);
   opacity: 0; translate: 0 12px; pointer-events: none; transition: opacity 0.3s, translate 0.3s; }
 .to-top.show { opacity: 1; translate: 0 0; pointer-events: auto; }
+.to-top svg { display: block; }
 @media (max-width: 900px) { .to-top { width: 40px; height: 40px; right: 12px; bottom: 12px; } }
 
 @media (max-width: 1200px) {

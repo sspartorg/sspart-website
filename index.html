@@ -440,7 +440,7 @@
 
 <div class="toast" role="status" aria-live="polite"></div>
 <dialog class="viewer" aria-label="Product preview"><button class="viewer-close" data-close aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button><div class="viewer-body"></div></dialog>
-<a class="to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+<a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <footer>
   <div class="wrap">
@@ -569,7 +569,8 @@
     ['mentor', 'Read my review, then open the next submission.'],
   ];
   tabs.forEach((t, i) => {
-    t.onclick = () => show(i);
+    // Once someone picks a product, stop rotating so it stays on what they chose
+    t.onclick = () => { $('.showcase').classList.add('manual'); show(i); };
     t.querySelector('i').onanimationend = () => show((i + 1) % tabs.length);
   });
   show(0);
@@ -664,6 +665,8 @@
   });
   const viewer = $('.viewer');
   viewer.onclick = e => { if (e.target === viewer || e.target.closest('[data-close]')) viewer.close(); };
+  // Escape closes it everywhere, including browsers that leave this to the page
+  addEventListener('keydown', e => { if (e.key === 'Escape' && viewer.open) viewer.close(); });
 
   // Product fit picker
   const fits = [

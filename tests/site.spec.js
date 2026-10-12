@@ -32,6 +32,10 @@ test.describe('home page', () => {
         page: document.documentElement.scrollWidth - w,
         elements: [...document.querySelectorAll('body *')].filter(e => {
           if (e.closest(skip)) return false;
+          // Content inside an on-screen container that clips or scrolls sideways is intended (swipe rows, bleeding art)
+          for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) {
+            if (getComputedStyle(p).overflowX !== 'visible' && p.getBoundingClientRect().right <= w + 1) return false;
+          }
           const cs = getComputedStyle(e);
           if (cs.visibility === 'hidden' || cs.display === 'none' || cs.position === 'fixed') return false;
           const b = e.getBoundingClientRect();
@@ -83,7 +87,7 @@ test.describe('home page', () => {
     await expect(toggle).toBeVisible();
     await toggle.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    const firstLink = page.locator('#nav a, #nav-links a').filter({ visible: true }).first();
+    const firstLink = page.locator('#nav-links a, nav#nav a').filter({ visible: true }).first();
     await expect(firstLink).toBeVisible();
     await firstLink.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');

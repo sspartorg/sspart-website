@@ -283,8 +283,8 @@ footer h4 { margin: 0 0 14px; color: #fff; font-size: 0.95rem; letter-spacing: 0
 footer .cols a { display: block; text-decoration: none; padding: 4px 0; margin-bottom: 4px; }
 footer a[href^="mailto"] { white-space: nowrap; }
 footer a:hover { color: #fff; }
-.social { display: flex; gap: 16px; margin-top: 18px; }
-.social a { display: inline-grid; place-items: center; width: 36px; height: 36px; margin-left: -8px; font-size: 1.1rem; }
+.social { display: flex; margin-top: 14px; }
+footer .social a { display: inline-grid; place-items: center start; height: 36px; padding: 0 22px 0 0; margin: 0; font-size: 1.1rem; }
 .legal { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--ink-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .legal nav { display: flex; gap: 20px; }
 .legal a { text-decoration: none; }

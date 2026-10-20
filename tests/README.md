@@ -33,7 +33,7 @@ bash: `BASE_URL=https://sspart-enterprise.com npm test`).
 - `site.spec.js`: no script errors or missing files, no sideways scrolling, every in-page link has a target,
   external links open safely, every image loads with alt text and correct proportions, the phone menu works,
   and the legal pages load and link home.
-- `components.spec.js`: the hero showcase, product screenshot galleries, the enlarged view, the fit picker,
+- `components.spec.js`: the hero Atlas run, the ROI calculator, the usual-way comparison, product screenshot galleries, the enlarged view, the fit picker,
   demo email links, FAQ, testimonials, back-to-top, sticky product tabs and the count-up figures.
 - `perf.spec.js`: first load under 450 KB and 30 requests, layout shift under 0.1, largest paint under 2.5 s,
   and scrolling at about 60 fps. Phones and tablets run with the CPU slowed 4×.

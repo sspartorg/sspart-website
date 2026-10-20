@@ -7,26 +7,38 @@ test.beforeEach(async ({ page }) => {
   await page.waitForTimeout(500);
 });
 
-test('hero showcase: each product tab shows its window, guide and headline word', async ({ page }) => {
-  const tabs = page.locator('.showcase-tabs button');
-  await expect(tabs).toHaveCount(4);
-  const h1 = await page.locator('.hero h1').evaluate(e => e.offsetHeight);
-  const words = [];
-  for (let i = 0; i < 4; i++) {
-    await tabs.nth(i).click();
-    await expect(page.locator('.slides .slide').nth(i)).toHaveClass(/\bin\b/);
-    words.push(await page.locator('.rotator').textContent());
-    expect((await page.locator('.presenter .bubble').textContent()).length).toBeGreaterThan(10);
-  }
-  expect(new Set(words).size, `headline words: ${words.join(', ')}`).toBe(4);
-  expect(await page.locator('.hero h1').evaluate(e => e.offsetHeight), 'headline height must not jump').toBe(h1);
+test('hero globe: the canvas paints', async ({ page }) => {
+  await page.waitForTimeout(600);
+  const painted = await page.locator('.globe').evaluate(c => {
+    const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+    let n = 0; for (let i = 3; i < d.length; i += 4 * 97) if (d[i] > 40) n++;
+    return n;
+  });
+  expect(painted, 'painted pixels sampled').toBeGreaterThan(20);
 });
 
-test('hero showcase: picking a product stops auto-rotation', async ({ page }) => {
-  await page.locator('.showcase-tabs button').nth(2).click();
-  await expect(page.locator('.showcase')).toHaveClass(/manual/);
-  await page.waitForTimeout(7000);
-  await expect(page.locator('.slides .slide').nth(2)).toHaveClass(/\bin\b/);
+test('ROI calculator: three ways priced from the stated assumptions, Atlas cheapest', async ({ page }) => {
+  const n = page.locator('#changes');
+  await n.scrollIntoViewIfNeeded();
+  await n.fill('40');
+  await expect(page.locator('#changes-out')).toHaveText('40');
+  const money = async sel => +(await page.locator(`${sel} .v`).textContent()).replace(/[^\d]/g, '');
+  expect(await money('.roi-col.manual')).toBe(40 * 3 * 400);
+  expect(await money('.roi-col.adhoc')).toBe(Math.round(40 * 1.3 * (1.5 * 400 + 25)));
+  expect(await money('.roi-col.atlas')).toBe(Math.round(40 * (0.5 * 400 + 11.75)));
+  await expect(page.locator('.roi-col.atlas .t')).toHaveText('1 day');
+  await expect(page.locator('#roi-save')).toContainText('1 day instead of 5');
+});
+
+test('usual way vs Atlas way: on one timeline Atlas delivers first, and every row compares both', async ({ page }) => {
+  await page.evaluate(() => document.querySelector('.race').scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await expect(page.locator('.race')).toHaveClass(/atlas-done/, { timeout: 10000 });
+  await expect(page.locator('.race')).not.toHaveClass(/usual-done/);
+  await expect(page.locator('#st-atlas')).toHaveText('Delivered');
+  await expect(page.locator('#race-say')).toContainText('Atlas delivered');
+  const rows = page.locator('.vs-row');
+  expect(await rows.count()).toBeGreaterThanOrEqual(4);
+  for (const n of await rows.evaluateAll(r => r.map(x => x.querySelectorAll('.old, .new').length))) expect(n).toBe(2);
 });
 
 for (const id of ['atlas', 'dhequest', 'neel']) {
@@ -83,14 +95,15 @@ test('fit picker: every option recommends a product with a matching email link',
 
 test('demo buttons send an email instead of opening a form', async ({ page }) => {
   await expect(page.locator('form')).toHaveCount(0);
-  const hrefs = await page.locator('.mail-btn, .hero .btn-solid').evaluateAll(a => a.map(x => x.getAttribute('href')));
-  expect(hrefs.length).toBeGreaterThanOrEqual(6);
+  const hrefs = await page.locator('.mail-btn').evaluateAll(a => a.map(x => x.getAttribute('href')));
+  expect(hrefs.length).toBeGreaterThanOrEqual(5);
   for (const h of hrefs) expect(h).toMatch(/^mailto:contact@sspart-enterprise\.com\?subject=/);
 });
 
 test('FAQ opens and closes', async ({ page }) => {
   const item = page.locator('.faq details').first();
-  await item.scrollIntoViewIfNeeded();
+  // A real scroll: WebKit's scrollIntoViewIfNeeded sometimes leaves the page where it is
+  await item.evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await item.locator('summary').click();
   await expect(item).toHaveJSProperty('open', true);
   await item.locator('summary').click();

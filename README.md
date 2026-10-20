@@ -23,7 +23,7 @@ See `tests/README.md`; in short: `cd tests && npm install && npm run setup && np
 
 Anything waiting on real content carries `data-placeholder="..."` and shows a dashed outline with a tag.
 The product windows show real screenshots from `resources/screens/` (Experts Jar is still an HTML mock-up, as it has
-no screenshots yet). The hero showcase clones each product's window, so editing it once updates both.
+no screenshots yet).
 Neel screens were captured from its console running locally with the seeded demo data (`admin@neel.test`).
 
 ## Sample data (replace before going live)
@@ -40,5 +40,5 @@ Invented numbers, case-study details and testimonials carry `data-sample` (no vi
 
 ## Fonts
 
-`resources/fonts/` holds Geist, Geist Mono and Caveat (Latin subsets, woff2), served from this site instead of Google Fonts
+`resources/fonts/` holds Overpass (variable, Latin) and Caveat (Latin subset), both woff2, served from this site instead of Google Fonts
 so text shows without extra third-party round trips. All three are under the SIL Open Font License 1.1.

@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-04e">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-04g">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -155,16 +155,16 @@
       <div class="race gantt" style="--p:0">
         <div class="race-head">
           <p class="ticket"><span>Request</span>Add GST invoices to the merchant app</p>
-          <button class="race-replay" type="button"><i class="fa-solid fa-rotate-right"></i>Play again</button>
+          <button class="race-replay" type="button"><i class="fa-solid fa-rotate-right"></i><span class="t">Play again</span></button>
         </div>
         <div class="g-body">
           <div class="g-row usual" data-end="86" data-last="Released">
             <div class="g-label"><h3>The usual way</h3><p class="g-now" id="st-usual">Ready</p><p class="g-sum">2 hand-offs, 1 queue, 1 rework loop</p></div>
-            <div class="g-track"><div class="g-bars"><i class="seg work" style="--a:0;--b:6" data-status="Writing the brief"><span>Brief</span></i><i class="seg wait" style="--a:6;--b:14" data-status="Waiting for a hand-off"><span>Hand-off</span></i><i class="seg wait" style="--a:14;--b:25" data-status="Sitting in a queue"><span>Queue</span></i><i class="seg work" style="--a:25;--b:44" data-status="Building, one role at a time"><span>Build</span></i><i class="seg work" style="--a:44;--b:55" data-status="Testing by hand"><span>Manual test</span></i><i class="seg redo" style="--a:55;--b:68" data-status="Sent back for rework"><span>Rework</span></i><i class="seg wait" style="--a:68;--b:77" data-status="Waiting for another hand-off"><span>Hand-off</span></i><i class="seg work" style="--a:77;--b:86" data-status="Releasing"><span>Release</span></i></div><span class="g-end" style="--e:86">Released</span></div>
+            <div class="g-track"><div class="g-bars"><i class="seg work" style="--a:0;--b:6" data-status="Writing the brief"><span>Brief</span></i><i class="seg wait" style="--a:6;--b:14" data-status="Waiting for a hand-off"><span>Hand-off</span></i><i class="seg wait" style="--a:14;--b:25" data-status="Sitting in a queue"><span>Queue</span></i><i class="seg work" style="--a:25;--b:44" data-status="Building, one role at a time"><span>Build</span></i><i class="seg work" style="--a:44;--b:55" data-status="Testing by hand"><span>Manual test</span></i><i class="seg redo" style="--a:55;--b:68" data-status="Sent back for rework"><span>Rework</span></i><i class="seg wait" style="--a:68;--b:77" data-status="Waiting for another hand-off"><span>Hand-off</span></i><i class="seg work" style="--a:77;--b:86" data-status="Releasing"><span>Release</span></i></div><span class="g-end" style="--e:86"><span class="t">Released</span></span></div>
           </div>
           <div class="g-row atlas" data-end="34" data-last="Delivered">
             <div class="g-label"><h3>With Atlas</h3><p class="g-now" id="st-atlas">Ready</p><p class="g-sum">No hand-offs, queues or rework</p></div>
-            <div class="g-track"><div class="g-bars"><i class="seg plan" style="--a:0;--b:5" data-status="Planning the work"><span>Plan</span></i><i class="seg plan" style="--a:5;--b:11" data-status="Designing it once"><span>Design</span></i><i class="seg make p1" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Build</span></i><i class="seg make p2" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Test</span></i><i class="seg make p3" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Docs</span></i><i class="seg check" style="--a:23;--b:28" data-status="Verifying everything"><span>Verify</span></i><i class="seg plan" style="--a:28;--b:34" data-status="Final review"><span>Review</span></i></div><span class="g-end" style="--e:34"><i class="fa-solid fa-check"></i>Delivered</span></div>
+            <div class="g-track"><div class="g-bars"><i class="seg plan" style="--a:0;--b:5" data-status="Planning the work"><span>Plan</span></i><i class="seg plan" style="--a:5;--b:11" data-status="Designing it once"><span>Design</span></i><i class="seg make p1" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Build</span></i><i class="seg make p2" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Test</span></i><i class="seg make p3" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Docs</span></i><i class="seg check" style="--a:23;--b:28" data-status="Verifying everything"><span>Verify</span></i><i class="seg plan" style="--a:28;--b:34" data-status="Final review"><span>Review</span></i></div><span class="g-end" style="--e:34"><i class="fa-solid fa-check"></i><span class="t">Delivered</span></span></div>
           </div>
           <div class="g-axis"><span>Request in</span><span>Time</span></div>
           <div class="g-mark" style="--e:34"><span>Atlas delivered</span></div>
@@ -328,10 +328,10 @@
         <p>Atlas is how we deliver. These are the products we build and run in production. Each is available for a guided demo and can be customised for your business.</p>
       </div>
       <nav class="product-tabs" aria-label="Products">
-        <a href="#atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Atlas</a>
-        <a href="#dhequest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">DheQuest</a>
-        <a href="#neel" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Neel</a>
-        <a href="#experts-jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Experts Jar</a>
+        <a href="#atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt=""><span class="t">Atlas</span></a>
+        <a href="#dhequest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt=""><span class="t">DheQuest</span></a>
+        <a href="#neel" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt=""><span class="t">Neel</span></a>
+        <a href="#experts-jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt=""><span class="t">Experts Jar</span></a>
       </nav>
 
       <article class="product" id="atlas" style="--c:var(--atlas)">

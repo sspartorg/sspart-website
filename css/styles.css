@@ -1039,10 +1039,6 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .fly { display: none; }
 .beat { padding: 48px 0; }
 .launch-tag { position: relative; display: inline-block; margin-bottom: 18px; padding: 7px 16px; border-radius: 999px; background: var(--plan); color: #fff; font-size: 0.92rem; font-weight: 700; text-decoration: none; }
-/* Centre the letters themselves: trim the line box to cap height and baseline, then pad. Browsers place Overpass up to
-   1.25px apart, so plain padding can't centre it in all of them; the extra 2px below lifts the lowercase-heavy line
-   to its optical centre. Without text-box support the padding above applies. */
-@supports (text-box: trim-both cap alphabetic) { .launch-tag { text-box: trim-both cap alphabetic; padding: 13px 16px 15px; } }
 .launch h2.mega, .mega { color: #fff; font-size: min(25vw, 36svh); font-weight: 800; line-height: 0.86; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
 .atlas-mark { display: block; width: auto; height: clamp(72px, 17svh, 170px); margin: 0 auto 14px; color: #fff; }
 .beat-small { font-size: clamp(1.2rem, 2.4vw, 2rem); font-weight: 600; color: #cdd2e6; }
@@ -1288,4 +1284,29 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 @media (prefers-reduced-motion: reduce) {
   .cc-cookie, .cc-panel { transition: none; }
   .cc.is-chosen .cc-cookie { animation: none; opacity: 0; }
+}
+
+
+/* ---------- Pills: letters centred the same way in every browser ----------
+   Chrome and Safari place Overpass up to 2px apart inside a line box, so plain padding can't centre pill text in both.
+   text-box trims each pill's line box to the letters (cap height to baseline); the padding then adds back exactly the
+   space the old line box had (--lb), so every pill keeps its size, and lifts the letters by --lift to their optical
+   centre (between cap height and x-height; most pill text is lowercase). Pills with an icon trim a .t span instead.
+   --lb is 1.2em where the line height was "normal" (Chrome's size; Safari used to draw these pills 2px taller).
+   Without text-box support the original padding applies. */
+@supports (text-box: trim-both cap alphabetic) {
+  .btn, .shot-tabs button, .preview-tag, .con-chips button, .race-replay > .t { --lb: 1.2em; }
+  .service li, .cc-rows dd.cc-state, .launch-tag, .product-tabs a > .t, .g-end > .t { --lb: 1lh; }
+  .btn, .shot-tabs button, .preview-tag, .con-chips button, .service li, .cc-rows dd.cc-state, .launch-tag,
+  .product-tabs a > .t, .race-replay > .t, .g-end > .t { --lift: 0.07em; --trim: calc((var(--lb) - 1cap) / 2); text-box: trim-both cap alphabetic; }
+  .product-tabs a > .t, .race-replay > .t, .g-end > .t { display: block; padding-block: calc(var(--trim) - var(--lift)) calc(var(--trim) + var(--lift)); }
+  .btn { padding-block: calc(13px + var(--trim) - var(--lift)) calc(13px + var(--trim) + var(--lift)); }
+  .nav .btn { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); }
+  .cc-actions .btn { padding-block: calc(11px + var(--trim) - var(--lift)) calc(11px + var(--trim) + var(--lift)); }
+  .shot-tabs button, .con-chips button { padding-block: calc(5px + var(--trim) - var(--lift)) calc(5px + var(--trim) + var(--lift)); }
+  .preview-tag { padding-block: calc(2px + var(--trim) - var(--lift)) calc(2px + var(--trim) + var(--lift)); }
+  .service li { padding-block: calc(3px + var(--trim) - var(--lift)) calc(3px + var(--trim) + var(--lift)); }
+  .cc-rows dd.cc-state { padding-block: calc(4px + var(--trim) - var(--lift)) calc(4px + var(--trim) + var(--lift)); }
+  .launch-tag { padding-block: calc(7px + var(--trim) - var(--lift)) calc(7px + var(--trim) + var(--lift)); }
+  @media (max-width: 900px), (hover: none) { .shot-tabs button { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); } }
 }

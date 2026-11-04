@@ -1,0 +1,12 @@
+{
+  "name": "SSPART Enterprise",
+  "short_name": "SSPART",
+  "icons": [
+    { "src": "resources/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "resources/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#021255",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

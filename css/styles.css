@@ -83,6 +83,11 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { text-decoration: none; color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; }
 .nav a:hover { color: var(--on-night); }
+/* product links carry their brand-pack icon; on the dark launch header Atlas turns white and Synvord uses its on-dark version */
+.nav a:has(.nav-ico) { display: inline-flex; align-items: center; gap: 8px; }
+.nav-ico { width: auto; height: 18px; flex: none; }
+.on-night .nav-ico[src*="atlas-logo"] { filter: invert(1); }
+.on-night .nav-ico[src*="synvord-logo"] { content: url("../resources/brand/products/synvord-logo-icon-fullcolor-on-dark.svg"); } /* brand-pack on-dark version */
 .nav .btn { padding: 9px 18px; }
 .nav .btn-solid { color: var(--on-text); }
 .nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--ink-line); border-radius: 10px; cursor: pointer; }

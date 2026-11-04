@@ -276,12 +276,14 @@ test('Atlas is one product: visitors never see a second name for it', async ({ p
   }
 });
 
-test('both pages share one header', async ({ page }) => {
+test('every page with a nav shares one header', async ({ page }) => {
   const read = async url => {
     await page.goto(url);
     return page.evaluate(() => ({ links: [...document.querySelectorAll('.nav a')].map(a => a.textContent), h1: getComputedStyle(document.querySelector('h1')).fontSize, bar: !!document.querySelector('.site-head .progress') }));
   };
-  expect(await read('/atlas.html')).toEqual(await read('/'));
+  const home = await read('/');
+  expect(home.links).toEqual(['Atlas', 'Synvord', 'DheQuest', 'Clients', 'Talk to us']);
+  for (const url of ['/atlas.html', '/synvord.html', '/dhequest.html']) expect(await read(url)).toEqual(home);
 });
 
 // A small in-memory stand-in for the two tables, enough to walk the desk end to end

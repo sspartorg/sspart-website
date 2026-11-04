@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { scrollThrough } = require('./helpers');
 
-const LEGAL = ['privacy.html', 'terms.html', 'cookies.html', 'refund.html', 'shipping.html', 'grievance.html', 'press.html', 'contact.html', 'admin.html', 'atlas.html'];
+const LEGAL = ['privacy.html', 'terms.html', 'cookies.html', 'refund.html', 'shipping.html', 'grievance.html', 'press.html', 'contact.html', 'admin.html', 'atlas.html', 'synvord.html', 'dhequest.html'];
 
 test.describe('home page', () => {
   let errors, failed;

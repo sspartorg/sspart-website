@@ -1,21 +1,7 @@
-// Atlas page: the header, the workflow map, the team and the task queue.
+// Atlas page: the workflow map, the team and the task queue.
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Same header behaviour as the home page: clear over the hero, solid once scrolling, with progress and section markers
-  const root = document.documentElement, bar = document.querySelector('.progress');
-  let ticking = false;
-  const onScroll = () => {
-    ticking = false;
-    bar.style.transform = `scaleX(${scrollY / (root.scrollHeight - innerHeight)})`;
-    root.style.setProperty('--head-a', Math.min(1, scrollY / 260));
-  };
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-  onScroll();
-  const marks = [...document.querySelectorAll('.rail a')];
-  const spy = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) marks.forEach(a => a.classList.toggle('active', a.hash === `#${e.target.id}`));
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+  // (the header and section markers are in page.js)
 
   const items = [...document.querySelectorAll('.map-nodes li')], card = document.getElementById('map-card');
   const show = i => {

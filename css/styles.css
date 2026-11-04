@@ -25,8 +25,8 @@
   --insight: #9ca3af;
   --check: #000000;
   --atlas: #374151;
-  --dhequest: #d18b0c;
-  --neel: #4f46e5;
+  --dhequest: #2e8b96;
+  --synvord: #0077e6;
   --jar: #7c4dff;
   --up: #1f9d6b;
   --down: #d6455d;
@@ -1074,8 +1074,8 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .flag-more { margin-top: 48px; text-align: center; }
 
 /* Atlas page: every heading is a headline, and the numbers fill the screen */
-.atlas-page main h2 { font-size: clamp(3rem, 8vw, 7.6rem); line-height: 0.95; letter-spacing: -0.055em; }
-.atlas-page .section-head p { font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
+:is(.atlas-page, .product-page) main h2 { font-size: clamp(3rem, 8vw, 7.6rem); line-height: 0.95; letter-spacing: -0.055em; }
+:is(.atlas-page, .product-page) .section-head p { font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
 .scream { background: var(--plan); color: #fff; }
 .scream ul { text-align: center; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 72px) clamp(24px, 4vw, 56px); }
 .scream b { display: block; font-size: clamp(3.6rem, 10vw, 10rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.055em; white-space: nowrap; }
@@ -1286,6 +1286,14 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
   .cc.is-chosen .cc-cookie { animation: none; opacity: 0; }
 }
 
+
+/* ---------- Product pages (Synvord, DheQuest): the Atlas page layout, in each product's own colours ---------- */
+.p-logo { display: block; width: auto; height: clamp(48px, 6vw, 72px); margin: 0 auto 32px; }
+.product-page .scream { background: var(--c-deep); }
+.product-page .scream ul { grid-template-columns: repeat(3, 1fr); } /* three facts stay on one row, phones included */
+.product-page .ready i { background: var(--c); }
+@media (min-width: 901px) { .product-page #fit .ready { grid-template-columns: repeat(2, 1fr); max-width: 1040px; } } /* four items: 2 x 2, not 3 + 1 */
+.product-page .a-shot .window { box-shadow: var(--lift), 0 60px 100px -60px color-mix(in srgb, var(--c) 55%, transparent); }
 
 /* ---------- Pills: letters centred the same way in every browser ----------
    Chrome and Safari place Overpass up to 2px apart inside a line box, so plain padding can't centre pill text in both.

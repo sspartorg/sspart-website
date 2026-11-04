@@ -24,7 +24,7 @@ create table public.enquiries (
   mobile_digits text generated always as (regexp_replace(mobile, '\D', '', 'g')) stored,
   email text check (email is null or (char_length(email) <= 254 and email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$')),
   company text check (company is null or char_length(company) <= 160),
-  product text not null default 'Other' check (product in ('Atlas', 'Atlas Open', 'Atlas Enterprise', 'DheQuest', 'Neel', 'Experts Jar', 'Custom software', 'Careers', 'Other')),
+  product text not null default 'Other' check (product in ('Atlas', 'Atlas Open', 'Atlas Enterprise', 'DheQuest', 'Synvord', 'Neel', 'Experts Jar', 'Custom software', 'Careers', 'Other')),
   message text not null check (char_length(btrim(message)) between 1 and 4000),
   source text check (source is null or char_length(source) <= 200),
   status text not null default 'new' check (status in ('new', 'contacted', 'qualified', 'won', 'lost'))

@@ -41,7 +41,7 @@ test('usual way vs Atlas way: on one timeline Atlas delivers first, and every ro
   for (const n of await rows.evaluateAll(r => r.map(x => x.querySelectorAll('.old, .new').length))) expect(n).toBe(2);
 });
 
-for (const id of ['atlas', 'dhequest', 'synvord']) {
+for (const id of ['atlas', 'dhequest']) { // Synvord is coming soon: a module board, no screenshots
   test(`${id} gallery: every tab shows its real screenshot and address`, async ({ page }) => {
     const btns = page.locator(`#${id} .shot-tabs button`);
     const n = await btns.count();
@@ -57,8 +57,8 @@ for (const id of ['atlas', 'dhequest', 'synvord']) {
 }
 
 test('larger view opens, fits the screen and closes by button and Escape', async ({ page }) => {
-  await page.locator('#synvord .expand').scrollIntoViewIfNeeded();
-  await page.locator('#synvord .expand').click();
+  await page.locator('#dhequest .expand').scrollIntoViewIfNeeded();
+  await page.locator('#dhequest .expand').click();
   const viewer = page.locator('.viewer');
   await expect(viewer).toHaveJSProperty('open', true);
   const box = await page.locator('.viewer .window').boundingBox();

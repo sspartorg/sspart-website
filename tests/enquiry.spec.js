@@ -283,7 +283,7 @@ test('every page with a nav shares one header', async ({ page }) => {
   };
   const home = await read('/');
   expect(home.links).toEqual(['Atlas', 'Synvord', 'DheQuest', 'Clients', 'Talk to us']);
-  for (const url of ['/atlas.html', '/synvord.html', '/dhequest.html']) expect(await read(url)).toEqual(home);
+  for (const url of ['/atlas.html', '/synvord.html', '/dhequest.html', '/synvord-pms.html', '/synvord-hms.html']) expect(await read(url)).toEqual(home);
 });
 
 // A small in-memory stand-in for the two tables, enough to walk the desk end to end

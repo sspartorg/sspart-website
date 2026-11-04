@@ -1297,6 +1297,45 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .product-page .scream { background: var(--c-deep); }
 .product-page .scream ul { grid-template-columns: repeat(3, 1fr); } /* three facts stay on one row, phones included */
 .product-page .ready i { background: var(--c); }
+/* Synvord: coming soon */
+.soon-tag { display: inline-block; margin: 0 0 22px; padding: 6px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--c) 40%, #fff);
+  background: color-mix(in srgb, var(--c) 8%, #fff); color: var(--c-deep); font-size: 0.85rem; font-weight: 700; }
+.p-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.p-chips li { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 0.95rem; }
+.p-more { margin-top: 40px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.p-more a { color: var(--text); text-underline-offset: 3px; }
+.flag-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.flag-card { display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--card);
+  text-decoration: none; color: var(--text); transition: border-color 0.2s, translate 0.2s; }
+.flag-card:hover { border-color: var(--c); translate: 0 -2px; }
+.flag-card img { height: 44px; width: auto; align-self: flex-start; }
+.flag-card b { font-size: 1.15rem; font-weight: 800; }
+.flag-card p { margin: -6px 0 4px; color: var(--muted); font-size: 1rem; }
+.flag-card span { margin-top: auto; font-weight: 700; color: var(--c-deep); }
+.mod-jump { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: -8px 0 40px; }
+.mod-jump a { color: var(--muted); text-underline-offset: 3px; }
+.mod-jump a:hover { color: var(--text); }
+.mod-group + .mod-group { margin-top: 48px; }
+.mod-group h3 { margin: 0 0 18px; font-size: 1.35rem; }
+.mods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.mod { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.mod > i { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); margin-bottom: 14px; }
+.mod-flag > i { background: var(--c); color: #fff; }
+.mod h4 { margin: 0 0 6px; font-size: 1.08rem; font-weight: 800; }
+.mod > p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
+.mod ul { margin: 0; padding: 0; display: grid; gap: 5px; font-size: 0.9rem; }
+.mod ul li { position: relative; padding-left: 16px; }
+.mod ul li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 7px; height: 2px; border-radius: 1px; background: var(--c); }
+.mod-link { margin-top: 16px; font-weight: 700; color: var(--c-deep); text-underline-offset: 3px; }
+@media (max-width: 900px) { .mods { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .mods, .flag-cards { grid-template-columns: 1fr; } .flag-card { padding: 22px; } .flag-card img { height: 36px; } }
+/* Home page: Synvord's module board stands in for screenshots while it is coming soon */
+.mod-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 18px; background: var(--panel); }
+.mod-board li { display: flex; align-items: center; gap: 10px; padding: 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: 0.95rem; }
+.mod-board i { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 9px; background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); font-size: 0.9rem; }
+.mod-board .more-tile { grid-column: 1 / -1; justify-content: center; border-style: dashed; }
+.mod-board .more-tile a { color: var(--c-deep, var(--text)); text-underline-offset: 3px; }
+@media (max-width: 620px) { .mod-board { grid-template-columns: 1fr 1fr; padding: 12px; } .mod-board li { padding: 10px; font-size: 0.85rem; } }
 @media (min-width: 901px) { .product-page #fit .ready { grid-template-columns: repeat(2, 1fr); max-width: 1040px; } } /* four items: 2 x 2, not 3 + 1 */
 .product-page .a-shot .window { box-shadow: var(--lift), 0 60px 100px -60px color-mix(in srgb, var(--c) 55%, transparent); }
 
@@ -1309,8 +1348,8 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
    Without text-box support the original padding applies. */
 @supports (text-box: trim-both cap alphabetic) {
   .btn, .shot-tabs button, .preview-tag, .con-chips button, .race-replay > .t { --lb: 1.2em; }
-  .service li, .cc-rows dd.cc-state, .launch-tag, .product-tabs a > .t, .g-end > .t { --lb: 1lh; }
-  .btn, .shot-tabs button, .preview-tag, .con-chips button, .service li, .cc-rows dd.cc-state, .launch-tag,
+  .service li, .cc-rows dd.cc-state, .launch-tag, .soon-tag, .p-chips li, .product-tabs a > .t, .g-end > .t { --lb: 1lh; }
+  .btn, .shot-tabs button, .preview-tag, .con-chips button, .service li, .cc-rows dd.cc-state, .launch-tag, .soon-tag, .p-chips li,
   .product-tabs a > .t, .race-replay > .t, .g-end > .t { --lift: 0.07em; --trim: calc((var(--lb) - 1cap) / 2); text-box: trim-both cap alphabetic; }
   .product-tabs a > .t, .race-replay > .t, .g-end > .t { display: block; padding-block: calc(var(--trim) - var(--lift)) calc(var(--trim) + var(--lift)); }
   .btn { padding-block: calc(13px + var(--trim) - var(--lift)) calc(13px + var(--trim) + var(--lift)); }
@@ -1321,5 +1360,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
   .service li { padding-block: calc(3px + var(--trim) - var(--lift)) calc(3px + var(--trim) + var(--lift)); }
   .cc-rows dd.cc-state { padding-block: calc(4px + var(--trim) - var(--lift)) calc(4px + var(--trim) + var(--lift)); }
   .launch-tag { padding-block: calc(7px + var(--trim) - var(--lift)) calc(7px + var(--trim) + var(--lift)); }
+  .soon-tag { padding-block: calc(6px + var(--trim) - var(--lift)) calc(6px + var(--trim) + var(--lift)); }
+  .p-chips li { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); }
   @media (max-width: 900px), (hover: none) { .shot-tabs button { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); } }
 }

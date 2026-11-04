@@ -1339,6 +1339,33 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 @media (min-width: 901px) { .product-page #fit .ready { grid-template-columns: repeat(2, 1fr); max-width: 1040px; } } /* four items: 2 x 2, not 3 + 1 */
 .product-page .a-shot .window { box-shadow: var(--lift), 0 60px 100px -60px color-mix(in srgb, var(--c) 55%, transparent); }
 
+/* ---------- Home: Synvord's entrance (js/sv-launch.js). Static navy section; with .pin it becomes a scroll film ---------- */
+main > section.sv-film { content-visibility: visible; contain-intrinsic-size: none; } /* a sticky stage must always render */
+.sv-film { padding: 0; background: #0b2d4a; color: #fff; text-align: center;
+  background-image: radial-gradient(60% 50% at 18% 20%, rgb(0 119 230 / 0.28), transparent 70%), radial-gradient(55% 45% at 85% 85%, rgb(0 166 166 / 0.22), transparent 70%); }
+.sv-stick { position: relative; padding: 96px 16px; }
+.sv-beat { padding: 32px 0; }
+.sv-mark { width: clamp(72px, 9vw, 120px); height: auto; margin: 0 auto 18px; display: block; }
+.sv-mega { margin: 0; color: #fff; font-size: min(17vw, 30svh); font-weight: 800; line-height: 0.86; letter-spacing: -0.05em; }
+.sv-film .beat-big, .sv-film .beat-huge { color: #fff; }
+.sv-film .beat-cta .btn { background: #fff; border-color: #fff; color: #0b2d4a; font-weight: 700; }
+.sv-film .beat-cta .btn-ghost { background: none; border-color: #6f8aa6; color: #fff; }
+.sv-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 980px; margin: 24px auto; }
+.sv-chips li { display: flex; align-items: center; gap: 10px; padding: 0 16px; min-height: 50px; border-radius: 14px; background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.16); font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
+.sv-chips li i { color: #7fc0ff; }
+.sv-chips li.flag { background: #0077e6; border-color: #0077e6; }
+.sv-chips li.flag i { color: #fff; }
+.pin .sv-film { height: 520svh; }
+.pin .sv-stick { position: sticky; top: 0; height: 100svh; overflow: hidden; padding: 0; }
+.pin .sv-beat { position: absolute; inset: 0; z-index: 2; padding: var(--head-h, 72px) 16px 0; display: grid; place-content: center; justify-items: center; opacity: 0; visibility: hidden; pointer-events: none; }
+.pin .sv-beat .beat-cta { pointer-events: auto; }
+.pin .sv-b3 { place-content: start center; padding-top: calc(var(--head-h, 72px) + 7svh); }
+.pin .sv-chips { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
+.pin .sv-chips li { position: absolute; left: 50%; top: 50%; translate: -50% -50%; padding: 0 14px; opacity: 0; will-change: transform, opacity; }
+.pin .sv-narrow .sv-chips li { justify-content: center; padding: 0; }
+.pin .sv-narrow .sv-chips li span { display: none; }
+
 /* ---------- Pills: letters centred the same way in every browser ----------
    Chrome and Safari place Overpass up to 2px apart inside a line box, so plain padding can't centre pill text in both.
    text-box trims each pill's line box to the letters (cap height to baseline); the padding then adds back exactly the

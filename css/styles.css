@@ -702,7 +702,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .product .window { border-radius: 16px; }
 
 /* Footer wordmark: solid text faded with a mask (background-clip: text gets cut off in Safari) */
-.wordmark { margin: calc(16px - 0.17em) 0 -0.26em; padding: 0; line-height: 1.2; position: relative; z-index: 1; background: none; color: var(--plan); -webkit-mask-image: linear-gradient(rgb(0 0 0 / 0.22) 15%, rgb(0 0 0 / 0.05) 85%); mask-image: linear-gradient(rgb(0 0 0 / 0.22) 15%, rgb(0 0 0 / 0.05) 85%); }
+.wordmark { margin: calc(16px - 0.17em) 0 -0.26em; padding: 0; line-height: 1.2; position: relative; z-index: 1; pointer-events: none; background: none; color: var(--plan); -webkit-mask-image: linear-gradient(rgb(0 0 0 / 0.22) 15%, rgb(0 0 0 / 0.05) 85%); mask-image: linear-gradient(rgb(0 0 0 / 0.22) 15%, rgb(0 0 0 / 0.05) 85%); }
 .legal { margin-top: 0; }
 
 @media (max-width: 900px) {

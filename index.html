@@ -9,43 +9,74 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-10-21a">
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-31a">
+  <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="resources/logo.webp" alt="SSPART home"></a>
+    <a class="brand" href="#top"><img src="resources/logo.webp" alt="SSPART home"><img class="logo-night" src="resources/logo-night.webp" alt=""></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
+      <a href="#flagship">Atlas</a>
       <a href="#shift">How we deliver</a>
       <a href="#roi">ROI</a>
       <a href="#cloud">Cloud</a>
       <a href="#services">Services</a>
       <a href="#products">Products</a>
       <a href="#clients">Clients</a>
-      <a class="btn btn-solid" href="#contact">Talk to us</a>
+      <a class="btn btn-solid" href="contact.html">Talk to us</a>
     </nav>
   </div>
   <div class="progress"></div>
 </header>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#home"><span>Atlas</span></a><a href="#shift"><span>How we deliver</span></a><a href="#roi"><span>ROI</span></a>
+  <a href="#flagship"><span>Atlas</span></a><a href="#shift"><span>How we deliver</span></a><a href="#roi"><span>ROI</span></a>
   <a href="#cloud"><span>Cloud</span></a><a href="#services"><span>Services</span></a><a href="#products"><span>Products</span></a><a href="#clients"><span>Clients</span></a><a href="#contact"><span>Contact</span></a>
 </nav>
 
 <main id="top">
   <section class="hero" id="home">
-    <div class="hero-stage">
-      <canvas class="globe" aria-hidden="true"></canvas>
-      <div class="hero-copy">
-        <h1>Software delivered by agents. Steered by engineers.</h1>
-        <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
-      </div>
-      <div class="hud-bar" aria-hidden="true">
-        <a class="scroll-cue" href="#shift" tabindex="-1">Scroll to explore<i></i></a>
+    <div class="hero-pin">
+      <span id="launch-start"></span>
+      <div class="hero-stick">
+        <div class="hero-night"></div>
+        <div class="hero-stage">
+          <canvas class="globe" aria-hidden="true"></canvas>
+          <div class="globe-slot"></div>
+          <div class="hero-copy">
+            <a class="launch-tag" href="#launch-start">Introducing Atlas, for your team</a>
+            <h1>Software delivered by agents. Steered by engineers.</h1>
+            <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
+          </div>
+          <div class="hud-bar" aria-hidden="true">
+            <a class="scroll-cue" href="#launch-start" tabindex="-1">Scroll to explore<i></i></a>
+          </div>
+        </div>
+        <div class="launch" id="launch">
+          <img class="fly f1" src="resources/people/agent-1.svg" alt=""><img class="fly f2" src="resources/people/agent-2.svg" alt=""><img class="fly f3" src="resources/people/agent-5.svg" alt="">
+          <div class="beat" data-a="0.14" data-z="0.36">
+            <svg class="atlas-mark" viewBox="0 4 128 120" role="img" aria-label="Atlas logo"><path fill="currentColor" d="M64 4Q65 11.5 73 12.5 65 13.5 64 21 63 13.5 55 12.5 63 11.5 64 4ZM48 23H58L64 41 38 124H8ZM80 23H70L64 41 90 124H120Z"/></svg>
+            <p class="beat-small">Introducing</p>
+            <h2 class="mega">ATLAS</h2>
+            <p class="beat-line">Hand it the work. Get it back delivered.</p>
+          </div>
+          <div class="beat" data-a="0.38" data-z="0.58">
+            <p class="mega"><span id="beat-count">100</span></p>
+            <p class="beat-big">tasks delivered. Not 100 conversations.</p>
+          </div>
+          <div class="beat" data-a="0.6" data-z="0.78">
+            <p class="beat-huge">No new AI subscription.</p>
+            <p class="beat-line">Atlas runs on the plan you already pay for, within its limits.</p>
+          </div>
+          <div class="beat" data-a="0.8" data-z="2">
+            <p class="beat-huge">Available now.</p>
+            <p class="beat-line">Free to start. $19 per user a month for teams.</p>
+            <div class="beat-cta"><a class="btn" href="#flagship">Watch it deliver</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="wrap">
@@ -58,9 +89,45 @@
     </div>
   </section>
 
+  <section id="flagship">
+    <div class="fl">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>See it deliver.</h2>
+          <p>Atlas is our flagship product. We run our own delivery on it, and now your team can too, using the AI subscription you already pay for.</p>
+        </div>
+        <div class="stage console-stage" style="--c:var(--plan)">
+          <img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt="">
+          <div class="window console" id="console">
+            <div class="bar"><i></i><i></i><i></i><span>atlas / new task</span><em class="preview-tag">Illustrative preview</em></div>
+            <form class="con-ask" id="con-form">
+              <label for="con-req">What do you need?</label>
+              <div class="con-row"><input id="con-req" maxlength="80" autocomplete="off" value="Add GST to invoices"><button class="btn btn-solid" type="submit">Deliver it</button></div>
+              <div class="con-chips" role="group" aria-label="Example requirements"><button type="button">Add GST to invoices</button><button type="button">Fix the login timeout</button><button type="button">Add an export button</button></div>
+            </form>
+            <div class="con-grid">
+              <div>
+                <ol class="con-rail" id="con-rail" aria-hidden="true"><li>Planned</li><li>Built</li><li>Checked</li><li>Delivered</li></ol>
+                <ol class="con-log" id="con-log" aria-hidden="true"></ol>
+              </div>
+              <dl class="con-sum" aria-hidden="true">
+                <div><dt>Now with</dt><dd id="sum-who">You</dd></div>
+                <div><dt>Specialists</dt><dd id="sum-agents">0</dd></div>
+                <div><dt>Checks run</dt><dd id="sum-checks">0</dd></div>
+                <div><dt>Fixes made</dt><dd id="sum-fixes">0</dd></div>
+              </dl>
+            </div>
+            <p class="con-done" id="con-done" role="status"></p>
+          </div>
+        </div>
+        <div class="flag-more"><a class="btn btn-solid" href="atlas.html">Know more about Atlas</a></div>
+      </div>
+    </div>
+  </section>
+
   <section id="shift" class="showcase">
     <div class="wrap">
-      <div class="section-head split-head">
+      <div class="section-head">
         <h2>The usual way, and the Atlas way</h2>
         <p>Same request, two routes. One waits at every hand-off. The other splits the work, builds it in parallel, checks everything and delivers.</p>
       </div>
@@ -118,7 +185,7 @@
 
   <section id="roi">
     <div class="wrap">
-      <div class="section-head split-head">
+      <div class="section-head">
         <h2>See what the spend delivered</h2>
         <p>The same month of work, three ways: a team doing it by hand, people iterating with AI tools on their own, and Atlas. Atlas records the cost of every step, failed ones included.</p>
       </div>
@@ -150,7 +217,7 @@
         <p class="roi-save" id="roi-save"></p>
         <details class="calc-note">
           <summary>How these numbers are worked out</summary>
-          <p>A mix of measured and estimated values, not a quote. The Atlas AI cost and turnaround are measured: across 12 representative requests run end to end in our internal benchmark, each was delivered in 17 to 78 minutes of run time, at an average of $11.75. Engineer time, the AI spend of people iterating on their own and the rework rate are our estimates from typical projects. Every option is priced at a blended engineer rate of $400 a day. Turnaround is working days from request to delivery for one change.</p>
+          <p>A mix of measured and estimated values, not a quote. The Atlas AI cost and run time are measured: in our internal benchmark, 12 representative requests were run end to end on sample repositories. 11 were delivered and 1 stopped for a person by design. Runs took 17 to 78 minutes, at an average of $11.75 per delivered change. Engineer time, the AI spend of people iterating on their own and the rework rate are our estimates from typical projects. Every option is priced at a blended engineer rate of $400 a day. Turnaround is working days from request to delivery for one change.</p>
           <ul>
             <li><b>Manual team:</b> 3 engineer-days per change, covering build, testing and review; about 5 working days turnaround once hand-offs and queues are included.</li>
             <li><b>People iterating with AI:</b> 1.5 engineer-days and about $25 of AI use per change, with 30% of changes needing rework; about 3 working days turnaround.</li>
@@ -250,15 +317,15 @@
         <div class="copy">
           <p class="kicker">How we deliver</p>
           <h3 class="name"><img src="resources/logos/atlas.png" alt="">Atlas</h3>
-          <p class="tagline">Our agent orchestration platform. It turns every request into finished, verified work, steered by a lean senior team.</p>
+          <p class="tagline">Give it a requirement and get it delivered, using the AI subscription you already pay for. We run our own delivery on it, and your team can too.</p>
           <div class="features">
             <div><h4>Work split, not piled up</h4><p>Every request becomes small, testable pieces of work, delivered together as one finished change.</p></div>
             <div><h4>Right-sized AI</h4><p>Each task gets the AI effort it needs, and none is spent where it is not needed.</p></div>
             <div><h4>Verified before delivery</h4><p>Every result is checked automatically and reviewed before it reaches you.</p></div>
             <div><h4>Spend you can see</h4><p>Cost, speed and quality of every delivery, tracked as it happens.</p></div>
           </div>
-          <div class="meta"><span><b>For</b> engineering teams</span><span><b>Licence</b> open source</span><span><b>Runs on</b> Windows, macOS, Linux</span></div>
-          <a class="more" href="https://github.com/sspartorg/atlas" target="_blank" rel="noopener">View Atlas on GitHub</a>
+          <div class="meta"><span><b>For</b> engineering teams</span><span><b>Plans</b> free to start, $19 per user a month for teams</span><span><b>Runs on</b> your own systems</span></div>
+          <a class="more" href="atlas.html">Know more about Atlas</a>
         </div>
         <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/engineer.svg" alt="" aria-hidden="true"><img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt=""><img loading="lazy" decoding="async" class="bot b3" src="resources/people/agent-5.svg" alt=""><div class="window real">
           <div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
@@ -300,7 +367,7 @@
             <div><h4>Books, GST and payroll</h4><p>Ledger, GST reports, expenses, attendance and payroll in the same system.</p></div>
           </div>
           <div class="meta"><span><b>For</b> retailers and franchise networks</span><span><b>Access</b> 8 staff roles</span><span><b>Stores</b> head office and franchises</span></div>
-          <a class="more" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Neel&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Neel.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A">Book a Neel demo</a>
+          <a class="more" href="contact.html?product=Neel">Book a Neel demo</a>
         </div>
         <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/owner.svg" alt="" aria-hidden="true"><div class="window real">
           <div class="bar"><i></i><i></i><i></i><span>neel console / billing</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
@@ -321,7 +388,7 @@
             <div><h4>For organisations</h4><p>Serves colleges preparing graduates and companies upskilling their teams.</p></div>
           </div>
           <div class="meta"><span><b>For</b> colleges and L&amp;D teams</span><span><b>Model</b> assignment plus 1:1 review</span></div>
-          <a class="more" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Experts%20Jar&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Experts%20Jar.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A">Book an Experts Jar demo</a>
+          <a class="more" href="contact.html?product=Experts%20Jar">Book an Experts Jar demo</a>
         </div>
         <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/mentor.svg" alt="" aria-hidden="true"><div class="window">
           <div class="bar"><i></i><i></i><i></i><span>expertsjar / reviews</span><em class="preview-tag">Illustrative preview</em><button class="expand" data-act="expand" aria-label="Open a larger preview"><i class="fa-solid fa-expand"></i></button></div>
@@ -432,7 +499,7 @@
       <div class="logos">
         <span class="logo exit"><img loading="lazy" decoding="async" src="resources/clients/exit.webp" alt="Exit"></span>
         <div class="logo limitless"><img loading="lazy" decoding="async" src="resources/clients/limitless-pay.webp" alt="Limitless Pay"></div>
-        <a class="logo next" href="#contact">Your company next?<span>Get in touch</span></a>
+        <a class="logo next" href="contact.html">Your company next?<span>Get in touch</span></a>
       </div>
       <div class="cases">
         <article class="case" style="--c:var(--atlas)" data-sample>
@@ -486,8 +553,19 @@
         <li><time>2019</time><h3>SSPART founded</h3><p>An engineering services firm in Hyderabad delivering web and mobile software for clients.</p></li>
         <li data-sample><time>2021</time><h3>Experts Jar</h3><p>Our first product: skill development through real assignments and expert reviews.</p></li>
         <li data-sample><time>2023</time><h3>DheQuest</h3><p>Automated trading and market intelligence for active traders.</p></li>
-        <li><time>2026</time><h3>Atlas and Neel</h3><p>Atlas is released as open source. Neel is built for retailers and their franchises.</p></li>
+        <li><time>2026</time><h3>Atlas and Neel</h3><p>Atlas opens to every team, free to start. Neel is built for retailers and their franchises.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section id="atlas-plans">
+    <div class="wrap">
+        <div class="flag-band">
+          <div><h3>Atlas Free</h3><p class="band-price">$0</p><p class="band-for">Free and open source, for one person</p><ul><li>One agent per task</li><li>7 ready-made agents</li><li>Runs on your machine</li></ul></div>
+          <div><h3>Atlas Team</h3><p class="band-price">$19<small>per user a month</small></p><p class="band-for">For teams, or $15 billed annually</p><ul><li>Multi-agent delivery workflows</li><li>24 ready-made agents</li><li>Support from SSPART</li></ul></div>
+          <div><h3>Enterprise and cloud</h3><p class="band-price">Let's talk</p><p class="band-for">On your servers or in your cloud</p><ul><li>We set Atlas up for you</li><li>Integrations scoped with you</li><li>Support terms in writing</li></ul></div>
+          <div class="band-cta"><a class="btn" href="atlas.html">Know more about Atlas</a><a class="btn-text" href="contact.html?product=Atlas">Talk to us</a></div>
+        </div>
     </div>
   </section>
 
@@ -499,13 +577,13 @@
       </div>
       <div class="faq">
         <details><summary>How does Atlas make delivery faster and cheaper?</summary><p>Atlas breaks each request into small pieces of work, runs specialised agents on them in parallel and matches the AI effort to each task, so nothing is overspent. Every result is checked and reviewed before an engineer signs off the delivery, and the cost of each delivery is tracked so you see what the spend achieved.</p></details>
-        <details><summary>Does Atlas need access to our cloud?</summary><p>No. Atlas runs on our own machines and delivers into your repositories, where your team can review every change. What we build is deployed to your own AWS or Azure account.</p></details>
+        <details><summary>Does Atlas need access to our cloud?</summary><p>No. Atlas delivers into your repositories, where your team reviews every change. When we build for you, Atlas runs on our systems and the result is deployed to your own AWS or Azure account. If you license Atlas, it runs on your own systems.</p></details>
         <details><summary>Do you only sell your own products?</summary><p>No. We license and customise our products, and we also build custom software from scratch. Many engagements combine both: a product as the base, with custom work on top.</p></details>
         <details><summary>Can a product be branded and customised for us?</summary><p>Yes. Neel ships with four themes and a store profile you control, and every product can be extended with your own workflows, reports and integrations.</p></details>
         <details><summary>Where is our data hosted?</summary><p>It depends on the product. Custom work runs in your own AWS or Azure account; Atlas and Neel can be self-hosted; DheQuest is a hosted service. We can also host and operate custom work for you.</p></details>
         <details><summary>Who owns the code for custom work?</summary><p>You do. Source code, data and documentation from custom engagements are yours and live in your repositories.</p></details>
         <details><summary>What happens after go-live?</summary><p>We offer support plans with monitoring, fixes and planned improvements, or a full handover to your team with documentation and training.</p></details>
-        <details><summary>How is an engagement priced?</summary><p>Fixed scope and fixed price for well-defined work, or a dedicated monthly team for products that keep evolving. Product pricing depends on the product and how widely you use it, and we share it on a demo call.</p></details>
+        <details><summary>How is an engagement priced?</summary><p>Fixed scope and fixed price for well-defined work, or a dedicated monthly team for products that keep evolving. Atlas pricing is <a href="atlas.html#pricing">published here</a>. For our other products, pricing depends on how widely you use them, and we share it on a demo call.</p></details>
       </div>
     </div>
   </section>
@@ -517,7 +595,7 @@
         <p>We hire engineers and designers who like owning outcomes, from the first sketch to the production dashboard.</p>
       </div>
       <div class="crew" aria-hidden="true"><img loading="lazy" decoding="async" src="resources/people/crew1.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew2.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew3.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew4.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew5.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew6.svg" alt=""></div>
-      <a class="btn" href="mailto:contact@sspart-enterprise.com?subject=Careers%20at%20SSPART">Send us your profile</a>
+      <a class="btn" href="contact.html?product=Careers">Send us your profile</a>
     </div>
   </section>
 
@@ -528,15 +606,15 @@
         <h2>See our products running, live.</h2>
         <p class="lede">Tell us what you're working on. We'll show you the product that fits, live, or scope the custom work with you.</p>
         <div class="reach">
-          <div><i class="fa-solid fa-envelope"></i><a href="mailto:contact@sspart-enterprise.com">contact@sspart-enterprise.com</a></div>
+          <div><i class="fa-solid fa-envelope"></i><p>contact@sspart-enterprise.com</p></div>
           <div><i class="fa-solid fa-phone"></i><a href="tel:+919515093965">+91 95150 93965</a></div>
           <div><i class="fa-solid fa-location-dot"></i><p>503, Ayyanna Pride, Madhapur<br>Hyderabad, Telangana 500084</p></div>
         </div>
       </div>
       <div class="mail-card">
-        <h3>Pick a product and email us</h3>
-        <p>Each button opens your email app with a short request filled in. Add your name and company and send it.</p>
-        <div class="mail-list"><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Atlas&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Atlas.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Book an Atlas demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20DheQuest&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20DheQuest.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">Book a DheQuest demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Neel&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Neel.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Book a Neel demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Demo%20request%3A%20Experts%20Jar&amp;body=Hi%20SSPART%2C%0A%0AI%27d%20like%20a%20demo%20of%20Experts%20Jar.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Book an Experts Jar demo<i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="mail-btn" href="mailto:contact@sspart-enterprise.com?subject=Custom%20software%20enquiry&amp;body=Hi%20SSPART%2C%0A%0AWe%27d%20like%20to%20talk%20about%20building%20custom%20software.%0A%0AName%3A%0ACompany%3A%0AWhat%20we%27re%20working%20on%3A%0A" style="--c:var(--text)"><i class="fa-solid fa-layer-group"></i>Talk about custom software<i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        <h3>Pick a product and send an enquiry</h3>
+        <p>Each button opens a short enquiry form with the product filled in. You don't need an account.</p>
+        <div class="mail-list"><a class="mail-btn" href="contact.html?product=Atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Book an Atlas demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=DheQuest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">Book a DheQuest demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Neel" style="--c:var(--neel)"><img src="resources/logos/neel.svg" alt="">Book a Neel demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Experts%20Jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Book an Experts Jar demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Custom%20software" style="--c:var(--text)"><i class="fa-solid fa-layer-group"></i>Talk about custom software<i class="fa-solid fa-arrow-right"></i></a></div>
       </div>
     </div>
   </section>
@@ -562,7 +640,7 @@
       </div>
       <div>
         <h4>Products</h4>
-        <a href="https://github.com/sspartorg/atlas" target="_blank" rel="noopener">Atlas</a>
+        <a href="atlas.html">Atlas</a>
         <a href="https://dhequest.com" target="_blank" rel="noopener">DheQuest</a>
         <a href="#neel">Neel</a>
         <a href="#experts-jar">Experts Jar</a>
@@ -586,11 +664,13 @@
       </div>
       <div>
         <h4>Reach us</h4>
-        <a href="mailto:contact@sspart-enterprise.com">contact@sspart-enterprise.com</a>
+        <p>contact@sspart-enterprise.com</p>
         <a href="tel:+919515093965">+91 95150 93965</a>
         <p>Madhapur, Hyderabad, Telangana 500084</p>
+        <a href="contact.html">Send an enquiry</a>
       </div>
     </div>
+    <p class="a-fine">Claude Code and GitHub Copilot belong to their owners. SSPART isn't affiliated with or endorsed by them.</p>
     <p class="wordmark" aria-hidden="true">SSPART</p>
     <div class="legal">
       <span>&copy; 2026 SSPART Enterprise Private&nbsp;Limited</span>
@@ -633,27 +713,45 @@
     return loaded.then(() => img.decode()).catch(() => {}).finally(() => w?.classList.remove('loading'));
   };
   $$('.shots img:not(.on)[src]').forEach(img => { img.dataset.src = img.getAttribute('src'); img.dataset.srcset = img.getAttribute('srcset'); img.removeAttribute('srcset'); img.removeAttribute('src'); });
+  // Off-screen sections only have estimated heights, so measure them properly before jumping to one
+  const measure = () => document.documentElement.classList.add('measured');
+  if (location.hash) measure();
+  addEventListener('click', e => { if (e.target.closest('a[href*="#"]')) measure(); });
   // Hero: the Atlas globe. Points on a sphere, agents in orbit, and arcs of light for work being delivered
-  const globe = $('.globe'), gx = globe.getContext('2d');
+  const globe = $('.globe'), slot = $('.globe-slot'), gx = globe.getContext('2d');
   const tone = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   // The globe keeps its own colours: violet, blue and cyan bands, with amber, green and pink sparks
   const hues = ['#7c3aed', '#06b6d4', '#f59e0b', '#ec4899', '#10b981'], bands = ['#7c3aed', '#6366f1', '#3b82f6', '#06b6d4'];
   const small = matchMedia('(max-width: 620px)').matches;
-  const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2), N = small ? 700 : 1500;
+  // Canvas fill costs scale with pixels, so very dense screens are capped
+  const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2), N = small ? 600 : 1400;
+  // Round dots, stamped from small sprites because thousands of arc() calls a frame are far slower
+  const sprites = {}, sprite = c => {
+    if (sprites[c]) return sprites[c];
+    const k = sprites[c] = document.createElement('canvas'), x = k.getContext('2d');
+    k.width = k.height = 24; x.fillStyle = c; x.arc(12, 12, 11, 0, 6.283); x.fill();
+    return k;
+  };
   // Even spread of points over the sphere (golden-angle spiral); a few sparkle in the accent colours
   const pts = Array.from({ length: N }, (_, i) => {
     const y = 1 - (i + 0.5) / N * 2, r = Math.sqrt(1 - y * y), t = i * 2.399963;
-    return { p: [Math.cos(t) * r, y, Math.sin(t) * r], c: i % 11 === 0 ? hues[2 + (i % 3)] : bands[Math.min(3, Math.floor((1 - y) / 2 * 4))] };
+    return { p: [Math.cos(t) * r, y, Math.sin(t) * r], s: sprite(i % 11 === 0 ? hues[2 + (i % 3)] : bands[Math.min(3, Math.floor((1 - y) / 2 * 4))]) };
   });
   const orbits = hues.slice(0, 4).map((c, i) => ({ c, tilt: 0.45 + i * 0.5, spin: i * 1.4, speed: 0.00032 + i * 0.00009, r: 1.2 + i * 0.08 }));
   const arcs = [], rings = [];
-  let W = 0, H = 0, R = 0, yaw = 0, mx = 0, my = 0, tx = 0, ty = 0, last = 0, spawn = 0, live = false;
-  const fit = () => { const b = globe.getBoundingClientRect(); W = globe.width = Math.round(b.width * dpr); H = globe.height = Math.round(b.height * dpr); R = Math.min(W, H) * 0.33; };
+  let W = 0, H = 0, R = 0, R0 = 0, cx = 0, cy = 0, cy0 = 0, grown = 0, yaw = 0, mx = 0, my = 0, tx = 0, ty = 0, last = 0, spawn = 0, live = false;
+  const zoom = g => { grown = g; R = R0 * (1 + g * 1.5); cy = cy0 + g * H * 0.14; };
+  const fit = () => {
+    const b = globe.getBoundingClientRect(), s = slot.getBoundingClientRect();
+    W = globe.width = Math.round(b.width * dpr); H = globe.height = Math.round(b.height * dpr);
+    R0 = s.width * dpr * 0.33; cx = (s.left + s.width / 2 - b.left) * dpr; cy0 = (s.top + s.height / 2 - b.top) * dpr;
+    zoom(grown);
+  };
   const turn = ([x, y, z], a, b) => {
     const X = x * Math.cos(a) + z * Math.sin(a), Z = -x * Math.sin(a) + z * Math.cos(a);
     return [X, y * Math.cos(b) - Z * Math.sin(b), y * Math.sin(b) + Z * Math.cos(b)];
   };
-  const proj = ([x, y, z]) => { const f = 3.4 / (3.4 - z); return [W / 2 + x * R * f, H / 2 + y * R * f, z]; };
+  const proj = ([x, y, z]) => { const f = 3.4 / (3.4 - z); return [cx + x * R * f, cy + y * R * f, z]; };
   const unit = () => { const u = Math.random() * 2 - 1, t = Math.random() * 6.283, r = Math.sqrt(1 - u * u); return [Math.cos(t) * r, u, Math.sin(t) * r]; };
   // A point along the great circle from a to b, lifted off the surface in the middle
   const along = (a, b, w, t) => {
@@ -667,13 +765,10 @@
   };
   const draw = (now, a, b, dt) => {
     gx.clearRect(0, 0, W, H);
-    const halo = gx.createRadialGradient(W / 2, H / 2, R * 0.2, W / 2, H / 2, R * 1.7);
-    halo.addColorStop(0, 'rgba(124, 58, 237, 0.16)'); halo.addColorStop(0.55, 'rgba(6, 182, 212, 0.07)'); halo.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    gx.globalAlpha = 1; gx.fillStyle = halo; gx.fillRect(0, 0, W, H);
     for (const o of orbits) {
       const at = th => proj(turn(turn([o.r * Math.cos(th), o.r * Math.sin(th) * Math.sin(o.tilt), o.r * Math.sin(th) * Math.cos(o.tilt)], o.spin, 0), a, b));
       gx.strokeStyle = o.c; gx.lineWidth = dpr; gx.beginPath();
-      for (let k = 0; k <= 72; k++) { const [x, y] = at(k / 72 * 6.283); k ? gx.lineTo(x, y) : gx.moveTo(x, y); }
+      for (let k = 0; k <= 140; k++) { const [x, y] = at(k / 140 * 6.283); k ? gx.lineTo(x, y) : gx.moveTo(x, y); }
       gx.globalAlpha = 0.18; gx.stroke();
       const [x, y, z] = at(now * o.speed);
       glowDot(x, y, 16 * dpr, o.c, 0.35 + 0.35 * (z + 1) / 2);
@@ -681,8 +776,8 @@
     }
     for (const q of pts) {
       const [x, y, z] = proj(turn(q.p, a, b)), d = (z + 1) / 2;
-      gx.globalAlpha = 0.1 + 0.85 * d * d; gx.fillStyle = q.c;
-      const s = (0.9 + 2 * d) * dpr; gx.fillRect(x - s / 2, y - s / 2, s, s);
+      gx.globalAlpha = 0.1 + 0.85 * d * d;
+      const s = (1.3 + 2.2 * d) * dpr * (1 + grown * 0.7); gx.drawImage(q.s, x - s / 2, y - s / 2, s, s);
     }
     spawn += dt;
     if (spawn > 650 && arcs.length < 6) {
@@ -712,10 +807,12 @@
   };
   const loop = now => {
     if (!live) return;
+    requestAnimationFrame(loop);
+    // 30 frames a second is plenty for something this slow, and halves the drawing
+    if (now - last < 32) return;
     const dt = last ? Math.min(50, now - last) : 16; last = now;
     yaw += dt * 0.00011; tx += (mx - tx) * 0.05; ty += (my - ty) * 0.05;
     draw(now, yaw + tx * 0.9, 0.42 + ty * 0.4, dt);
-    requestAnimationFrame(loop);
   };
   fit();
   if (still) draw(0, 0.6, 0.42, 0);
@@ -817,8 +914,57 @@
   const words = [...statement.children];
   const clamp = v => Math.max(0, Math.min(1, v));
   let lastY = 0, up = 0;
+  // The launch: the page falls to night, the globe grows, and Atlas is introduced one line at a time
+  const head = $('.site-head'), pin = $('.hero-pin'), night = $('.hero-night'), copy = $('.hero-copy'), hud = $('.hud-bar'), beats = $$('.beat'), flyers = $$('.fly'), beatCount = $('#beat-count');
+  const ease = (p, a, b) => clamp((p - a) / (b - a));
+  let lastP = -1;
+  const launch = () => {
+    const p = clamp(-pin.getBoundingClientRect().top / (pin.offsetHeight - innerHeight));
+    if (p === lastP) return;
+    lastP = p;
+    night.style.opacity = ease(p, 0.02, 0.13);
+    head.classList.toggle('on-night', p > 0.09 && p < 1);
+    const out = ease(p, 0, 0.1);
+    copy.style.opacity = hud.style.opacity = 1 - out;
+    copy.style.transform = `translateY(${-out * 120}px)`;
+    copy.style.visibility = out === 1 ? 'hidden' : 'visible';
+    zoom(ease(p, 0, 0.24));
+    slot.style.opacity = 1 - out;
+    globe.style.opacity = 1 - ease(p, 0.3, 0.6) * 0.6;
+    beats.forEach(b => {
+      const a = +b.dataset.a, v = ease(p, a, a + 0.05) * (1 - ease(p, +b.dataset.z - 0.04, +b.dataset.z));
+      b.style.opacity = v;
+      b.style.visibility = v ? 'visible' : 'hidden';
+      b.style.transform = `scale(${1.25 - 0.25 * ease(p, a, a + 0.08)})`;
+    });
+    beatCount.textContent = Math.round(ease(p, 0.38, 0.46) * 100);
+    flyers.forEach((f, i) => {
+      const t = ease(p, 0.36, 0.46), side = i % 2 ? 1 : -1;
+      f.style.opacity = ease(p, 0.36, 0.42) * (1 - ease(p, 0.72, 0.78));
+      f.style.transform = `translate(${side * (70 - t * 26)}vw, ${[-24, -24, 26][i] + (1 - t) * 12}vh) rotate(${side * (16 - t * 16)}deg)`;
+    });
+  };
+  // One gesture, one move: inside the launch a scroll plays the next moment by itself, then waits
+  const film = document.documentElement.classList.contains('pin'), STOPS = [0, 0.24, 0.47, 0.69, 0.92, 1], MOVE = 1300;
+  const travel = () => pin.offsetHeight - innerHeight;
+  const spot = () => scrollY / travel();
+  const inFilm = dir => dir > 0 ? spot() < 0.999 : spot() > 0.001 && spot() <= 1;
+  let moving = false, lastWheel = -1e9, stopped = -1e9;
+  const step = dir => {
+    const now = spot(), to = (dir > 0 ? STOPS.find(s => s > now + 0.01) : STOPS.findLast(s => s < now - 0.01)) ?? (dir > 0 ? 1 : 0);
+    const from = scrollY, end = to * travel(), t0 = performance.now();
+    moving = true;
+    const go = t => {
+      if (!moving) return;
+      const k = clamp((t - t0) / MOVE), e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(2 - 2 * k, 3) / 2;
+      scrollTo({ top: from + (end - from) * e, behavior: 'instant' });
+      if (k < 1) requestAnimationFrame(go); else { moving = false; stopped = performance.now(); }
+    };
+    requestAnimationFrame(go);
+  };
   const onScroll = () => {
     const h = document.documentElement;
+    if (film) launch();
     $('.progress').style.transform = `scaleX(${scrollY / (h.scrollHeight - innerHeight)})`;
     h.style.setProperty('--head-a', clamp(scrollY / 260));
     // Offer it only after a deliberate upward scroll; small jumps from content loading in do not count
@@ -834,6 +980,34 @@
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
   onScroll();
+  if (film) {
+    addEventListener('wheel', e => {
+      if ($('.nav').classList.contains('open') || e.ctrlKey || !e.deltaY || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      const dir = Math.sign(e.deltaY);
+      if (!moving && !inFilm(dir)) return;
+      e.preventDefault();
+      // A trackpad keeps sending events after the fingers lift, so only a pause or a settled stop counts as a new gesture
+      const now = performance.now(), fresh = now - lastWheel > 120 || now - stopped > 700;
+      lastWheel = now;
+      if (!moving && fresh) step(dir);
+    }, { passive: false });
+    let y0 = 0, used = false;
+    addEventListener('touchstart', e => { y0 = e.touches[0].clientY; used = false; }, { passive: true });
+    addEventListener('touchmove', e => {
+      const dy = y0 - e.touches[0].clientY, dir = Math.sign(dy);
+      if (e.touches.length > 1 || !e.cancelable || $('.nav').classList.contains('open') || (!moving && !inFilm(dir))) return;
+      e.preventDefault();
+      if (!moving && !used && Math.abs(dy) > 24) { used = true; step(dir); }
+    }, { passive: false });
+    addEventListener('keydown', e => {
+      const dir = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key];
+      if (!dir || e.shiftKey || e.metaKey || e.target.closest('input, textarea, select, button, a') || (!moving && !inFilm(dir))) return;
+      e.preventDefault();
+      if (!moving) step(dir);
+    });
+    $$('a[href="#launch-start"]').forEach(a => a.onclick = e => { e.preventDefault(); if (!moving) step(1); });
+    addEventListener('click', e => { if (e.target.closest('a[href^="#"]:not([href="#launch-start"])')) moving = false; });
+  }
 
   // Things a visitor can do inside the product windows
   const reviews = [
@@ -892,20 +1066,12 @@
       points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: '#dhequest' },
     { name: 'Experts Jar', who: 'learner', c: 'var(--jar)', line: 'Build job-ready skills through real assignments reviewed one‑on‑one by practitioners.',
       points: ['Replace passive video with graded assignments', 'Give every learner an expert reviewer', 'Report progress your leadership can act on'], href: '#experts-jar' },
-    { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Split work across specialised AI agents, with every change validated and approved by a person.',
-      points: ['Run agents in parallel across repositories', 'Review every change as a diff before it lands', 'Keep keys, code and history on your machines'], href: '#atlas' },
+    { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Give it a requirement and get it delivered, using the AI subscription you already pay for.',
+      points: ['Run agents in parallel across repositories', 'Review every change as a diff before it lands', 'Keep your code on your own systems'], href: 'atlas.html' },
     { name: 'Custom engineering', who: 'builder', c: 'var(--text)', line: 'One accountable team designs, builds and runs your software, from first spec to production.',
       points: ['A clickable prototype before the build starts', 'Working software at every release', 'Code, data and IP that belong to you'], href: '#services' },
   ];
-  const demoMail = name => 'mailto:contact@sspart-enterprise.com?subject=' + encodeURIComponent(`Demo request: ${name}`)
-    + '&body=' + encodeURIComponent(`Hi SSPART,
-
-I'd like a demo of ${name}.
-
-Name:
-Company:
-What we're working on:
-`);
+  const enquire = name => 'contact.html?product=' + encodeURIComponent(name === 'Custom engineering' ? 'Custom software' : name);
   const answer = $('.fit-answer');
   const pick = i => {
     const f = fits[i];
@@ -913,7 +1079,7 @@ What we're working on:
     answer.style.setProperty('--c', f.c);
     answer.innerHTML = `<img class="fit-peep" decoding="async" src="resources/people/${f.who}.svg" alt=""><p class="fit-kicker">We recommend</p><h3>${f.name}</h3><p class="fit-line">${f.line}</p>
       <ul>${f.points.map(p => `<li><i class="fa-solid fa-check"></i>${p}</li>`).join('')}</ul>
-      <div class="actions"><a class="btn btn-solid" href="${demoMail(f.name)}">${f.who === 'builder' ? 'Talk to us about custom work' : `Book ${/^[AEIOU]/.test(f.name) ? 'an' : 'a'} ${f.name} demo`}</a><a class="btn" href="${f.href}">See how it works</a></div>`;
+      <div class="actions"><a class="btn btn-solid" href="${enquire(f.name)}">${f.who === 'builder' ? 'Talk to us about custom work' : `Book ${/^[AEIOU]/.test(f.name) ? 'an' : 'a'} ${f.name} demo`}</a><a class="btn" href="${f.href}">See how it works</a></div>`;
     pop(answer.children, 70);
   };
   $$('.fit-options button').forEach((b, i) => b.onclick = () => pick(i));
@@ -944,5 +1110,6 @@ What we're working on:
     });
   }
 </script>
+<script src="js/console.js?v=2026-10-31a"></script>
 </body>
 </html>

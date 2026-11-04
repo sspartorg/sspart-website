@@ -4,14 +4,14 @@ const { scrollFrameTimes } = require('./helpers');
 
 const BUDGET = { firstLoadKB: 450, requests: 30, layoutShift: 0.1, largestPaintMs: 2500, scrollMedianMs: 20 };
 
-test('first load stays light, fast and stable', async ({ page, isMobile }) => {
+for (const path of ['/', '/atlas.html']) test(`${path} first load stays light, fast and stable`, async ({ page, isMobile }) => {
   if (isMobile) await (await page.context().newCDPSession(page)).send('Emulation.setCPUThrottlingRate', { rate: 4 });
   await page.addInitScript(() => {
     window.__lcp = 0; window.__cls = 0;
     new PerformanceObserver(l => l.getEntries().forEach(e => { window.__lcp = e.startTime; })).observe({ type: 'largest-contentful-paint', buffered: true });
     new PerformanceObserver(l => l.getEntries().forEach(e => { if (!e.hadRecentInput) window.__cls += e.value; })).observe({ type: 'layout-shift', buffered: true });
   });
-  await page.goto('/', { waitUntil: 'load' });
+  await page.goto(path, { waitUntil: 'load' });
   await page.waitForTimeout(1500);
   const m = await page.evaluate(() => {
     const res = performance.getEntriesByType('resource');

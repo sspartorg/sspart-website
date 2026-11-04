@@ -1,6 +1,6 @@
 # sspart-website
 
-Company site for SSPART Enterprise Private Limited (sspart-enterprise.com), served by GitHub Pages. Plain HTML and CSS, no build.
+Company site for SSPART Enterprise Private Limited (sspart-enterprise.com), served by GitHub Pages. Plain HTML and CSS, no build. Enquiries are stored in Supabase.
 
 ## Run locally
 
@@ -18,6 +18,18 @@ See `tests/README.md`; in short: `cd tests && npm install && npm run setup && np
 - `index.html` — the home page: products (Atlas, DheQuest, Neel, Experts Jar), clients, story, contact
 - `css/styles.css` — all styles; colours are the tokens at the top
 - `privacy.html`, `terms.html`, `cookies.html` — legal pages
+- `atlas.html` — the Atlas detail page behind "Know more": plans, market comparison, pricing. The home page carries the summary; `js/console.js` drives the home page console, `js/atlas.js` and `js/board.js` the Atlas page
+- `contact.html` — enquiry form; visitors need no account
+- `admin.html`, `js/admin.js`, `css/desk.css` — private enquiry desk (sign-in, mobile search, status, comments)
+- `js/config.js` — Supabase URL and publishable key; `js/vendor/supabase.js` is supabase-js 2.118.0
+
+## Enquiry desk setup
+
+1. Create a Supabase project and run `supabase/schema.sql` in its SQL editor. The steps at the top of that file cover turning off sign-ups, adding the owner and making them an admin.
+2. Put the project URL and publishable (anon) key in `js/config.js`. Never use the service-role key here.
+3. On a free Supabase plan, add repository variables `SUPABASE_URL` and `SUPABASE_ANON_KEY` so `.github/workflows/supabase-keepalive.yml` can stop the project pausing.
+
+`cd tests && npm run test:schema` proves the access rules on a throwaway Postgres, with no Supabase project needed.
 
 ## Placeholders
 

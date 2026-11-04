@@ -80,24 +80,25 @@ test('Experts Jar preview: next submission changes the content', async ({ page }
   await expect(title).not.toHaveText(before);
 });
 
-test('fit picker: every option recommends a product with a matching email link', async ({ page }) => {
+test('fit picker: every option recommends a product with a matching enquiry link', async ({ page }) => {
   const opts = page.locator('.fit-options button');
   for (let i = 0; i < await opts.count(); i++) {
     await opts.nth(i).scrollIntoViewIfNeeded();
     await opts.nth(i).click();
     const name = await page.locator('.fit-answer h3').textContent();
     const cta = page.locator('.fit-answer .btn-solid');
-    expect(decodeURIComponent(await cta.getAttribute('href'))).toContain('mailto:contact@sspart-enterprise.com');
+    expect(await cta.getAttribute('href')).toMatch(/^contact\.html\?product=/);
     expect(await cta.textContent(), 'a/an before a vowel').not.toMatch(/\ba [AEIOU]/);
     if (!/Custom/.test(name)) expect(decodeURIComponent(await cta.getAttribute('href'))).toContain(name);
   }
 });
 
-test('demo buttons send an email instead of opening a form', async ({ page }) => {
-  await expect(page.locator('form')).toHaveCount(0);
+test('demo buttons open the enquiry form, and no email links remain', async ({ page }) => {
   const hrefs = await page.locator('.mail-btn').evaluateAll(a => a.map(x => x.getAttribute('href')));
   expect(hrefs.length).toBeGreaterThanOrEqual(5);
-  for (const h of hrefs) expect(h).toMatch(/^mailto:contact@sspart-enterprise\.com\?subject=/);
+  for (const h of hrefs) expect(h).toMatch(/^contact\.html\?product=/);
+  await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await expect(page.locator('a[href*="github.com/sspartorg/atlas"]:not([href*="atlas-open"])')).toHaveCount(0);
 });
 
 test('FAQ opens and closes', async ({ page }) => {

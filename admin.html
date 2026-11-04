@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src https://*.supabase.co wss://*.supabase.co; base-uri 'none'; form-action 'none'">
+  <title>Enquiries | SSPART Enterprise</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-31a">
+  <link rel="stylesheet" href="css/desk.css?v=2026-10-31a">
+</head>
+<body class="desk">
+<header class="site-head">
+  <div class="wrap"><a class="brand" href="index.html"><img src="resources/logo.webp" alt="SSPART home"></a><button class="btn" id="sign-out" type="button" hidden>Sign out</button></div>
+</header>
+
+<main class="desk-main">
+  <section class="desk-login" id="login" hidden>
+    <h1>Sign in to enquiries</h1>
+    <form id="login-form">
+      <label>Email<input name="email" type="email" required autocomplete="username"></label>
+      <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+      <button class="btn btn-solid" type="submit">Sign in</button>
+      <p class="form-status" id="login-status" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <div class="desk-board wrap" id="board" hidden>
+    <div class="desk-list">
+      <h1>Enquiries</h1>
+      <div class="desk-tools">
+        <label>Search by mobile<input id="search" type="search" inputmode="tel" placeholder="9515093965"></label>
+        <label>Status
+          <select id="filter"><option value="">All</option><option value="new">New</option><option value="contacted">Contacted</option><option value="qualified">Qualified</option><option value="won">Won</option><option value="lost">Lost</option></select>
+        </label>
+      </div>
+      <p class="form-status" id="list-status" role="alert" hidden></p>
+      <ul id="rows" aria-label="Enquiries"></ul>
+    </div>
+    <article class="desk-detail" id="detail" aria-live="polite"></article>
+  </div>
+</main>
+
+<script src="js/vendor/supabase.js?v=2.118.0"></script>
+<script src="js/config.js?v=2026-10-31a"></script>
+<script src="js/admin.js?v=2026-10-31a"></script>
+</body>
+</html>

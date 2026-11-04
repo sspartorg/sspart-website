@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas | Give the requirement, get it delivered | SSPART</title>
+  <meta name="description" content="Atlas turns requirements into delivered work using the AI subscription you already pay for. Free for one person, and $19 per user a month.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-31a">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="atlas-page">
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="resources/logo.webp" alt="SSPART home"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a class="active" href="atlas.html" aria-current="page">Atlas</a>
+      <a href="index.html#shift">How we deliver</a>
+      <a href="index.html#roi">ROI</a>
+      <a href="index.html#cloud">Cloud</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#clients">Clients</a>
+      <a class="btn btn-solid" href="contact.html?product=Atlas">Talk to us</a>
+    </nav>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <a href="#how"><span>How it works</span></a><a href="#team"><span>The team</span></a><a href="#why"><span>Why Atlas</span></a><a href="#ready"><span>For companies</span></a><a href="#market"><span>Compare</span></a><a href="#editions"><span>Plans</span></a><a href="#pricing"><span>Pricing</span></a><a href="#faq"><span>Questions</span></a>
+</nav>
+
+<main id="top">
+  <section class="hero a-hero" id="home">
+    <div class="wrap">
+      <div class="a-hero-copy">
+        <h1>Give the requirement. Get it delivered.</h1>
+        <p class="lede">We use Atlas to deliver our own work. Write what you need, and it plans, builds, checks and delivers, using the AI subscription you already pay for.</p>
+        <div class="a-actions">
+          <a class="btn btn-solid" href="#pricing">See pricing</a>
+          <a class="btn" href="https://github.com/sspartorg/atlas-open" target="_blank" rel="noopener">Try Atlas for free</a>
+        </div>
+      </div>
+      <div class="stage a-shot" style="--c:var(--plan)">
+        <img class="bot b1" src="resources/people/agent-1.svg" alt=""><img class="bot b2" src="resources/people/agent-2.svg" alt=""><img class="bot b3" src="resources/people/agent-5.svg" alt="">
+        <div class="window real" id="hero-window">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span></div>
+          <div class="shots"><img class="on" src="resources/screens/atlas-dashboard-1440.webp" srcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 860px" alt="Atlas dashboard: work awaiting review, live agent runs and AI cost" fetchpriority="high" decoding="async" width="1440" height="900"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scream">
+    <div class="wrap">
+      <ul>
+        <li><b>24</b><span>specialist agents</span></li>
+        <li><b>12</b><span>stages from requirement to approval</span></li>
+        <li><b>6</b><span>workflow templates, and a visual builder</span></li>
+        <li><b>17-78</b><span>minutes of run time per delivery, in our internal benchmark on sample repositories</span></li>
+        <li><b>$11.75</b><span>average AI cost per delivered change in that benchmark</span></li>
+        <li><b>$0</b><span>to start, then $19 per user a month for teams</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt a-map" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Twelve stages, one map</h2>
+        <p>This is the real Atlas delivery workflow. Every step has a specialist, and work only moves on once it passes. Select a step to see who does it.</p>
+      </div>
+      <div class="map" id="map">
+        <ol class="map-nodes"><li class="n-p"><button type="button" data-who="You" data-what="Write what you need in plain words, or bring it in from Jira. That is the only prompt anyone has to write."><img src="resources/people/agent-1.svg" alt="" loading="lazy" decoding="async"><b>Requirement</b></button></li><li class="n-p"><button type="button" data-who="PO Writer and PO Reviewer" data-what="The requirement is split into sub-tasks, each with its own test twin. The reviewer sends it back until the scope is right."><img src="resources/people/agent-2.svg" alt="" loading="lazy" decoding="async"><b>Scoped</b></button></li><li class="n-d"><button type="button" data-who="Architect and Architect Reviewer" data-what="One senior-grade spec for the whole task, reviewed before any code exists."><img src="resources/people/agent-5.svg" alt="" loading="lazy" decoding="async"><b>Designed</b></button></li><li class="n-b"><button type="button" data-who="Coder and Code Reviewer" data-what="Each sub-task is built on the task's own branch, and reviewed against its acceptance criteria."><img src="resources/people/agent-1.svg" alt="" loading="lazy" decoding="async"><b>Built</b></button></li><li class="n-t"><button type="button" data-who="QA and Automation agents" data-what="Test plans are written and automated, with a reviewer on each."><img src="resources/people/agent-2.svg" alt="" loading="lazy" decoding="async"><b>Tested</b></button></li><li class="n-o"><button type="button" data-who="Doc Writer and Doc Reviewer" data-what="Everything the branch changed gets documented, and the docs are reviewed too."><img src="resources/people/agent-5.svg" alt="" loading="lazy" decoding="async"><b>Documented</b></button></li><li class="n-g"><button type="button" data-who="Hygiene Fixer and Fix Reviewer" data-what="Atlas runs your lint check itself. If it fails, a fixer repairs it, a reviewer checks the fix, and the check runs again."><img src="resources/people/agent-1.svg" alt="" loading="lazy" decoding="async"><b>Lint check</b></button></li><li class="n-g"><button type="button" data-who="Coder and Fix Reviewer" data-what="Atlas runs your build. A failure goes through the same fix, review and re-check loop."><img src="resources/people/agent-2.svg" alt="" loading="lazy" decoding="async"><b>Build check</b></button></li><li class="n-g"><button type="button" data-who="Coverage Fixer and Fix Reviewer" data-what="Atlas runs your tests and believes the result, not the agent. A check that could not run never counts as a pass."><img src="resources/people/agent-5.svg" alt="" loading="lazy" decoding="async"><b>Tests check</b></button></li><li class="n-y"><button type="button" data-who="Release Reviewer" data-what="The whole branch is read as one change against what you asked for. If it falls short, it goes back to be built."><img src="resources/people/agent-1.svg" alt="" loading="lazy" decoding="async"><b>Release review</b></button></li><li class="n-r"><button type="button" data-who="Atlas" data-what="Atlas pushes the work and raises the pull request. If GitHub checks fail, it makes up to 2 fix attempts."><img src="resources/people/agent-2.svg" alt="" loading="lazy" decoding="async"><b>Delivered</b></button></li><li class="n-y"><button type="button" data-who="Your team" data-what="A person reviews and approves the change. Atlas sees it merged, then closes the task."><img src="resources/people/agent-5.svg" alt="" loading="lazy" decoding="async"><b>You approve</b></button></li></ol>
+        <div class="map-card" id="map-card" aria-live="polite"><p class="map-who"></p><h3></h3><p class="map-what"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="a-team" id="team">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A full delivery team, on call</h2>
+          <p>Atlas comes with 24 specialists and 6 workflow templates. Pick a kind of work to see who steps in. In delivery workflows, each maker is paired with a reviewer, so nothing passes on its own say-so.</p>
+        </div>
+        <div class="team-pick" id="team-pick">
+          <div class="crew-picks" role="group" aria-label="Kinds of work">
+            <button type="button" aria-pressed="true" data-set="d"><b>Full delivery</b><span>A new feature or a bigger change, taken from requirement to finished work.</span><em>16 specialists</em></button>
+            <button type="button" aria-pressed="false" data-set="q"><b>Quick change</b><span>A small fix that needs no breakdown: built, reviewed and tested.</span><em>4 specialists</em></button>
+            <button type="button" aria-pressed="false" data-set="r"><b>Repository readiness</b><span>An audit that sets a repository up for AI agents and raises the change for you.</span><em>1 specialist</em></button>
+            <button type="button" aria-pressed="false" data-set="u"><b>Research and upkeep</b><span>Optional helpers for your Jira work, project reference, and news you should know about.</span><em>5 specialists</em></button>
+            <button type="button" aria-pressed="false" data-set="all"><b>Your own workflow</b><span>Put any of these specialists in the order your team works, in the visual builder.</span><em>All 24</em></button>
+          </div>
+          <div class="crew-list">
+            <div class="crew-group" style="--c:var(--st-plan)"><h3>Scope and design</h3><ul>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>PO Writer</b><span>Splits the work</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>PO Reviewer</b><span>Checks the scope</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Architect</b><span>Writes the spec</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>Architect Reviewer</b><span>Checks the spec</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-build)"><h3>Build</h3><ul>
+              <li data-in="dq"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Coder</b><span>Builds each piece</span></li>
+              <li data-in="dq"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Code Reviewer</b><span>Reviews the code</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-test)"><h3>Test</h3><ul>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>QA Writer</b><span>Plans the tests</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>QA Reviewer</b><span>Checks the plan</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Automation Engineer</b><span>Automates the tests</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>Automation Reviewer</b><span>Checks the tests</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-docs)"><h3>Document</h3><ul>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Doc Writer</b><span>Documents the change</span></li>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Doc Reviewer</b><span>Checks every claim</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-check)"><h3>Fix what fails</h3><ul>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>Hygiene Fixer</b><span>Fixes lint failures</span></li>
+              <li data-in="dq"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Coverage Fixer</b><span>Closes test gaps</span></li>
+              <li data-in="dq"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Fix Reviewer</b><span>Checks the real cause was fixed</span></li>
+              <li data-in=""><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>Performance Fixer</b><span>Gets pages back under budget</span></li>
+              <li data-in=""><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Visual Reviewer</b><span>Reviews what the screenshots show</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-review)"><h3>Final review</h3><ul>
+              <li data-in="d"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Release Reviewer</b><span>Reads it as one change</span></li>
+            </ul></div>
+            <div class="crew-group" style="--c:var(--st-done)"><h3>Readiness and research</h3><ul>
+              <li data-in="r"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>AI Readiness Specialist</b><span>Prepares a repository for agents</span></li>
+              <li data-in="u"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Jira Importer</b><span>Brings in your Jira work</span></li>
+              <li data-in="u"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Knowledge Base Curator</b><span>Keeps project reference current</span></li>
+              <li data-in="u"><img loading="lazy" decoding="async" src="resources/people/agent-1.svg" alt=""><b>AI News Scout</b><span>Summarises AI tooling news</span></li>
+              <li data-in="u"><img loading="lazy" decoding="async" src="resources/people/agent-2.svg" alt=""><b>Market Research</b><span>Watches competitors</span></li>
+              <li data-in="u"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Regulations Scout</b><span>Scans regulator news</span></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="a-two" id="why">
+    <div class="wrap">
+      <div class="section-head"><h2>100 changes shouldn't mean 100 conversations</h2><p>Chatting with AI means explaining, checking and copying the result across yourself. Atlas gives you one list, and each item comes back finished.</p></div>
+      <div class="two-ways">
+        <div class="way way-chat">
+          <h3>Chatting with AI</h3>
+          <ol aria-label="Example of a chat conversation">
+            <li>Can you update the pricing page?</li>
+            <li class="me">Here is a version. Which file should it go in?</li>
+            <li>That broke the header. Try again.</li>
+            <li class="me">Sorry about that. Could you paste the file again?</li>
+            <li>It's still wrong on phones.</li>
+            <li class="me">Let's try another approach.</li>
+          </ol>
+          <p class="way-count">Conversation 1 of 100</p>
+        </div>
+        <figure class="board way" aria-label="Illustration of 100 tasks moving from queued to delivered">
+          <h3>With Atlas</h3>
+          <figcaption class="board-head" aria-hidden="true"><strong id="board-count">0</strong><span>of 100 tasks delivered</span></figcaption>
+          <div class="board-grid" id="board" aria-hidden="true"></div>
+          <p class="board-now" id="board-now" aria-hidden="true">Waiting for the first task</p>
+          <p class="board-note">Illustration. Atlas works one task at a time per repository, and real speed depends on your code, your checks and your AI plan.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="fl-dark">
+      <div class="wrap">
+        <div class="section-head"><h2>Put the whole list in. Get finished work back.</h2><p>Each item runs on the AI you already pay for, and comes back finished for your approval.</p></div>
+        <div class="fl-queue">
+        <ul class="fl-points">
+            <li><i class="fa-solid fa-check"></i>No new AI subscription. Use Claude Code, GitHub Copilot, or models through Ollama, under each person's own sign-in.</li>
+            <li><i class="fa-solid fa-check"></i>Your code goes only to the AI provider you choose. Atlas work counts against that plan's limits.</li>
+            <li><i class="fa-solid fa-check"></i>One task at a time per repository, so changes don't collide. Different repositories run side by side.</li>
+          </ul>
+        <div class="window queue" id="queue">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / tasks</span><em class="preview-tag">Illustrative preview</em></div>
+          <ol id="q-rows">
+            <li><span>billing</span><b>Add GST to invoices</b><em>Queued</em></li>
+            <li><span>storefront</span><b>Add an export button</b><em>Queued</em></li>
+            <li><span>billing</span><b>Show tax on receipts</b><em>Queued</em></li>
+            <li><span>accounts</span><b>Fix the login timeout</b><em>Queued</em></li>
+            <li><span>storefront</span><b>Add a size guide</b><em>Queued</em></li>
+            <li><span>accounts</span><b>Add a password reset page</b><em>Queued</em></li>
+            <li><span>storefront</span><b>Fix the cart on phones</b><em>Queued</em></li>
+            <li><span>billing</span><b>Add refund reports</b><em>Queued</em></li>
+          </ol>
+          <p class="q-foot"><b id="q-done">92</b> of 100 ready for your approval</p>
+        </div>
+        </div>
+        <p class="fl-fine">Illustration. Real speed depends on your code, your checks and your AI plan.</p>
+      </div>
+  </section>
+
+  <section class="a-ai-band">
+    <div class="wrap">
+      <div class="section-head"><h2>Bring your own AI</h2><p>Atlas has no AI of its own, and it doesn't resell any. Your work runs under your own sign-in, on your own computers.</p></div>
+      <ol class="flowline">
+        <li><b>Your AI plan</b><span>Claude Code, GitHub Copilot, or models through Ollama</span></li>
+        <li><b>Your computer</b><span>A small Atlas runner works under your own sign-in</span></li>
+        <li><b>Your Atlas server</b><span>One shared place for your team's tasks and history</span></li>
+        <li><b>Your repository</b><span>Finished changes arrive for your team to approve</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="a-screens">
+    <div class="wrap">
+      <div class="section-head"><h2>See it working</h2><p>Real Atlas screens.</p></div>
+      <div class="screens-two">
+        <div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / workflows</span></div>
+          <div class="shots"><img class="on" src="resources/screens/atlas-workflows-1440.webp" srcset="resources/screens/atlas-workflows-720.webp 720w, resources/screens/atlas-workflows-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 46vw" alt="Atlas workflows from request to delivery" loading="lazy" decoding="async" width="1440" height="900"></div>
+        </div>
+        <div class="window real">
+          <div class="bar"><i></i><i></i><i></i><span>atlas / agents</span></div>
+          <div class="shots"><img class="on" src="resources/screens/atlas-agent-1440.webp" srcset="resources/screens/atlas-agent-720.webp 720w, resources/screens/atlas-agent-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 46vw" alt="Atlas agent settings: role and quality checklist" loading="lazy" decoding="async" width="1440" height="900"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="a-ready" id="ready">
+    <div class="wrap">
+      <div class="section-head"><h2>Ready for the way companies work</h2><p>Atlas runs on your own server, with the controls a company expects.</p></div>
+      <ul class="ready">
+          <li><i class="fa-solid fa-server"></i><b>On your own systems</b><span>One server in your organisation, using Docker and Postgres. Your code doesn't come to us.</span></li>
+          <li><i class="fa-solid fa-key"></i><b>Single sign-on</b><span>Through OpenID Connect, or email and password.</span></li>
+          <li><i class="fa-solid fa-user-shield"></i><b>Roles</b><span>Admin or member across the organisation. Admin, member or viewer on each project.</span></li>
+          <li><i class="fa-solid fa-clipboard-list"></i><b>Audit log</b><span>Sign-ins, secret views, role changes, and runs started or stopped.</span></li>
+          <li><i class="fa-solid fa-chart-column"></i><b>Delivery and spend</b><span>Analytics for delivery and workflows, with spend by reporting line.</span></li>
+          <li><i class="fa-solid fa-plug"></i><b>Connects to your tools</b><span>GitHub.com, Jira Cloud, and alerts to Microsoft Teams and Telegram.</span></li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="alt a-market" id="market">
+    <div class="wrap">
+      <div class="section-head"><h2>How Atlas compares</h2><p>Most AI work tools bundle the AI into the price. Atlas doesn't, so you pay for the delivery system and keep the subscription you have.</p></div>
+      <table class="quad">
+            <caption class="vh">Types of AI work tool, by where the AI comes from and what you get</caption>
+            <thead><tr><td></td><th scope="col">A person directs the work</th><th scope="col">Finished work comes back</th></tr></thead>
+            <tbody>
+              <tr>
+                <th scope="row">Your own AI subscription</th>
+                <td data-label="Your own AI, a person directs"><b>Parallel agent tools</b><span>Free to about $60 per user a month. Several agents at once, and you still direct each one.</span></td>
+                <td class="us" data-label="Your own AI, finished work"><img loading="lazy" decoding="async" src="resources/people/agent-5.svg" alt=""><b>Atlas</b><span>Free to start, then $19 per user a month. Planned, built, checked and delivered, on your own systems.</span></td>
+              </tr>
+              <tr>
+                <th scope="row">AI bundled into the price</th>
+                <td data-label="Bundled AI, a person directs"><b>AI coding assistants</b><span>About $20 to $40 per user a month. Help for a developer, one conversation at a time.</span></td>
+                <td data-label="Bundled AI, finished work"><b>Autonomous coding agents</b><span>About $40 per seat, plus a team fee and usage. Finished changes, on the vendor's cloud.</span></td>
+              </tr>
+            </tbody>
+          </table>
+      <div class="scan a-scan" data-scroll-x>
+        <table>
+          <thead><tr><th scope="col">Type of tool</th><th scope="col">Typical cost</th><th scope="col">Where the AI comes from</th><th scope="col">What you get</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">AI coding assistants</th><td data-label="Typical cost">About $20 to $40 per user a month</td><td data-label="AI comes from">Bundled, and heavy use can cost extra</td><td data-label="What you get">Help for a developer, one conversation at a time</td></tr>
+            <tr><th scope="row">Autonomous coding agents</th><td data-label="Typical cost">About $40 per seat, plus a team fee and usage</td><td data-label="AI comes from">Bundled and metered</td><td data-label="What you get">Finished changes, on the vendor's cloud</td></tr>
+            <tr><th scope="row">Parallel agent tools</th><td data-label="Typical cost">Free to about $60 per user a month</td><td data-label="AI comes from">Your own subscription</td><td data-label="What you get">Several agents at once, and you still direct each one</td></tr>
+            <tr><th scope="row">Enterprise agent builders</th><td data-label="Typical cost">About $500 to $6,000 or more a month, or usage credits</td><td data-label="AI comes from">Bundled</td><td data-label="What you get">Business process automation, not software delivery</td></tr>
+            <tr class="us"><th scope="row">Atlas</th><td data-label="Typical cost">Free to start, then $19 per user a month</td><td data-label="AI comes from">Your own subscription</td><td data-label="What you get">Planned, built, checked and delivered, on your own systems</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="a-fine">Typical public list prices by type of tool, October 2026. Prices change, and each vendor's own page has the current figure.</p>
+    </div>
+  </section>
+
+  <section class="a-editions" id="editions">
+    <div class="wrap">
+      <div class="section-head"><h2>Free for one person. Built for your whole team.</h2><p>Start free on your own machine. Choose the Team plan when a whole team needs to work together.</p></div>
+      <div class="scan" data-scroll-x>
+        <table class="compare">
+          <thead><tr><th scope="col"><span class="vh">Feature</span></th><th scope="col">Free</th><th scope="col">Team</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Licence</th><td>Open source (AGPL-3.0)</td><td>Commercial</td></tr>
+            <tr><th scope="row">Who uses it</th><td>One person, on their own machine</td><td>Your whole team, on one shared server</td></tr>
+            <tr><th scope="row">How a task runs</th><td>One agent does the whole task</td><td>A chain of specialist agents, each checking the last</td></tr>
+            <tr><th scope="row">Ready-made agents</th><td>7</td><td>24, including 18 for software delivery</td></tr>
+            <tr><th scope="row">Workflows</th><td>Not included</td><td>6 templates and a visual builder</td></tr>
+            <tr><th scope="row">Checks before delivery</th><td>Left to the agent</td><td>Atlas runs your checks itself. A check that couldn't run never counts as a pass</td></tr>
+            <tr><th scope="row">After delivery</th><td>Not included</td><td>If GitHub checks fail, up to 2 automatic fix attempts</td></tr>
+            <tr><th scope="row">Work side by side</th><td>One agent at a time</td><td>Up to 10 runs per workflow once configured, across different repositories</td></tr>
+            <tr><th scope="row">Sign-in</th><td>Not needed</td><td>Single sign-on through OpenID Connect, or email and password</td></tr>
+            <tr><th scope="row">Roles</th><td>Not needed</td><td>Admin or member across the organisation. Admin, member or viewer on each project</td></tr>
+            <tr><th scope="row">Audit log</th><td>Not included</td><td>Sign-ins, secret views, role changes, and runs started or stopped</td></tr>
+            <tr><th scope="row">Analytics</th><td>The basics</td><td>Delivery, workflow and spend, with spend by reporting line</td></tr>
+            <tr><th scope="row">Connects to</th><td>GitHub, Jira Cloud, Teams and Telegram alerts</td><td>GitHub, Jira Cloud, Teams and Telegram alerts</td></tr>
+            <tr><th scope="row">Support</th><td>Community, on GitHub</td><td>Direct from SSPART</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt a-pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head"><h2>Pricing</h2></div>
+      <div class="tiers">
+        <article class="tier">
+          <h3>Free</h3>
+          <p class="price"><b>$0</b></p>
+          <p class="for">For one person trying Atlas on their own work.</p>
+          <ul>
+            <li>Open source under AGPL-3.0</li>
+            <li>One agent per task</li>
+            <li>7 ready-made agents</li>
+            <li>Runs on your machine</li>
+          </ul>
+          <a class="btn" href="https://github.com/sspartorg/atlas-open" target="_blank" rel="noopener">Get Atlas free</a>
+        </article>
+        <article class="tier tier-main">
+          <h3>Team</h3>
+          <p class="price"><b>$19</b><span>per user a month</span></p>
+          <p class="for">For teams. $15 per user a month when billed annually.</p>
+          <ul>
+            <li>One shared server for your organisation</li>
+            <li>Multi-agent delivery workflows</li>
+            <li>Single sign-on, roles and an audit log</li>
+            <li>Delivery and spend analytics</li>
+            <li>Support from SSPART</li>
+          </ul>
+          <a class="btn btn-solid" href="contact.html?product=Atlas">Talk to us</a>
+        </article>
+        <article class="tier">
+          <h3>Enterprise and cloud</h3>
+          <p class="price"><b>Let's talk</b></p>
+          <p class="for">For organisations with their own security, hosting or integration needs.</p>
+          <ul>
+            <li>We set Atlas up on your servers or in your cloud</li>
+            <li>Integrations scoped and built with you</li>
+            <li>Support terms agreed in writing</li>
+          </ul>
+          <a class="btn" href="contact.html?product=Atlas%20Enterprise">Contact us</a>
+        </article>
+      </div>
+      <p class="a-fine">Prices are in US dollars and exclude taxes. Your AI subscription is separate: each person uses their own Claude or GitHub Copilot plan, and Atlas work counts against that plan's limits.</p>
+    </div>
+  </section>
+
+  <section class="a-faq" id="faq">
+    <div class="wrap">
+      <div class="section-head"><h2>Questions</h2></div>
+      <div class="faq">
+        <details><summary>Do we need to buy AI from you?</summary><p>No. Atlas runs Claude Code or GitHub Copilot under each person's own sign-in, or models through Ollama, and you choose which one each agent uses. You keep paying your AI provider directly, and Atlas work counts against that plan's limits.</p></details>
+        <details><summary>Who approves the work?</summary><p>Your team does. Atlas raises each finished change as a pull request and a person approves it. Atlas doesn't merge changes by itself.</p></details>
+        <details><summary>Can 100 tasks run at the same moment?</summary><p>Not in one repository. Atlas works on one task at a time per repository and queues the rest, so changes don't collide. Tasks in different repositories can run side by side, up to the limit you set for each workflow.</p></details>
+        <details><summary>What do we install?</summary><p>Atlas runs on one server in your organisation, using Docker and Postgres. Each person also runs a small Atlas runner on their own computer, where their agents work. A task needs its owner's runner to be online. You also add your own lint, build and test commands to the workflow, so Atlas can run them.</p></details>
+        <details><summary>Does our code go to SSPART?</summary><p>No. Atlas runs on your systems, and your code goes only to the AI provider you choose. There's no third-party analytics in the app. Online licences send us a daily usage count, such as active users and version, and offline licences are available.</p></details>
+        <details><summary>What does Atlas connect to today?</summary><p>GitHub.com, Jira Cloud, and alerts to Microsoft Teams and Telegram. If you use something else, tell us and we'll scope it with you.</p></details>
+        <details><summary>Is the Free plan really free?</summary><p>Yes. It's open source under the AGPL-3.0 licence, and you only need your own AI subscription, or local models through Ollama, to run it.</p></details>
+        <details><summary>Do you host Atlas for us?</summary><p>Atlas isn't a shared hosted service. We can set it up in your own cloud account as an Enterprise project.</p></details>
+      </div>
+      <div class="a-end">
+        <h2>Have a list of work waiting?</h2>
+        <a class="btn btn-solid" href="contact.html?product=Atlas">Talk to us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>SSPART Enterprise Private Limited</h4>
+        <p>Product engineering for retail, capital markets, workforce skills and AI.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/sspart" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/SSPART_ORG" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/sspart_enterprise" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/SSPART.ORG" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@sspart-enterprise" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <a href="atlas.html">Atlas</a>
+        <a href="https://dhequest.com" target="_blank" rel="noopener">DheQuest</a>
+        <a href="index.html#neel">Neel</a>
+        <a href="index.html#experts-jar">Experts Jar</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="index.html#services">Product engineering</a>
+        <a href="index.html#services">AI and agent systems</a>
+        <a href="index.html#cloud">Cloud on AWS and Azure</a>
+        <a href="index.html#services">Retail platforms</a>
+        <a href="index.html#services">Trading systems</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="index.html#shift">How we deliver</a>
+        <a href="index.html#roi">ROI calculator</a>
+        <a href="index.html#company">Our story</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#clients">Clients</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <p>contact@sspart-enterprise.com</p>
+        <a href="tel:+919515093965">+91 95150 93965</a>
+        <p>Madhapur, Hyderabad, Telangana 500084</p>
+        <a href="contact.html">Send an enquiry</a>
+      </div>
+    </div>
+    <p class="a-fine">Claude Code and GitHub Copilot belong to their owners. SSPART isn't affiliated with or endorsed by them.</p>
+    <p class="wordmark" aria-hidden="true">SSPART</p>
+    <div class="legal">
+      <span>&copy; 2026 SSPART Enterprise Private&nbsp;Limited</span>
+      <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Off-screen sections only have estimated heights, so measure them properly before jumping to one
+  const measure = () => document.documentElement.classList.add('measured');
+  if (location.hash) measure();
+  addEventListener('click', e => { if (e.target.closest('a[href*="#"]')) measure(); });
+  const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
+  const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  t.onclick = () => setMenu(!n.classList.contains('open'));
+  n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
+</script>
+<script src="js/board.js?v=2026-10-31a"></script>
+<script src="js/atlas.js?v=2026-10-31a"></script>
+</body>
+</html>

@@ -9,9 +9,11 @@
     "test:speed": "playwright test --project=speed-* --project=network --workers=1",
     "test:chromium": "playwright test --project=chromium-*",
     "test:webkit": "playwright test --project=webkit-*",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "test:schema": "node schema-check.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "1.61.1"
+    "@playwright/test": "1.61.1",
+    "@electric-sql/pglite": "0.5.10"
   }
 }

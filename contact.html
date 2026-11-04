@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | SSPART Enterprise</title>
+  <meta name="description" content="Tell SSPART Enterprise what you're working on. Ask about Atlas, DheQuest, Neel, Experts Jar or custom software.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=2026-10-31a">
+  <link rel="stylesheet" href="css/desk.css?v=2026-10-31a">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap"><a class="brand" href="index.html"><img src="resources/logo.webp" alt="SSPART home"></a><a class="btn" href="index.html">Back to home</a></div>
+</header>
+<main class="enquiry">
+  <div class="wrap enquiry-grid">
+    <div class="enquiry-intro">
+      <h1>Tell us what you're working on</h1>
+      <p>Ask for a demo, a price or a custom build. You don't need an account. We'll reply on the mobile number or email you give us.</p>
+      <dl class="enquiry-reach">
+        <div><dt>Email</dt><dd>contact@sspart-enterprise.com</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+919515093965">+91 95150 93965</a></dd></div>
+        <div><dt>Office</dt><dd>503, Ayyanna Pride, Madhapur<br>Hyderabad, Telangana 500084</dd></div>
+      </dl>
+    </div>
+
+    <form class="enquiry-form" id="enquiry" novalidate>
+      <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
+      <div class="pair">
+        <label>Mobile number<input name="mobile" type="tel" required maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+91 95150 93965"></label>
+        <label>Email <span>(optional)</span><input name="email" type="email" maxlength="254" autocomplete="email"></label>
+      </div>
+      <div class="pair">
+        <label>Company <span>(optional)</span><input name="company" maxlength="160" autocomplete="organization"></label>
+        <label>Interested in
+          <select name="product">
+            <option>Atlas</option><option>Atlas Enterprise</option><option>DheQuest</option><option>Neel</option><option>Experts Jar</option><option>Custom software</option><option>Careers</option><option selected>Other</option>
+          </select>
+        </label>
+      </div>
+      <label>How can we help?<textarea name="message" required maxlength="4000" rows="6"></textarea></label>
+      <label class="trap" aria-hidden="true">Leave this empty<input name="contact_time" tabindex="-1" autocomplete="off"></label>
+      <p class="form-note">We use these details only to reply to you. See our <a href="privacy.html">privacy policy</a>.</p>
+      <button class="btn btn-solid" type="submit">Send enquiry</button>
+      <p class="form-status" id="status" role="alert" hidden></p>
+    </form>
+
+    <div class="enquiry-done" id="done" tabindex="-1" hidden>
+      <h2>Enquiry sent</h2>
+      <p>Thanks. We have your details and will reply on the number or email you gave us.</p>
+      <a class="btn" href="index.html">Back to home</a>
+    </div>
+  </div>
+</main>
+
+<script src="js/config.js?v=2026-10-31a"></script>
+<script>
+  const form = document.getElementById('enquiry'), statusEl = document.getElementById('status');
+  const asked = new URLSearchParams(location.search).get('product');
+  if ([...form.product.options].some(o => o.value === asked)) form.product.value = asked;
+
+  const say = msg => { statusEl.textContent = msg; statusEl.hidden = !msg; };
+  const REACH = 'Your enquiry is still here. Try again, or reach us at contact@sspart-enterprise.com or +91 95150 93965.';
+  const digits = v => v.replace(/\D/g, '').length;
+
+  const problem = () => {
+    if (!form.name.value.trim()) return [form.name, 'Enter your name.'];
+    const m = form.mobile.value.trim();
+    if (!/^\+?[0-9 ()-]+$/.test(m) || digits(m) < 7 || digits(m) > 15) return [form.mobile, 'Enter a valid mobile number, such as +91 95150 93965.'];
+    // Same rule as the database, which rejects an address with no dot in the domain
+    if (form.email.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.value.trim())) return [form.email, 'Enter a valid email, or leave it empty.'];
+    if (!form.message.value.trim()) return [form.message, 'Tell us how we can help.'];
+  };
+
+  form.onsubmit = async e => {
+    e.preventDefault();
+    say('');
+    form.querySelectorAll('[aria-invalid]').forEach(x => x.removeAttribute('aria-invalid'));
+    const bad = problem();
+    if (bad) { bad[0].setAttribute('aria-invalid', 'true'); bad[0].focus(); return say(bad[1]); }
+
+    const finish = () => { form.hidden = true; const d = document.getElementById('done'); d.hidden = false; d.focus(); };
+    // Bots fill every field; let them think it worked
+    if (form.contact_time.value) return finish();
+
+    const { url, key } = window.SSPART_SUPABASE;
+    if (!url || !key) return say(REACH);
+    const button = form.querySelector('button');
+    button.disabled = true;
+    try {
+      const res = await fetch(`${url}/rest/v1/enquiries`, {
+        method: 'POST',
+        // return=minimal because visitors can write this table but never read it
+        headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({
+          name: form.name.value.trim(), mobile: form.mobile.value.trim(), email: form.email.value.trim() || null, company: form.company.value.trim() || null,
+          product: form.product.value, message: form.message.value.trim(), source: document.referrer.slice(0, 200) || null,
+        }),
+      });
+      if (res.ok) return finish();
+      const body = await res.json().catch(() => ({}));
+      say(body.code === 'P0001' ? 'This number has sent several enquiries in the last hour. Call us on +91 95150 93965 if it is urgent.' : REACH);
+    } catch { say(REACH); }
+    button.disabled = false;
+  };
+</script>
+</body>
+</html>

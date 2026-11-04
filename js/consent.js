@@ -1,7 +1,8 @@
-/* Cookie settings: a bitten cookie floats bottom-left and opens the panel; on the first visit the panel opens by itself.
+/* Cookie settings: on the first visit a bitten cookie floats bottom-left with the panel open above it. Once the visitor
+   chooses, the cookie is eaten (it goes away for good); the footer's Cookie settings link reopens the panel later.
    Google Analytics 4 loads only after the visitor allows it. Set GA_ID to the property's Measurement ID to switch it on;
    until then the choice is still recorded, so analytics starts only for visitors who already allowed it.
-   Any element with data-cookie-settings (e.g. the footer link) opens the panel too. */
+   Any element with data-cookie-settings (the footer and policy-page links) opens the panel. */
 (function () {
   var GA_ID = ''; // e.g. 'G-XXXXXXXXXX'
   var KEY = 'sspart-analytics-consent';
@@ -72,7 +73,8 @@
     '<button type="button" class="cc-cookie" aria-controls="cc-panel" aria-expanded="false" aria-label="Cookie settings">' + COOKIE + '</button>';
 
   var panel = root.querySelector('.cc-panel'), cookie = root.querySelector('.cc-cookie'), state = root.querySelector('[data-analytics]');
-  var hideTimer;
+  var hideTimer, opener = null;
+  var still = function () { return matchMedia('(prefers-reduced-motion: reduce)').matches; };
 
   function render() {
     var v = saved();
@@ -85,29 +87,36 @@
     cookie.setAttribute('aria-expanded', 'true');
     if (focus) panel.querySelector('[data-c="yes"]').focus({ preventScroll: true });
   }
-  function close(chosen) {
+  function close() {
     if (panel.hidden) return;
     root.classList.remove('is-open'); cookie.setAttribute('aria-expanded', 'false');
-    hideTimer = setTimeout(function () { panel.hidden = true; }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
-    if (chosen) { cookie.classList.remove('is-crunch'); void cookie.offsetWidth; cookie.classList.add('is-crunch'); }
+    hideTimer = setTimeout(function () { panel.hidden = true; }, still() ? 0 : 220);
+    var back = opener && document.contains(opener) ? opener : cookie.hidden ? null : cookie;
+    opener = null; if (back) back.focus({ preventScroll: true });
+  }
+  function eat() { // a choice was made: the cookie is eaten and stays gone; the footer link takes over
+    if (cookie.hidden) return;
+    root.classList.add('is-chosen');
+    setTimeout(function () { cookie.hidden = true; }, still() ? 0 : 420);
   }
 
   panel.addEventListener('click', function (e) {
     var c = e.target.closest('[data-c]'); if (!c) return;
     var v = c.getAttribute('data-c'); save(v);
     if (v === 'yes') load(); else forget();
-    render(); close(true); cookie.focus({ preventScroll: true });
+    render(); close(); eat();
   });
   cookie.addEventListener('click', function () { panel.hidden ? open(true) : close(); });
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-cookie-settings]');
-    if (t) { e.preventDefault(); open(true); return; }
+    if (t) { e.preventDefault(); opener = t; open(true); return; }
     if (!panel.hidden && saved() && !root.contains(e.target)) close(); // the first-visit prompt stays until answered
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !panel.hidden) { close(); cookie.focus({ preventScroll: true }); }
+    if (e.key === 'Escape' && !panel.hidden) close();
   });
 
+  if (saved()) { cookie.hidden = true; root.classList.add('is-chosen'); }
   document.body.appendChild(root);
   if (!saved()) open(false); // first visit: ask, without stealing focus
 })();

@@ -1039,6 +1039,10 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .fly { display: none; }
 .beat { padding: 48px 0; }
 .launch-tag { position: relative; display: inline-block; margin-bottom: 18px; padding: 7px 16px; border-radius: 999px; background: var(--plan); color: #fff; font-size: 0.92rem; font-weight: 700; text-decoration: none; }
+/* Centre the letters themselves: trim the line box to cap height and baseline, then pad. Browsers place Overpass up to
+   1.25px apart, so plain padding can't centre it in all of them; the extra 2px below lifts the lowercase-heavy line
+   to its optical centre. Without text-box support the padding above applies. */
+@supports (text-box: trim-both cap alphabetic) { .launch-tag { text-box: trim-both cap alphabetic; padding: 13px 16px 15px; } }
 .launch h2.mega, .mega { color: #fff; font-size: min(25vw, 36svh); font-weight: 800; line-height: 0.86; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
 .atlas-mark { display: block; width: auto; height: clamp(72px, 17svh, 170px); margin: 0 auto 14px; color: #fff; }
 .beat-small { font-size: clamp(1.2rem, 2.4vw, 2rem); font-weight: 600; color: #cdd2e6; }

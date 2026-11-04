@@ -79,7 +79,7 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 }
 .site-head .wrap { display: flex; align-items: center; gap: 40px; height: 72px; }
 .brand { display: flex; align-items: center; margin-right: auto; }
-.brand img { height: 38px; width: auto; }
+.brand img { height: 40px; width: auto; } /* brand pack SVG: 40px frame = 38px of artwork, as before */
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { text-decoration: none; color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; }
 .nav a:hover { color: var(--on-night); }
@@ -632,7 +632,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
   :root { --head-h: 54px; }
   html { scroll-padding-top: 60px; }
   .site-head .wrap { height: 54px; }
-  .brand img { height: 30px; }
+  .brand img { height: 32px; }
   .nav { top: 54px !important; }
   .nav.open { max-height: calc(100dvh - 54px); }
   .product-tabs { top: 54px; padding: 6px 0; }
@@ -1050,7 +1050,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .hero .beat-cta .btn-ghost { background: none; border-color: #7d86a6; color: #fff; }
 /* The header joins the night while the launch plays */
 .site-head.on-night { background: none; border-bottom-color: transparent; box-shadow: none; }
-/* resources/logo-night.webp is the same logo drawn for dark backgrounds */
+/* resources/brand/sspart-logo-header-night.svg is the brand pack on-dark lockup, on the same viewBox as the light one */
 .brand { position: relative; }
 .logo-night { position: absolute; left: 0; top: 50%; translate: 0 -50%; opacity: 0; transition: opacity 0.3s; }
 .brand img:first-child { transition: opacity 0.3s; }
@@ -1236,4 +1236,48 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 @media (prefers-reduced-motion: reduce) {
   .con-log li, .queue li em, .crew-list li { transition: none; }
   .map-nodes button { transition: none; }
+}
+
+/* ---------- Cookie settings: a bitten cookie bottom-left (mirrors .to-top), its panel grows out of it ---------- */
+.cc { position: fixed; left: 24px; bottom: 24px; z-index: 16; font-family: var(--font); color: var(--text); }
+.cc-cookie { display: block; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--plan); cursor: pointer;
+  filter: drop-shadow(0 6px 10px rgb(19 22 46 / 0.28)); transition: translate 0.25s cubic-bezier(.2,.7,.2,1), rotate 0.25s cubic-bezier(.2,.7,.2,1); }
+.cc-cookie svg { display: block; width: 100%; height: 100%; }
+.cc-cookie:hover { translate: 0 -2px; rotate: -8deg; }
+.cc-cookie:focus-visible { outline: 2px solid var(--plan); outline-offset: 3px; }
+.cc.is-open .cc-cookie { rotate: -20deg; }
+.cc-cookie.is-crunch { animation: cc-crunch 0.42s cubic-bezier(.3,1.6,.5,1); }
+@keyframes cc-crunch { 0% { scale: 1; } 35% { scale: 0.84 0.9; } 100% { scale: 1; } }
+
+.cc-panel { position: absolute; left: 0; bottom: 62px; width: min(380px, calc(100vw - 32px)); padding: 22px 22px 18px; border-radius: 18px 18px 18px 6px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: 0 24px 60px -18px rgb(19 22 46 / 0.35);
+  transform-origin: 18px calc(100% + 40px); opacity: 0; scale: 0.6; translate: 0 10px; transition: opacity 0.2s, scale 0.22s cubic-bezier(.2,.7,.2,1), translate 0.22s cubic-bezier(.2,.7,.2,1); }
+.cc.is-open .cc-panel { opacity: 1; scale: 1; translate: 0 0; }
+.cc-panel h2 { margin: 0 0 6px; font-size: 1.15rem; font-weight: 800; letter-spacing: 0; color: var(--text); display: flex; align-items: baseline; gap: 10px; }
+.cc-hand { font-family: var(--hand); font-weight: 600; font-size: 1.35rem; color: var(--muted); rotate: -4deg; display: inline-block; }
+.cc-panel p { margin: 0 0 14px; color: var(--muted); font-size: 0.93rem; line-height: 1.5; }
+.cc-rows { margin: 0 0 16px; border-top: 1px solid var(--line); }
+.cc-rows > div { display: grid; grid-template-columns: 1fr auto; column-gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cc-rows dt { font-weight: 700; font-size: 0.95rem; }
+.cc-rows dd { margin: 2px 0 0; grid-column: 1; color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+.cc-rows dd.cc-state { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+  font-size: 0.78rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.cc-rows dd.cc-state.is-on { border-color: color-mix(in srgb, var(--up) 35%, #fff); background: color-mix(in srgb, var(--up) 9%, #fff); color: #13704b; }
+.cc-rows code { font-size: 0.82rem; background: var(--panel); padding: 1px 5px; border-radius: 4px; }
+.cc-actions { display: flex; gap: 8px; }
+.cc-actions .btn { flex: 1; padding: 11px 14px; font-size: 0.95rem; text-align: center; }
+.cc-policy { display: inline-block; margin-top: 12px; color: var(--muted); font-size: 0.85rem; text-underline-offset: 3px; }
+.cc-policy:hover { color: var(--text); }
+.legal .cc-link { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.legal .cc-link:hover { color: var(--on-night); }
+
+@media (max-width: 620px) {
+  .cc { left: 16px; bottom: 16px; }
+  .cc-cookie { width: 44px; height: 44px; }
+  .cc-panel { bottom: 56px; width: calc(100vw - 32px); padding: 18px 16px 14px; }
+  .cc-rows dd.cc-state { white-space: normal; text-align: center; max-width: 92px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cc-cookie, .cc-panel { transition: none; }
+  .cc-cookie.is-crunch { animation: none; }
 }

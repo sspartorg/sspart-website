@@ -1,9 +1,20 @@
-/* Google Analytics 4, loaded only after the visitor accepts. Set GA_ID to the property's Measurement ID to switch it on. */
+/* Cookie settings: a bitten cookie floats bottom-left and opens the panel; on the first visit the panel opens by itself.
+   Google Analytics 4 loads only after the visitor allows it. Set GA_ID to the property's Measurement ID to switch it on;
+   until then the choice is still recorded, so analytics starts only for visitors who already allowed it.
+   Any element with data-cookie-settings (e.g. the footer link) opens the panel too. */
 (function () {
-  var GA_ID = ''; // e.g. 'G-XXXXXXXXXX'; empty keeps analytics and the banner off
-  if (!GA_ID) return;
+  var GA_ID = ''; // e.g. 'G-XXXXXXXXXX'
   var KEY = 'sspart-analytics-consent';
+  var loaded = false;
+
+  function saved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function save(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
   function load() {
+    if (!GA_ID) return;
+    window['ga-disable-' + GA_ID] = false;
+    if (loaded) return;
+    loaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
@@ -12,28 +23,91 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; document.head.appendChild(s);
     // key events: enquiry and demo clicks, email and phone links
     document.addEventListener('click', function (e) {
+      if (window['ga-disable-' + GA_ID]) return;
       var a = e.target.closest('a,button'); if (!a) return;
       var h = a.getAttribute('href') || '', t = (a.textContent || '').trim();
       if (h.indexOf('mailto:') === 0) gtag('event', 'contact_email');
       else if (h.indexOf('tel:') === 0) gtag('event', 'contact_phone');
       else if (/demo|enquiry|talk to us|get in touch/i.test(t)) gtag('event', 'generate_lead', { label: t.slice(0, 60) });
     });
-    document.addEventListener('submit', function () { gtag('event', 'form_submit'); });
+    document.addEventListener('submit', function () { if (!window['ga-disable-' + GA_ID]) gtag('event', 'form_submit'); });
   }
-  var saved = null;
-  try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved === 'yes') return load();
-  if (saved === 'no') return;
-  var bar = document.createElement('div');
-  bar.setAttribute('role', 'dialog'); bar.setAttribute('aria-label', 'Analytics consent');
-  bar.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;background:#fff;color:#0b1026;border:1px solid #e3e6f0;border-radius:12px;box-shadow:0 8px 30px rgba(2,18,85,.18);padding:16px 18px;font:14px/1.5 Overpass,Arial,sans-serif';
-  bar.innerHTML = 'We would like to use Google Analytics to see which pages help visitors. It sets cookies only if you accept. <a href="cookies.html" style="color:#021255">Cookies policy</a>' +
-    '<div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end"><button data-c="no" style="padding:8px 14px;border-radius:8px;border:1px solid #e3e6f0;background:#fff;color:#0b1026;cursor:pointer">Decline</button>' +
-    '<button data-c="yes" style="padding:8px 14px;border-radius:8px;border:0;background:#021255;color:#fff;cursor:pointer">Accept</button></div>';
-  bar.addEventListener('click', function (e) {
-    var c = e.target.getAttribute('data-c'); if (!c) return;
-    try { localStorage.setItem(KEY, c); } catch (err) {}
-    bar.remove(); if (c === 'yes') load();
+
+  function forget() { // withdrawing consent: stop GA and delete its cookies on this host and its parent domain
+    if (GA_ID) window['ga-disable-' + GA_ID] = true;
+    var host = location.hostname, parts = host.split('.'), doms = ['', host, '.' + host];
+    if (parts.length > 2) doms.push('.' + parts.slice(-2).join('.'));
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim(); if (!/^_ga/.test(n)) return;
+      doms.forEach(function (d) { document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : ''); });
+    });
+  }
+
+  if (saved() === 'yes') load();
+
+  // the bite is a row of shark teeth, after the SSPART mark
+  var COOKIE = '<svg viewBox="0 0 48 48" aria-hidden="true"><defs><mask id="cc-bite">' +
+    '<rect width="48" height="48" fill="#fff"/>' +
+    '<path d="M48,0 L23.0,2.2 L28.1,4.4 L23.5,7.5 L28.9,8.4 L25.1,12.4 L30.6,12.1 L27.9,16.9 L33.2,15.2 L31.7,20.5 L36.4,17.7 L36.3,23.2 L40.2,19.3 L41.3,24.7 L44.2,20.0 L46.5,24.9 L48,48Z" fill="#000"/>' +
+    '</mask></defs><g mask="url(#cc-bite)"><circle cx="24" cy="24" r="20" fill="currentColor"/>' +
+    '<g fill="#fff" opacity=".88"><rect x="12" y="14" width="5" height="4" rx="1.6" transform="rotate(-18 14.5 16)"/>' +
+    '<rect x="21" y="23" width="5.5" height="4" rx="1.6" transform="rotate(24 23.7 25)"/><rect x="11" y="28" width="4.5" height="3.6" rx="1.5"/>' +
+    '<rect x="29" y="31" width="5" height="4" rx="1.6" transform="rotate(-30 31.5 33)"/><rect x="19" y="35" width="4" height="3.4" rx="1.4"/>' +
+    '<circle cx="23" cy="13" r="1.5"/><circle cx="34" cy="25" r="1.4"/></g></g></svg>';
+
+  var root = document.createElement('div');
+  root.className = 'cc';
+  root.innerHTML =
+    '<section class="cc-panel" id="cc-panel" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-lede" hidden>' +
+      '<h2 id="cc-title">Cookie settings <span class="cc-hand">your call</span></h2>' +
+      '<p id="cc-lede">This site sets no cookies until you allow them. You can change your mind here at any time.</p>' +
+      '<dl class="cc-rows">' +
+        '<div><dt>Essential</dt><dd>Remembers the choice you make here, in your browser, not in a cookie.</dd><dd class="cc-state is-on">Always on</dd></div>' +
+        '<div><dt>Analytics</dt><dd>Google Analytics counts visits so we can see which pages help. Sets <code>_ga</code> cookies for up to 14 months.</dd><dd class="cc-state" data-analytics></dd></div>' +
+      '</dl>' +
+      '<div class="cc-actions"><button type="button" class="btn" data-c="no">Essential only</button>' +
+      '<button type="button" class="btn btn-solid" data-c="yes">Allow analytics</button></div>' +
+      '<a class="cc-policy" href="cookies.html">Read the cookies policy</a>' +
+    '</section>' +
+    '<button type="button" class="cc-cookie" aria-controls="cc-panel" aria-expanded="false" aria-label="Cookie settings">' + COOKIE + '</button>';
+
+  var panel = root.querySelector('.cc-panel'), cookie = root.querySelector('.cc-cookie'), state = root.querySelector('[data-analytics]');
+  var hideTimer;
+
+  function render() {
+    var v = saved();
+    state.textContent = v === 'yes' ? 'Allowed' : v === 'no' ? 'Off' : 'Off until you allow it';
+    state.classList.toggle('is-on', v === 'yes');
+  }
+  function open(focus) {
+    clearTimeout(hideTimer); render(); panel.hidden = false;
+    requestAnimationFrame(function () { root.classList.add('is-open'); });
+    cookie.setAttribute('aria-expanded', 'true');
+    if (focus) panel.querySelector('[data-c="yes"]').focus({ preventScroll: true });
+  }
+  function close(chosen) {
+    if (panel.hidden) return;
+    root.classList.remove('is-open'); cookie.setAttribute('aria-expanded', 'false');
+    hideTimer = setTimeout(function () { panel.hidden = true; }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
+    if (chosen) { cookie.classList.remove('is-crunch'); void cookie.offsetWidth; cookie.classList.add('is-crunch'); }
+  }
+
+  panel.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-c]'); if (!c) return;
+    var v = c.getAttribute('data-c'); save(v);
+    if (v === 'yes') load(); else forget();
+    render(); close(true); cookie.focus({ preventScroll: true });
   });
-  document.body.appendChild(bar);
+  cookie.addEventListener('click', function () { panel.hidden ? open(true) : close(); });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-cookie-settings]');
+    if (t) { e.preventDefault(); open(true); return; }
+    if (!panel.hidden && saved() && !root.contains(e.target)) close(); // the first-visit prompt stays until answered
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !panel.hidden) { close(); cookie.focus({ preventScroll: true }); }
+  });
+
+  document.body.appendChild(root);
+  if (!saved()) open(false); // first visit: ask, without stealing focus
 })();

@@ -87,7 +87,7 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
    so each keeps its own icon-to-name proportions; on the dark launch header each swaps to its on-dark file */
 .nav a:has(.nav-logo) { display: inline-flex; align-items: center; }
 .nav-logo { width: auto; flex: none; }
-.nav-logo[src*="atlas-logo"] { height: 21.4px; }
+.nav-logo[src*="atlas-logo"] { height: 21.4px; position: relative; top: -3.8px; } /* Atlas sets its name at the foot of its icon: lift it so the names line up */
 .nav-logo[src*="synvord-logo"] { height: 21.9px; }
 .nav-logo[src*="dhequest-logo"] { height: 22.8px; }
 .on-night .nav-logo[src*="atlas-logo"] { content: url("../resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg"); }

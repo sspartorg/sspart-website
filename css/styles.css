@@ -83,11 +83,17 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { text-decoration: none; color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; }
 .nav a:hover { color: var(--on-night); }
-/* product links carry their brand-pack icon; on the dark launch header Atlas turns white and Synvord uses its on-dark version */
-.nav a:has(.nav-ico) { display: inline-flex; align-items: center; gap: 8px; }
-.nav-ico { width: auto; height: 18px; flex: none; }
-.on-night .nav-ico[src*="atlas-logo"] { filter: invert(1); }
-.on-night .nav-ico[src*="synvord-logo"] { content: url("../resources/brand/products/synvord-logo-icon-fullcolor-on-dark.svg"); } /* brand-pack on-dark version */
+/* product links are the brand-pack horizontal logos (icon + wordmark); on the dark launch header each swaps to its on-dark file */
+/* each logo is sized so its product name has the same 11.5px cap height, and nudged so the names share the
+   baseline of the plain nav text (the lockups put the name at different heights beside their icons) */
+.nav a:has(.nav-logo) { display: inline-flex; align-items: center; }
+.nav-logo { width: auto; flex: none; position: relative; }
+.nav-logo[src*="atlas-logo"] { height: 23.8px; top: -4.9px; }
+.nav-logo[src*="dhequest-logo"] { height: 27.4px; top: -0.8px; }
+.nav-logo[src*="synvord-logo"] { height: 29px; top: 1.5px; }
+.on-night .nav-logo[src*="atlas-logo"] { content: url("../resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg"); }
+.on-night .nav-logo[src*="synvord-logo"] { content: url("../resources/brand/products/synvord-logo-primary-notag-fullcolor-on-dark.svg"); }
+.on-night .nav-logo[src*="dhequest-logo"] { content: url("../resources/brand/products/dhequest-logo-primary-fullcolor-on-dark.svg"); }
 .nav .btn { padding: 9px 18px; }
 .nav .btn-solid { color: var(--on-text); }
 .nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--ink-line); border-radius: 10px; cursor: pointer; }

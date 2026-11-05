@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05i">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05j">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -51,7 +51,6 @@
 </header>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#flagship"><span>Atlas</span></a><a href="#shift"><span>How we deliver</span></a><a href="#roi"><span>ROI</span></a>
   <a href="#cloud"><span>Cloud</span></a><a href="#services"><span>Services</span></a><a href="#products"><span>Products</span></a><a href="#clients"><span>Clients</span></a><a href="#contact"><span>Contact</span></a>
 </nav>
 
@@ -65,7 +64,7 @@
         <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
       </div>
       <div class="hud-bar" aria-hidden="true">
-        <a class="scroll-cue" href="#flagship" tabindex="-1">Scroll to explore<i></i></a>
+        <a class="scroll-cue" href="#cloud" tabindex="-1">Scroll to explore<i></i></a>
       </div>
     </div>
     <div class="wrap">
@@ -74,83 +73,6 @@
         <div><strong data-count="83" data-suffix="%">83%</strong><span>More requests delivered, from the same set of test requests</span></div>
         <div><strong data-count="100" data-suffix="%">100%</strong><span>Of deliveries checked automatically and reviewed before sign-off</span></div>
         <div><strong>2019</strong><span>Founded in Hyderabad, India</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="flagship">
-    <div class="fl">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>See it deliver.</h2>
-          <p>Atlas is our flagship product. We run our own delivery on it, and now your team can too, using the AI subscription you already pay for.</p>
-        </div>
-        <div class="stage console-stage" style="--c:var(--plan)">
-          <img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt="">
-          <div class="window console" id="console">
-            <div class="bar"><i></i><i></i><i></i><span>atlas / new task</span><em class="preview-tag">Illustrative preview</em></div>
-            <form class="con-ask" id="con-form">
-              <label for="con-req">What do you need?</label>
-              <div class="con-row"><input id="con-req" maxlength="80" autocomplete="off" value="Add GST to invoices"><button class="btn btn-solid" type="submit">Deliver it</button></div>
-              <div class="con-chips" role="group" aria-label="Example requirements"><button type="button">Add GST to invoices</button><button type="button">Fix the login timeout</button><button type="button">Add an export button</button></div>
-            </form>
-            <div class="con-grid">
-              <div>
-                <ol class="con-rail" id="con-rail" aria-hidden="true"><li>Planned</li><li>Built</li><li>Checked</li><li>Delivered</li></ol>
-                <ol class="con-log" id="con-log" aria-hidden="true"></ol>
-              </div>
-              <dl class="con-sum" aria-hidden="true">
-                <div><dt>Now with</dt><dd id="sum-who">You</dd></div>
-                <div><dt>Specialists</dt><dd id="sum-agents">0</dd></div>
-                <div><dt>Checks run</dt><dd id="sum-checks">0</dd></div>
-                <div><dt>Fixes made</dt><dd id="sum-fixes">0</dd></div>
-              </dl>
-            </div>
-            <p class="con-done" id="con-done" role="status"></p>
-          </div>
-        </div>
-        <div class="flag-more"><a class="btn btn-solid" href="atlas.html">Know more about Atlas</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="shift" class="showcase">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The usual way, and the Atlas way</h2>
-        <p>Same request, two routes. One waits at every hand-off. The other splits the work, builds it in parallel, checks everything and delivers.</p>
-      </div>
-      <div class="race gantt" style="--p:0">
-        <div class="race-head">
-          <p class="ticket"><span>Request</span>Add GST invoices to the merchant app</p>
-          <button class="race-replay" type="button"><i class="fa-solid fa-rotate-right"></i><span class="t">Play again</span></button>
-        </div>
-        <div class="g-body">
-          <div class="g-row usual" data-end="86" data-last="Released">
-            <div class="g-label"><h3>The usual way</h3><p class="g-now" id="st-usual">Ready</p><p class="g-sum">2 hand-offs, 1 queue, 1 rework loop</p></div>
-            <div class="g-track"><div class="g-bars"><i class="seg work" style="--a:0;--b:6" data-status="Writing the brief"><span>Brief</span></i><i class="seg wait" style="--a:6;--b:14" data-status="Waiting for a hand-off"><span>Hand-off</span></i><i class="seg wait" style="--a:14;--b:25" data-status="Sitting in a queue"><span>Queue</span></i><i class="seg work" style="--a:25;--b:44" data-status="Building, one role at a time"><span>Build</span></i><i class="seg work" style="--a:44;--b:55" data-status="Testing by hand"><span>Manual test</span></i><i class="seg redo" style="--a:55;--b:68" data-status="Sent back for rework"><span>Rework</span></i><i class="seg wait" style="--a:68;--b:77" data-status="Waiting for another hand-off"><span>Hand-off</span></i><i class="seg work" style="--a:77;--b:86" data-status="Releasing"><span>Release</span></i></div><span class="g-end" style="--e:86"><span class="t">Released</span></span></div>
-          </div>
-          <div class="g-row atlas" data-end="34" data-last="Delivered">
-            <div class="g-label"><h3>With Atlas</h3><p class="g-now" id="st-atlas">Ready</p><p class="g-sum">No hand-offs, queues or rework</p></div>
-            <div class="g-track"><div class="g-bars"><i class="seg plan" style="--a:0;--b:5" data-status="Planning the work"><span>Plan</span></i><i class="seg plan" style="--a:5;--b:11" data-status="Designing it once"><span>Design</span></i><i class="seg make p1" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Build</span></i><i class="seg make p2" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Test</span></i><i class="seg make p3" style="--a:11;--b:23" data-status="Building, testing and documenting in parallel"><span>Docs</span></i><i class="seg check" style="--a:23;--b:28" data-status="Verifying everything"><span>Verify</span></i><i class="seg plan" style="--a:28;--b:34" data-status="Final review"><span>Review</span></i></div><span class="g-end" style="--e:34"><i class="fa-solid fa-check"></i><span class="t">Delivered</span></span></div>
-          </div>
-          <div class="g-axis"><span>Request in</span><span>Time</span></div>
-          <div class="g-mark" style="--e:34"><span>Atlas delivered</span></div>
-          <div class="g-playhead" aria-hidden="true"></div>
-        </div>
-        <ul class="g-key" aria-label="Key">
-          <li class="k-work">Work</li><li class="k-wait">Waiting</li><li class="k-redo">Rework</li><li class="k-atlas">Atlas, in parallel where it can</li>
-        </ul>
-        <p class="race-result" aria-live="polite" id="race-say"></p>
-        <p class="race-note">Illustrative timeline, not to scale.</p>
-      </div>
-      <div class="vs">
-        <div class="vs-row" style="--c:var(--plan)"><h3>Team</h3><div><p class="new">A lean senior team steering specialised agents.</p><p class="old">Instead of a large team, with every role staffed for the whole project.</p></div></div>
-        <div class="vs-row" style="--c:var(--make)"><h3>Hand-offs</h3><div><p class="new">Each step starts the moment the previous one is ready, and independent work runs in parallel.</p><p class="old">Instead of work waiting in a queue between every role.</p></div></div>
-        <div class="vs-row" style="--c:var(--check)"><h3>Quality</h3><div><p class="new">Every change is checked automatically and reviewed before it is delivered. Anything that fails is fixed and checked again, and anything unclear goes to a person.</p><p class="old">Instead of testing near the end, mostly by hand.</p></div></div>
-        <div class="vs-row" style="--c:var(--insight)"><h3>AI spend</h3><div><p class="new">AI effort matched to each task, with nothing spent where it is not needed.</p><p class="old">Instead of the same expensive AI for every task, or no AI at all.</p></div></div>
-        <div class="vs-row" style="--c:var(--plan)"><h3>Visibility</h3><div><p class="new">Cost, speed and quality of every delivery, tracked live.</p><p class="old">Instead of weekly status reports.</p></div></div>
-        <div class="vs-row" style="--c:var(--make)"><h3>Knowledge</h3><div><p class="new">Every decision and change is recorded with the work, so nothing lives only in someone's head.</p><p class="old">Instead of know-how that leaves when people do.</p></div></div>
       </div>
     </div>
   </section>
@@ -169,57 +91,6 @@
     <div class="wrap">
       <img loading="lazy" decoding="async" class="manifesto-art" src="resources/people/greeter.svg" alt="" aria-hidden="true">
       <p class="statement">We don't throw headcount at a backlog. A lean senior team steers Atlas, every result is checked before a person sees it, and nothing ships without an engineer's approval. Then we stay and keep it running.</p>
-    </div>
-  </section>
-
-  <section id="roi">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>See what the spend delivered</h2>
-        <p>The same month of work, three ways: a team doing it by hand, people iterating with AI tools on their own, and Atlas. Atlas records the cost of every step, failed ones included.</p>
-      </div>
-      <div class="calc roi3">
-        <div class="calc-top">
-          <label for="changes">Changes delivered per month</label>
-          <div class="calc-in"><input id="changes" type="range" min="5" max="100" step="5" value="20"><output id="changes-out" for="changes">20</output></div>
-        </div>
-        <div class="roi-cols">
-          <div class="roi-col manual" data-days="3" data-ai="0" data-redo="0" data-turn="5">
-            <h3>Manual team</h3><p class="roi-sub">Engineers write, test and review by hand</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-          <div class="roi-col adhoc" data-days="1.5" data-ai="25" data-redo="0.3" data-turn="3">
-            <h3>People iterating with AI</h3><p class="roi-sub">Each engineer prompts AI tools on their own, then checks and fixes the result</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-          <div class="roi-col atlas" data-days="0.5" data-ai="11.75" data-redo="0" data-turn="1">
-            <h3>With Atlas</h3><p class="roi-sub">Agents deliver, checks run automatically, an engineer steers and signs off</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-        </div>
-        <p class="roi-save" id="roi-save"></p>
-        <details class="calc-note">
-          <summary>How these numbers are worked out</summary>
-          <p>A mix of measured and estimated values, not a quote. The Atlas AI cost and run time are measured: in our internal benchmark, 12 representative requests were run end to end on sample repositories. 11 were delivered and 1 stopped for a person by design. Runs took 17 to 78 minutes, at an average of $11.75 per delivered change. Engineer time, the AI spend of people iterating on their own and the rework rate are our estimates from typical projects. Every option is priced at a blended engineer rate of $400 a day. Turnaround is working days from request to delivery for one change.</p>
-          <ul>
-            <li><b>Manual team:</b> 3 engineer-days per change, covering build, testing and review; about 5 working days turnaround once hand-offs and queues are included.</li>
-            <li><b>People iterating with AI:</b> 1.5 engineer-days and about $25 of AI use per change, with 30% of changes needing rework; about 3 working days turnaround.</li>
-            <li><b>With Atlas:</b> half an engineer-day per change to steer and sign off, plus $11.75 of AI, the average cost per delivery in our internal benchmark; delivered within a working day.</li>
-          </ul>
-        </details>
-      </div>
-      <ul class="tracked">
-        <li><i class="fa-solid fa-check"></i>Cost of every delivery, by project</li>
-        <li><i class="fa-solid fa-check"></i>Time from request to delivery</li>
-        <li><i class="fa-solid fa-check"></i>Work right first time, and rework after release</li>
-        <li><i class="fa-solid fa-check"></i>Savings from matching AI effort to each task</li>
-      </ul>
     </div>
   </section>
 
@@ -558,8 +429,8 @@
       </div>
       <div>
         <h4>Company</h4>
-        <a href="#shift">How we deliver</a>
-        <a href="#roi">ROI calculator</a>
+        <a href="atlas.html#shift">How we deliver</a>
+        <a href="atlas.html#roi">ROI calculator</a>
         <a href="#company">Our story</a>
         <a href="#approach">Approach</a>
         <a href="#clients">Clients</a>
@@ -617,68 +488,6 @@
   // Hero: the Atlas globe (js/globe.js)
   Globe($('.globe'), $('.globe-slot'), $('.hero'));
 
-
-  // The comparison: one timeline, two rows. A playhead sweeps both at the same pace and reveals each phase;
-  // when it passes Atlas's end, a marker shows where the usual way still was
-  const race = $('.race');
-  const rows = [...race.querySelectorAll('.g-row')].map(r => ({
-    r, end: +r.dataset.end, last: r.dataset.last, now: r.querySelector('.g-now'),
-    segs: [...r.querySelectorAll('.seg')].map(x => ({ a: +x.style.getPropertyValue('--a'), b: +x.style.getPropertyValue('--b'), st: x.dataset.status })),
-  }));
-  const RUN = 9000;
-  const show = p => {
-    race.style.setProperty('--p', p);
-    const P = p * 100;
-    for (const w of rows) {
-      const done = P >= w.end;
-      w.r.classList.toggle('done', done);
-      w.now.textContent = done ? w.last : (w.segs.find(x => P >= x.a && P < x.b) || { st: 'Ready' }).st;
-    }
-    if (P >= rows[1].end && !race.classList.contains('atlas-done')) {
-      race.classList.add('atlas-done');
-      $('#race-say').innerHTML = `<b>Atlas delivered</b> while the usual way was still ${rows[0].now.textContent.toLowerCase().replace(/^sent back/, 'being sent back')}.`;
-    }
-    race.classList.toggle('usual-done', P >= rows[0].end);
-  };
-  let raceId = 0;
-  const runRace = () => {
-    const id = ++raceId, t0 = performance.now();
-    race.classList.remove('atlas-done', 'usual-done'); $('#race-say').textContent = '';
-    const tick = now => { if (id !== raceId) return; const p = Math.min(1, (now - t0) / RUN); show(p); if (p < 1) requestAnimationFrame(tick); };
-    requestAnimationFrame(tick);
-  };
-  $('.race-replay').onclick = runRace;
-  if (still) show(1);
-  else {
-    const need = Math.min(0.85, innerHeight * 0.85 / race.offsetHeight);
-    const seenRace = new IntersectionObserver(es => { if (es[0].intersectionRatio >= need) { runRace(); seenRace.disconnect(); } }, { threshold: [need] });
-    seenRace.observe(race);
-  }
-
-
-  // ROI calculator: one month of changes, priced three ways from the assumptions written under it
-  const RATE = 400, changes = $('#changes'), cols = [...$$('.roi-col')];
-  const usd = v => '$' + Math.round(v).toLocaleString('en-US');
-  const calc = () => {
-    const n = +changes.value;
-    $('#changes-out').textContent = n;
-    const res = cols.map(c => {
-      const redo = 1 + +c.dataset.redo, days = +c.dataset.days * redo, per = days * RATE + +c.dataset.ai * redo;
-      return { c, days: days * n, per, total: per * n };
-    });
-    const max = Math.max(...res.map(r => r.total));
-    res.forEach(r => {
-      r.c.querySelector('.v').textContent = usd(r.total);
-      r.c.querySelector('.d').textContent = (Math.round(r.days * 10) / 10).toLocaleString('en-US') + ' days';
-      r.c.querySelector('.u').textContent = usd(r.per);
-      const tdays = +r.c.dataset.turn; r.c.querySelector('.t').textContent = tdays === 1 ? '1 day' : `${tdays} days`;
-      r.c.querySelector('.roi-bar i').style.width = (r.total / max * 100).toFixed(1) + '%';
-    });
-    const [m, , a] = res;
-    $('#roi-save').innerHTML = `Compared with a manual team, Atlas saves <b>${usd(m.total - a.total)}</b> and <b>${Math.round(m.days - a.days).toLocaleString('en-US')} engineer-days</b> a month, and each change lands in <b>1 day instead of ${m.c.dataset.turn}</b>.`;
-  };
-  changes.oninput = calc;
-  calc();
 
   // Reveal blocks as they scroll in
   $$('.section-head, .service, .standard, .case, .steps > li, .timeline > li, .stack > div, .facts > div, .quotes-rot, .faq details, .logos > *, .fit-grid')
@@ -767,7 +576,6 @@
   track.innerHTML += track.innerHTML;
 
 </script>
-<script src="js/console.js?v=2026-10-31a"></script>
 <script src="js/consent.js?v=2026-11-04b" defer></script>
 </body>
 </html>

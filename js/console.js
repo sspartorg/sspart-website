@@ -1,4 +1,4 @@
-// Home page: the Atlas console. A scripted run of the real delivery steps, played against whatever the visitor types.
+// Atlas page: the Atlas console. A scripted run of the real delivery steps, played against whatever the visitor types.
 (() => {
   const box = document.getElementById('console');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;

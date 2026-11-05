@@ -17,7 +17,8 @@ test('hero globe: the canvas paints', async ({ page }) => {
   expect(painted, 'painted pixels sampled').toBeGreaterThan(20);
 });
 
-test('ROI calculator: three ways priced from the stated assumptions, Atlas cheapest', async ({ page }) => {
+test('atlas page ROI calculator: three ways priced from the stated assumptions, Atlas cheapest', async ({ page }) => {
+  await page.goto('/atlas.html');
   const n = page.locator('#changes');
   await n.scrollIntoViewIfNeeded();
   await n.fill('40');
@@ -30,7 +31,8 @@ test('ROI calculator: three ways priced from the stated assumptions, Atlas cheap
   await expect(page.locator('#roi-save')).toContainText('1 day instead of 5');
 });
 
-test('usual way vs Atlas way: on one timeline Atlas delivers first, and every row compares both', async ({ page }) => {
+test('atlas page usual way vs Atlas way: on one timeline Atlas delivers first, and every row compares both', async ({ page }) => {
+  await page.goto('/atlas.html');
   await page.evaluate(() => document.querySelector('.race').scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('.race')).toHaveClass(/atlas-done/, { timeout: 10000 });
   await expect(page.locator('.race')).not.toHaveClass(/usual-done/);

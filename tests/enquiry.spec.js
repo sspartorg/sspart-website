@@ -100,11 +100,10 @@ test('atlas page: the board runs, pricing shows and the promises stay true', asy
   }
 });
 
-test('home page: the console delivers what the visitor typed, and Atlas pricing is there', async ({ page }) => {
-  await page.goto('/');
+test('atlas page: the console delivers what the visitor typed, and Atlas pricing is there', async ({ page }) => {
+  await page.goto('/atlas.html');
   const flag = page.locator('#flagship');
-  await expect(page.locator('#atlas-plans')).toContainText('$19');
-  await expect(flag.locator('a[href="atlas.html"]')).toHaveText('Know more about Atlas');
+  await expect(page.locator('#pricing')).toContainText('$19');
   await expect(flag.locator('#board')).toHaveCount(0);
   await flag.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await page.fill('#con-req', '<b>Add a refund page</b>');
@@ -169,7 +168,6 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
   await page.locator('#queue').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#q-done')).toHaveText('100');
   await expect(page.locator('.film-logo').first(), 'the film is a plain section').toBeVisible();
-  await page.goto('/');
   await expect(page.locator('#con-log li')).toHaveCount(11);
   await page.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#con-done')).toContainText('ready for your approval');

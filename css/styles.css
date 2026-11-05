@@ -83,14 +83,13 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { text-decoration: none; color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; }
 .nav a:hover { color: var(--on-night); }
-/* product links are the brand-pack horizontal logos (icon + wordmark); on the dark launch header each swaps to its on-dark file */
-/* each logo is sized so its product name has the same 9px cap height, and nudged so the names share the
-   baseline of the plain nav text (the lockups put the name at different heights beside their icons) */
+/* every product logo is drawn 18px tall (heights below = 18px / the logo's share of its file) and centred on the row,
+   so each keeps its own icon-to-name proportions; on the dark launch header each swaps to its on-dark file */
 .nav a:has(.nav-logo) { display: inline-flex; align-items: center; }
-.nav-logo { width: auto; flex: none; position: relative; }
-.nav-logo[src*="atlas-logo"] { height: 18.6px; top: -2.8px; }
-.nav-logo[src*="dhequest-logo"] { height: 21.4px; top: 0.5px; }
-.nav-logo[src*="synvord-logo"] { height: 22.7px; top: 2.3px; }
+.nav-logo { width: auto; flex: none; }
+.nav-logo[src*="atlas-logo"] { height: 21.4px; }
+.nav-logo[src*="synvord-logo"] { height: 21.9px; }
+.nav-logo[src*="dhequest-logo"] { height: 22.8px; }
 .on-night .nav-logo[src*="atlas-logo"] { content: url("../resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg"); }
 .on-night .nav-logo[src*="synvord-logo"] { content: url("../resources/brand/products/synvord-logo-primary-notag-fullcolor-on-dark.svg"); }
 .on-night .nav-logo[src*="dhequest-logo"] { content: url("../resources/brand/products/dhequest-logo-primary-fullcolor-on-dark.svg"); }

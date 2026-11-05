@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05t">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05u">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -106,15 +106,13 @@
           <div class="scene sc-globe" data-scenes="globe where">
             <div class="globe-slot"></div><canvas class="globe"></canvas>
             <div class="ai-term"><div class="term-bar"><i></i><i></i><i></i><span>atlas · live run</span><em class="term-live">live</em></div><p class="term-req">&gt; Add GST to invoices</p><ol class="term-lines"></ol></div>
-            <div class="who-card">
-              <p class="who-head">SSPART at a glance</p>
-              <dl>
-                <div><dt>3</dt><dd>products we build and run<span class="who-logos"><img src="resources/brand/products/atlas-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/synvord-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/dhequest-logo-icon-fullcolor.svg" alt=""></span></dd></div>
-                <div><dt>6</dt><dd>service lines, one senior team</dd></div>
-                <div><dt>4</dt><dd>industries: retail and payments, capital markets, education, software engineering</dd></div>
-                <div><dt><i class="fa-solid fa-cloud"></i></dt><dd>Cloud on AWS and Azure</dd></div>
-                <div><dt><i class="fa-solid fa-location-dot"></i></dt><dd>Engineering from Hyderabad, India</dd></div>
-              </dl>
+            <p class="who-head">SSPART at a glance</p>
+            <div class="who-orbit">
+              <div class="who-piece"><b>3</b><span>products we build and run</span><span class="who-logos"><img src="resources/brand/products/atlas-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/synvord-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/dhequest-logo-icon-fullcolor.svg" alt=""></span></div>
+              <div class="who-piece"><b>6</b><span>service lines, one senior team</span></div>
+              <div class="who-piece"><b>4</b><span>industries: retail and payments, capital markets, education, software</span></div>
+              <div class="who-piece"><b><i class="fa-solid fa-cloud"></i></b><span>Cloud on AWS and Azure</span></div>
+              <div class="who-piece"><b><i class="fa-solid fa-location-dot"></i></b><span>Engineering from Hyderabad, India</span></div>
             </div>
           </div>
           <div class="scene sc-services" data-scenes="services">
@@ -533,7 +531,7 @@
 </footer>
 
 <script src="js/globe.js?v=2026-11-05a"></script>
-<script src="js/story.js?v=2026-11-05c"></script>
+<script src="js/story.js?v=2026-11-05e"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };

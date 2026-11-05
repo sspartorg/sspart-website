@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05l">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05o">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -55,47 +55,85 @@
 </nav>
 
 <main id="top">
-  <section class="hero" id="home">
-    <!-- The SSPART film (js/home-film.js): the hero, then night falls, the globe opens out behind, and the three products
-         revolve around SSPART. Moves with the scroll; without the .pin film mode it is a plain section. -->
-    <div class="hero-pin">
-      <span id="launch-start"></span>
-      <div class="hero-stick">
-        <div class="hero-night"></div>
-        <div class="hero-stage">
-          <canvas class="globe" aria-hidden="true"></canvas>
-          <div class="globe-slot"></div>
-          <div class="hero-copy">
-            <h1>Software delivered by agents. Steered by engineers.</h1>
-            <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
-          </div>
-          <div class="hud-bar" aria-hidden="true">
-            <a class="scroll-cue" href="#launch-start" tabindex="-1">Scroll to explore<i></i></a>
-          </div>
+  <section class="hero story" id="home">
+    <div class="story-sky" aria-hidden="true"></div>
+    <!-- The SSPART story (js/story.js): chapters on the left, a sticky stage on the right that changes scene as each
+         chapter is read. On narrow screens the stage sits on top and the chapters scroll beneath it. -->
+    <div class="wrap story-grid">
+      <div class="story-text">
+        <div class="chapter ch-hero" data-scene="globe">
+          <p class="ch-num">SSPART Enterprise · Hyderabad · since 2019</p>
+          <h1>Software delivered by agents. Steered by engineers.</h1>
+          <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
+          <div class="actions"><a class="btn btn-solid" href="#products">Explore our products</a><a class="btn" href="contact.html">Talk to us</a></div>
         </div>
-        <div class="orbit" aria-label="Our products">
-          <img class="orbit-core" src="resources/brand/sspart-logo-header-night.svg" alt="SSPART">
-          <a class="orbit-item" href="atlas.html" style="--c:#7c3aed"><img src="resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg" alt="Atlas" width="380" height="141"><span>Software delivered by agents</span></a>
-          <a class="orbit-item" href="synvord.html" style="--c:#0077e6"><img src="resources/brand/products/synvord-logo-primary-notag-fullcolor-on-dark.svg" alt="Synvord" width="630" height="201"><span>One platform for every business</span></a>
-          <a class="orbit-item" href="dhequest.html" style="--c:#2e8b96"><img src="resources/brand/products/dhequest-logo-primary-fullcolor-on-dark.svg" alt="DheQuest" width="601" height="162"><span>Trading rules, tested first</span></a>
+        <div class="chapter" data-scene="where">
+          <p class="ch-num">01 · Who we are</p>
+          <h2>A product engineering company, since 2019.</h2>
+          <p>We started in Hyderabad as an engineering services firm. Today we build and run our own products, and we still design, build and run software for enterprise clients.</p>
         </div>
-        <div class="launch" id="launch">
-          <div class="beat" data-a="0.14" data-z="0.34">
-            <p class="beat-small">SSPART</p>
-            <p class="beat-huge">Expanding the ease of doing business.</p>
-            <p class="beat-line">We build the software businesses run on, and we keep it running with them.</p>
+        <div class="chapter" data-scene="services">
+          <p class="ch-num">02 · What we do</p>
+          <h2>Six things we do well.</h2>
+          <ul class="ch-svc"><li><i class="fa-solid fa-layer-group"></i><b>Product engineering</b><span>Web, mobile and back-end systems, built by one team that owns the outcome.</span></li><li><i class="fa-solid fa-microchip"></i><b>AI and agent systems</b><span>GenAI, retrieval and multi-agent systems, built with the discipline behind Atlas.</span></li><li><i class="fa-solid fa-store"></i><b>Commerce and payments</b><span>Storefronts, point of sale, UPI and QR payments, GST billing.</span></li><li><i class="fa-solid fa-chart-line"></i><b>Trading and market systems</b><span>Market data, strategy engines and broker automation, proven in DheQuest.</span></li><li><i class="fa-solid fa-database"></i><b>Data and analytics</b><span>Models, warehouses and reporting leadership can act on.</span></li><li><i class="fa-solid fa-server"></i><b>Cloud and operations</b><span>AWS and Azure, release pipelines, and support long after go-live.</span></li></ul>
+        </div>
+        <div class="chapter" data-scene="atlas">
+          <p class="ch-num">03 · Our flagship</p>
+          <h2>Atlas turns requests into delivered work.</h2>
+          <p>Specialised agents plan, build, test and document; a senior engineer reviews every change before it ships. Teams run it on the AI subscription they already pay for, and it's how we deliver our own work.</p>
+          <a class="ch-link" href="atlas.html" style="--c:var(--atlas)">Explore Atlas <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="chapter" data-scene="synvord">
+          <p class="ch-num">04 · For every business</p>
+          <h2>Synvord: one platform, in order.</h2>
+          <p>25 modules for hotels, restaurants, hospitals, schools, shops and marketing teams, all sharing one customer record. Coming soon, starting with PMS, RMS, CRM and HMS.</p>
+          <a class="ch-link" href="synvord.html" style="--c:var(--synvord)">Explore Synvord <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="chapter" data-scene="dhequest">
+          <p class="ch-num">05 · For traders</p>
+          <h2>DheQuest: trading rules, tested first.</h2>
+          <p>Build a strategy, back-test it on years of history, run it on paper, then trade it live through your own broker. Works with 11 brokers and crypto exchanges.</p>
+          <a class="ch-link" href="dhequest.html" style="--c:var(--dhequest)">Explore DheQuest <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="chapter" data-scene="clients">
+          <p class="ch-num">06 · Work with us</p>
+          <h2>Bring us the problem.</h2>
+          <p>Tell us what you run and what's slowing it down. We'll show you the product that fits, live, or scope the custom work and deliver it on Atlas.</p>
+          <div class="actions"><a class="btn btn-solid" href="contact.html">Talk to us</a><a class="btn" href="#clients">See who we work with</a></div>
+        </div>
+      </div>
+      <div class="story-stage" aria-hidden="true">
+        <div class="stage-sticky">
+          <div class="scene sc-globe" data-scenes="globe where">
+            <div class="globe-slot"></div><canvas class="globe"></canvas>
+            <div class="ai-term"><div class="term-bar"><i></i><i></i><i></i><span>atlas · live run</span><em class="term-live">live</em></div><p class="term-req">&gt; Add GST to invoices</p><ol class="term-lines"></ol></div>
+            <div class="pin-card pc-1"><i class="fa-solid fa-location-dot"></i>Hyderabad, India</div>
+            <div class="pin-card pc-2"><b>2019</b>founded</div>
+            <div class="pin-card pc-3"><i class="fa-solid fa-cloud"></i>AWS · Azure</div>
           </div>
-          <div class="beat beat-top" data-a="0.36" data-z="0.58">
-            <p class="beat-big">Three products. Built and run by us.</p>
-            <p class="beat-line">For engineering teams, for businesses of every kind, and for traders.</p>
+          <div class="scene sc-services" data-scenes="services">
+            <svg class="svc-lines" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet"><defs><radialGradient id="svc-glow"><stop offset="0" stop-color="#a78bfa" stop-opacity="0.55"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient></defs><circle r="70" fill="url(#svc-glow)"/><line x1="0" y1="0" x2="-0.0" y2="-78.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M0,0 L-0.0,-78.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="1.2s" repeatCount="indefinite" path="M-0.0,-78.0 L0,0"/></circle><line x1="0" y1="0" x2="67.55" y2="-39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.4s" repeatCount="indefinite" path="M0,0 L67.55,-39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M67.55,-39.0 L0,0"/></circle><line x1="0" y1="0" x2="67.55" y2="39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M0,0 L67.55,39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.0s" repeatCount="indefinite" path="M67.55,39.0 L0,0"/></circle><line x1="0" y1="0" x2="-0.0" y2="78.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M0,0 L-0.0,78.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.4s" repeatCount="indefinite" path="M-0.0,78.0 L0,0"/></circle><line x1="0" y1="0" x2="-67.55" y2="39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M0,0 L-67.55,39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.8s" repeatCount="indefinite" path="M-67.55,39.0 L0,0"/></circle><line x1="0" y1="0" x2="-67.55" y2="-39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="2.0s" repeatCount="indefinite" path="M0,0 L-67.55,-39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="3.2s" repeatCount="indefinite" path="M-67.55,-39.0 L0,0"/></circle></svg>
+            <div class="svc-core"><img src="resources/brand/sspart-logo-header-night.svg" alt=""></div>
+            <ul class="svc-nodes"><li style="--k:0"><i class="fa-solid fa-layer-group"></i><span>Product engineering</span></li><li style="--k:1"><i class="fa-solid fa-microchip"></i><span>AI and agent systems</span></li><li style="--k:2"><i class="fa-solid fa-store"></i><span>Commerce and payments</span></li><li style="--k:3"><i class="fa-solid fa-chart-line"></i><span>Trading and market systems</span></li><li style="--k:4"><i class="fa-solid fa-database"></i><span>Data and analytics</span></li><li style="--k:5"><i class="fa-solid fa-server"></i><span>Cloud and operations</span></li></ul>
           </div>
-          <div class="beat beat-top" data-a="0.6" data-z="0.79">
-            <p class="beat-big">And one way to deliver yours.</p>
-            <p class="beat-line">Our senior engineers steer Atlas to build your software, and every change is checked before it ships.</p>
+          <div class="scene sc-shot" data-scenes="atlas">
+            <div class="device"><div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span></div><img src="resources/screens/atlas-dashboard-1440.webp" srcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" sizes="(max-width: 900px) 90vw, 46vw" alt="" loading="lazy" decoding="async" width="1440" height="900"></div>
+            <div class="float-card fc-a" style="--c:#10b981"><i class="fa-solid fa-circle-check"></i>Every change checked before it ships</div>
+            <div class="float-card fc-b" style="--c:#7c3aed"><i class="fa-solid fa-robot"></i>24 specialist agents</div>
           </div>
-          <div class="beat beat-top" data-a="0.81" data-z="2">
-            <p class="beat-big">Let's build what's next.</p>
-            <div class="beat-cta"><a class="btn" href="#products">Explore our products</a><a class="btn btn-ghost" href="contact.html">Talk to us</a></div>
+          <div class="scene sc-board" data-scenes="synvord">
+            <div class="board-head"><img src="resources/brand/products/synvord-logo-primary-notag-fullcolor.svg" alt="" width="630" height="201"><span class="soon">Coming soon</span></div>
+            <ul class="mod-grid"><li class="flag" style="--k:0"><i class="fa-solid fa-hotel"></i>PMS</li><li class="flag" style="--k:1"><i class="fa-solid fa-utensils"></i>RMS</li><li class="flag" style="--k:2"><i class="fa-solid fa-hospital"></i>HMS</li><li class="flag" style="--k:3"><i class="fa-solid fa-bullhorn"></i>CRM</li><li style="--k:4"><i class="fa-solid fa-calendar-check"></i>Booking</li><li style="--k:5"><i class="fa-solid fa-notes-medical"></i>EMR</li><li style="--k:6"><i class="fa-solid fa-school"></i>Schools</li><li style="--k:7"><i class="fa-solid fa-cart-shopping"></i>Commerce</li><li style="--k:8"><i class="fa-solid fa-award"></i>Loyalty</li><li style="--k:9"><i class="fa-solid fa-users"></i>HRMS</li><li style="--k:10"><i class="fa-solid fa-book"></i>Finance</li><li style="--k:11"><i class="fa-solid fa-chart-line"></i>Analytics</li><li class="more" style="--k:12">+13 more</li></ul>
+          </div>
+          <div class="scene sc-shot" data-scenes="dhequest">
+            <div class="device"><div class="bar"><i></i><i></i><i></i><span>dhequest / trade / terminal</span></div><img src="resources/screens/dhequest-terminal-payoff-1440.webp" srcset="resources/screens/dhequest-terminal-payoff-720.webp 720w, resources/screens/dhequest-terminal-payoff-1440.webp 1440w" sizes="(max-width: 900px) 90vw, 46vw" alt="" loading="lazy" decoding="async" width="1440" height="900"></div>
+            <div class="float-card fc-a" style="--c:#2e8b96"><i class="fa-solid fa-clock-rotate-left"></i>Back-tested on years of history</div>
+            <div class="float-card fc-b" style="--c:#2e8b96"><i class="fa-solid fa-building-columns"></i>11 brokers and exchanges</div>
+          </div>
+          <div class="scene sc-clients" data-scenes="clients">
+            <p class="cl-head">Trusted to build and run</p>
+            <div class="cl-logos"><span><img src="resources/clients/exit.webp" alt="" loading="lazy"></span><span><img src="resources/clients/limitless-pay.webp" alt="" loading="lazy"></span></div>
+            <ul class="cl-proof"><li><b>74%</b>lower AI cost per delivery</li><li><b>100%</b>of deliveries checked and reviewed</li><li><b>6</b>service lines, one team</li></ul>
           </div>
         </div>
       </div>
@@ -490,7 +528,7 @@
 </footer>
 
 <script src="js/globe.js?v=2026-11-05a"></script>
-<script src="js/home-film.js?v=2026-11-05c"></script>
+<script src="js/story.js?v=2026-11-05b"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };

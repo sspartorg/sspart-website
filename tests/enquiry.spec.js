@@ -173,25 +173,30 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
   await expect(page.locator('#con-done')).toContainText('ready for your approval');
 });
 
-test('home page: the SSPART film opens on the hero, introduces SSPART, sets the three products in orbit, then hands over', async ({ page }) => {
+test('home page: the SSPART story changes the stage as each chapter is read, and links to every product', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.hero h1')).toBeVisible();
-  const at = f => page.evaluate(f => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
-  await at(0.24);
-  await expect(page.locator('.beat').first()).toContainText('Expanding the ease of doing business');
-  await expect(page.locator('.site-head')).toHaveClass(/on-night/);
-  await at(0.5);
-  const items = page.locator('.orbit-item');
-  await expect(items).toHaveCount(3);
-  for (const href of ['atlas.html', 'synvord.html', 'dhequest.html']) await expect(page.locator(`.orbit-item[href="${href}"]`)).toBeVisible();
-  await at(0.92);
-  await expect(page.locator('.beat-cta a').first()).toBeVisible();
-  await at(1.2);
-  await expect(page.locator('.site-head')).not.toHaveClass(/on-night/);
+  await expect(page.locator('.scene.on')).toHaveClass(/sc-globe/);
+  const read = async (scene, cls) => {
+    await page.locator(`.chapter[data-scene="${scene}"]`).evaluate(c => { const r = c.getBoundingClientRect(); scrollTo({ top: scrollY + r.top + r.height / 2 - innerHeight / 2, behavior: 'instant' }); });
+    await expect(page.locator('.scene.on')).toHaveClass(cls);
+    await expect(page.locator(`.chapter[data-scene="${scene}"]`)).toHaveClass(/\bon\b/);
+  };
+  await read('where', /sc-globe/);
+  await expect(page.locator('.pin-card').first()).toBeVisible();
+  await read('services', /sc-services/);
+  await expect(page.locator('.svc-nodes li')).toHaveCount(6);
+  await read('atlas', /sc-shot/);
+  await expect(page.locator('.scene.on .device img')).toHaveAttribute('src', /atlas-dashboard/);
+  await read('synvord', /sc-board/);
+  await read('dhequest', /sc-shot/);
+  await expect(page.locator('.scene.on .device img')).toHaveAttribute('src', /dhequest/);
+  await read('clients', /sc-clients/);
+  for (const href of ['atlas.html', 'synvord.html', 'dhequest.html']) await expect(page.locator(`.story .ch-link[href="${href}"]`)).toHaveCount(1);
 });
 
 // Every product film moves with the scroll: nothing snaps, nothing takes over, wherever the visitor stops is where it stays
-for (const [url, sel] of [['/', '.hero-pin'], ['/atlas.html', '.sv-film'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
+for (const [url, sel] of [['/atlas.html', '.sv-film'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
   test(`${url}: the film follows the scroll smoothly and never snaps`, async ({ page, isMobile }) => {
     test.skip(isMobile, 'wheel only');
     await page.goto(url);

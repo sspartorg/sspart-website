@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05j">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05l">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body class="atlas-page">
@@ -55,44 +55,29 @@
 </nav>
 
 <main id="top">
-  <!-- The Atlas film (moved here from the home page): night falls, the globe grows, four beats. js/globe.js + js/atlas-film.js -->
-  <section class="hero film-hero" aria-label="Introducing Atlas">
-    <div class="hero-pin">
-      <span id="launch-start"></span>
-      <div class="hero-stick">
-        <div class="hero-night"></div>
-        <div class="hero-stage">
-          <canvas class="globe" aria-hidden="true"></canvas>
-          <div class="globe-slot"></div>
-          <div class="hero-copy">
-            <a class="launch-tag" href="#launch-start">Introducing Atlas, for your team</a>
-            <p class="film-head">Software delivered by agents. Steered by engineers.</p>
-          </div>
-          <div class="hud-bar" aria-hidden="true">
-            <a class="scroll-cue" href="#launch-start" tabindex="-1">Scroll to explore<i></i></a>
-          </div>
-        </div>
-        <div class="launch" id="launch">
-          <img class="fly f1" src="resources/people/agent-1.svg" alt=""><img class="fly f2" src="resources/people/agent-2.svg" alt=""><img class="fly f3" src="resources/people/agent-5.svg" alt="">
-          <div class="beat" data-a="0.14" data-z="0.36">
-            <p class="beat-small">Introducing</p>
-            <h2 class="film-logo"><img src="resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg" alt="Atlas" width="380" height="141"></h2>
-            <p class="beat-line">Hand it the work. Get it back delivered.</p>
-          </div>
-          <div class="beat" data-a="0.38" data-z="0.58">
-            <p class="mega"><span id="beat-count">100</span></p>
-            <p class="beat-big">tasks delivered. Not 100 conversations.</p>
-          </div>
-          <div class="beat" data-a="0.6" data-z="0.78">
-            <p class="beat-huge">No new AI subscription.</p>
-            <p class="beat-line">Atlas runs on the plan you already pay for, within its limits.</p>
-          </div>
-          <div class="beat" data-a="0.8" data-z="2">
-            <p class="beat-huge">Available now.</p>
-            <p class="beat-line">Free to start. $19 per user a month for teams.</p>
-            <div class="beat-cta"><a class="btn" href="#how">See how it works</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
-          </div>
-        </div>
+  <!-- The Atlas film: 100 tasks fill a board as agents take them on (js/atlas-film.js draws the board and count;
+       js/product-film.js runs the beats and the night header, as on Synvord and DheQuest) -->
+  <section id="atlas-launch" class="sv-film at-film" aria-label="Introducing Atlas">
+    <div class="sv-stick">
+      <img class="fly f1" src="resources/people/agent-1.svg" alt=""><img class="fly f2" src="resources/people/agent-2.svg" alt=""><img class="fly f3" src="resources/people/agent-5.svg" alt="">
+      <ol class="at-board" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+      <div class="sv-beat sv-b1">
+        <p class="beat-small">Introducing</p>
+        <h2 class="film-logo"><img src="resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg" alt="Atlas" width="380" height="141"></h2>
+        <p class="beat-line">Hand it the work. Get it back delivered.</p>
+      </div>
+      <div class="sv-beat sv-b2">
+        <p class="mega"><span id="beat-count">100</span></p>
+        <p class="beat-big">tasks delivered. Not 100 conversations.</p>
+      </div>
+      <div class="sv-beat sv-b3">
+        <p class="beat-huge">No new AI subscription.</p>
+        <p class="beat-line">Atlas runs on the plan you already pay for, within its limits.</p>
+      </div>
+      <div class="sv-beat sv-b4">
+        <p class="beat-huge">Available now.</p>
+        <p class="beat-line">Free to start. $19 per user a month for teams.</p>
+        <div class="beat-cta"><a class="btn" href="#what">See what you get</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
       </div>
     </div>
   </section>
@@ -629,8 +614,8 @@
   n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 </script>
 <script src="js/page.js?v=2026-11-04a"></script>
-<script src="js/globe.js?v=2026-11-05a"></script>
-<script src="js/atlas-film.js?v=2026-11-05c"></script>
+<script src="js/product-film.js?v=2026-11-05c"></script>
+<script src="js/atlas-film.js?v=2026-11-05d"></script>
 <script src="js/board.js?v=2026-10-31a"></script>
 <script src="js/atlas.js?v=2026-11-05a"></script>
 <script src="js/console.js?v=2026-11-05a"></script>

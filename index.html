@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05j">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05l">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -56,15 +56,48 @@
 
 <main id="top">
   <section class="hero" id="home">
-    <div class="hero-stage">
-      <canvas class="globe" aria-hidden="true"></canvas>
-      <div class="globe-slot"></div>
-      <div class="hero-copy">
-        <h1>Software delivered by agents. Steered by engineers.</h1>
-        <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
-      </div>
-      <div class="hud-bar" aria-hidden="true">
-        <a class="scroll-cue" href="#cloud" tabindex="-1">Scroll to explore<i></i></a>
+    <!-- The SSPART film (js/home-film.js): the hero, then night falls, the globe opens out behind, and the three products
+         revolve around SSPART. Moves with the scroll; without the .pin film mode it is a plain section. -->
+    <div class="hero-pin">
+      <span id="launch-start"></span>
+      <div class="hero-stick">
+        <div class="hero-night"></div>
+        <div class="hero-stage">
+          <canvas class="globe" aria-hidden="true"></canvas>
+          <div class="globe-slot"></div>
+          <div class="hero-copy">
+            <h1>Software delivered by agents. Steered by engineers.</h1>
+            <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
+          </div>
+          <div class="hud-bar" aria-hidden="true">
+            <a class="scroll-cue" href="#launch-start" tabindex="-1">Scroll to explore<i></i></a>
+          </div>
+        </div>
+        <div class="orbit" aria-label="Our products">
+          <img class="orbit-core" src="resources/brand/sspart-logo-header-night.svg" alt="SSPART">
+          <a class="orbit-item" href="atlas.html" style="--c:#7c3aed"><img src="resources/brand/products/atlas-logo-primary-fullcolor-on-dark.svg" alt="Atlas" width="380" height="141"><span>Software delivered by agents</span></a>
+          <a class="orbit-item" href="synvord.html" style="--c:#0077e6"><img src="resources/brand/products/synvord-logo-primary-notag-fullcolor-on-dark.svg" alt="Synvord" width="630" height="201"><span>One platform for every business</span></a>
+          <a class="orbit-item" href="dhequest.html" style="--c:#2e8b96"><img src="resources/brand/products/dhequest-logo-primary-fullcolor-on-dark.svg" alt="DheQuest" width="601" height="162"><span>Trading rules, tested first</span></a>
+        </div>
+        <div class="launch" id="launch">
+          <div class="beat" data-a="0.14" data-z="0.34">
+            <p class="beat-small">SSPART</p>
+            <p class="beat-huge">Expanding the ease of doing business.</p>
+            <p class="beat-line">We build the software businesses run on, and we keep it running with them.</p>
+          </div>
+          <div class="beat beat-top" data-a="0.36" data-z="0.58">
+            <p class="beat-big">Three products. Built and run by us.</p>
+            <p class="beat-line">For engineering teams, for businesses of every kind, and for traders.</p>
+          </div>
+          <div class="beat beat-top" data-a="0.6" data-z="0.79">
+            <p class="beat-big">And one way to deliver yours.</p>
+            <p class="beat-line">Our senior engineers steer Atlas to build your software, and every change is checked before it ships.</p>
+          </div>
+          <div class="beat beat-top" data-a="0.81" data-z="2">
+            <p class="beat-big">Let's build what's next.</p>
+            <div class="beat-cta"><a class="btn" href="#products">Explore our products</a><a class="btn btn-ghost" href="contact.html">Talk to us</a></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="wrap">
@@ -457,6 +490,7 @@
 </footer>
 
 <script src="js/globe.js?v=2026-11-05a"></script>
+<script src="js/home-film.js?v=2026-11-05c"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
@@ -485,8 +519,7 @@
   const measure = () => document.documentElement.classList.add('measured');
   if (location.hash) measure();
   addEventListener('click', e => { if (e.target.closest('a[href*="#"]')) measure(); });
-  // Hero: the Atlas globe (js/globe.js)
-  Globe($('.globe'), $('.globe-slot'), $('.hero'));
+  // Hero: the globe and the SSPART film are in js/globe.js and js/home-film.js
 
 
   // Reveal blocks as they scroll in

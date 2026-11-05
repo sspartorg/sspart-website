@@ -173,14 +173,17 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
   await expect(page.locator('#con-done')).toContainText('ready for your approval');
 });
 
-test('atlas page: the film introduces Atlas as the page scrolls, then hands over to the page', async ({ page }) => {
-  await page.goto('/atlas.html');
-  const name = page.locator('.film-logo');
-  await expect(name).toBeHidden();
+test('home page: the SSPART film opens on the hero, introduces SSPART, sets the three products in orbit, then hands over', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.hero h1')).toBeVisible();
   const at = f => page.evaluate(f => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
   await at(0.24);
-  await expect(name).toBeVisible();
+  await expect(page.locator('.beat').first()).toContainText('Expanding the ease of doing business');
   await expect(page.locator('.site-head')).toHaveClass(/on-night/);
+  await at(0.5);
+  const items = page.locator('.orbit-item');
+  await expect(items).toHaveCount(3);
+  for (const href of ['atlas.html', 'synvord.html', 'dhequest.html']) await expect(page.locator(`.orbit-item[href="${href}"]`)).toBeVisible();
   await at(0.92);
   await expect(page.locator('.beat-cta a').first()).toBeVisible();
   await at(1.2);
@@ -188,7 +191,7 @@ test('atlas page: the film introduces Atlas as the page scrolls, then hands over
 });
 
 // Every product film moves with the scroll: nothing snaps, nothing takes over, wherever the visitor stops is where it stays
-for (const [url, sel] of [['/atlas.html', '.hero-pin'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
+for (const [url, sel] of [['/', '.hero-pin'], ['/atlas.html', '.sv-film'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
   test(`${url}: the film follows the scroll smoothly and never snaps`, async ({ page, isMobile }) => {
     test.skip(isMobile, 'wheel only');
     await page.goto(url);
@@ -204,7 +207,7 @@ for (const [url, sel] of [['/atlas.html', '.hero-pin'], ['/synvord.html', '.sv-f
   });
 }
 
-for (const [page_, name] of [['synvord.html', 'Synvord'], ['dhequest.html', 'DheQuest']]) {
+for (const [page_, name] of [['atlas.html', 'Atlas'], ['synvord.html', 'Synvord'], ['dhequest.html', 'DheQuest']]) {
   test(`${page_}: the film opens the page, turns the header night, then hands over`, async ({ page }) => {
     await page.goto('/' + page_);
     const film = page.locator('.sv-film');

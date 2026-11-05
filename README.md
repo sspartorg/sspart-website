@@ -15,7 +15,7 @@ See `tests/README.md`; in short: `cd tests && npm install && npm run setup && np
 
 ## Files
 
-- `index.html` — the home page: products (Atlas, DheQuest, Neel, Experts Jar), clients, story, contact
+- `index.html` — the home page: slim product cards linking to atlas.html, synvord.html and dhequest.html (each page opens with its product film), clients, story, contact
 - `css/styles.css` — all styles; colours are the tokens at the top
 - `privacy.html`, `terms.html`, `cookies.html` — legal pages
 - `atlas.html` — the Atlas detail page behind "Know more": plans, market comparison, pricing. The home page carries the summary; `js/console.js` drives the home page console, `js/atlas.js` and `js/board.js` the Atlas page
@@ -34,8 +34,8 @@ See `tests/README.md`; in short: `cd tests && npm install && npm run setup && np
 ## Placeholders
 
 Anything waiting on real content carries `data-placeholder="..."` and shows a dashed outline with a tag.
-The product windows show real screenshots from `resources/screens/` (Experts Jar is still an HTML mock-up, as it has
-no screenshots yet).
+The product windows show real screenshots from `resources/screens/`. Experts Jar is no longer in the catalog; it appears only
+as company history (2021, our first product).
 Neel screens were captured from its console running locally with the seeded demo data (`admin@neel.test`).
 
 ## Sample data (replace before going live)

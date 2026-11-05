@@ -41,43 +41,19 @@ test('usual way vs Atlas way: on one timeline Atlas delivers first, and every ro
   for (const n of await rows.evaluateAll(r => r.map(x => x.querySelectorAll('.old, .new').length))) expect(n).toBe(2);
 });
 
-for (const id of ['atlas', 'dhequest']) { // Synvord is coming soon: a module board, no screenshots
-  test(`${id} gallery: every tab shows its real screenshot and address`, async ({ page }) => {
-    const btns = page.locator(`#${id} .shot-tabs button`);
-    const n = await btns.count();
-    expect(n).toBeGreaterThanOrEqual(3);
-    for (let i = 0; i < n; i++) {
-      await btns.nth(i).scrollIntoViewIfNeeded();
-      await btns.nth(i).click();
-      await expect(page.locator(`#${id} .shots img`).nth(i)).toHaveClass(/\bon\b/);
-      await expect(page.locator(`#${id} .bar span`)).toHaveText(await btns.nth(i).getAttribute('data-url'));
-      expect(await page.locator(`#${id} .shots img.on`).evaluate(i => i.naturalWidth)).toBeGreaterThan(0);
-    }
-  });
-}
-
-test('larger view opens, fits the screen and closes by button and Escape', async ({ page }) => {
-  await page.locator('#dhequest .expand').scrollIntoViewIfNeeded();
-  await page.locator('#dhequest .expand').click();
-  const viewer = page.locator('.viewer');
-  await expect(viewer).toHaveJSProperty('open', true);
-  const box = await page.locator('.viewer .window').boundingBox();
-  expect(box.x).toBeGreaterThanOrEqual(0);
-  expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize().width + 1);
-  await page.locator('.viewer-close').click();
-  await expect(viewer).toHaveJSProperty('open', false);
-  await page.locator('#atlas .expand').scrollIntoViewIfNeeded();
-  await page.locator('#atlas .expand').click();
-  await page.keyboard.press('Escape');
-  await expect(viewer).toHaveJSProperty('open', false);
-});
-
-test('Experts Jar preview: next submission changes the content', async ({ page }) => {
-  const title = page.locator('#experts-jar [data-f="title"]');
-  const before = await title.textContent();
-  await page.locator('#experts-jar [data-act="next"]').scrollIntoViewIfNeeded();
-  await page.locator('#experts-jar [data-act="next"]').click();
-  await expect(title).not.toHaveText(before);
+// The product galleries live on the product pages; DheQuest's hero has the tabbed one (Atlas shows its screens side by side)
+test('dhequest page gallery: every tab shows its real screenshot and address', async ({ page }) => {
+  await page.goto('/dhequest.html');
+  const w = page.locator('.a-hero .window'), btns = w.locator('.shot-tabs button');
+  const n = await btns.count();
+  expect(n).toBeGreaterThanOrEqual(3);
+  for (let i = 0; i < n; i++) {
+    await btns.nth(i).scrollIntoViewIfNeeded();
+    await btns.nth(i).click();
+    await expect(w.locator('.shots img').nth(i)).toHaveClass(/\bon\b/);
+    await expect(w.locator('.bar span')).toHaveText(await btns.nth(i).getAttribute('data-url'));
+    await expect.poll(() => w.locator('.shots img.on').evaluate(i => i.naturalWidth)).toBeGreaterThan(0);
+  }
 });
 
 test('fit picker: every option recommends a product with a matching enquiry link', async ({ page }) => {
@@ -95,7 +71,7 @@ test('fit picker: every option recommends a product with a matching enquiry link
 
 test('demo buttons open the enquiry form, and no email links remain', async ({ page }) => {
   const hrefs = await page.locator('.mail-btn').evaluateAll(a => a.map(x => x.getAttribute('href')));
-  expect(hrefs.length).toBeGreaterThanOrEqual(5);
+  expect(hrefs.length).toBeGreaterThanOrEqual(4); // Atlas, DheQuest, Synvord, custom work
   for (const h of hrefs) expect(h).toMatch(/^contact\.html\?product=/);
   await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
   await expect(page.locator('a[href*="github.com/sspartorg/atlas"]:not([href*="atlas-open"])')).toHaveCount(0);
@@ -134,21 +110,11 @@ test('back-to-top: hidden while reading down, offered when scrolling up, arrow c
   expect(off, 'arrow offset from centre').toBeLessThanOrEqual(0.5);
 });
 
-test('sticky product tabs: opaque, one row, active tab visible', async ({ page }) => {
-  await page.evaluate(() => document.getElementById('experts-jar').scrollIntoView({ behavior: 'instant' }));
-  await page.waitForTimeout(800);
-  const bar = await page.locator('.product-tabs').evaluate(t => {
-    const links = [...t.querySelectorAll('a')], active = t.querySelector('a.active');
-    const r = t.getBoundingClientRect(), a = active && active.getBoundingClientRect();
-    return {
-      bg: getComputedStyle(t).backgroundColor,
-      rows: new Set(links.map(x => Math.round(x.getBoundingClientRect().top))).size,
-      activeVisible: !!a && a.left >= r.left - 1 && a.right <= r.right + 1,
-    };
-  });
-  expect(bar.bg).not.toMatch(/rgba\(.*, 0\)|transparent/);
-  expect(bar.rows).toBe(1);
-  expect(bar.activeVisible, 'active product tab is on screen').toBe(true);
+test('product cards: Atlas, Synvord and DheQuest, each linking to its own page', async ({ page }) => {
+  const cards = page.locator('#products .p-card');
+  await expect(cards).toHaveCount(3);
+  expect(await cards.evaluateAll(as => as.map(a => a.getAttribute('href')))).toEqual(['atlas.html', 'synvord.html', 'dhequest.html']);
+  await expect(page.locator('#products')).not.toContainText('Experts Jar');
 });
 
 test('case-study figures count up to their final values', async ({ page }) => {

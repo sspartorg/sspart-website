@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05d">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05e">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -57,44 +57,15 @@
 
 <main id="top">
   <section class="hero" id="home">
-    <div class="hero-pin">
-      <span id="launch-start"></span>
-      <div class="hero-stick">
-        <div class="hero-night"></div>
-        <div class="hero-stage">
-          <canvas class="globe" aria-hidden="true"></canvas>
-          <div class="globe-slot"></div>
-          <div class="hero-copy">
-            <a class="launch-tag" href="#launch-start">Introducing Atlas, for your team</a>
-            <h1>Software delivered by agents. Steered by engineers.</h1>
-            <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
-          </div>
-          <div class="hud-bar" aria-hidden="true">
-            <a class="scroll-cue" href="#launch-start" tabindex="-1">Scroll to explore<i></i></a>
-          </div>
-        </div>
-        <div class="launch" id="launch">
-          <img class="fly f1" src="resources/people/agent-1.svg" alt=""><img class="fly f2" src="resources/people/agent-2.svg" alt=""><img class="fly f3" src="resources/people/agent-5.svg" alt="">
-          <div class="beat" data-a="0.14" data-z="0.36">
-            <svg class="atlas-mark" viewBox="0 4 128 120" role="img" aria-label="Atlas logo"><path fill="currentColor" d="M64 4Q65 11.5 73 12.5 65 13.5 64 21 63 13.5 55 12.5 63 11.5 64 4ZM48 23H58L64 41 38 124H8ZM80 23H70L64 41 90 124H120Z"/></svg>
-            <p class="beat-small">Introducing</p>
-            <h2 class="mega">ATLAS</h2>
-            <p class="beat-line">Hand it the work. Get it back delivered.</p>
-          </div>
-          <div class="beat" data-a="0.38" data-z="0.58">
-            <p class="mega"><span id="beat-count">100</span></p>
-            <p class="beat-big">tasks delivered. Not 100 conversations.</p>
-          </div>
-          <div class="beat" data-a="0.6" data-z="0.78">
-            <p class="beat-huge">No new AI subscription.</p>
-            <p class="beat-line">Atlas runs on the plan you already pay for, within its limits.</p>
-          </div>
-          <div class="beat" data-a="0.8" data-z="2">
-            <p class="beat-huge">Available now.</p>
-            <p class="beat-line">Free to start. $19 per user a month for teams.</p>
-            <div class="beat-cta"><a class="btn" href="#flagship">Watch it deliver</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
-          </div>
-        </div>
+    <div class="hero-stage">
+      <canvas class="globe" aria-hidden="true"></canvas>
+      <div class="globe-slot"></div>
+      <div class="hero-copy">
+        <h1>Software delivered by agents. Steered by engineers.</h1>
+        <p class="lede">Atlas, our agent orchestration platform, turns every request into finished, verified work. A lean senior team steers it, so you get delivery faster and for less.</p>
+      </div>
+      <div class="hud-bar" aria-hidden="true">
+        <a class="scroll-cue" href="#flagship" tabindex="-1">Scroll to explore<i></i></a>
       </div>
     </div>
     <div class="wrap">
@@ -252,32 +223,6 @@
     </div>
   </section>
 
-  <!-- Synvord's entrance: a second flagship film. Scroll scatters 25 module tiles, then snaps them into order (js/sv-launch.js) -->
-  <section id="synvord-launch" class="sv-film" aria-label="Introducing Synvord">
-    <div class="sv-stick">
-      <div class="sv-beat sv-b1">
-        <img class="sv-mark" src="resources/brand/products/synvord-logo-icon-fullcolor-on-dark.svg" alt="" width="170" height="175">
-        <p class="beat-small">Introducing</p>
-        <h2 class="mega sv-mega">SYNVORD</h2>
-        <p class="beat-line">One platform for hotels, restaurants, hospitals, schools and shops.</p>
-      </div>
-      <div class="sv-beat sv-b2">
-        <p class="beat-huge">A tool for every job.</p>
-        <p class="beat-line">The front desk, the kitchen, the ward and the campaign, each in a system of its own.</p>
-      </div>
-      <ul class="sv-chips" aria-label="Synvord modules"><li class="flag"><i class="fa-solid fa-hotel"></i><span>PMS</span></li><li><i class="fa-solid fa-calendar-check"></i><span>Booking Engine</span></li><li class="flag"><i class="fa-solid fa-utensils"></i><span>RMS</span></li><li><i class="fa-solid fa-mobile-screen"></i><span>Guest App</span></li><li><i class="fa-solid fa-champagne-glasses"></i><span>Events</span></li><li><i class="fa-solid fa-spa"></i><span>Spa &amp; Activities</span></li><li><i class="fa-solid fa-handshake"></i><span>B2B Portal</span></li><li class="flag"><i class="fa-solid fa-hospital"></i><span>HMS</span></li><li><i class="fa-solid fa-notes-medical"></i><span>EMR</span></li><li><i class="fa-solid fa-school"></i><span>School Management</span></li><li><i class="fa-solid fa-cart-shopping"></i><span>Commerce</span></li><li class="flag"><i class="fa-solid fa-bullhorn"></i><span>CRM</span></li><li><i class="fa-solid fa-id-card"></i><span>CDP</span></li><li><i class="fa-solid fa-award"></i><span>Loyalty</span></li><li><i class="fa-solid fa-star-half-stroke"></i><span>Reputation</span></li><li><i class="fa-solid fa-headset"></i><span>Contact Center</span></li><li><i class="fa-solid fa-users"></i><span>HRMS</span></li><li><i class="fa-solid fa-book"></i><span>Finance</span></li><li><i class="fa-solid fa-credit-card"></i><span>Payments</span></li><li><i class="fa-solid fa-boxes-stacked"></i><span>Procurement</span></li><li><i class="fa-solid fa-clipboard-check"></i><span>Operations</span></li><li><i class="fa-solid fa-chart-line"></i><span>Analytics</span></li><li><i class="fa-solid fa-code"></i><span>API</span></li><li><i class="fa-solid fa-microchip"></i><span>Device Hub</span></li><li><i class="fa-solid fa-puzzle-piece"></i><span>Marketplace</span></li></ul>
-      <div class="sv-beat sv-b3">
-        <p class="beat-big">One platform. In order.</p>
-        <p class="beat-line">25 modules sharing one customer record, with consent built in.</p>
-      </div>
-      <div class="sv-beat sv-b4">
-        <p class="beat-huge">Coming soon.</p>
-        <p class="beat-line">Start with Synvord PMS, RMS, CRM or HMS.</p>
-        <div class="beat-cta"><a class="btn" href="synvord.html">Explore Synvord</a><a class="btn btn-ghost" href="contact.html?product=Synvord">Get early access</a></div>
-      </div>
-    </div>
-  </section>
-
   <section id="cloud" class="alt">
     <div class="wrap">
       <div class="section-head">
@@ -311,21 +256,21 @@
           <h3>AI and agent systems</h3>
           <p>GenAI features, retrieval, multi-agent orchestration and evaluation, built with the same discipline that produced Atlas.</p>
           <ul><li>GenAI</li><li>RAG</li><li>Multi-agent</li><li>MCP</li><li>Evaluations</li></ul>
-          <a class="svc-link" href="#atlas" style="--c:var(--atlas)">See it in Atlas</a>
+          <a class="svc-link" href="atlas.html" style="--c:var(--atlas)">See it in Atlas</a>
         </article>
         <article class="service">
           <i class="fa-solid fa-store"></i>
           <h3>Commerce and payments</h3>
           <p>Storefronts, point of sale, UPI and QR payments, merchant apps, GST billing and franchise operations.</p>
           <ul><li>Point of sale</li><li>UPI and QR</li><li>Merchant apps</li><li>GST</li></ul>
-          <a class="svc-link" href="#synvord" style="--c:var(--synvord)">See it in Synvord</a>
+          <a class="svc-link" href="synvord.html" style="--c:var(--synvord)">See it in Synvord</a>
         </article>
         <article class="service">
           <i class="fa-solid fa-chart-line"></i>
           <h3>Trading and market systems</h3>
           <p>Market data pipelines, strategy engines, back-testing and broker automation, proven in DheQuest.</p>
           <ul><li>Market data</li><li>Back-testing</li><li>Automation</li><li>Risk controls</li></ul>
-          <a class="svc-link" href="#dhequest" style="--c:var(--dhequest)">See it in DheQuest</a>
+          <a class="svc-link" href="dhequest.html" style="--c:var(--dhequest)">See it in DheQuest</a>
         </article>
         <article class="service">
           <i class="fa-solid fa-database"></i>
@@ -348,110 +293,28 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Products we build and run</h2>
-        <p>Atlas is how we deliver. These are the products we build and run in production. Each is available for a guided demo and can be customised for your business.</p>
+        <p>Atlas is how we deliver. Synvord and DheQuest are the products we build and run for whole industries. Each has its own page, with a guided demo on request.</p>
       </div>
-      <nav class="product-tabs" aria-label="Products">
-        <a href="#atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt=""><span class="t">Atlas</span></a>
-        <a href="#dhequest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt=""><span class="t">DheQuest</span></a>
-        <a href="#synvord" style="--c:var(--synvord)"><img src="resources/logos/synvord.svg" alt=""><span class="t">Synvord</span></a>
-        <a href="#experts-jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt=""><span class="t">Experts Jar</span></a>
-      </nav>
-
-      <article class="product" id="atlas" style="--c:var(--atlas)">
-        <div class="copy">
-          <p class="kicker">How we deliver</p>
-          <h3 class="name"><img src="resources/logos/atlas.png" alt="">Atlas</h3>
-          <p class="tagline">Give it a requirement and get it delivered, using the AI subscription you already pay for. We run our own delivery on it, and your team can too.</p>
-          <div class="features">
-            <div><h4>Work split, not piled up</h4><p>Every request becomes small, testable pieces of work, delivered together as one finished change.</p></div>
-            <div><h4>Right-sized AI</h4><p>Each task gets the AI effort it needs, and none is spent where it is not needed.</p></div>
-            <div><h4>Verified before delivery</h4><p>Every result is checked automatically and reviewed before it reaches you.</p></div>
-            <div><h4>Spend you can see</h4><p>Cost, speed and quality of every delivery, tracked as it happens.</p></div>
-          </div>
-          <div class="meta"><span><b>For</b> engineering teams</span><span><b>Plans</b> free to start, $19 per user a month for teams</span><span><b>Runs on</b> your own systems</span></div>
-          <a class="more" href="atlas.html">Know more about Atlas</a>
-        </div>
-        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/engineer.svg" alt="" aria-hidden="true"><img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt=""><img loading="lazy" decoding="async" class="bot b3" src="resources/people/agent-5.svg" alt=""><div class="window real">
-          <div class="bar"><i></i><i></i><i></i><span>atlas / dashboard</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
-          <div class="shots"><img class="on" src="resources/screens/atlas-dashboard-1440.webp" srcset="resources/screens/atlas-dashboard-720.webp 720w, resources/screens/atlas-dashboard-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas dashboard: work awaiting review, live agent runs and AI cost" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/atlas-agent-1440.webp" srcset="resources/screens/atlas-agent-720.webp 720w, resources/screens/atlas-agent-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas agent settings: role and quality checklist" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/atlas-workflows-1440.webp" srcset="resources/screens/atlas-workflows-720.webp 720w, resources/screens/atlas-workflows-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="Atlas workflows from request to delivery" loading="lazy" width="1440" height="900" decoding="async"></div>
-          <div class="shot-tabs" role="group" aria-label="Atlas screens"><button class="on" data-act="shot" data-url="atlas / dashboard">Dashboard</button><button class="" data-act="shot" data-url="atlas / agents">Agents</button><button class="" data-act="shot" data-url="atlas / workflows">Workflows</button></div>
-        </div></div>
-      </article>
-
-      <article class="product" id="dhequest" style="--c:var(--dhequest)">
-        <div class="copy">
-          <p class="kicker">Capital markets</p>
-          <h3 class="name"><img src="resources/logos/dhequest.webp" alt="">DheQuest</h3>
-          <p class="tagline">A trading platform that takes a strategy from idea to back-test to live automation.</p>
-          <div class="features">
-            <div><h4>Strategy builder</h4><p>Express entry, exit and risk rules without rebuilding the plumbing each time.</p></div>
-            <div><h4>Back-testing</h4><p>Test every rule against years of history before a rupee is at risk.</p></div>
-            <div><h4>Live automation</h4><p>Broker connections place, manage and close trades by the rules you approved.</p></div>
-            <div><h4>Market intelligence</h4><p>Price-action and probability engines surface levels and setups continuously.</p></div>
-          </div>
-          <div class="meta"><span><b>For</b> active traders and trading desks</span><span><b>Engines</b> price action and probability</span></div>
-          <a class="more" href="dhequest.html">Know more about DheQuest</a>
-        </div>
-        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/trader.svg" alt="" aria-hidden="true"><div class="window real">
-          <div class="bar"><i></i><i></i><i></i><span>dhequest / trade / positions</span><button class="expand" data-act="expand" aria-label="Open a larger view"><i class="fa-solid fa-expand"></i></button></div>
-          <div class="shots"><img class="on" src="resources/screens/dhequest-positions-1440.webp" srcset="resources/screens/dhequest-positions-720.webp 720w, resources/screens/dhequest-positions-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest positions with live P&amp;L beside a watchlist" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-terminal-payoff-1440.webp" srcset="resources/screens/dhequest-terminal-payoff-720.webp 720w, resources/screens/dhequest-terminal-payoff-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest terminal showing an options strategy payoff" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-strategy-canvas-1440.webp" srcset="resources/screens/dhequest-strategy-canvas-720.webp 720w, resources/screens/dhequest-strategy-canvas-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest Studio strategy canvas" loading="lazy" width="1440" height="900" decoding="async"><img class="" src="resources/screens/dhequest-option-chain-1440.webp" srcset="resources/screens/dhequest-option-chain-720.webp 720w, resources/screens/dhequest-option-chain-1440.webp 1440w" sizes="(max-width: 900px) 94vw, 52vw" alt="DheQuest option chain" loading="lazy" width="1440" height="900" decoding="async"></div>
-          <div class="shot-tabs" role="group" aria-label="DheQuest screens"><button class="on" data-act="shot" data-url="dhequest / trade / positions">Positions</button><button class="" data-act="shot" data-url="dhequest / trade / terminal">Terminal</button><button class="" data-act="shot" data-url="dhequest / studio / strategies">Strategy canvas</button><button class="" data-act="shot" data-url="dhequest / trade / option-chain">Option chain</button></div>
-        </div></div>
-      </article>
-
-      <article class="product" id="synvord" style="--c:var(--synvord)">
-        <div class="copy">
-          <p class="kicker">Coming soon</p>
-          <h3 class="name"><img src="resources/logos/synvord.svg" alt="">Synvord</h3>
-          <p class="tagline">One platform, in order: 25 modules for hotels, restaurants, hospitals, schools, shops and marketing teams, sharing one customer record.</p>
-          <div class="features">
-            <div><h4>Synvord PMS</h4><p>Rooms, front desk, housekeeping, maintenance and the folio for every property.</p></div>
-            <div><h4>Synvord RMS</h4><p>QR ordering, a kitchen display per station, aggregators, recipes and food cost.</p></div>
-            <div><h4>Synvord CRM</h4><p>Campaigns on five channels, one inbox for replies, and attribution that includes print.</p></div>
-            <div><h4>Synvord HMS</h4><p>Registration, beds, theatres, pharmacy, lab orders, billing and insurance claims.</p></div>
-          </div>
-          <div class="meta"><span><b>Modules</b> 25 on one platform</span><span><b>Data</b> in your own region</span><span><b>Status</b> coming soon</span></div>
-          <a class="more" href="synvord.html">Explore Synvord</a>
-        </div>
-        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/owner.svg" alt="" aria-hidden="true"><div class="window real mod-board-window">
-          <div class="bar"><i></i><i></i><i></i><span>synvord / modules</span></div>
-          <ul class="mod-board" aria-label="Some of the Synvord modules"><li><i class="fa-solid fa-hotel"></i>PMS</li><li><i class="fa-solid fa-calendar-check"></i>Booking Engine</li><li><i class="fa-solid fa-utensils"></i>RMS</li><li><i class="fa-solid fa-hospital"></i>HMS</li><li><i class="fa-solid fa-notes-medical"></i>EMR</li><li><i class="fa-solid fa-school"></i>School Management</li><li><i class="fa-solid fa-cart-shopping"></i>Commerce</li><li><i class="fa-solid fa-bullhorn"></i>CRM</li><li><i class="fa-solid fa-award"></i>Loyalty</li><li><i class="fa-solid fa-users"></i>HRMS</li><li><i class="fa-solid fa-book"></i>Finance</li><li><i class="fa-solid fa-chart-line"></i>Analytics</li><li class="more-tile"><a href="synvord.html#modules">+ 13 more</a></li></ul>
-        </div></div>
-      </article>
-
-      <article class="product" id="experts-jar" style="--c:var(--jar)">
-        <div class="copy">
-          <p class="kicker">Workforce skills</p>
-          <h3 class="name"><img src="resources/logos/experts-jar.png" alt="">Experts Jar</h3>
-          <p class="tagline">Job-ready skills built on real assignments, each one reviewed one‑on‑one by an industry expert.</p>
-          <div class="features">
-            <div><h4>Assignment tracks</h4><p>Programmes built on practical assignments, not passive video.</p></div>
-            <div><h4>Expert review</h4><p>Every submission is reviewed by a practitioner who does the job every day.</p></div>
-            <div><h4>Progress reporting</h4><p>Scores and feedback roll up into reports colleges and managers can act on.</p></div>
-            <div><h4>For organisations</h4><p>Serves colleges preparing graduates and companies upskilling their teams.</p></div>
-          </div>
-          <div class="meta"><span><b>For</b> colleges and L&amp;D teams</span><span><b>Model</b> assignment plus 1:1 review</span></div>
-          <a class="more" href="contact.html?product=Experts%20Jar">Book an Experts Jar demo</a>
-        </div>
-        <div class="stage"><img loading="lazy" decoding="async" class="peep" src="resources/people/mentor.svg" alt="" aria-hidden="true"><div class="window">
-          <div class="bar"><i></i><i></i><i></i><span>expertsjar / reviews</span><em class="preview-tag">Illustrative preview</em><button class="expand" data-act="expand" aria-label="Open a larger preview"><i class="fa-solid fa-expand"></i></button></div>
-          <div class="app">
-            <aside><b>Experts Jar</b><a>Tracks</a><a class="on">Assignments</a><a>Reviews</a><a>Mentors</a><a>Progress</a></aside>
-            <main data-stagger>
-              <h5><span data-f="title">Design a REST API for orders</span> <small data-f="track">Backend track, assignment 4</small></h5>
-              <div class="review">
-                <header><span class="avatar alt" data-f="who">RK</span><div>Submission<br><small data-f="sub">Endpoints, schema and error codes attached</small></div></header>
-              </div>
-              <div class="review">
-                <header><span class="avatar">AM</span><div>Expert review<br><small data-f="mentor">Senior backend engineer</small></div></header>
-                <p data-f="review">Clean resource design. Paginate /orders, and return 409 when a payment ID is reused so retries stay safe.</p>
-              </div>
-              <div class="score" data-f="scores"><span>Design 4/5</span><span>Correctness 5/5</span><span>Clarity 4/5</span></div>
-              <div class="jar-foot"><div><small class="sub" data-f="progress">Track progress 68%</small><div class="bar-prog"><span style="--w:68%"></span></div></div><button class="mini" data-act="next">Next submission</button></div>
-            </main>
-          </div>
-        </div></div>
-      </article>
+      <div class="p-cards">
+        <a class="p-card" href="atlas.html" style="--c:var(--atlas)">
+          <img src="resources/brand/products/atlas-logo-primary-fullcolor.svg" alt="Atlas" width="380" height="141">
+          <p>Give it a requirement and get it delivered, using the AI subscription you already pay for.</p>
+          <span class="p-for">For engineering teams · free to start</span>
+          <span class="p-go">Explore Atlas <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a class="p-card" href="synvord.html" style="--c:var(--synvord)">
+          <img src="resources/brand/products/synvord-logo-primary-notag-fullcolor.svg" alt="Synvord" width="630" height="201">
+          <p>One platform, in order: 25 modules for hotels, restaurants, hospitals, schools, shops and marketing teams.</p>
+          <span class="p-for">For businesses and franchise networks · coming soon</span>
+          <span class="p-go">Explore Synvord <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a class="p-card" href="dhequest.html" style="--c:var(--dhequest)">
+          <img src="resources/brand/products/dhequest-logo-primary-fullcolor.svg" alt="DheQuest" width="601" height="162">
+          <p>A trading platform that takes a strategy from idea to back-test to live automation.</p>
+          <span class="p-for">For active traders and trading desks · free trial</span>
+          <span class="p-go">Explore DheQuest <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -465,9 +328,8 @@
         <div class="fit-options" role="tablist" aria-label="What do you run?">
           <button role="tab" class="on" data-fit="0"><i class="fa-solid fa-store"></i>I run retail stores or franchises</button>
           <button role="tab" data-fit="1"><i class="fa-solid fa-chart-line"></i>I trade the markets</button>
-          <button role="tab" data-fit="2"><i class="fa-solid fa-graduation-cap"></i>I train students or teams</button>
-          <button role="tab" data-fit="3"><i class="fa-solid fa-code"></i>I lead an engineering team</button>
-          <button role="tab" data-fit="4"><i class="fa-solid fa-layer-group"></i>I need software built from scratch</button>
+          <button role="tab" data-fit="2"><i class="fa-solid fa-code"></i>I lead an engineering team</button>
+          <button role="tab" data-fit="3"><i class="fa-solid fa-layer-group"></i>I need software built from scratch</button>
         </div>
         <div class="fit-answer" aria-live="polite"></div>
       </div>
@@ -657,14 +519,13 @@
       <div class="mail-card">
         <h3>Pick a product and send an enquiry</h3>
         <p>Each button opens a short enquiry form with the product filled in. You don't need an account.</p>
-        <div class="mail-list"><a class="mail-btn" href="contact.html?product=Atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Book an Atlas demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=DheQuest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">Book a DheQuest demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Synvord" style="--c:var(--synvord)"><img src="resources/logos/synvord.svg" alt="">Get early access to Synvord<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Experts%20Jar" style="--c:var(--jar)"><img src="resources/logos/experts-jar.png" alt="">Book an Experts Jar demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Custom%20software" style="--c:var(--text)"><i class="fa-solid fa-layer-group"></i>Talk about custom software<i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="mail-list"><a class="mail-btn" href="contact.html?product=Atlas" style="--c:var(--atlas)"><img src="resources/logos/atlas.png" alt="">Book an Atlas demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=DheQuest" style="--c:var(--dhequest)"><img src="resources/logos/dhequest.webp" alt="">Book a DheQuest demo<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Synvord" style="--c:var(--synvord)"><img src="resources/logos/synvord.svg" alt="">Get early access to Synvord<i class="fa-solid fa-arrow-right"></i></a><a class="mail-btn" href="contact.html?product=Custom%20software" style="--c:var(--text)"><i class="fa-solid fa-layer-group"></i>Talk about custom software<i class="fa-solid fa-arrow-right"></i></a></div>
       </div>
     </div>
   </section>
 </main>
 
 <div class="toast" role="status" aria-live="polite"></div>
-<dialog class="viewer" aria-label="Product preview"><button class="viewer-close" data-close aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button><div class="viewer-body"></div></dialog>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <footer>
@@ -686,7 +547,6 @@
         <a href="atlas.html">Atlas</a>
         <a href="synvord.html">Synvord</a>
         <a href="dhequest.html">DheQuest</a>
-        <a href="#experts-jar">Experts Jar</a>
       </div>
       <div>
         <h4>Services</h4>
@@ -725,6 +585,7 @@
   </div>
 </footer>
 
+<script src="js/globe.js?v=2026-11-05a"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
@@ -749,124 +610,12 @@
     el.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: i * step, easing: 'ease-out', fill: 'backwards' }));
   const toast = msg => { const t = $('.toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 2600); };
 
-  // Only the screen on show downloads; the rest wait until someone switches to them
-  const wake = img => { if (img && img.dataset.src) { img.srcset = img.dataset.srcset; img.src = img.dataset.src; delete img.dataset.src; } };
-  const ready = (img, w) => {
-    wake(img);
-    if (!img || (img.complete && img.naturalWidth)) return Promise.resolve();
-    w?.classList.add('loading');
-    const loaded = new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); });
-    return loaded.then(() => img.decode()).catch(() => {}).finally(() => w?.classList.remove('loading'));
-  };
-  $$('.shots img:not(.on)[src]').forEach(img => { img.dataset.src = img.getAttribute('src'); img.dataset.srcset = img.getAttribute('srcset'); img.removeAttribute('srcset'); img.removeAttribute('src'); });
   // Off-screen sections only have estimated heights, so measure them properly before jumping to one
   const measure = () => document.documentElement.classList.add('measured');
   if (location.hash) measure();
   addEventListener('click', e => { if (e.target.closest('a[href*="#"]')) measure(); });
-  // Hero: the Atlas globe. Points on a sphere, agents in orbit, and arcs of light for work being delivered
-  const globe = $('.globe'), slot = $('.globe-slot'), gx = globe.getContext('2d');
-  const tone = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  // The globe keeps its own colours: violet, blue and cyan bands, with amber, green and pink sparks
-  const hues = ['#7c3aed', '#06b6d4', '#f59e0b', '#ec4899', '#10b981'], bands = ['#7c3aed', '#6366f1', '#3b82f6', '#06b6d4'];
-  const small = matchMedia('(max-width: 620px)').matches;
-  // Canvas fill costs scale with pixels, so very dense screens are capped
-  const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2), N = small ? 600 : 1400;
-  // Round dots, stamped from small sprites because thousands of arc() calls a frame are far slower
-  const sprites = {}, sprite = c => {
-    if (sprites[c]) return sprites[c];
-    const k = sprites[c] = document.createElement('canvas'), x = k.getContext('2d');
-    k.width = k.height = 24; x.fillStyle = c; x.arc(12, 12, 11, 0, 6.283); x.fill();
-    return k;
-  };
-  // Even spread of points over the sphere (golden-angle spiral); a few sparkle in the accent colours
-  const pts = Array.from({ length: N }, (_, i) => {
-    const y = 1 - (i + 0.5) / N * 2, r = Math.sqrt(1 - y * y), t = i * 2.399963;
-    return { p: [Math.cos(t) * r, y, Math.sin(t) * r], s: sprite(i % 11 === 0 ? hues[2 + (i % 3)] : bands[Math.min(3, Math.floor((1 - y) / 2 * 4))]) };
-  });
-  const orbits = hues.slice(0, 4).map((c, i) => ({ c, tilt: 0.45 + i * 0.5, spin: i * 1.4, speed: 0.00032 + i * 0.00009, r: 1.2 + i * 0.08 }));
-  const arcs = [], rings = [];
-  let W = 0, H = 0, R = 0, R0 = 0, cx = 0, cy = 0, cy0 = 0, grown = 0, yaw = 0, mx = 0, my = 0, tx = 0, ty = 0, last = 0, spawn = 0, live = false;
-  const zoom = g => { grown = g; R = R0 * (1 + g * 1.5); cy = cy0 + g * H * 0.14; };
-  const fit = () => {
-    const b = globe.getBoundingClientRect(), s = slot.getBoundingClientRect();
-    W = globe.width = Math.round(b.width * dpr); H = globe.height = Math.round(b.height * dpr);
-    R0 = s.width * dpr * 0.33; cx = (s.left + s.width / 2 - b.left) * dpr; cy0 = (s.top + s.height / 2 - b.top) * dpr;
-    zoom(grown);
-  };
-  const turn = ([x, y, z], a, b) => {
-    const X = x * Math.cos(a) + z * Math.sin(a), Z = -x * Math.sin(a) + z * Math.cos(a);
-    return [X, y * Math.cos(b) - Z * Math.sin(b), y * Math.sin(b) + Z * Math.cos(b)];
-  };
-  const proj = ([x, y, z]) => { const f = 3.4 / (3.4 - z); return [cx + x * R * f, cy + y * R * f, z]; };
-  const unit = () => { const u = Math.random() * 2 - 1, t = Math.random() * 6.283, r = Math.sqrt(1 - u * u); return [Math.cos(t) * r, u, Math.sin(t) * r]; };
-  // A point along the great circle from a to b, lifted off the surface in the middle
-  const along = (a, b, w, t) => {
-    const k1 = Math.sin((1 - t) * w) / Math.sin(w), k2 = Math.sin(t * w) / Math.sin(w), h = 1 + 0.32 * Math.sin(Math.PI * t);
-    return [0, 1, 2].map(i => (a[i] * k1 + b[i] * k2) * h);
-  };
-  const glowDot = (x, y, rad, c, a) => {
-    const g = gx.createRadialGradient(x, y, 0, x, y, rad);
-    g.addColorStop(0, c); g.addColorStop(1, 'transparent');
-    gx.globalAlpha = a; gx.fillStyle = g; gx.beginPath(); gx.arc(x, y, rad, 0, 6.283); gx.fill();
-  };
-  const draw = (now, a, b, dt) => {
-    gx.clearRect(0, 0, W, H);
-    for (const o of orbits) {
-      const at = th => proj(turn(turn([o.r * Math.cos(th), o.r * Math.sin(th) * Math.sin(o.tilt), o.r * Math.sin(th) * Math.cos(o.tilt)], o.spin, 0), a, b));
-      gx.strokeStyle = o.c; gx.lineWidth = dpr; gx.beginPath();
-      for (let k = 0; k <= 140; k++) { const [x, y] = at(k / 140 * 6.283); k ? gx.lineTo(x, y) : gx.moveTo(x, y); }
-      gx.globalAlpha = 0.18; gx.stroke();
-      const [x, y, z] = at(now * o.speed);
-      glowDot(x, y, 16 * dpr, o.c, 0.35 + 0.35 * (z + 1) / 2);
-      gx.globalAlpha = 1; gx.fillStyle = o.c; gx.beginPath(); gx.arc(x, y, 3.2 * dpr, 0, 6.283); gx.fill();
-    }
-    for (const q of pts) {
-      const [x, y, z] = proj(turn(q.p, a, b)), d = (z + 1) / 2;
-      gx.globalAlpha = 0.1 + 0.85 * d * d;
-      const s = (1.3 + 2.2 * d) * dpr * (1 + grown * 0.7); gx.drawImage(q.s, x - s / 2, y - s / 2, s, s);
-    }
-    spawn += dt;
-    if (spawn > 650 && arcs.length < 6) {
-      spawn = 0; let p, q; do { p = unit(); q = unit(); } while (p[0] * q[0] + p[1] * q[1] + p[2] * q[2] > 0.5);
-      arcs.push({ p, q, w: Math.acos(p[0] * q[0] + p[1] * q[1] + p[2] * q[2]), t: 0, c: hues[Math.floor(Math.random() * hues.length)], v: 0.00045 + Math.random() * 0.0003 });
-    }
-    gx.lineWidth = 2 * dpr; gx.lineCap = 'round';
-    for (let i = arcs.length - 1; i >= 0; i--) {
-      const A = arcs[i]; A.t = Math.min(1, A.t + dt * A.v);
-      gx.strokeStyle = A.c;
-      for (let k = 0; k < 18; k++) {
-        const t0 = Math.max(0, A.t - 0.4 + k * 0.4 / 18), t1 = Math.max(0, A.t - 0.4 + (k + 1) * 0.4 / 18);
-        const [x0, y0] = proj(turn(along(A.p, A.q, A.w, t0), a, b)), [x1, y1, z1] = proj(turn(along(A.p, A.q, A.w, t1), a, b));
-        gx.globalAlpha = (k / 18) * (0.35 + 0.65 * (z1 + 1) / 2); gx.beginPath(); gx.moveTo(x0, y0); gx.lineTo(x1, y1); gx.stroke();
-      }
-      const [hx, hy] = proj(turn(along(A.p, A.q, A.w, A.t), a, b));
-      glowDot(hx, hy, 10 * dpr, A.c, 0.9);
-      if (A.t >= 1) { rings.push({ p: A.q, k: 0, c: A.c }); arcs.splice(i, 1); }
-    }
-    for (let i = rings.length - 1; i >= 0; i--) {
-      const g = rings[i]; g.k += dt / 900;
-      const [x, y, z] = proj(turn(g.p, a, b));
-      if (z > -0.1) { gx.globalAlpha = (1 - g.k) * 0.8; gx.strokeStyle = g.c; gx.lineWidth = 1.5 * dpr; gx.beginPath(); gx.arc(x, y, (3 + 22 * g.k) * dpr, 0, 6.283); gx.stroke(); }
-      if (g.k >= 1) rings.splice(i, 1);
-    }
-    gx.globalAlpha = 1;
-  };
-  const loop = now => {
-    if (!live) return;
-    requestAnimationFrame(loop);
-    // 30 frames a second is plenty for something this slow, and halves the drawing
-    if (now - last < 32) return;
-    const dt = last ? Math.min(50, now - last) : 16; last = now;
-    yaw += dt * 0.00011; tx += (mx - tx) * 0.05; ty += (my - ty) * 0.05;
-    draw(now, yaw + tx * 0.9, 0.42 + ty * 0.4, dt);
-  };
-  fit();
-  if (still) draw(0, 0.6, 0.42, 0);
-  else {
-    new IntersectionObserver(([e]) => { live = e.isIntersecting && !document.hidden; if (live) { last = 0; requestAnimationFrame(loop); } }).observe($('.hero'));
-    $('.hero').addEventListener('pointermove', e => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
-  }
-  addEventListener('resize', () => { fit(); if (still) draw(0, 0.6, 0.42, 0); });
+  // Hero: the Atlas globe (js/globe.js)
+  Globe($('.globe'), $('.globe-slot'), $('.hero'));
 
 
   // The comparison: one timeline, two rows. A playhead sweeps both at the same pace and reveals each phase;
@@ -931,28 +680,28 @@
   changes.oninput = calc;
   calc();
 
-  // Reveal blocks as they scroll in; product mock-ups start "running" when seen
+  // Reveal blocks as they scroll in
   $$('.section-head, .service, .standard, .case, .steps > li, .timeline > li, .stack > div, .facts > div, .quotes-rot, .faq details, .logos > *, .fit-grid')
     .forEach(el => { el.classList.add('reveal'); el.style.setProperty('--i', [...el.parentNode.children].indexOf(el) % 6); });
   $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => c.style.setProperty('--i', i)));
   const seen = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in');
-    e.target.querySelectorAll('.product [data-count], .reveal [data-count]').forEach(countUp);
+    e.target.querySelectorAll('[data-count]').forEach(countUp);
     seen.unobserve(e.target);
   }), { threshold: 0.06 });
-  $$('.reveal, .product').forEach(el => seen.observe(el));
+  $$('.reveal').forEach(el => seen.observe(el));
 
-  // Highlight the nav link and product tab for whatever is on screen
+  // Highlight the nav link and section marker for whatever is on screen
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     // A top-level section with no menu link (the hero) clears the underline
     if (e.target.matches('main > section') && !$(`.nav a[href="#${e.target.id}"]`)) $$('.nav a.active').forEach(x => x.classList.remove('active'));
-    $$(`.nav a[href="#${e.target.id}"], .product-tabs a[href="#${e.target.id}"], .rail a[href="#${e.target.id}"]`).forEach(a =>
+    $$(`.nav a[href="#${e.target.id}"], .rail a[href="#${e.target.id}"]`).forEach(a =>
       { a.parentNode.querySelectorAll('a').forEach(x => x.classList.toggle('active', x === a));
         const row = a.parentNode; if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: a.offsetLeft - row.offsetLeft - 16, behavior: 'smooth' }); });
   }), { rootMargin: '-45% 0px -50% 0px' });
-  $$('main section[id], .product').forEach(s => spy.observe(s));
+  $$('main section[id]').forEach(s => spy.observe(s));
 
   // Statement lights up word by word as it scrolls past
   const statement = $('.statement');
@@ -960,57 +709,8 @@
   const words = [...statement.children];
   const clamp = v => Math.max(0, Math.min(1, v));
   let lastY = 0, up = 0;
-  // The launch: the page falls to night, the globe grows, and Atlas is introduced one line at a time
-  const head = $('.site-head'), pin = $('.hero-pin'), night = $('.hero-night'), copy = $('.hero-copy'), hud = $('.hud-bar'), beats = $$('.beat'), flyers = $$('.fly'), beatCount = $('#beat-count');
-  const ease = (p, a, b) => clamp((p - a) / (b - a));
-  let lastP = -1;
-  const launch = () => {
-    const p = clamp(-pin.getBoundingClientRect().top / (pin.offsetHeight - innerHeight));
-    if (p === lastP) return;
-    lastP = p;
-    night.style.opacity = ease(p, 0.02, 0.13);
-    head.classList.toggle('on-night', p > 0.09 && p < 1);
-    const out = ease(p, 0, 0.1);
-    copy.style.opacity = hud.style.opacity = 1 - out;
-    copy.style.transform = `translateY(${-out * 120}px)`;
-    copy.style.visibility = out === 1 ? 'hidden' : 'visible';
-    zoom(ease(p, 0, 0.24));
-    slot.style.opacity = 1 - out;
-    globe.style.opacity = 1 - ease(p, 0.3, 0.6) * 0.6;
-    beats.forEach(b => {
-      const a = +b.dataset.a, v = ease(p, a, a + 0.05) * (1 - ease(p, +b.dataset.z - 0.04, +b.dataset.z));
-      b.style.opacity = v;
-      b.style.visibility = v ? 'visible' : 'hidden';
-      b.style.transform = `scale(${1.25 - 0.25 * ease(p, a, a + 0.08)})`;
-    });
-    beatCount.textContent = Math.round(ease(p, 0.38, 0.46) * 100);
-    flyers.forEach((f, i) => {
-      const t = ease(p, 0.36, 0.46), side = i % 2 ? 1 : -1;
-      f.style.opacity = ease(p, 0.36, 0.42) * (1 - ease(p, 0.72, 0.78));
-      f.style.transform = `translate(${side * (70 - t * 26)}vw, ${[-24, -24, 26][i] + (1 - t) * 12}vh) rotate(${side * (16 - t * 16)}deg)`;
-    });
-  };
-  // One gesture, one move: inside the launch a scroll plays the next moment by itself, then waits
-  const film = document.documentElement.classList.contains('pin'), STOPS = [0, 0.24, 0.47, 0.69, 0.92, 1], MOVE = 1300;
-  const travel = () => pin.offsetHeight - innerHeight;
-  const spot = () => scrollY / travel();
-  const inFilm = dir => dir > 0 ? spot() < 0.999 : spot() > 0.001 && spot() <= 1;
-  let moving = false, lastWheel = -1e9, stopped = -1e9;
-  const step = dir => {
-    const now = spot(), to = (dir > 0 ? STOPS.find(s => s > now + 0.01) : STOPS.findLast(s => s < now - 0.01)) ?? (dir > 0 ? 1 : 0);
-    const from = scrollY, end = to * travel(), t0 = performance.now();
-    moving = true;
-    const go = t => {
-      if (!moving) return;
-      const k = clamp((t - t0) / MOVE), e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(2 - 2 * k, 3) / 2;
-      scrollTo({ top: from + (end - from) * e, behavior: 'instant' });
-      if (k < 1) requestAnimationFrame(go); else { moving = false; stopped = performance.now(); }
-    };
-    requestAnimationFrame(go);
-  };
   const onScroll = () => {
     const h = document.documentElement;
-    if (film) launch();
     $('.progress').style.transform = `scaleX(${scrollY / (h.scrollHeight - innerHeight)})`;
     h.style.setProperty('--head-a', clamp(scrollY / 260));
     // Offer it only after a deliberate upward scroll; small jumps from content loading in do not count
@@ -1026,92 +726,13 @@
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
   onScroll();
-  if (film) {
-    addEventListener('wheel', e => {
-      if ($('.nav').classList.contains('open') || e.ctrlKey || !e.deltaY || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      const dir = Math.sign(e.deltaY);
-      if (!moving && !inFilm(dir)) return;
-      e.preventDefault();
-      // A trackpad keeps sending events after the fingers lift, so only a pause or a settled stop counts as a new gesture
-      const now = performance.now(), fresh = now - lastWheel > 120 || now - stopped > 700;
-      lastWheel = now;
-      if (!moving && fresh) step(dir);
-    }, { passive: false });
-    let y0 = 0, used = false;
-    addEventListener('touchstart', e => { y0 = e.touches[0].clientY; used = false; }, { passive: true });
-    addEventListener('touchmove', e => {
-      const dy = y0 - e.touches[0].clientY, dir = Math.sign(dy);
-      if (e.touches.length > 1 || !e.cancelable || $('.nav').classList.contains('open') || (!moving && !inFilm(dir))) return;
-      e.preventDefault();
-      if (!moving && !used && Math.abs(dy) > 24) { used = true; step(dir); }
-    }, { passive: false });
-    addEventListener('keydown', e => {
-      const dir = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key];
-      if (!dir || e.shiftKey || e.metaKey || e.target.closest('input, textarea, select, button, a') || (!moving && !inFilm(dir))) return;
-      e.preventDefault();
-      if (!moving) step(dir);
-    });
-    $$('a[href="#launch-start"]').forEach(a => a.onclick = e => { e.preventDefault(); if (!moving) step(1); });
-    addEventListener('click', e => { if (e.target.closest('a[href^="#"]:not([href="#launch-start"])')) moving = false; });
-  }
-
-  // Things a visitor can do inside the product windows
-  const reviews = [
-    { title: 'Design a REST API for orders', track: 'Backend track, assignment 4', who: 'RK', sub: 'Endpoints, schema and error codes attached', mentor: 'Senior backend engineer',
-      review: 'Clean resource design. Paginate /orders, and return 409 when a payment ID is reused so retries stay safe.', scores: ['Design 4/5', 'Correctness 5/5', 'Clarity 4/5'], progress: 68 },
-    { title: 'Build a sales dashboard in SQL', track: 'Data track, assignment 2', who: 'SP', sub: 'Queries and chart exports attached', mentor: 'Analytics lead',
-      review: 'Good use of window functions. Move the date filter into one CTE so the weekly and monthly views agree.', scores: ['Accuracy 5/5', 'Performance 3/5', 'Clarity 4/5'], progress: 42 },
-    { title: 'Audit a checkout page for accessibility', track: 'Frontend track, assignment 6', who: 'NV', sub: 'Findings and fixed markup attached', mentor: 'Principal frontend engineer',
-      review: 'Strong catch on focus order. The card fields still rely on placeholders as labels, which screen readers skip.', scores: ['Coverage 4/5', 'Fixes 4/5', 'Clarity 5/5'], progress: 85 },
-  ];
-  document.addEventListener('click', e => {
-    let b = e.target.closest('[data-act]');
-    if (!b && matchMedia('(max-width: 620px)').matches && e.target.closest('.window.real .shots') && !e.target.closest('.viewer')) b = e.target.closest('.window').querySelector('.expand');
-    if (!b) return;
-    const w = b.closest('.window');
-    const act = {
-      shot() {
-        const i = [...b.parentNode.children].indexOf(b);
-        w.querySelectorAll('.shot-tabs button').forEach((x, j) => x.classList.toggle('on', j === i));
-        w.querySelector('.bar span').textContent = b.dataset.url;
-        const imgs = w.querySelectorAll('.shots img');
-        ready(imgs[i], w).then(() => { if (b.classList.contains('on')) imgs.forEach((x, j) => x.classList.toggle('on', j === i)); });
-      },
-      next() {
-        const r = reviews[w.dataset.r = ((+w.dataset.r || 0) + 1) % reviews.length];
-        for (const k of ['title', 'track', 'who', 'sub', 'mentor', 'review']) w.querySelector(`[data-f="${k}"]`).textContent = r[k];
-        w.querySelector('[data-f="scores"]').innerHTML = r.scores.map(s => `<span>${s}</span>`).join('');
-        w.querySelector('[data-f="progress"]').textContent = `Track progress ${r.progress}%`;
-        w.querySelector('.jar-foot .bar-prog span').style.setProperty('--w', r.progress + '%');
-        pop(w.querySelectorAll('.review, .score span'), 90);
-      },
-      expand() {
-        const view = w.cloneNode(true), holder = document.createElement('div');
-        view.querySelector('.expand').remove();
-        holder.className = 'in';
-        holder.style.setProperty('--c', getComputedStyle(w).getPropertyValue('--c'));
-        holder.append(view);
-        $('.viewer-body').replaceChildren(holder);
-        view.querySelectorAll('.shots img.on').forEach(wake);
-        $('.viewer').showModal();
-        view.querySelectorAll('[data-count]').forEach(countUp);
-      },
-    }[b.dataset.act];
-    act && act();
-  });
-  const viewer = $('.viewer');
-  viewer.onclick = e => { if (e.target === viewer || e.target.closest('[data-close]')) viewer.close(); };
-  // Escape closes it everywhere, including browsers that leave this to the page
-  addEventListener('keydown', e => { if (e.key === 'Escape' && viewer.open) viewer.close(); });
 
   // Product fit picker
   const fits = [
     { name: 'Synvord', who: 'owner', c: 'var(--synvord)', line: 'Run your hotel, restaurant, hospital, school or shop on one platform. Coming soon.',
       points: ['Start with PMS, RMS, CRM or HMS', 'Share one customer record across every module', 'Keep your data in the region you choose'], href: 'synvord.html', soon: true },
     { name: 'DheQuest', who: 'trader', c: 'var(--dhequest)', line: 'Take a strategy from idea to back-test to live automation, with rules you approve.',
-      points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: '#dhequest' },
-    { name: 'Experts Jar', who: 'learner', c: 'var(--jar)', line: 'Build job-ready skills through real assignments reviewed one‑on‑one by practitioners.',
-      points: ['Replace passive video with graded assignments', 'Give every learner an expert reviewer', 'Report progress your leadership can act on'], href: '#experts-jar' },
+      points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: 'dhequest.html' },
     { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Give it a requirement and get it delivered, using the AI subscription you already pay for.',
       points: ['Run agents in parallel across repositories', 'Review every change as a diff before it lands', 'Keep your code on your own systems'], href: 'atlas.html' },
     { name: 'Custom engineering', who: 'builder', c: 'var(--text)', line: 'One accountable team designs, builds and runs your software, from first spec to production.',
@@ -1145,19 +766,8 @@
   const track = $('.marquee .track');
   track.innerHTML += track.innerHTML;
 
-  if (!still && matchMedia('(hover: hover)').matches) {
-    $$('.product .window').forEach(w => {
-      w.onpointermove = e => {
-        const r = w.getBoundingClientRect();
-        w.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 6 + 'deg');
-        w.style.setProperty('--rx', ((e.clientY - r.top) / r.height - 0.5) * -6 + 'deg');
-      };
-      w.onpointerleave = () => { w.style.removeProperty('--rx'); w.style.removeProperty('--ry'); };
-    });
-  }
 </script>
 <script src="js/console.js?v=2026-10-31a"></script>
-<script src="js/sv-launch.js?v=2026-11-05a"></script>
 <script src="js/consent.js?v=2026-11-04b" defer></script>
 </body>
 </html>

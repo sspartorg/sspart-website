@@ -168,15 +168,15 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
   await expect(page.locator('#board i.s4')).toHaveCount(100);
   await page.locator('#queue').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#q-done')).toHaveText('100');
+  await expect(page.locator('.mega').first(), 'the film is a plain section').toBeVisible();
   await page.goto('/');
   await expect(page.locator('#con-log li')).toHaveCount(11);
-  await expect(page.locator('.mega').first()).toBeVisible();
   await page.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#con-done')).toContainText('ready for your approval');
 });
 
-test('home page: the launch introduces Atlas as the page scrolls, then hands over to the console', async ({ page }) => {
-  await page.goto('/');
+test('atlas page: the film introduces Atlas as the page scrolls, then hands over to the page', async ({ page }) => {
+  await page.goto('/atlas.html');
   const name = page.locator('.mega').first();
   await expect(name).toBeHidden();
   const at = f => page.evaluate(f => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
@@ -189,9 +189,9 @@ test('home page: the launch introduces Atlas as the page scrolls, then hands ove
   await expect(page.locator('.site-head')).not.toHaveClass(/on-night/);
 });
 
-test('home page: one gesture plays one full move, then the launch waits', async ({ page, isMobile, browserName }) => {
+test('atlas page: one gesture plays one full move, then the film waits', async ({ page, isMobile, browserName }) => {
   test.skip(isMobile && browserName === 'webkit', 'synthetic touch needs Chromium');
-  await page.goto('/');
+  await page.goto('/atlas.html');
   const spot = () => page.evaluate(() => { const p = document.querySelector('.hero-pin'); return scrollY / (p.offsetHeight - innerHeight); });
   const gesture = async () => {
     if (!isMobile) return page.mouse.wheel(0, 40);
@@ -211,19 +211,34 @@ test('home page: one gesture plays one full move, then the launch waits', async 
   await expect(page.locator('#beat-count')).toHaveText('100');
 });
 
-test('home page: scrolling always moves on from just beside a stop, and a link wins over a move', async ({ page, isMobile }) => {
+test('atlas page: scrolling always moves on from just beside a stop, and a link wins over a move', async ({ page, isMobile }) => {
   test.skip(isMobile, 'wheel only');
-  await page.goto('/');
+  await page.goto('/atlas.html');
   const spot = () => page.evaluate(() => { const p = document.querySelector('.hero-pin'); return scrollY / (p.offsetHeight - innerHeight); });
   await page.evaluate(() => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * 0.995, behavior: 'instant' }); });
   await page.mouse.wheel(0, 40);
   await expect.poll(spot).toBeGreaterThanOrEqual(0.999);
-  await page.goto('/');
+  await page.goto('/atlas.html');
   await page.mouse.wheel(0, 40);
   await expect.poll(spot).toBeGreaterThan(0.02);
-  await page.evaluate(() => document.querySelector('.rail a[href="#services"]').click());
-  await expect.poll(() => page.evaluate(() => Math.abs(document.querySelector('#services').getBoundingClientRect().top)), { timeout: 12_000 }).toBeLessThan(120);
+  await page.evaluate(() => document.querySelector('.rail a[href="#pricing"]').click());
+  await expect.poll(() => page.evaluate(() => Math.abs(document.querySelector('#pricing').getBoundingClientRect().top)), { timeout: 12_000 }).toBeLessThan(130);
 });
+
+for (const [page_, name] of [['synvord.html', 'SYNVORD'], ['dhequest.html', 'DHEQUEST']]) {
+  test(`${page_}: the film opens the page, turns the header night, then hands over`, async ({ page }) => {
+    await page.goto('/' + page_);
+    const film = page.locator('.sv-film');
+    await expect(film.locator('.sv-mega')).toHaveText(name);
+    await expect(page.locator('.site-head')).toHaveClass(/on-night/);
+    const at = f => page.evaluate(f => { const s = document.querySelector('.sv-film'); scrollTo({ top: s.offsetTop + (s.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
+    await at(0.9);
+    await expect(film.locator('.sv-b4 .beat-cta a').first()).toBeVisible();
+    await at(1.3);
+    await expect(page.locator('.site-head')).not.toHaveClass(/on-night/);
+    await expect(page.locator('.a-hero h1')).toBeVisible();
+  });
+}
 
 test('section links land on their section, from a click and from another page', async ({ page }) => {
   const top = sel => page.evaluate(s => document.querySelector(s).getBoundingClientRect().top, sel);
@@ -250,7 +265,7 @@ test('home page: every section heading is the same size', async ({ page }) => {
 
 test('atlas page: every heading is the same size, and real screens are never stretched', async ({ page }) => {
   await page.goto('/atlas.html');
-  const sizes = await page.$$eval('main h2', hs => hs.map(h => getComputedStyle(h).fontSize));
+  const sizes = await page.$$eval('main h2:not(.mega)', hs => hs.map(h => getComputedStyle(h).fontSize)); // the film's giant ATLAS is a beat, not a heading size
   expect(sizes.length).toBeGreaterThan(10);
   expect(new Set(sizes).size).toBe(1);
   const widest = await page.$$eval('.a-hero .shots img, .a-screens .shots img', is => Math.max(...is.map(i => i.getBoundingClientRect().width)));

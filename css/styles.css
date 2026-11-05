@@ -27,7 +27,6 @@
   --atlas: #374151;
   --dhequest: #2e8b96;
   --synvord: #0077e6;
-  --jar: #7c4dff;
   --up: #1f9d6b;
   --down: #d6455d;
   --accent: var(--plan);
@@ -1386,3 +1385,30 @@ main > section.sv-film { content-visibility: visible; contain-intrinsic-size: no
   .p-chips li { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); }
   @media (max-width: 900px), (hover: none) { .shot-tabs button { padding-block: calc(9px + var(--trim) - var(--lift)) calc(9px + var(--trim) + var(--lift)); } }
 }
+
+/* ---------- Product films that open the product pages: Atlas (js/atlas-film.js), Synvord and DheQuest (js/product-film.js) ---------- */
+.film-hero { padding-bottom: 0; }
+.film-hero .film-head { max-width: 21ch; margin-inline: auto; color: var(--text); font-size: clamp(2.5rem, 5vw, 5.3rem); font-weight: 800; line-height: 0.96; letter-spacing: -0.05em; text-wrap: balance; }
+main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* under the clear header, like a hero */
+/* the page's own hero follows the film: no longer under the header */
+.film-hero + .hero, .sv-film + .hero { margin-top: 0; }
+.film-hero + .a-hero, .sv-film + .a-hero { padding-top: clamp(56px, 7vw, 88px); }
+/* DheQuest's film is night teal instead of Synvord's navy */
+.dq-film { background: #0d1618;
+  background-image: radial-gradient(60% 50% at 18% 20%, rgb(46 139 150 / 0.32), transparent 70%), radial-gradient(55% 45% at 85% 85%, rgb(95 188 200 / 0.18), transparent 70%); }
+.dq-film .sv-chips li i { color: #5fbcc8; }
+.dq-film .sv-chips li.flag { background: #2e8b96; border-color: #2e8b96; }
+.dq-film .sv-chips li.flag i { color: #fff; }
+.dq-film .beat-cta .btn { color: #0d1618; }
+.dq-film .beat-cta .btn-ghost { border-color: #5f7c80; color: #fff; }
+
+/* ---------- Home: one slim card per product; the details live on each product page ---------- */
+.p-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.p-card { display: flex; flex-direction: column; gap: 14px; padding: 28px; border-radius: 20px; background: #fff; border: 1px solid var(--line);
+  border-top: 5px solid var(--c); text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+.p-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -24px rgb(11 16 38 / 0.35); }
+.p-card img { height: 40px; width: auto; align-self: flex-start; }
+.p-card p { margin: 0; color: var(--muted); }
+.p-card .p-for { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+.p-card .p-go { margin-top: auto; font-weight: 700; color: var(--c); }
+@media (max-width: 900px) { .p-cards { grid-template-columns: 1fr; } }

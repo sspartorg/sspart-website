@@ -30,14 +30,14 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05d">
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05e">
+  <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body class="product-page" style="--c:#2E8B96;--c-deep:#0D1618">
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"></a>
+    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg" alt=""></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="atlas.html">Atlas</a>
@@ -55,6 +55,32 @@
 </nav>
 
 <main id="top">
+  <!-- The DheQuest film: trading tools scatter, then snap into one tested plan (js/product-film.js) -->
+  <section id="dhequest-launch" class="sv-film dq-film" aria-label="Introducing DheQuest">
+    <div class="sv-stick">
+      <div class="sv-beat sv-b1">
+        <img class="sv-mark" src="resources/brand/products/dhequest-logo-icon-fullcolor-on-dark.svg" alt="" width="108" height="136">
+        <p class="beat-small">Introducing</p>
+        <h2 class="mega sv-mega">DHEQUEST</h2>
+        <p class="beat-line">Your trading rules, tested first, then traded for you.</p>
+      </div>
+      <div class="sv-beat sv-b2">
+        <p class="beat-huge">Ideas everywhere.</p>
+        <p class="beat-line">A strategy in a notebook, levels on a chart, orders placed by hand when the moment comes.</p>
+      </div>
+      <ul class="sv-chips" aria-label="What DheQuest brings together"><li class="flag"><i class="fa-solid fa-puzzle-piece"></i><span>Strategy builder</span></li><li><i class="fa-solid fa-arrows-left-right"></i><span>Straddle</span></li><li><i class="fa-solid fa-arrows-left-right-to-line"></i><span>Strangle</span></li><li><i class="fa-solid fa-shapes"></i><span>Iron condor</span></li><li><i class="fa-solid fa-chart-line"></i><span>Price action</span></li><li class="flag"><i class="fa-solid fa-clock-rotate-left"></i><span>Back-testing</span></li><li><i class="fa-solid fa-percent"></i><span>Probability engine</span></li><li><i class="fa-solid fa-chart-area"></i><span>Payoff chart</span></li><li><i class="fa-solid fa-table-cells"></i><span>Option chain</span></li><li><i class="fa-solid fa-flask"></i><span>Paper trading</span></li><li class="flag"><i class="fa-solid fa-bolt"></i><span>Live automation</span></li><li><i class="fa-solid fa-building-columns"></i><span>11 brokers</span></li><li><i class="fa-solid fa-eye"></i><span>Watchlist</span></li><li><i class="fa-solid fa-layer-group"></i><span>Positions</span></li><li><i class="fa-solid fa-bell"></i><span>Alerts</span></li><li class="flag"><i class="fa-solid fa-shield-halved"></i><span>Risk controls</span></li><li><i class="fa-solid fa-hand"></i><span>Stop-loss</span></li><li><i class="fa-solid fa-route"></i><span>Trailing stop</span></li><li><i class="fa-solid fa-bullseye"></i><span>Target</span></li><li><i class="fa-solid fa-indian-rupee-sign"></i><span>P&amp;L</span></li></ul>
+      <div class="sv-beat sv-b3">
+        <p class="beat-big">Tested. Then traded.</p>
+        <p class="beat-line">Every rule back-tested on years of history, then run live through your own broker.</p>
+      </div>
+      <div class="sv-beat sv-b4">
+        <p class="beat-huge">Available now.</p>
+        <p class="beat-line">14-day free trial, no card needed. Works with 11 brokers and crypto exchanges.</p>
+        <div class="beat-cta"><a class="btn" href="https://dhequest.com" target="_blank" rel="noopener">Start your free trial</a><a class="btn btn-ghost" href="contact.html?product=DheQuest">Talk to us</a></div>
+      </div>
+    </div>
+  </section>
+
   <section class="hero a-hero p-hero" id="home">
     <div class="wrap">
       <div class="a-hero-copy">
@@ -150,7 +176,6 @@
         <a href="atlas.html">Atlas</a>
         <a href="synvord.html">Synvord</a>
         <a href="dhequest.html">DheQuest</a>
-        <a href="index.html#experts-jar">Experts Jar</a>
       </div>
       <div>
         <h4>Services</h4>
@@ -196,6 +221,7 @@
   n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 </script>
 <script src="js/page.js?v=2026-11-04a"></script>
+<script src="js/product-film.js?v=2026-11-05b"></script>
 <script src="js/consent.js?v=2026-11-04b" defer></script>
 </body>
 </html>

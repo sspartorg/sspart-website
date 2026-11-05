@@ -30,14 +30,14 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05d">
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05e">
+  <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body class="product-page synvord-page" style="--c:#0077E6;--c-deep:#0B2D4A">
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"></a>
+    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg" alt=""></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="atlas.html">Atlas</a>
@@ -55,6 +55,32 @@
 </nav>
 
 <main id="top">
+  <!-- The Synvord film (moved here from the home page): 25 module tiles scatter, then snap into order (js/product-film.js) -->
+  <section id="synvord-launch" class="sv-film" aria-label="Introducing Synvord">
+    <div class="sv-stick">
+      <div class="sv-beat sv-b1">
+        <img class="sv-mark" data-spin src="resources/brand/products/synvord-logo-icon-fullcolor-on-dark.svg" alt="" width="170" height="175">
+        <p class="beat-small">Introducing</p>
+        <h2 class="mega sv-mega">SYNVORD</h2>
+        <p class="beat-line">One platform for hotels, restaurants, hospitals, schools and shops.</p>
+      </div>
+      <div class="sv-beat sv-b2">
+        <p class="beat-huge">A tool for every job.</p>
+        <p class="beat-line">The front desk, the kitchen, the ward and the campaign, each in a system of its own.</p>
+      </div>
+      <ul class="sv-chips" aria-label="Synvord modules"><li class="flag"><i class="fa-solid fa-hotel"></i><span>PMS</span></li><li><i class="fa-solid fa-calendar-check"></i><span>Booking Engine</span></li><li class="flag"><i class="fa-solid fa-utensils"></i><span>RMS</span></li><li><i class="fa-solid fa-mobile-screen"></i><span>Guest App</span></li><li><i class="fa-solid fa-champagne-glasses"></i><span>Events</span></li><li><i class="fa-solid fa-spa"></i><span>Spa &amp; Activities</span></li><li><i class="fa-solid fa-handshake"></i><span>B2B Portal</span></li><li class="flag"><i class="fa-solid fa-hospital"></i><span>HMS</span></li><li><i class="fa-solid fa-notes-medical"></i><span>EMR</span></li><li><i class="fa-solid fa-school"></i><span>School Management</span></li><li><i class="fa-solid fa-cart-shopping"></i><span>Commerce</span></li><li class="flag"><i class="fa-solid fa-bullhorn"></i><span>CRM</span></li><li><i class="fa-solid fa-id-card"></i><span>CDP</span></li><li><i class="fa-solid fa-award"></i><span>Loyalty</span></li><li><i class="fa-solid fa-star-half-stroke"></i><span>Reputation</span></li><li><i class="fa-solid fa-headset"></i><span>Contact Center</span></li><li><i class="fa-solid fa-users"></i><span>HRMS</span></li><li><i class="fa-solid fa-book"></i><span>Finance</span></li><li><i class="fa-solid fa-credit-card"></i><span>Payments</span></li><li><i class="fa-solid fa-boxes-stacked"></i><span>Procurement</span></li><li><i class="fa-solid fa-clipboard-check"></i><span>Operations</span></li><li><i class="fa-solid fa-chart-line"></i><span>Analytics</span></li><li><i class="fa-solid fa-code"></i><span>API</span></li><li><i class="fa-solid fa-microchip"></i><span>Device Hub</span></li><li><i class="fa-solid fa-puzzle-piece"></i><span>Marketplace</span></li></ul>
+      <div class="sv-beat sv-b3">
+        <p class="beat-big">One platform. In order.</p>
+        <p class="beat-line">25 modules sharing one customer record, with consent built in.</p>
+      </div>
+      <div class="sv-beat sv-b4">
+        <p class="beat-huge">Coming soon.</p>
+        <p class="beat-line">Start with Synvord PMS, RMS, CRM or HMS.</p>
+        <div class="beat-cta"><a class="btn" href="#modules">See all 25 modules</a><a class="btn btn-ghost" href="contact.html?product=Synvord">Get early access</a></div>
+      </div>
+    </div>
+  </section>
+
   <section class="hero a-hero p-hero" id="home">
     <div class="wrap">
       <div class="a-hero-copy">
@@ -204,7 +230,6 @@
         <a href="atlas.html">Atlas</a>
         <a href="synvord.html">Synvord</a>
         <a href="dhequest.html">DheQuest</a>
-        <a href="index.html#experts-jar">Experts Jar</a>
       </div>
       <div>
         <h4>Services</h4>
@@ -250,6 +275,7 @@
   n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 </script>
 <script src="js/page.js?v=2026-11-04a"></script>
+<script src="js/product-film.js?v=2026-11-05b"></script>
 <script src="js/consent.js?v=2026-11-04b" defer></script>
 </body>
 </html>

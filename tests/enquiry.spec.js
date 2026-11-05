@@ -183,7 +183,8 @@ test('home page: the SSPART story changes the stage as each chapter is read, and
     await expect(page.locator(`.chapter[data-scene="${scene}"]`)).toHaveClass(/\bon\b/);
   };
   await read('where', /sc-globe/);
-  await expect(page.locator('.pin-card').first()).toBeVisible();
+  await expect(page.locator('.who-card')).toBeVisible();
+  await expect(page.locator('.who-card dl > div')).toHaveCount(5);
   await read('services', /sc-services/);
   await expect(page.locator('.svc-nodes li')).toHaveCount(6);
   await read('atlas', /sc-shot/);

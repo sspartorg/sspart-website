@@ -13,12 +13,6 @@
   show('globe');
   const reading = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && show(e.target.dataset.scene)), { rootMargin: '-45% 0px -50% 0px' });
   chapters.forEach(c => reading.observe(c));
-  // the header turns night while it sits over the dark story
-  const head = document.querySelector('.site-head'), headH = () => head.offsetHeight;
-  let dark = null;
-  const tint = () => { const r = story.getBoundingClientRect(), now = r.top < headH() && r.bottom > headH(); if (now !== dark) { dark = now; head.classList.toggle('on-night', now); } };
-  // a soft spotlight follows the pointer across the story
-  story.addEventListener('pointermove', e => { const r = story.getBoundingClientRect(); story.style.setProperty('--mx', `${e.clientX - r.left}px`); story.style.setProperty('--my', `${e.clientY - r.top}px`); }, { passive: true });
   // the live run: Atlas's real agents work through one request, line by line, then start again
   const RUN = [['PO Writer', 'Split it into 3 sub-tasks', 'done'], ['Architect', 'Wrote the spec', 'reviewed'], ['Coder', 'Built each sub-task', 'reviewed'],
     ['QA agents', 'Wrote and automated the tests', 'reviewed'], ['Lint check', 'Ran your lint check', 'passed'], ['Build check', 'Ran your build', 'passed'],
@@ -39,7 +33,7 @@
   }
   const text = story.querySelector('.story-text');
   let ticking = false;
-  const read = () => { ticking = false; tint(); const r = text.getBoundingClientRect(); text.style.setProperty('--read', Math.max(0, Math.min(1, (innerHeight * 0.5 - r.top) / r.height))); };
+  const read = () => { ticking = false; const r = text.getBoundingClientRect(); text.style.setProperty('--read', Math.max(0, Math.min(1, (innerHeight * 0.5 - r.top) / r.height))); };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(read); } }, { passive: true });
   read();
 })();

@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05o">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-05p">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -56,7 +56,6 @@
 
 <main id="top">
   <section class="hero story" id="home">
-    <div class="story-sky" aria-hidden="true"></div>
     <!-- The SSPART story (js/story.js): chapters on the left, a sticky stage on the right that changes scene as each
          chapter is read. On narrow screens the stage sits on top and the chapters scroll beneath it. -->
     <div class="wrap story-grid">
@@ -113,7 +112,7 @@
           </div>
           <div class="scene sc-services" data-scenes="services">
             <svg class="svc-lines" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet"><defs><radialGradient id="svc-glow"><stop offset="0" stop-color="#a78bfa" stop-opacity="0.55"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient></defs><circle r="70" fill="url(#svc-glow)"/><line x1="0" y1="0" x2="-0.0" y2="-78.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M0,0 L-0.0,-78.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="1.2s" repeatCount="indefinite" path="M-0.0,-78.0 L0,0"/></circle><line x1="0" y1="0" x2="67.55" y2="-39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.4s" repeatCount="indefinite" path="M0,0 L67.55,-39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M67.55,-39.0 L0,0"/></circle><line x1="0" y1="0" x2="67.55" y2="39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M0,0 L67.55,39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.0s" repeatCount="indefinite" path="M67.55,39.0 L0,0"/></circle><line x1="0" y1="0" x2="-0.0" y2="78.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M0,0 L-0.0,78.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.4s" repeatCount="indefinite" path="M-0.0,78.0 L0,0"/></circle><line x1="0" y1="0" x2="-67.55" y2="39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M0,0 L-67.55,39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="2.8s" repeatCount="indefinite" path="M-67.55,39.0 L0,0"/></circle><line x1="0" y1="0" x2="-67.55" y2="-39.0"/><circle class="pulse" r="2.2"><animateMotion dur="2.4s" begin="2.0s" repeatCount="indefinite" path="M0,0 L-67.55,-39.0"/></circle><circle class="pulse back" r="1.5"><animateMotion dur="3.2s" begin="3.2s" repeatCount="indefinite" path="M-67.55,-39.0 L0,0"/></circle></svg>
-            <div class="svc-core"><img src="resources/brand/sspart-logo-header-night.svg" alt=""></div>
+            <div class="svc-core"><img src="resources/brand/sspart-logo-header.svg" alt=""></div>
             <ul class="svc-nodes"><li style="--k:0"><i class="fa-solid fa-layer-group"></i><span>Product engineering</span></li><li style="--k:1"><i class="fa-solid fa-microchip"></i><span>AI and agent systems</span></li><li style="--k:2"><i class="fa-solid fa-store"></i><span>Commerce and payments</span></li><li style="--k:3"><i class="fa-solid fa-chart-line"></i><span>Trading and market systems</span></li><li style="--k:4"><i class="fa-solid fa-database"></i><span>Data and analytics</span></li><li style="--k:5"><i class="fa-solid fa-server"></i><span>Cloud and operations</span></li></ul>
           </div>
           <div class="scene sc-shot" data-scenes="atlas">
@@ -528,7 +527,7 @@
 </footer>
 
 <script src="js/globe.js?v=2026-11-05a"></script>
-<script src="js/story.js?v=2026-11-05b"></script>
+<script src="js/story.js?v=2026-11-05c"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };

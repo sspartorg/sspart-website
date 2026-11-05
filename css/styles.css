@@ -1450,7 +1450,7 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .story h1 { max-width: 15ch; margin: 0; text-align: left; } /* the site's one h1 size */
 .story .lede { margin: 24px 0 0; max-width: 44ch; }
 .story .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; justify-content: flex-start; }
-.ch-num { margin: 0; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--plan); }
+.ch-num { margin: 0; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; color: var(--plan); } /* sentence case, like every other label */
 .chapter h2 { margin: 14px 0 16px; max-width: 16ch; font-size: clamp(2rem, 3.8vw, 3.1rem); } /* the same size as every section heading */
 .chapter p:not(.ch-num) { margin: 0; max-width: 46ch; color: var(--muted); font-size: 1.12rem; line-height: 1.6; }
 .ch-link { margin-top: 22px; align-self: flex-start; font-weight: 800; color: var(--c); text-decoration: none; }
@@ -1473,7 +1473,7 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 /* who we are: the at-a-glance pieces revolve around the globe (js/story.js), in front of it and behind it */
 .story-stage[data-scene="where"] .sc-globe .globe { transform: scale(0.74); }
 .sc-globe .globe { z-index: 1; }
-.who-head { position: absolute; top: 2%; left: 50%; translate: -50% 0; margin: 0; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+.who-head { position: absolute; top: 2%; left: 50%; translate: -50% 0; margin: 0; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; color: var(--muted);
   opacity: 0; transition: opacity 0.5s; }
 .who-orbit { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.6s 0.1s; }
 .story-stage[data-scene="where"] .who-head, .story-stage[data-scene="where"] .who-orbit { opacity: 1; }
@@ -1525,7 +1525,7 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .sc-board.on .mod-grid li { opacity: 1; scale: 1; }
 /* clients and proof */
 .sc-clients { align-content: center; justify-items: center; gap: 26px; text-align: center; }
-.cl-head { margin: 0; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.cl-head { margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--muted); }
 .cl-logos { display: flex; gap: 22px; } .cl-logos span { padding: 14px 22px; border-radius: 16px; background: #fff; border: 1px solid var(--line); } .cl-logos img { display: block; height: 36px; width: auto; }
 .cl-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; max-width: 600px; }
 .cl-proof li { padding: 20px 16px; border-radius: 18px; background: #fff; border: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }

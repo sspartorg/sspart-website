@@ -113,7 +113,7 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 .hero .actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
 
 
-.facts { margin-top: 80px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink-line); }
+.facts { margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink-line); }
 .facts div { padding: 28px 24px 32px 0; }
 .facts div + div { padding-left: 24px; border-left: 1px solid var(--ink-line); }
 .facts div::before { content: ""; display: block; width: 32px; height: 5px; border-radius: 3px; margin-bottom: 18px; background: var(--c, var(--make)); }
@@ -1562,3 +1562,7 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .story .scene.on .device { transform: rotateY(-7deg) rotateX(3deg); }
 .story .cl-proof b { background: linear-gradient(100deg, #7c3aed, #0891b2); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @media (max-width: 900px) { .ai-term { display: none; } }
+
+/* the stats row has three cards: three across, one column on phones (never two plus an orphan) */
+@media (max-width: 900px) { .facts { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 620px) { .facts { grid-template-columns: 1fr; } }

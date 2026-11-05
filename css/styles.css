@@ -1397,6 +1397,8 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .dq-film { background: #0d1618;
   background-image: radial-gradient(60% 50% at 18% 20%, rgb(46 139 150 / 0.32), transparent 70%), radial-gradient(55% 45% at 85% 85%, rgb(95 188 200 / 0.18), transparent 70%); }
 .dq-chart { display: none; }
+.dq-logo { margin: 14px 0 6px; line-height: 0; }
+.dq-logo img { width: min(78vw, 720px); height: auto; } /* the brand lockup, not typed text */
 .pin .dq-chart { display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .pin .dq-film .sv-beat { text-shadow: 0 2px 24px rgb(13 22 24 / 0.9); } /* stays readable over the chart */
 /* Back-test -> Paper trade -> Live: each step lights up as the equity curve reaches it */

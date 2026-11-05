@@ -225,11 +225,12 @@ test('atlas page: scrolling always moves on from just beside a stop, and a link 
   await expect.poll(() => page.evaluate(() => Math.abs(document.querySelector('#pricing').getBoundingClientRect().top)), { timeout: 12_000 }).toBeLessThan(130);
 });
 
-for (const [page_, name] of [['synvord.html', 'SYNVORD'], ['dhequest.html', 'DHEQUEST']]) {
+for (const [page_, name] of [['synvord.html', 'SYNVORD'], ['dhequest.html', null]]) {
   test(`${page_}: the film opens the page, turns the header night, then hands over`, async ({ page }) => {
     await page.goto('/' + page_);
     const film = page.locator('.sv-film');
-    await expect(film.locator('.sv-mega')).toHaveText(name);
+    if (name) await expect(film.locator('.sv-mega')).toHaveText(name);
+    else await expect(film.locator('.dq-logo img')).toHaveAttribute('alt', 'DheQuest'); // DheQuest opens with its logo lockup
     await expect(page.locator('.site-head')).toHaveClass(/on-night/);
     const at = f => page.evaluate(f => { const s = document.querySelector('.sv-film'); scrollTo({ top: s.offsetTop + (s.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
     await at(0.9);

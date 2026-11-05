@@ -168,7 +168,7 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
   await expect(page.locator('#board i.s4')).toHaveCount(100);
   await page.locator('#queue').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#q-done')).toHaveText('100');
-  await expect(page.locator('.mega').first(), 'the film is a plain section').toBeVisible();
+  await expect(page.locator('.film-logo').first(), 'the film is a plain section').toBeVisible();
   await page.goto('/');
   await expect(page.locator('#con-log li')).toHaveCount(11);
   await page.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
@@ -177,7 +177,7 @@ test('atlas page: reduced motion shows the finished board and no animation', asy
 
 test('atlas page: the film introduces Atlas as the page scrolls, then hands over to the page', async ({ page }) => {
   await page.goto('/atlas.html');
-  const name = page.locator('.mega').first();
+  const name = page.locator('.film-logo');
   await expect(name).toBeHidden();
   const at = f => page.evaluate(f => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
   await at(0.24);
@@ -189,70 +189,28 @@ test('atlas page: the film introduces Atlas as the page scrolls, then hands over
   await expect(page.locator('.site-head')).not.toHaveClass(/on-night/);
 });
 
-// Every product film behaves the same way: one gesture plays one full move to the next stop, then the film waits
-const FILMS = [
-  { url: '/atlas.html', sel: '.hero-pin', stops: [0.24, 0.47], first: page => expect(page.locator('.atlas-mark')).toBeVisible(), second: page => expect(page.locator('#beat-count')).toHaveText('100') },
-  { url: '/synvord.html', sel: '.sv-film', stops: [0.38, 0.72], first: page => expect(page.locator('.sv-b2')).toBeVisible(), second: page => expect(page.locator('.sv-chips li').first()).toHaveCSS('opacity', '1') },
-  { url: '/dhequest.html', sel: '.sv-film', stops: [0.38, 0.75], first: page => expect(page.locator('.sv-b2')).toBeVisible(), second: page => expect(page.locator('.dq-steps li.on')).toHaveCount(3) },
-];
-for (const f of FILMS) {
-  test(`${f.url}: one gesture plays one full move, then the film waits`, async ({ page, isMobile, browserName }) => {
-    test.skip(isMobile && browserName === 'webkit', 'synthetic touch needs Chromium');
-    await page.goto(f.url);
-    const spot = () => page.evaluate(sel => { const p = document.querySelector(sel); return (scrollY - (p.getBoundingClientRect().top + scrollY)) / (p.offsetHeight - innerHeight); }, f.sel);
-    const gesture = async () => {
-      if (!isMobile) return page.mouse.wheel(0, 40);
-      await page.evaluate(() => {
-        const touch = y => ({ touches: [new Touch({ identifier: 1, target: document.body, clientY: y })], cancelable: true, bubbles: true });
-        document.body.dispatchEvent(new TouchEvent('touchstart', touch(600)));
-        document.body.dispatchEvent(new TouchEvent('touchmove', touch(500)));
-      });
-    };
-    await gesture();
-    await expect.poll(spot).toBeCloseTo(f.stops[0], 2);
-    await page.waitForTimeout(600);
-    expect(await spot(), 'it stays on the stop with no more scrolling').toBeCloseTo(f.stops[0], 2);
-    await f.first(page);
-    await page.waitForTimeout(800); // a new gesture, not the tail of the last one
-    await gesture();
-    await expect.poll(spot).toBeCloseTo(f.stops[1], 2);
-    await f.second(page);
-  });
-}
-
-// A trackpad flick keeps sending ever-smaller events for over 2s in Chrome; that tail must never play a second move
-for (const f of FILMS) {
-  test(`${f.url}: a long trackpad flick moves the film exactly one stop`, async ({ page, isMobile }) => {
+// Every product film moves with the scroll: nothing snaps, nothing takes over, wherever the visitor stops is where it stays
+for (const [url, sel] of [['/atlas.html', '.hero-pin'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
+  test(`${url}: the film follows the scroll smoothly and never snaps`, async ({ page, isMobile }) => {
     test.skip(isMobile, 'wheel only');
-    await page.goto(f.url);
+    await page.goto(url);
     await page.mouse.move(400, 400);
-    const spot = () => page.evaluate(sel => { const p = document.querySelector(sel); return (scrollY - (p.getBoundingClientRect().top + scrollY)) / (p.offsetHeight - innerHeight); }, f.sel);
-    for (let k = 0; k < 40; k++) { await page.mouse.wheel(0, Math.max(2, 60 * Math.pow(0.9, k))); await page.waitForTimeout(55); } // about 2.2s
-    await page.waitForTimeout(1500);
-    expect(await spot(), 'one flick, one stop').toBeCloseTo(f.stops[0], 2);
+    const at = () => page.evaluate(sel => { const p = document.querySelector(sel); return { y: scrollY, f: (scrollY - (p.getBoundingClientRect().top + scrollY)) / (p.offsetHeight - innerHeight) }; }, sel);
+    await page.mouse.wheel(0, 300);
+    await expect.poll(async () => (await at()).y).toBeGreaterThan(250);
+    await page.waitForTimeout(900);
+    const { y, f } = await at();
+    expect(y, 'the page moved by what was scrolled, no more').toBeLessThan(360);
+    expect(f, 'part-way into the film, not on a beat').toBeGreaterThan(0.02);
+    expect(f).toBeLessThan(0.2);
   });
 }
 
-test('atlas page: scrolling always moves on from just beside a stop, and a link wins over a move', async ({ page, isMobile }) => {
-  test.skip(isMobile, 'wheel only');
-  await page.goto('/atlas.html');
-  const spot = () => page.evaluate(() => { const p = document.querySelector('.hero-pin'); return scrollY / (p.offsetHeight - innerHeight); });
-  await page.evaluate(() => { const p = document.querySelector('.hero-pin'); scrollTo({ top: (p.offsetHeight - innerHeight) * 0.995, behavior: 'instant' }); });
-  await page.mouse.wheel(0, 40);
-  await expect.poll(spot).toBeGreaterThanOrEqual(0.999);
-  await page.goto('/atlas.html');
-  await page.mouse.wheel(0, 40);
-  await expect.poll(spot).toBeGreaterThan(0.02);
-  await page.evaluate(() => document.querySelector('.rail a[href="#pricing"]').click());
-  await expect.poll(() => page.evaluate(() => Math.abs(document.querySelector('#pricing').getBoundingClientRect().top)), { timeout: 12_000 }).toBeLessThan(130);
-});
-
-for (const [page_, name] of [['synvord.html', 'SYNVORD'], ['dhequest.html', null]]) {
+for (const [page_, name] of [['synvord.html', 'Synvord'], ['dhequest.html', 'DheQuest']]) {
   test(`${page_}: the film opens the page, turns the header night, then hands over`, async ({ page }) => {
     await page.goto('/' + page_);
     const film = page.locator('.sv-film');
-    if (name) await expect(film.locator('.sv-mega')).toHaveText(name);
-    else await expect(film.locator('.dq-logo img')).toHaveAttribute('alt', 'DheQuest'); // DheQuest opens with its logo lockup
+    await expect(film.locator('.film-logo img'), 'the film opens with the real logo').toHaveAttribute('alt', name);
     await expect(page.locator('.site-head')).toHaveClass(/on-night/);
     const at = f => page.evaluate(f => { const s = document.querySelector('.sv-film'); scrollTo({ top: s.offsetTop + (s.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
     await at(0.9);
@@ -281,14 +239,14 @@ test('section links land on their section, from a click and from another page', 
 
 test('home page: every section heading is the same size', async ({ page }) => {
   await page.goto('/');
-  const sizes = await page.$$eval('main h2:not(.mega)', hs => hs.map(h => getComputedStyle(h).fontSize));
+  const sizes = await page.$$eval('main h2:not(.mega):not(.film-logo)', hs => hs.map(h => getComputedStyle(h).fontSize));
   expect(sizes.length).toBeGreaterThan(10);
   expect(new Set(sizes).size).toBe(1);
 });
 
 test('atlas page: every heading is the same size, and real screens are never stretched', async ({ page }) => {
   await page.goto('/atlas.html');
-  const sizes = await page.$$eval('main h2:not(.mega)', hs => hs.map(h => getComputedStyle(h).fontSize)); // the film's giant ATLAS is a beat, not a heading size
+  const sizes = await page.$$eval('main h2:not(.mega):not(.film-logo)', hs => hs.map(h => getComputedStyle(h).fontSize)); // the film's giant ATLAS is a beat, not a heading size
   expect(sizes.length).toBeGreaterThan(10);
   expect(new Set(sizes).size).toBe(1);
   const widest = await page.$$eval('.a-hero .shots img, .a-screens .shots img', is => Math.max(...is.map(i => i.getBoundingClientRect().width)));

@@ -1,5 +1,5 @@
 // Atlas page: the launch film that opens the page. The page falls to night, the globe grows, and Atlas is introduced one
-// line at a time. Needs js/globe.js; js/film-steps.js turns each scroll gesture into one move between beats.
+// line at a time, moving with the scroll like the Synvord and DheQuest films. Needs js/globe.js.
 (() => {
   const pin = document.querySelector('.hero-pin');
   if (!pin) return;
@@ -37,8 +37,13 @@
       f.style.transform = `translate(${side * (70 - t * 26)}vw, ${[-24, -24, 26][i] + (1 - t) * 12}vh) rotate(${side * (16 - t * 16)}deg)`;
     });
   };
-  // One gesture, one move: js/film-steps.js, with the stops in the film's data-stops
   const film = document.documentElement.classList.contains('pin');
+  // "Scroll to explore" glides down to the first beat
+  document.querySelectorAll('a[href="#launch-start"]').forEach(a => a.onclick = e => {
+    if (!film) return;
+    e.preventDefault();
+    scrollTo({ top: pin.getBoundingClientRect().top + scrollY + (pin.offsetHeight - innerHeight) * 0.24, behavior: 'smooth' });
+  });
   // (the header, progress bar and section markers are in page.js)
   let ticking = false;
   const onScroll = () => { ticking = false; if (film) launch(); };

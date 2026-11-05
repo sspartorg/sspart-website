@@ -1039,7 +1039,6 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .beat { padding: 48px 0; }
 .launch-tag { position: relative; display: inline-block; margin-bottom: 18px; padding: 7px 16px; border-radius: 999px; background: var(--plan); color: #fff; font-size: 0.92rem; font-weight: 700; text-decoration: none; }
 .launch h2.mega, .mega { color: #fff; font-size: min(25vw, 36svh); font-weight: 800; line-height: 0.86; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
-.atlas-mark { display: block; width: auto; height: clamp(72px, 17svh, 170px); margin: 0 auto 14px; color: #fff; }
 .beat-small { font-size: clamp(1.2rem, 2.4vw, 2rem); font-weight: 600; color: #cdd2e6; }
 .beat-big { margin-top: 12px; font-size: clamp(1.6rem, 4.4vw, 4rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.04em; }
 .beat-huge { font-size: clamp(3.2rem, 12vw, 12rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.05em; text-wrap: balance; }
@@ -1388,6 +1387,9 @@ main > section.sv-film { content-visibility: visible; contain-intrinsic-size: no
 
 /* ---------- Product films that open the product pages: Atlas (js/atlas-film.js), Synvord and DheQuest (js/product-film.js) ---------- */
 .film-hero { padding-bottom: 0; }
+/* each film opens with its product's real logo lockup (white on dark), sized by height so the three match */
+.film-logo { margin: 14px 0 6px; line-height: 0; }
+.film-logo img { width: auto; height: clamp(72px, min(15vw, 24svh), 200px); max-width: 88vw; object-fit: contain; }
 .film-hero .film-head { max-width: 21ch; margin-inline: auto; color: var(--text); font-size: clamp(2.5rem, 5vw, 5.3rem); font-weight: 800; line-height: 0.96; letter-spacing: -0.05em; text-wrap: balance; }
 main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* under the clear header, like a hero */
 /* the page's own hero follows the film: no longer under the header */
@@ -1397,8 +1399,6 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .dq-film { background: #0d1618;
   background-image: radial-gradient(60% 50% at 18% 20%, rgb(46 139 150 / 0.32), transparent 70%), radial-gradient(55% 45% at 85% 85%, rgb(95 188 200 / 0.18), transparent 70%); }
 .dq-chart { display: none; }
-.dq-logo { margin: 14px 0 6px; line-height: 0; }
-.dq-logo img { width: min(78vw, 720px); height: auto; } /* the brand lockup, not typed text */
 .pin .dq-chart { display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .pin .dq-film .sv-beat { text-shadow: 0 2px 24px rgb(13 22 24 / 0.9); } /* stays readable over the chart */
 /* Back-test -> Paper trade -> Live: each step lights up as the equity curve reaches it */

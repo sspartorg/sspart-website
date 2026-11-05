@@ -18,10 +18,10 @@
     const done = ease(p, 0.28, 0.46) * 100, taken = ease(p, 0.26, 0.42) * 100;
     count.textContent = Math.round(done);
     cells.forEach((c, i) => c.className = rank[i] < done ? 'done' : rank[i] < taken ? 'run' : '');
-    board.style.opacity = ease(p, 0.22, 0.3) * (1 - 0.7 * ease(p, 0.5, 0.58)) * (1 - ease(p, 0.78, 0.86));
+    board.style.opacity = ease(p, 0.22, 0.3) * (1 - ease(p, 0.44, 0.5));  // gone before "No new AI subscription"
     flyers.forEach((f, i) => {
       const t = ease(p, 0.3, 0.42), side = i % 2 ? 1 : -1;
-      f.style.opacity = ease(p, 0.3, 0.36) * (1 - ease(p, 0.72, 0.78));
+      f.style.opacity = ease(p, 0.3, 0.36) * (1 - ease(p, 0.44, 0.5));
       f.style.transform = `translate(${side * (70 - t * 26)}vw, ${[-24, -24, 26][i] + (1 - t) * 12}vh) rotate(${side * (16 - t * 16)}deg)`;
     });
   };

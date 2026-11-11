@@ -8,16 +8,18 @@
   <title>Enquiries | SSPART Enterprise</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="css/styles.css?v=2026-11-12f">
-  <link rel="stylesheet" href="css/desk.css?v=2026-10-31a">
+  <link rel="stylesheet" href="css/desk.css?v=2026-11-11a">
 </head>
 <body class="desk">
 <header class="site-head">
-  <div class="wrap"><a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"></a><button class="btn" id="sign-out" type="button" hidden>Sign out</button></div>
+  <div class="wrap"><a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"></a><div class="desk-who"><span id="who"></span><button class="btn" id="sign-out" type="button" hidden>Sign out</button></div></div>
 </header>
 
 <main class="desk-main">
   <section class="desk-login" id="login" hidden>
-    <h1>Sign in to enquiries</h1>
+    <img src="resources/brand/sspart-logo-header.svg" alt="" width="132" height="40">
+    <h1>Enquiry desk</h1>
+    <p>Sign in to see and follow up enquiries from the website.</p>
     <form id="login-form">
       <label>Email<input name="email" type="email" required autocomplete="username"></label>
       <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
@@ -27,23 +29,28 @@
   </section>
 
   <div class="desk-board wrap" id="board" hidden>
-    <div class="desk-list">
-      <h1>Enquiries</h1>
-      <div class="desk-tools">
-        <label>Search by mobile<input id="search" type="search" inputmode="tel" placeholder="9515093965"></label>
-        <label>Status
-          <select id="filter"><option value="">All</option><option value="new">New</option><option value="contacted">Contacted</option><option value="qualified">Qualified</option><option value="won">Won</option><option value="lost">Lost</option></select>
-        </label>
+    <aside class="desk-list">
+      <div class="desk-top">
+        <h1>Enquiries</h1>
+        <input id="search" type="search" inputmode="tel" placeholder="Search by mobile number" aria-label="Search by mobile number">
+      </div>
+      <div class="desk-tabs" id="filter" role="group" aria-label="Filter by status">
+        <button type="button" data-status="" aria-pressed="true">All <span></span></button>
+        <button type="button" data-status="new" aria-pressed="false">New <span></span></button>
+        <button type="button" data-status="contacted" aria-pressed="false">Contacted <span></span></button>
+        <button type="button" data-status="qualified" aria-pressed="false">Qualified <span></span></button>
+        <button type="button" data-status="won" aria-pressed="false">Won <span></span></button>
+        <button type="button" data-status="lost" aria-pressed="false">Lost <span></span></button>
       </div>
       <p class="form-status" id="list-status" role="alert" hidden></p>
       <ul id="rows" aria-label="Enquiries"></ul>
-    </div>
-    <article class="desk-detail" id="detail" aria-live="polite"></article>
+    </aside>
+    <article class="desk-detail" id="detail" aria-live="polite"><p class="desk-pick">Pick an enquiry to see the details.</p></article>
   </div>
 </main>
 
 <script src="js/vendor/supabase.js?v=2.118.0"></script>
 <script src="js/config.js?v=2026-11-11a"></script>
-<script src="js/admin.js?v=2026-10-31a"></script>
+<script src="js/admin.js?v=2026-11-11a"></script>
 </body>
 </html>

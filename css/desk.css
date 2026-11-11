@@ -30,48 +30,105 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .enquiry-done h2 { font-size: 2rem; }
 .enquiry-done p { margin: 12px 0 24px; color: var(--muted); }
 
-.desk-main { padding: 32px 0 64px; }
-.desk-login { max-width: 420px; margin: 8vh auto 0; padding: 0 16px; }
-.desk-login h1 { font-size: 2rem; }
+/* Owner desk: an inbox, list on the left and the open enquiry on the right */
+body.desk { background: var(--panel); }
+.desk .site-head { background: var(--card); }
+.desk-who { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 0.9rem; }
+.desk-main { padding: 28px 0 64px; }
+
+.desk-login { max-width: 400px; margin: 7vh auto 0; padding: 36px 32px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); box-shadow: var(--lift); }
+.desk-login img { display: block; height: 40px; width: auto; }
+.desk-login h1 { margin-top: 28px; font-size: 1.8rem; letter-spacing: -0.02em; }
+.desk-login > p { margin-top: 6px; color: var(--muted); }
 .desk-login form { margin-top: 24px; display: grid; gap: 16px; }
-.desk-login .btn { justify-self: start; }
-.desk-board { display: grid; grid-template-columns: minmax(300px, 0.8fr) 1.2fr; gap: 32px; align-items: start; }
-.desk-list h1 { font-size: 2rem; }
-.desk-tools { margin: 18px 0; display: grid; grid-template-columns: 1fr 130px; gap: 12px; }
-#rows { display: grid; gap: 8px; }
-#rows button { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px; text-align: left; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--text); font: 400 0.95rem/1.4 var(--font); cursor: pointer; }
-#rows button:hover { border-color: var(--muted); }
-#rows button.on { border-color: var(--plan); box-shadow: inset 3px 0 0 var(--plan); }
-#rows b { overflow-wrap: anywhere; }
-#rows small { grid-column: 1 / -1; color: var(--muted); }
-.pill { align-self: start; padding: 2px 10px; border-radius: 999px; background: var(--panel); font-size: 0.8rem; font-weight: 600; }
+.desk-login .btn { width: 100%; justify-content: center; }
+
+.desk-board { display: grid; grid-template-columns: minmax(380px, 1fr) 1.3fr; gap: 24px; align-items: start; max-width: 1320px; }
+.desk-list, .desk-detail { min-width: 0; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--lift); }
+.desk-list { padding: 20px 0 8px; }
+.desk-top { padding: 0 20px; display: grid; gap: 14px; }
+.desk-top h1 { font-size: 1.6rem; letter-spacing: -0.02em; }
+.desk-top input { height: 42px; padding: 10px 14px; border-color: var(--line); background: var(--panel); }
+
+.desk-tabs { margin-top: 14px; padding: 0 20px 14px; display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); }
+.desk-tabs button, .desk-status button { display: inline-flex; align-items: center; gap: 6px; flex: none; height: 32px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--muted); font: 600 0.85rem/1 var(--font); cursor: pointer; }
+.desk-tabs button:hover, .desk-status button:hover { border-color: var(--muted); color: var(--text); }
+.desk-tabs button[aria-pressed=true] { background: var(--plan); border-color: var(--plan); color: #fff; }
+.desk-tabs span { min-width: 1.4em; padding: 2px 5px; border-radius: 999px; background: var(--panel); color: var(--muted); font-size: 0.75rem; text-align: center; }
+.desk-tabs span:empty { display: none; }
+.desk-tabs [aria-pressed=true] span { background: rgb(255 255 255 / 0.18); color: #fff; }
+.desk-list > .form-status { padding: 10px 20px 0; }
+
+#rows { max-height: calc(100vh - 290px); overflow-y: auto; padding: 8px; }
+#rows button { position: relative; width: 100%; display: grid; grid-template-columns: 40px 1fr auto; grid-template-areas: "av name time" "av meta pill"; gap: 2px 12px; align-items: center; padding: 12px; text-align: left; border: 0; border-radius: 12px; background: none; color: var(--text); font: 400 0.95rem/1.35 var(--font); cursor: pointer; }
+#rows li + li { border-top: 1px solid var(--line); }
+#rows button:hover { background: var(--panel); }
+#rows button.on { background: color-mix(in srgb, var(--synvord) 8%, #fff); }
+#rows button.new b::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 7px; border-radius: 50%; background: var(--synvord); vertical-align: 2px; }
+#rows .avatar { grid-area: av; }
+#rows b { grid-area: name; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#rows time { grid-area: time; justify-self: end; color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+#rows small { grid-area: meta; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#rows .pill { grid-area: pill; justify-self: end; }
+
+.avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--panel); color: var(--ink-soft); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; }
+.pill { padding: 3px 10px; border-radius: 999px; background: var(--panel); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
 .pill.new { background: #dbe7ff; color: #1d4ed8; }
 .pill.contacted { background: #fdf0d2; color: #8a5a00; }
 .pill.qualified { background: #e9e2ff; color: #5b34c9; }
 .pill.won { background: #d9f4e6; color: #137548; }
 .pill.lost { background: #eceef4; color: var(--muted); }
 .desk-empty { padding: 14px; color: var(--muted); }
-.desk-detail:not(:empty) { position: sticky; top: 88px; max-height: calc(100vh - 104px); overflow-y: auto; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); display: grid; gap: 18px; }
-.desk-detail header { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
-.desk-detail h2 { font-size: 1.7rem; overflow-wrap: anywhere; }
-.desk-detail h3 { font-size: 1.1rem; }
-.desk-detail dl { margin: 0; display: grid; gap: 8px; }
-.desk-detail dl div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
-.desk-detail dt { color: var(--muted); }
-.desk-detail dd { margin: 0; overflow-wrap: anywhere; }
-.desk-message { padding: 16px; border-radius: 12px; background: var(--panel); white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.desk-detail { position: sticky; top: 92px; max-height: calc(100vh - 116px); overflow-y: auto; padding: 28px; display: grid; gap: 22px; align-content: start; }
+.desk-pick { padding: 80px 0; text-align: center; color: var(--muted); }
+.desk-back { display: none; justify-self: start; padding: 0; border: 0; background: none; color: var(--text); font: 600 0.95rem var(--font); cursor: pointer; }
+.desk-detail header { display: flex; gap: 16px; align-items: center; }
+.desk-detail header .avatar { width: 56px; height: 56px; font-size: 1.1rem; flex: none; }
+.desk-detail h2 { font-size: 1.6rem; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.desk-detail header p { margin-top: 2px; color: var(--muted); }
+.desk-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.desk-actions .btn { padding: 10px 22px; text-align: center; }
+.desk-status { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; border-radius: 14px; background: var(--panel); }
+.desk-status button { flex: 1 0 auto; justify-content: center; border-color: transparent; background: none; }
+.desk-status button[aria-pressed=true] { background: var(--card); color: var(--text); border-color: var(--line); box-shadow: 0 1px 3px rgb(11 16 38 / 0.08); }
+.desk-status button[aria-pressed=true]::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.desk-status .new[aria-pressed=true] { color: #1d4ed8; }
+.desk-status .contacted[aria-pressed=true] { color: #8a5a00; }
+.desk-status .qualified[aria-pressed=true] { color: #5b34c9; }
+.desk-status .won[aria-pressed=true] { color: #137548; }
+.desk-detail section { padding: 0; display: grid; gap: 10px; }
+.desk-detail h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.desk-message { padding: 16px 18px; border-radius: 12px; background: var(--panel); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+.desk-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+.desk-facts dt { color: var(--muted); font-size: 0.85rem; }
+.desk-facts dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
 .thread { display: grid; gap: 10px; }
-.thread li:not(.desk-empty) { padding: 12px 14px; border-left: 3px solid var(--line); }
+.thread li:not(.desk-empty) { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); }
+.thread .desk-empty { padding: 0; }
 .thread p { white-space: pre-wrap; overflow-wrap: anywhere; }
-.thread small { color: var(--muted); }
-.desk-detail form { display: grid; gap: 10px; }
-.desk-detail form .btn { justify-self: start; }
-.btn.danger { justify-self: start; color: #b02a42; border-color: #e6b6bf; }
+.thread small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
+.desk-detail form { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; }
+.desk-detail textarea { min-height: 48px; }
+.btn.danger { justify-self: start; margin-top: 4px; padding: 0; border: 0; background: none; color: #b02a42; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.btn.danger:hover { translate: none; }
 
 @media (max-width: 900px) {
   .enquiry-grid, .desk-board { grid-template-columns: 1fr; }
-  .desk-detail:not(:empty) { position: static; max-height: none; }
+  /* Phones show one pane at a time: the list, or the open enquiry with a way back */
+  .desk-board:not(.reading) .desk-detail, .desk-board.reading .desk-list { display: none; }
+  .desk-detail { position: static; max-height: none; padding: 20px; }
+  .desk-back { display: block; }
+  #rows { max-height: none; }
+  .desk-who span { display: none; }
 }
 @media (max-width: 620px) {
-  .pair { grid-template-columns: 1fr; }
+  .pair, .desk-detail form { grid-template-columns: 1fr; }
+  .desk-main { padding-top: 16px; }
+  .desk-login { margin-top: 3vh; padding: 28px 22px; }
+  .desk-actions .btn { flex: 1; justify-content: center; padding: 10px 12px; }
+  .desk-status { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 4px; }
+  .desk-status button { min-width: 0; padding: 0 2px; gap: 4px; font-size: 0.75rem; }
+  .desk-status button[aria-pressed=true]::before { display: none; }
+  .desk-detail form .btn { justify-self: start; }
 }

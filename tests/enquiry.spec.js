@@ -400,7 +400,7 @@ test('owner desk: search by mobile, change status, comment, delete', async ({ pa
   await expect(page.locator('.desk-detail h2')).toContainText('<img');
   expect(await page.evaluate(() => window.__xss), 'visitor text must never run').toBeUndefined();
 
-  await page.selectOption('.desk-detail select', 'contacted');
+  await page.click('.desk-status button.contacted');
   await expect(page.locator('#rows .pill')).toHaveText('Contacted');
 
   await page.fill('.desk-detail textarea', 'Called, sending a quote');

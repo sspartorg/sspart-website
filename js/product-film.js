@@ -7,7 +7,7 @@
   const clamp = v => Math.max(0, Math.min(1, v)), ease = (p, a, b) => clamp((p - a) / (b - a));
   const smooth = t => t * t * (3 - 2 * t);
   // the film eases toward the scroll position instead of jumping with each wheel notch; js/atlas-film.js uses the same rate
-  const FOLLOW = 0.18;
+  const FOLLOW = 0.32;
   // when each beat is on screen: [fade in from, fully in, start out, gone]
   // each beat arrives only once the one before has gone: they share the middle of the screen, so they must never cross-fade
   const SPANS = [[-1, 0, 0.2, 0.26], [0.26, 0.31, 0.44, 0.5], [0.5, 0.56, 0.76, 0.8], [0.8, 0.86, 2, 3]];

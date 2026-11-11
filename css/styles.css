@@ -337,7 +337,7 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
   mask-image: linear-gradient(to bottom, #000 30%, transparent 85%); }
 
 .js .reveal { opacity: 0; transform: translateY(22px);
-  transition: opacity 0.7s calc(var(--i, 0) * 70ms), transform 0.7s cubic-bezier(.2,.7,.2,1) calc(var(--i, 0) * 70ms), translate 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
+  transition: opacity 0.4s calc(var(--i, 0) * 40ms), transform 0.45s cubic-bezier(.2,.7,.2,1) calc(var(--i, 0) * 40ms), translate 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
 .js .reveal.in { opacity: 1; transform: none; }
 
 .product-tabs { position: sticky; top: 72px; z-index: 5; padding: 10px 0; background: var(--panel);
@@ -360,7 +360,7 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
 
 /* Mock-ups tilt toward the pointer and come alive when scrolled into view */
 .window { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 0.4s ease-out; }
-.js [data-stagger] > * { opacity: 0; transform: translateY(8px); transition: opacity 0.5s, transform 0.5s; transition-delay: calc(var(--i) * var(--step, 140ms) + 300ms); }
+.js [data-stagger] > * { opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; transition-delay: calc(var(--i) * var(--step, 70ms) + 100ms); }
 .js .in [data-stagger] > * { opacity: 1; transform: none; }
 .bar-prog span { width: var(--w); }
 .js .bar-prog span { width: 0; transition: width 1.6s cubic-bezier(.2,.7,.2,1) 0.8s; }

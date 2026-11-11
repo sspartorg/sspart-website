@@ -11,7 +11,7 @@
   const order = cells.map((_, i) => [rnd(), i]).sort((a, b) => a[0] - b[0]).map(x => x[1]), rank = [];
   order.forEach((c, k) => { rank[c] = k; });
   // eases toward the scroll position at the same rate as js/product-film.js, so the board keeps time with the beats
-  const FOLLOW = 0.18;
+  const FOLLOW = 0.32;
   let lastP = -1, cur = null;
   const frame = () => {
     const target = clamp(-film.getBoundingClientRect().top / (film.offsetHeight - innerHeight));

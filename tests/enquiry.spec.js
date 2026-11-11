@@ -183,8 +183,9 @@ test('home page: the SSPART story changes the stage as each chapter is read, and
     await expect(page.locator(`.chapter[data-scene="${scene}"]`)).toHaveClass(/\bon\b/);
   };
   await read('where', /sc-globe/);
-  await expect(page.locator('.who-orbit')).toBeVisible();
   await expect(page.locator('.who-piece')).toHaveCount(5);
+  // the at-a-glance cards circle the globe on wide screens and roll past under "Who we are" on narrow ones
+  await expect(page.locator('.who-orbit')).toBeVisible();
   await read('services', /sc-services/);
   await expect(page.locator('.svc-nodes li')).toHaveCount(6);
   await read('atlas', /sc-shot/);
@@ -196,14 +197,103 @@ test('home page: the SSPART story changes the stage as each chapter is read, and
   for (const href of ['atlas.html', 'synvord.html', 'dhequest.html']) await expect(page.locator(`.story .ch-link[href="${href}"]`)).toHaveCount(1);
 });
 
+test('home page: the story timeline has one stop per chapter, fills in order, and stands in for the header bar', async ({ page }) => {
+  await page.goto('/');
+  const state = () => page.evaluate(() => {
+    const text = document.querySelector('.story-text'), t = text.getBoundingClientRect().top, line = getComputedStyle(text, '::before');
+    const dot = n => { const b = n.getBoundingClientRect(); return b.top + b.height / 2 - t; };
+    const nums = [...document.querySelectorAll('.story .ch-num')];
+    return { stops: nums.length, read: nums.map(n => n.closest('.chapter').classList.contains('read')),
+      lineTop: parseFloat(line.top), lineEnd: parseFloat(line.top) + parseFloat(line.height), first: dot(nums[0]), last: dot(nums.at(-1)),
+      heroEnd: document.querySelector('.ch-hero').getBoundingClientRect().bottom - t, bar: +getComputedStyle(document.querySelector('.site-head .progress')).opacity };
+  });
+  let s = await state();
+  expect(s.stops).toBe(6);
+  // the line runs from the first stop to the last, never beside the headline
+  expect(Math.abs(s.lineTop - s.first)).toBeLessThan(2);
+  expect(Math.abs(s.lineEnd - s.last)).toBeLessThan(2);
+  expect(s.lineTop).toBeGreaterThan(s.heroEnd);
+  expect(s.read.some(Boolean), 'stops lit before reading').toBe(false);
+  await expect.poll(async () => (await state()).bar, { message: 'header bar shown during the story' }).toBe(0);
+  await page.locator('.chapter[data-scene="services"]').evaluate(c => { const r = c.getBoundingClientRect(); scrollTo({ top: scrollY + r.top + r.height / 2 - innerHeight / 2, behavior: 'instant' }); });
+  await expect.poll(async () => (await state()).read).toEqual([true, true, false, false, false, false]);
+  await page.locator('#clients').evaluate(c => scrollTo({ top: scrollY + c.getBoundingClientRect().top, behavior: 'instant' }));
+  await expect.poll(async () => (await state()).bar, { message: 'header bar back after the story' }).toBe(1);
+});
+
+// Film chips are fixed-size boxes: every label must fit inside its box at every screen size
+for (const url of ['/synvord.html']) {
+  test(`${url}: every film chip label fits inside its chip, words unbroken`, async ({ page }) => {
+    await page.goto(url);
+    await page.evaluate(() => scrollBy(0, innerHeight));
+    const spill = await page.evaluate(() => [...document.querySelectorAll('.sv-chips li')].filter(li => {
+      const t = li.querySelector('span'); if (!t || getComputedStyle(t).display === 'none') return false;
+      const a = li.getBoundingClientRect(), b = t.getBoundingClientRect();
+      const brokenWord = !t.textContent.includes(' ') && t.offsetHeight > parseFloat(getComputedStyle(t).lineHeight) * 1.5; // one word split over two lines
+      return brokenWord || li.scrollWidth > li.clientWidth + 1 || li.scrollHeight > li.clientHeight + 1 || b.right > a.right + 1 || b.bottom > a.bottom + 1;
+    }).map(li => li.textContent.trim()));
+    expect(spill, 'chip labels that spill out of their box').toEqual([]);
+  });
+}
+
+// When the tiles snap into order, the grid sits under the words and inside the screen, on every screen shape
+for (const url of ['/synvord.html']) {
+  test(`${url}: the ordered tile grid never covers the words and stays on screen`, async ({ page }) => {
+    await page.goto(url);
+    await page.evaluate(() => { const f = document.querySelector('.sv-film'); scrollTo({ top: f.getBoundingClientRect().top + scrollY + (f.offsetHeight - innerHeight) * 0.68, behavior: 'instant' }); });
+    // wait until the tiles have stopped moving
+    const tops = () => page.evaluate(() => [...document.querySelectorAll('.sv-chips li')].map(c => Math.round(c.getBoundingClientRect().top)).join());
+    let before = '';
+    await expect.poll(async () => { const now = await tops(), same = now === before; before = now; return same; }, { intervals: [100] }).toBe(true);
+    const m = await page.evaluate(() => {
+      const f = document.querySelector('.sv-film'), chips = [...f.querySelectorAll('.sv-chips li')], words = f.querySelector('.sv-b3');
+      const text = [...words.children].map(e => e.getBoundingClientRect());
+      const r = chips.map(c => c.getBoundingClientRect());
+      return { chips: chips.length, textBottom: Math.max(...text.map(t => t.bottom)), gridTop: Math.min(...r.map(c => c.top)), gridBottom: Math.max(...r.map(c => c.bottom)),
+        overlaps: r.flatMap((a, i) => r.slice(i + 1).filter(b => a.left < b.right + 2 && b.left < a.right + 2 && a.top < b.bottom + 2 && b.top < a.bottom + 2).map(() => chips[i].textContent.trim())),
+        gridLeft: Math.min(...r.map(c => c.left)), gridRight: Math.max(...r.map(c => c.right)), w: innerWidth, h: innerHeight };
+    });
+    expect(m.chips, 'the film has its tiles').toBeGreaterThan(0);
+    expect(m.gridTop, 'tiles start below the words').toBeGreaterThanOrEqual(m.textBottom);
+    expect(m.gridBottom, 'tiles end above the bottom of the screen').toBeLessThanOrEqual(m.h);
+    expect(m.overlaps, 'tiles that touch or overlap a neighbour').toEqual([]);
+    expect(m.gridLeft).toBeGreaterThanOrEqual(0);
+    expect(m.gridRight).toBeLessThanOrEqual(m.w);
+  });
+}
+
+// Through the whole film no two beats' words overlap; and once the tiles settle into their grid (from 66% on),
+// no words sit over a tile. The drifting tiles behind "A tool for every job" are the scatter, on purpose.
+test('/synvord.html: film words never overlap each other, nor the tiles once they are in order', async ({ page }) => {
+  await page.goto('/synvord.html');
+  const clashes = [];
+  for (let q = 0; q <= 1; q += 0.01) {
+    await page.evaluate(q => { const f = document.querySelector('.sv-film'); scrollTo({ top: f.getBoundingClientRect().top + scrollY + (f.offsetHeight - innerHeight) * q, behavior: 'instant' }); }, q);
+    await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+    clashes.push(...await page.evaluate(q => {
+      const f = document.querySelector('.sv-film'), on = e => +getComputedStyle(e).opacity > 0.02;
+      const boxes = [...f.querySelectorAll('.sv-beat')].filter(on).map(b => ({ name: b.className, r: [...b.children].map(c => c.getBoundingClientRect()) }));
+      const tiles = [...f.querySelectorAll('.sv-chips li')].filter(on).map(c => c.getBoundingClientRect());
+      const hit = (a, b) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+      const out = [];
+      boxes.forEach((b, i) => {
+        boxes.slice(i + 1).forEach(o => { if (b.r.some(x => o.r.some(y => hit(x, y)))) out.push(`${q.toFixed(2)}: ${b.name} over ${o.name}`); });
+        if (q >= 0.66 && b.r.some(x => tiles.some(t => hit(x, t)))) out.push(`${q.toFixed(2)}: ${b.name} over the tiles`);
+      });
+      return out;
+    }, q));
+  }
+  expect(clashes).toEqual([]);
+});
+
 // Every product film moves with the scroll: nothing snaps, nothing takes over, wherever the visitor stops is where it stays
 for (const [url, sel] of [['/atlas.html', '.sv-film'], ['/synvord.html', '.sv-film'], ['/dhequest.html', '.sv-film']]) {
   test(`${url}: the film follows the scroll smoothly and never snaps`, async ({ page, isMobile }) => {
-    test.skip(isMobile, 'wheel only');
     await page.goto(url);
-    await page.mouse.move(400, 400);
     const at = () => page.evaluate(sel => { const p = document.querySelector(sel); return { y: scrollY, f: (scrollY - (p.getBoundingClientRect().top + scrollY)) / (p.offsetHeight - innerHeight) }; }, sel);
-    await page.mouse.wheel(0, 300);
+    // Touch screens have no wheel: scroll the page itself, then check nothing pulls it to a beat
+    if (isMobile) await page.evaluate(() => scrollBy(0, 300));
+    else { await page.mouse.move(400, 400); await page.mouse.wheel(0, 300); }
     await expect.poll(async () => (await at()).y).toBeGreaterThan(250);
     await page.waitForTimeout(900);
     const { y, f } = await at();
@@ -235,9 +325,9 @@ test('section links land on their section, from a click and from another page', 
   // ponytail: lazy images above can add about 150px on small screens while the jump runs; give them fixed sizes if it matters
   await expect.poll(() => top('#clients'), { timeout: 12_000 }).toBeLessThan(260);
   expect(await top('#clients')).toBeGreaterThan(-20);
-  await page.goto('/index.html#services');
-  await expect.poll(() => top('#services'), { timeout: 12_000 }).toBeLessThan(260);
-  expect(await top('#services')).toBeGreaterThan(-20);
+  await page.goto('/services.html#approach');
+  await expect.poll(() => top('#approach'), { timeout: 12_000 }).toBeLessThan(260);
+  expect(await top('#approach')).toBeGreaterThan(-20);
   await page.goto('/atlas.html');
   await page.evaluate(() => document.querySelector('.rail a[href="#pricing"]').click());
   await expect.poll(() => top('#pricing'), { timeout: 12_000 }).toBeLessThan(130);
@@ -285,8 +375,8 @@ test('every page with a nav shares one header', async ({ page }) => {
     return page.evaluate(() => ({ links: [...document.querySelectorAll('.nav a')].map(a => a.textContent), h1: getComputedStyle(document.querySelector('h1')).fontSize, bar: !!document.querySelector('.site-head .progress') }));
   };
   const home = await read('/');
-  expect(home.links).toEqual(['Atlas', 'Synvord', 'DheQuest', 'Clients', 'Talk to us']);
-  for (const url of ['/atlas.html', '/synvord.html', '/dhequest.html', '/synvord-pms.html', '/synvord-hms.html']) expect(await read(url)).toEqual(home);
+  expect(home.links).toEqual(['Atlas', 'Synvord', 'DheQuest', 'Services', 'Talk to us']);
+  for (const url of ['/services.html', '/atlas.html', '/synvord.html', '/dhequest.html', '/synvord-stay.html', '/synvord-care.html']) expect(await read(url)).toEqual(home);
 });
 
 // A small in-memory stand-in for the two tables, enough to walk the desk end to end

@@ -17,8 +17,8 @@ test('hero globe: the canvas paints', async ({ page }) => {
   expect(painted, 'painted pixels sampled').toBeGreaterThan(20);
 });
 
-test('atlas page ROI calculator: three ways priced from the stated assumptions, Atlas cheapest', async ({ page }) => {
-  await page.goto('/atlas.html');
+test('services page ROI calculator: three ways priced from the stated assumptions, Atlas cheapest', async ({ page }) => {
+  await page.goto('/services.html');
   const n = page.locator('#changes');
   await n.scrollIntoViewIfNeeded();
   await n.fill('40');
@@ -112,11 +112,11 @@ test('back-to-top: hidden while reading down, offered when scrolling up, arrow c
   expect(off, 'arrow offset from centre').toBeLessThanOrEqual(0.5);
 });
 
-test('product cards: Atlas, Synvord and DheQuest, each linking to its own page', async ({ page }) => {
-  const cards = page.locator('#products .p-card');
-  await expect(cards).toHaveCount(3);
-  expect(await cards.evaluateAll(as => as.map(a => a.getAttribute('href')))).toEqual(['atlas.html', 'synvord.html', 'dhequest.html']);
-  await expect(page.locator('#products')).not.toContainText('Experts Jar');
+test('our story: founded, then DheQuest, Atlas and Synvord in order, with no Atlas prices on the home page', async ({ page }) => {
+  expect(await page.locator('#company .timeline time').allTextContents()).toEqual(['2019', '2022', '2025', '2026']);
+  expect(await page.locator('#company .timeline h3').allTextContents()).toEqual(['SSPART founded', 'DheQuest', 'Atlas', 'Synvord']);
+  await expect(page.locator('main')).not.toContainText('Experts Jar');
+  await expect(page.locator('main')).not.toContainText('$19');
 });
 
 test('case-study figures count up to their final values', async ({ page }) => {
@@ -125,4 +125,15 @@ test('case-study figures count up to their final values', async ({ page }) => {
   const figures = await page.locator('.metrics strong').allTextContents();
   const finals = await page.locator('.metrics strong').evaluateAll(s => s.map(x => x.dataset.count));
   figures.forEach((f, i) => expect(f.replace(/[^\d.]/g, '')).toBe(finals[i].replace(/[^\d.]/g, '')));
+});
+
+test('cookie panel: closed without choosing, it stays closed on the next page, and the cookie can still reopen it', async ({ page }) => {
+  await expect(page.locator('#cc-panel')).toBeVisible();
+  await page.locator('.cc-cookie').click();
+  await expect(page.locator('#cc-panel')).toBeHidden();
+  await page.goto('/services.html');
+  await page.waitForTimeout(500);
+  await expect(page.locator('#cc-panel')).toBeHidden();
+  await page.locator('.cc-cookie').click();
+  await expect(page.locator('#cc-panel')).toBeVisible();
 });

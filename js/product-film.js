@@ -15,11 +15,16 @@
     const loose = chips.map(() => ({ x: rnd() * 2 - 1, y: rnd() * 2 - 1, r: (rnd() * 2 - 1) * 28, s: 0.8 + rnd() * 0.35 }));
     let grid = [], inside = false, lastP = -1;
     const layout = () => {
-      const narrow = innerWidth < 760, cols = 5, w = narrow ? 52 : Math.min(176, (innerWidth - 120) / cols - 12), h = narrow ? 52 : 50, g = narrow ? 10 : 12;
+      // short screens (phones on their side) get small icon tiles in wide rows, so the grid fits under the words
+      const short = innerHeight < 560, narrow = innerWidth < 760 || short, cols = short ? 9 : 5;
+      const w = short ? 40 : narrow ? 52 : Math.min(176, (innerWidth - 120) / cols - 12), h = short ? 40 : narrow ? 52 : 50, g = short ? 8 : narrow ? 10 : 12;
       film.classList.toggle('sv-narrow', narrow);
-      chips.forEach(c => { c.style.width = w + 'px'; c.style.height = h + 'px'; });
-      const rows = Math.ceil(chips.length / cols), top = innerHeight * 0.58 - (rows * (h + g) - g) / 2;
-      grid = chips.map((_, i) => ({ x: (i % cols - (cols - 1) / 2) * (w + g), y: top + Math.floor(i / cols) * (h + g) - innerHeight / 2 }));
+      chips.forEach(c => { c.style.width = w + 'px'; c.style.height = c.style.minHeight = h + 'px'; });
+      // the grid sits under the words of its beat, never on top of them
+      const words = film.querySelector('.sv-b3')?.lastElementChild, below = words ? words.offsetTop + words.offsetHeight + 16 : 0;
+      const rows = Math.ceil(chips.length / cols), top = Math.max(below, innerHeight * 0.58 - (rows * (h + g) - g) / 2);
+      // tiles are placed by their centre, so the first row's centre is half a tile below the grid's top
+      grid = chips.map((_, i) => ({ x: (i % cols - (cols - 1) / 2) * (w + g), y: top + h / 2 + Math.floor(i / cols) * (h + g) - innerHeight / 2 }));
       lastP = -1;
     };
     const frame = () => {
@@ -36,7 +41,8 @@
       });
       if (mark && 'spin' in mark.dataset) mark.style.transform = `rotate(${-90 + 90 * smooth(ease(p, 0, 0.18))}deg)`; // Synvord's mark turns into place
       const order = smooth(ease(p, 0.47, 0.66));
-      const seen = ease(p, 0.22, 0.3) * (1 - 0.88 * ease(p, 0.78, 0.85));
+      // the tiles leave with "in order", fully, before the next words arrive, so nothing sits under them
+      const seen = ease(p, 0.22, 0.3) * (1 - ease(p, SPANS[2][2], SPANS[2][3]));
       chips.forEach((c, i) => {
         const L = loose[i], G = grid[i];
         const x = (L.x * innerWidth * 0.44) * (1 - order) + G.x * order, y = (L.y * innerHeight * 0.4) * (1 - order) + G.y * order;
@@ -50,5 +56,9 @@
   if (!films.length) return;
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { films.forEach(f => f.frame()); ticking = false; }); } }, { passive: true });
-  addEventListener('resize', () => films.forEach(f => { f.layout(); f.frame(); }));
+  const relayout = () => films.forEach(f => { f.layout(); f.frame(); });
+  addEventListener('resize', relayout);
+  // the words under the grid change height once the web font and header settle, so measure again then
+  addEventListener('load', relayout);
+  document.fonts?.ready.then(relayout);
 })();

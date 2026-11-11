@@ -1,4 +1,4 @@
-// Atlas page: the workflow map, the team, the task queue, the usual-way-vs-Atlas comparison and the ROI calculator.
+// Atlas page: the workflow map, the team, the task queue and the usual-way-vs-Atlas comparison.
 // (the console demo is js/console.js)
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -51,7 +51,7 @@
     const q = setInterval(() => tick(q), 1100);
   }, { threshold: 0.35 }).observe(document.getElementById('queue'));
 
-  // The comparison and the ROI calculator (moved from the home page), in a block so their names stay their own
+  // The comparison (moved from the home page), in a block so its names stay its own
   {
     // The comparison: one timeline, two rows. A playhead sweeps both at the same pace and reveals each phase;
     // when it passes Atlas's end, a marker shows where the usual way still was
@@ -89,30 +89,5 @@
       const seenRace = new IntersectionObserver(es => { if (es[0].intersectionRatio >= need) { runRace(); seenRace.disconnect(); } }, { threshold: [need] });
       seenRace.observe(race);
     }
-
-
-    // ROI calculator: one month of changes, priced three ways from the assumptions written under it
-    const RATE = 400, changes = $('#changes'), cols = [...$$('.roi-col')];
-    const usd = v => '$' + Math.round(v).toLocaleString('en-US');
-    const calc = () => {
-      const n = +changes.value;
-      $('#changes-out').textContent = n;
-      const res = cols.map(c => {
-        const redo = 1 + +c.dataset.redo, days = +c.dataset.days * redo, per = days * RATE + +c.dataset.ai * redo;
-        return { c, days: days * n, per, total: per * n };
-      });
-      const max = Math.max(...res.map(r => r.total));
-      res.forEach(r => {
-        r.c.querySelector('.v').textContent = usd(r.total);
-        r.c.querySelector('.d').textContent = (Math.round(r.days * 10) / 10).toLocaleString('en-US') + ' days';
-        r.c.querySelector('.u').textContent = usd(r.per);
-        const tdays = +r.c.dataset.turn; r.c.querySelector('.t').textContent = tdays === 1 ? '1 day' : `${tdays} days`;
-        r.c.querySelector('.roi-bar i').style.width = (r.total / max * 100).toFixed(1) + '%';
-      });
-      const [m, , a] = res;
-      $('#roi-save').innerHTML = `Compared with a manual team, Atlas saves <b>${usd(m.total - a.total)}</b> and <b>${Math.round(m.days - a.days).toLocaleString('en-US')} engineer-days</b> a month, and each change lands in <b>1 day instead of ${m.c.dataset.turn}</b>.`;
-    };
-    changes.oninput = calc;
-    calc();
   }
 })();

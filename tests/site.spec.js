@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { scrollThrough } = require('./helpers');
 
-const LEGAL = ['privacy.html', 'terms.html', 'cookies.html', 'refund.html', 'shipping.html', 'grievance.html', 'press.html', 'contact.html', 'admin.html', 'atlas.html', 'synvord.html', 'dhequest.html', 'synvord-pms.html', 'synvord-rms.html', 'synvord-crm.html', 'synvord-hms.html'];
+const LEGAL = ['privacy.html', 'terms.html', 'cookies.html', 'refund.html', 'shipping.html', 'grievance.html', 'press.html', 'contact.html', 'admin.html', 'atlas.html', 'synvord.html', 'dhequest.html', 'synvord-stay.html', 'synvord-table.html', 'synvord-reach.html', 'synvord-care.html', 'services.html'];
 
 test.describe('home page', () => {
   let errors, failed;
@@ -77,6 +77,35 @@ test.describe('home page', () => {
     expect(report.distorted, 'squashed or stretched images').toEqual([]);
   });
 
+  test('on narrow screens the story reads straight down: each picture under its chapter, nothing pinned, faded or covered', async ({ page }) => {
+    const { width } = page.viewportSize();
+    const stage = await page.evaluate(() => getComputedStyle(document.querySelector('.story-stage')).display);
+    if (width > 900) return expect(stage).not.toBe('none');
+    expect(stage, 'pinned stage').toBe('none');
+    const r = await page.evaluate(() => {
+      const rect = s => document.querySelector(s).getBoundingClientRect();
+      const c = rect('.story canvas.globe'), slot = rect('.story .globe-slot');
+      return {
+        globeInHero: !!document.querySelector('.ch-hero .sc-globe'), cardsInWho: !!document.querySelector('.chapter[data-scene="where"] .who-orbit'),
+        misplaced: [...document.querySelectorAll('.story .scene')].filter(s => s.closest('.chapter')?.dataset.scene !== s.dataset.scenes.split(' ')[0]).length,
+        faded: [...document.querySelectorAll('.story .chapter')].filter(ch => +getComputedStyle(ch).opacity < 1).length,
+        slot: slot.height, canvas: c.height, globeBottom: c.bottom, h1: rect('.story h1').top, wide: document.documentElement.scrollWidth - innerWidth,
+      };
+    });
+    expect(r.globeInHero && r.cardsInWho, 'globe above the headline, cards under Who we are').toBe(true);
+    expect(r.misplaced, 'pictures not under their chapter').toBe(0);
+    expect(r.faded, 'faded chapters').toBe(0);
+    // the globe's orbits reach past its slot; the slot must leave them room inside the canvas, or they are cut off flat
+    expect(r.slot).toBeLessThanOrEqual(r.canvas * 0.8);
+    expect(r.h1, 'headline under the globe').toBeGreaterThanOrEqual(r.globeBottom - 1);
+    expect(r.wide, 'page scrolls sideways').toBeLessThanOrEqual(0);
+    await page.locator('.chapter[data-scene="where"] .who-orbit').scrollIntoViewIfNeeded();
+    const cards = await page.evaluate(() => [...document.querySelectorAll('.who-piece')].filter(e => { const b = e.getBoundingClientRect(); return b.right > 0 && b.left < innerWidth && b.bottom > 0 && b.top < innerHeight; }).length);
+    expect(cards, 'at-a-glance cards on screen').toBeGreaterThan(0);
+    const sizes = await page.evaluate(() => [...document.querySelectorAll('.who-piece')].map(e => { const b = e.getBoundingClientRect(); return `${Math.round(b.top)}/${Math.round(b.height)}`; }));
+    expect(new Set(sizes).size, `cards not level and the same height: ${sizes}`).toBe(1);
+  });
+
   test('mobile menu opens, fits the screen and closes after picking a link', async ({ page }) => {
     const toggle = page.locator('.nav-toggle');
     const width = page.viewportSize().width;
@@ -99,6 +128,8 @@ for (const legal of LEGAL) {
     const res = await page.goto(`/${legal}`);
     expect(res.status()).toBe(200);
     await expect(page.locator('a[href="index.html"], a[href="/"], a[href="./"]').first()).toBeVisible();
+    // Lay out every section first: off-screen ones are skipped until measured, which hid overflow lower down
+    await page.evaluate(() => document.documentElement.classList.add('measured'));
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
   });
 }

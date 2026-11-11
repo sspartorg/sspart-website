@@ -10,6 +10,9 @@
 
   function saved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function save(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  // closed without choosing: stop asking on every page; the cookie stays so they can still choose, and analytics stays off
+  function dismissed() { try { return localStorage.getItem(KEY + '-dismissed'); } catch (e) { return null; } }
+  function dismiss() { try { localStorage.setItem(KEY + '-dismissed', '1'); } catch (e) {} }
 
   function load() {
     if (!GA_ID) return;
@@ -89,6 +92,7 @@
   }
   function close() {
     if (panel.hidden) return;
+    if (!saved()) dismiss();
     root.classList.remove('is-open'); cookie.setAttribute('aria-expanded', 'false');
     hideTimer = setTimeout(function () { panel.hidden = true; }, still() ? 0 : 220);
     var back = opener && document.contains(opener) ? opener : cookie.hidden ? null : cookie;
@@ -118,5 +122,5 @@
 
   if (saved()) { cookie.hidden = true; root.classList.add('is-chosen'); }
   document.body.appendChild(root);
-  if (!saved()) open(false); // first visit: ask, without stealing focus
+  if (!saved() && !dismissed()) open(false); // first visit: ask, without stealing focus
 })();

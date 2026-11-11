@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05v">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-11j">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
@@ -43,7 +43,7 @@
       <a href="atlas.html">Atlas</a>
       <a href="synvord.html">Synvord</a>
       <a href="dhequest.html">DheQuest</a>
-      <a href="#clients">Clients</a>
+      <a href="services.html">Services</a>
       <a class="btn btn-solid" href="contact.html">Talk to us</a>
     </nav>
   </div>
@@ -51,7 +51,7 @@
 </header>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#cloud"><span>Cloud</span></a><a href="#services"><span>Services</span></a><a href="#products"><span>Products</span></a><a href="#clients"><span>Clients</span></a><a href="#contact"><span>Contact</span></a>
+  <a href="#clients"><span>Clients</span></a><a href="#company"><span>Our story</span></a><a href="#faq"><span>Questions</span></a><a href="#contact"><span>Contact</span></a>
 </nav>
 
 <main id="top">
@@ -69,14 +69,15 @@
           <p class="ch-num">01 · Who we are</p>
           <h2>A product engineering company.</h2>
           <p>We design, build and run software end to end. We run three products of our own, and we build for enterprise clients in retail, payments, capital markets and beyond.</p>
-          <ul class="ch-points"><li><i class="fa-solid fa-user-group"></i>One senior team, from the first spec to production</li><li><i class="fa-solid fa-circle-check"></i>Delivered on Atlas: every change checked before it ships</li><li><i class="fa-solid fa-life-ring"></i>We stay after go-live and keep it running</li></ul>
+          <ul class="ch-points"><li><i class="fa-solid fa-user-group"></i>Senior team, from the first spec to production</li><li><i class="fa-solid fa-circle-check"></i>Delivered on Atlas: every change checked before it ships</li><li><i class="fa-solid fa-life-ring"></i>We stay after go-live and keep it running</li></ul>
         </div>
         <div class="chapter" data-scene="services">
           <p class="ch-num">02 · What we do</p>
           <h2>Six things we do well.</h2>
           <ul class="ch-svc"><li><i class="fa-solid fa-layer-group"></i><b>Product engineering</b><span>Web, mobile and back-end systems, built by one team that owns the outcome.</span></li><li><i class="fa-solid fa-microchip"></i><b>AI and agent systems</b><span>GenAI, retrieval and multi-agent systems, built with the discipline behind Atlas.</span></li><li><i class="fa-solid fa-store"></i><b>Commerce and payments</b><span>Storefronts, point of sale, UPI and QR payments, GST billing.</span></li><li><i class="fa-solid fa-chart-line"></i><b>Trading and market systems</b><span>Market data, strategy engines and broker automation, proven in DheQuest.</span></li><li><i class="fa-solid fa-database"></i><b>Data and analytics</b><span>Models, warehouses and reporting leadership can act on.</span></li><li><i class="fa-solid fa-server"></i><b>Cloud and operations</b><span>AWS and Azure, release pipelines, and support long after go-live.</span></li></ul>
+          <a class="ch-link" href="services.html">See all services <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="chapter" data-scene="atlas">
+        <div class="chapter" id="products" data-scene="atlas">
           <p class="ch-num">03 · Our flagship</p>
           <h2>Atlas turns requests into delivered work.</h2>
           <p>Specialised agents plan, build, test and document; a senior engineer reviews every change before it ships. Teams run it on the AI subscription they already pay for, and it's how we deliver our own work.</p>
@@ -85,7 +86,7 @@
         <div class="chapter" data-scene="synvord">
           <p class="ch-num">04 · For every business</p>
           <h2>Synvord: one platform, in order.</h2>
-          <p>25 modules for hotels, restaurants, hospitals, schools, shops and marketing teams, all sharing one customer record. Coming soon, starting with PMS, RMS, CRM and HMS.</p>
+          <p>Eight product lines on one platform, all sharing one customer record. Coming soon, starting with campaigns, hospitals, hotels and restaurants.</p>
           <a class="ch-link" href="synvord.html" style="--c:var(--synvord)">Explore Synvord <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="chapter" data-scene="dhequest">
@@ -108,11 +109,11 @@
             <div class="ai-term"><div class="term-bar"><i></i><i></i><i></i><span>atlas · live run</span><em class="term-live">live</em></div><p class="term-req">&gt; Add GST to invoices</p><ol class="term-lines"></ol></div>
             <p class="who-head">SSPART at a glance</p>
             <div class="who-orbit">
-              <div class="who-piece"><b>3</b><span>Products we build and run</span><span class="who-logos"><img src="resources/brand/products/atlas-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/synvord-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/dhequest-logo-icon-fullcolor.svg" alt=""></span></div>
-              <div class="who-piece"><b>6</b><span>Service lines, one senior team</span></div>
-              <div class="who-piece"><b>4</b><span>Industries: Retail and payments, Capital markets, Education, Software</span></div>
-              <div class="who-piece"><b><i class="fa-solid fa-cloud"></i></b><span>Cloud on AWS and Azure</span></div>
-              <div class="who-piece"><b><i class="fa-solid fa-location-dot"></i></b><span>Engineering from Hyderabad, India</span></div>
+              <div class="who-piece" style="--i:0"><b>3</b><span>Products we build and run</span><span class="who-logos"><img src="resources/brand/products/atlas-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/synvord-logo-icon-fullcolor.svg" alt=""><img src="resources/brand/products/dhequest-logo-icon-fullcolor.svg" alt=""></span></div>
+              <div class="who-piece" style="--i:1"><b>6</b><span>Service lines, senior team</span></div>
+              <div class="who-piece" style="--i:2"><b>6</b><span>Industries: Hospitality, Healthcare, Education, Retail and payments, Capital markets, Software</span></div>
+              <div class="who-piece" style="--i:3"><b><i class="fa-solid fa-cloud"></i></b><span>Cloud on AWS and Azure</span></div>
+              <div class="who-piece" style="--i:4"><b><i class="fa-solid fa-location-dot"></i></b><span>Engineering from Hyderabad, India</span></div>
             </div>
           </div>
           <div class="scene sc-services" data-scenes="services">
@@ -127,7 +128,7 @@
           </div>
           <div class="scene sc-board" data-scenes="synvord">
             <div class="board-head"><img src="resources/brand/products/synvord-logo-primary-notag-fullcolor.svg" alt="" width="630" height="201"><span class="soon">Coming soon</span></div>
-            <ul class="mod-grid"><li class="flag" style="--k:0"><i class="fa-solid fa-hotel"></i>PMS</li><li class="flag" style="--k:1"><i class="fa-solid fa-utensils"></i>RMS</li><li class="flag" style="--k:2"><i class="fa-solid fa-hospital"></i>HMS</li><li class="flag" style="--k:3"><i class="fa-solid fa-bullhorn"></i>CRM</li><li style="--k:4"><i class="fa-solid fa-calendar-check"></i>Booking</li><li style="--k:5"><i class="fa-solid fa-notes-medical"></i>EMR</li><li style="--k:6"><i class="fa-solid fa-school"></i>Schools</li><li style="--k:7"><i class="fa-solid fa-cart-shopping"></i>Commerce</li><li style="--k:8"><i class="fa-solid fa-award"></i>Loyalty</li><li style="--k:9"><i class="fa-solid fa-users"></i>HRMS</li><li style="--k:10"><i class="fa-solid fa-book"></i>Finance</li><li style="--k:11"><i class="fa-solid fa-chart-line"></i>Analytics</li><li class="more" style="--k:12">+13 more</li></ul>
+            <ul class="sv-lines"><li style="--k:0"><i class="fa-solid fa-bullhorn"></i>Campaigns</li><li style="--k:1"><i class="fa-solid fa-hospital"></i>Hospitals</li><li style="--k:2"><i class="fa-solid fa-school"></i>Schools</li><li style="--k:3"><i class="fa-solid fa-cart-shopping"></i>E&#8209;commerce</li><li style="--k:4"><i class="fa-solid fa-hotel"></i>Hotels</li><li style="--k:5"><i class="fa-solid fa-house-user"></i>Properties</li><li style="--k:6"><i class="fa-solid fa-utensils"></i>Restaurants</li><li style="--k:7"><i class="fa-solid fa-users"></i>HR and payroll</li></ul>
           </div>
           <div class="scene sc-shot" data-scenes="dhequest">
             <div class="device"><div class="bar"><i></i><i></i><i></i><span>dhequest / trade / terminal</span></div><img src="resources/screens/dhequest-terminal-payoff-1440.webp" srcset="resources/screens/dhequest-terminal-payoff-720.webp 720w, resources/screens/dhequest-terminal-payoff-1440.webp 1440w" sizes="(max-width: 900px) 90vw, 46vw" alt="" loading="lazy" decoding="async" width="1440" height="900"></div>
@@ -136,17 +137,10 @@
           </div>
           <div class="scene sc-clients" data-scenes="clients">
             <p class="cl-head">Trusted to build and run</p>
-            <div class="cl-logos"><span><img src="resources/clients/exit.webp" alt="" loading="lazy"></span><span><img src="resources/clients/limitless-pay.webp" alt="" loading="lazy"></span></div>
-            <ul class="cl-proof"><li><b>74%</b>Lower AI cost per delivery</li><li><b>100%</b>Of deliveries checked and reviewed</li><li><b>6</b>Service lines, one team</li></ul>
+            <div class="cl-logos"><span><img src="resources/clients/exit.webp" alt="" loading="lazy" width="248" height="124"></span><span><img src="resources/clients/limitless-pay.webp" alt="" loading="lazy" width="676" height="124"></span></div>
+            <ul class="cl-proof"><li><b>74%</b>Lower AI cost per delivery</li><li><b>100%</b>Of deliveries checked and reviewed</li><li><b>1.2M+</b>Payments processed for Limitless Pay</li></ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="facts">
-        <div><strong data-count="74" data-suffix="%">74%</strong><span>Lower AI cost per delivery</span></div>
-        <div><strong data-count="83" data-suffix="%">83%</strong><span>More requests delivered, from the same set of test requests</span></div>
-        <div><strong data-count="100" data-suffix="%">100%</strong><span>Of deliveries checked automatically and reviewed before sign-off</span></div>
       </div>
     </div>
   </section>
@@ -154,114 +148,14 @@
   <div class="industries">
     <div class="wrap">
       <p>Industries we build for</p>
+      <div><i class="fa-solid fa-hotel"></i>Hospitality</div>
+      <div><i class="fa-solid fa-hospital"></i>Healthcare</div>
+      <div><i class="fa-solid fa-graduation-cap"></i>Education</div>
       <div><i class="fa-solid fa-store"></i>Retail and payments</div>
       <div><i class="fa-solid fa-chart-line"></i>Capital markets</div>
-      <div><i class="fa-solid fa-graduation-cap"></i>Education and workforce</div>
-      <div><i class="fa-solid fa-code"></i>Software engineering</div>
+      <div><i class="fa-solid fa-code"></i>Software teams</div>
     </div>
   </div>
-
-  <section class="manifesto">
-    <div class="wrap">
-      <img loading="lazy" decoding="async" class="manifesto-art" src="resources/people/greeter.svg" alt="" aria-hidden="true">
-      <p class="statement">We don't throw headcount at a backlog. A lean senior team steers Atlas, every result is checked before a person sees it, and nothing ships without an engineer's approval. Then we stay and keep it running.</p>
-    </div>
-  </section>
-
-  <section id="cloud" class="alt">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Cloud-native on AWS and Azure</h2>
-        <p>Our engineers have designed and run cloud-native platforms for SaaS, hospitality, banking and healthcare at enterprise scale. Custom work runs in your own cloud account, under your governance.</p>
-      </div>
-      <div class="stack">
-        <div><h4><i class="fa-brands fa-aws"></i> AWS</h4><p>Cloud-native services, managed data and AI on AWS, with AWS-certified AI practitioners on the team</p></div>
-        <div><h4><i class="fa-brands fa-microsoft"></i> Azure</h4><p>Azure-hosted .NET, Angular and SQL Server applications for enterprise teams</p></div>
-        <div><h4><i class="fa-solid fa-cubes"></i> Cloud-native architecture</h4><p>Microservices, APIs, distributed systems and enterprise integrations</p></div>
-        <div><h4><i class="fa-solid fa-infinity"></i> DevOps and governance</h4><p>CI/CD, Docker, monitoring, Agile delivery and engineering metrics</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>What we do for our clients</h2>
-        <p>One accountable team takes a product from first specification to production and keeps it running. The same engineers who build our own products work on yours.</p>
-      </div>
-      <div class="services">
-        <article class="service">
-          <i class="fa-solid fa-layer-group"></i>
-          <h3>Product engineering</h3>
-          <p>Web, mobile and back-end systems designed, built and shipped by a single team that owns the outcome.</p>
-          <ul><li>Web apps</li><li>Mobile</li><li>APIs</li><li>Design systems</li></ul>
-        </article>
-        <article class="service">
-          <i class="fa-solid fa-microchip"></i>
-          <h3>AI and agent systems</h3>
-          <p>GenAI features, retrieval, multi-agent orchestration and evaluation, built with the same discipline that produced Atlas.</p>
-          <ul><li>GenAI</li><li>RAG</li><li>Multi-agent</li><li>MCP</li><li>Evaluations</li></ul>
-          <a class="svc-link" href="atlas.html" style="--c:var(--atlas)">See it in Atlas</a>
-        </article>
-        <article class="service">
-          <i class="fa-solid fa-store"></i>
-          <h3>Commerce and payments</h3>
-          <p>Storefronts, point of sale, UPI and QR payments, merchant apps, GST billing and franchise operations.</p>
-          <ul><li>Point of sale</li><li>UPI and QR</li><li>Merchant apps</li><li>GST</li></ul>
-          <a class="svc-link" href="synvord.html" style="--c:var(--synvord)">See it in Synvord</a>
-        </article>
-        <article class="service">
-          <i class="fa-solid fa-chart-line"></i>
-          <h3>Trading and market systems</h3>
-          <p>Market data pipelines, strategy engines, back-testing and broker automation, proven in DheQuest.</p>
-          <ul><li>Market data</li><li>Back-testing</li><li>Automation</li><li>Risk controls</li></ul>
-          <a class="svc-link" href="dhequest.html" style="--c:var(--dhequest)">See it in DheQuest</a>
-        </article>
-        <article class="service">
-          <i class="fa-solid fa-database"></i>
-          <h3>Data and analytics</h3>
-          <p>Data models, warehouses and reporting that give leadership numbers they can act on.</p>
-          <ul><li>Postgres</li><li>ClickHouse</li><li>Dashboards</li><li>Pipelines</li></ul>
-        </article>
-        <article class="service">
-          <i class="fa-solid fa-server"></i>
-          <h3>Cloud and operations</h3>
-          <p>Cloud-native microservices on AWS and Azure, release pipelines, monitoring and support long after go-live.</p>
-          <ul><li>AWS</li><li>Azure</li><li>DevOps</li><li>Monitoring</li></ul>
-          <a class="svc-link" href="#cloud" style="--c:var(--atlas)">Our cloud practice</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="products" class="alt">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Products we build and run</h2>
-        <p>Atlas is how we deliver. Synvord and DheQuest are the products we build and run for whole industries. Each has its own page, with a guided demo on request.</p>
-      </div>
-      <div class="p-cards">
-        <a class="p-card" href="atlas.html" style="--c:var(--atlas)">
-          <img src="resources/brand/products/atlas-logo-primary-fullcolor.svg" alt="Atlas" width="380" height="141">
-          <p>Give it a requirement and get it delivered, using the AI subscription you already pay for.</p>
-          <span class="p-for">For engineering teams · free to start</span>
-          <span class="p-go">Explore Atlas <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-        <a class="p-card" href="synvord.html" style="--c:var(--synvord)">
-          <img src="resources/brand/products/synvord-logo-primary-notag-fullcolor.svg" alt="Synvord" width="630" height="201">
-          <p>One platform, in order: 25 modules for hotels, restaurants, hospitals, schools, shops and marketing teams.</p>
-          <span class="p-for">For businesses and franchise networks · coming soon</span>
-          <span class="p-go">Explore Synvord <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-        <a class="p-card" href="dhequest.html" style="--c:var(--dhequest)">
-          <img src="resources/brand/products/dhequest-logo-primary-fullcolor.svg" alt="DheQuest" width="601" height="162">
-          <p>A trading platform that takes a strategy from idea to back-test to live automation.</p>
-          <span class="p-for">For active traders and trading desks · free trial</span>
-          <span class="p-go">Explore DheQuest <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <section id="fit" class="fit">
     <div class="wrap">
@@ -271,71 +165,17 @@
       </div>
       <div class="fit-grid">
         <div class="fit-options" role="tablist" aria-label="What do you run?">
-          <button role="tab" class="on" data-fit="0"><i class="fa-solid fa-store"></i>I run retail stores or franchises</button>
-          <button role="tab" data-fit="1"><i class="fa-solid fa-chart-line"></i>I trade the markets</button>
-          <button role="tab" data-fit="2"><i class="fa-solid fa-code"></i>I lead an engineering team</button>
-          <button role="tab" data-fit="3"><i class="fa-solid fa-layer-group"></i>I need software built from scratch</button>
+          <button role="tab" class="on" data-fit="0"><i class="fa-solid fa-bullhorn"></i>I run campaigns and customer messages</button>
+          <button role="tab" data-fit="1"><i class="fa-solid fa-hospital"></i>I run a hospital or clinic</button>
+          <button role="tab" data-fit="2"><i class="fa-solid fa-school"></i>I run a school or college</button>
+          <button role="tab" data-fit="3"><i class="fa-solid fa-cart-shopping"></i>I sell in stores or online</button>
+          <button role="tab" data-fit="4"><i class="fa-solid fa-hotel"></i>I run a hotel or property</button>
+          <button role="tab" data-fit="5"><i class="fa-solid fa-utensils"></i>I run a restaurant</button>
+          <button role="tab" data-fit="6"><i class="fa-solid fa-chart-line"></i>I trade the markets</button>
+          <button role="tab" data-fit="7"><i class="fa-solid fa-code"></i>I lead an engineering team</button>
+          <button role="tab" data-fit="8"><i class="fa-solid fa-layer-group"></i>I need software built from scratch</button>
         </div>
         <div class="fit-answer" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="approach" class="dark">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>How an engagement runs</h2>
-        <p>A steady rhythm of working releases, so you see progress in the product rather than in status reports.</p>
-      </div>
-      <ol class="steps">
-        <li>
-          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/discover.svg" alt="" aria-hidden="true"><h3>Discover</h3>
-          <p>We sit with the people who will use the software and map how the work actually happens today.</p>
-          <ul><li>Process map</li><li>Scope and estimate</li><li>Risk register</li></ul>
-        </li>
-        <li>
-          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/design.svg" alt="" aria-hidden="true"><h3>Design</h3>
-          <p>Screens, data model and architecture are agreed before the build starts, with a clickable prototype.</p>
-          <ul><li>Clickable prototype</li><li>Architecture decision log</li><li>Release plan</li></ul>
-        </li>
-        <li>
-          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/build.svg" alt="" aria-hidden="true"><h3>Build</h3>
-          <p>Atlas delivers each release with specialised agents. Every result is verified and reviewed, and an engineer signs off each delivery.</p>
-          <ul><li>Verified delivery every release</li><li>Automated quality checks</li><li>Cost and speed report</li></ul>
-        </li>
-        <li>
-          <img loading="lazy" decoding="async" class="step-peep" src="resources/people/run.svg" alt="" aria-hidden="true"><h3>Run</h3>
-          <p>We operate, monitor and improve what we shipped, or hand it over with full documentation.</p>
-          <ul><li>Monitoring and alerts</li><li>Support plan</li><li>Handover documentation</li></ul>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="standards">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Engineering standards we hold ourselves to</h2>
-        <p>The same rules apply to our own products and to every client engagement.</p>
-      </div>
-      <div class="standards">
-        <div class="standard"><h3>You own what we build</h3><p>Source code, data and intellectual property from custom work belong to you, in your repositories from day one.</p></div>
-        <div class="standard"><h3>Security from the start</h3><p>Role-based access, audit trails and secrets kept out of code are built in, not added at the end.</p></div>
-        <div class="standard"><h3>Tested before it ships</h3><p>Automated tests gate every release. A failing test stops the release, not the customer.</p></div>
-        <div class="standard"><h3>Your data, your infrastructure</h3><p>Custom work runs in your own AWS or Azure account. Atlas can also run on your own servers when you need it to.</p></div>
-        <div class="standard"><h3>Written down</h3><p>Decisions, runbooks and handover notes are kept with the code so the next engineer is never guessing.</p></div>
-        <div class="standard"><h3>One accountable team</h3><p>The people who design the system build it and support it. No hand-offs between vendors.</p></div>
-      </div>
-      <div class="stack">
-        <div><h4>Front end</h4><p>React, Angular, TypeScript, Material UI, HTML and CSS</p></div>
-        <div><h4>Back end</h4><p>Node.js, .NET, Python, REST and MCP</p></div>
-        <div><h4>Data</h4><p>PostgreSQL, SQL Server, ClickHouse, S3 storage</p></div>
-        <div><h4>Platform and AI</h4><p>AWS, Azure, Docker, GitHub Actions, Atlas, Claude</p></div>
-      </div>
-      <div class="marquee" aria-hidden="true">
-        <div class="track">
-          <span><i class="fa-brands fa-react"></i>React</span><span><i class="fa-brands fa-js"></i>TypeScript</span><span><i class="fa-brands fa-node-js"></i>Node.js</span><span><i class="fa-brands fa-python"></i>Python</span><span><i class="fa-solid fa-database"></i>PostgreSQL</span><span><i class="fa-solid fa-bolt"></i>ClickHouse</span><span><i class="fa-brands fa-aws"></i>AWS</span><span><i class="fa-brands fa-microsoft"></i>Azure</span><span><i class="fa-brands fa-angular"></i>Angular</span><span><i class="fa-solid fa-code"></i>.NET</span><span><i class="fa-brands fa-docker"></i>Docker</span><span><i class="fa-brands fa-github"></i>GitHub Actions</span><span><i class="fa-solid fa-robot"></i>Claude</span><span><i class="fa-solid fa-plug"></i>MCP</span><span><i class="fa-solid fa-vial"></i>Playwright</span><span><i class="fa-solid fa-credit-card"></i>Razorpay</span>
-        </div>
       </div>
     </div>
   </section>
@@ -401,21 +241,10 @@
       </div>
       <ol class="timeline">
         <li><time>2019</time><h3>SSPART founded</h3><p>An engineering services firm in Hyderabad delivering web and mobile software for clients.</p></li>
-        <li data-sample><time>2021</time><h3>Experts Jar</h3><p>Our first product: skill development through real assignments and expert reviews.</p></li>
-        <li data-sample><time>2023</time><h3>DheQuest</h3><p>Automated trading and market intelligence for active traders.</p></li>
-        <li><time>2026</time><h3>Atlas and Synvord</h3><p>Atlas opens to every team, free to start. Synvord, one platform for hotels, restaurants, hospitals, schools and shops, is announced.</p></li>
+        <li><time>2022</time><h3>DheQuest</h3><p>Automated trading and market intelligence for active traders.</p></li>
+        <li><time>2025</time><h3>Atlas</h3><p>Our agent orchestration platform, turning every request into finished, verified work.</p></li>
+        <li><time>2026</time><h3>Synvord</h3><p>One platform for campaigns, hospitals, schools, e&#8209;commerce, hotels, properties, restaurants and HR. Coming soon.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <section id="atlas-plans">
-    <div class="wrap">
-        <div class="flag-band">
-          <div><h3>Atlas Free</h3><p class="band-price">$0</p><p class="band-for">Free and open source, for one person</p><ul><li>One agent per task</li><li>7 ready-made agents</li><li>Runs on your machine</li></ul></div>
-          <div><h3>Atlas Team</h3><p class="band-price">$19<small>per user a month</small></p><p class="band-for">For teams, or $15 billed annually</p><ul><li>Multi-agent delivery workflows</li><li>24 ready-made agents</li><li>Support from SSPART</li></ul></div>
-          <div><h3>Enterprise and cloud</h3><p class="band-price">Let's talk</p><p class="band-for">On your servers or in your cloud</p><ul><li>We set Atlas up for you</li><li>Integrations scoped with you</li><li>Support terms in writing</li></ul></div>
-          <div class="band-cta"><a class="btn" href="atlas.html">Know more about Atlas</a><a class="btn-text" href="contact.html?product=Atlas">Talk to us</a></div>
-        </div>
     </div>
   </section>
 
@@ -426,26 +255,12 @@
         <p>Anything else, ask us directly.</p>
       </div>
       <div class="faq">
-        <details><summary>How does Atlas make delivery faster and cheaper?</summary><p>Atlas breaks each request into small pieces of work, runs specialised agents on them in parallel and matches the AI effort to each task, so nothing is overspent. Every result is checked and reviewed before an engineer signs off the delivery, and the cost of each delivery is tracked so you see what the spend achieved.</p></details>
-        <details><summary>Does Atlas need access to our cloud?</summary><p>No. Atlas delivers into your repositories, where your team reviews every change. When we build for you, Atlas runs on our systems and the result is deployed to your own AWS or Azure account. If you license Atlas, it runs on your own systems.</p></details>
         <details><summary>Do you only sell your own products?</summary><p>No. We license and customise our products, and we also build custom software from scratch. Many engagements combine both: a product as the base, with custom work on top.</p></details>
-        <details><summary>Can a product be branded and customised for us?</summary><p>Yes. Synvord will carry your own logo, colours, domain and sender identity, and every product can be extended with your own workflows, reports and integrations.</p></details>
         <details><summary>Where is our data hosted?</summary><p>It depends on the product. Custom work runs in your own AWS or Azure account; Atlas can be self-hosted; DheQuest is a hosted service; Synvord will keep your data in the region you choose. We can also host and operate custom work for you.</p></details>
         <details><summary>Who owns the code for custom work?</summary><p>You do. Source code, data and documentation from custom engagements are yours and live in your repositories.</p></details>
         <details><summary>What happens after go-live?</summary><p>We offer support plans with monitoring, fixes and planned improvements, or a full handover to your team with documentation and training.</p></details>
-        <details><summary>How is an engagement priced?</summary><p>Fixed scope and fixed price for well-defined work, or a dedicated monthly team for products that keep evolving. Atlas pricing is <a href="atlas.html#pricing">published here</a>. For our other products, pricing depends on how widely you use them, and we share it on a demo call.</p></details>
+        <details><summary>How is an engagement priced?</summary><p>Fixed scope and fixed price for well-defined work, or a dedicated monthly team for products that keep evolving. Product pricing is on each product's page, or we share it on a demo call.</p></details>
       </div>
-    </div>
-  </section>
-
-  <section class="careers">
-    <div class="wrap">
-      <div>
-        <h2>Build with us</h2>
-        <p>We hire engineers and designers who like owning outcomes, from the first sketch to the production dashboard.</p>
-      </div>
-      <div class="crew" aria-hidden="true"><img loading="lazy" decoding="async" src="resources/people/crew1.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew2.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew3.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew4.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew5.svg" alt=""><img loading="lazy" decoding="async" src="resources/people/crew6.svg" alt=""></div>
-      <a class="btn" href="contact.html?product=Careers">Send us your profile</a>
     </div>
   </section>
 
@@ -478,7 +293,7 @@
     <div class="cols">
       <div>
         <h4>SSPART Enterprise Private Limited</h4>
-        <p>Product engineering for retail, capital markets, workforce skills and AI.</p>
+        <p>Product engineering and AI for hospitality, healthcare, education, retail, payments and capital markets.</p>
         <div class="social">
           <a href="https://www.linkedin.com/company/sspart" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://x.com/SSPART_ORG" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -495,18 +310,16 @@
       </div>
       <div>
         <h4>Services</h4>
-        <a href="#services">Product engineering</a>
-        <a href="#services">AI and agent systems</a>
-        <a href="#cloud">Cloud on AWS and Azure</a>
-        <a href="#services">Retail platforms</a>
-        <a href="#services">Trading systems</a>
+        <a href="services.html#product">Product engineering</a>
+        <a href="services.html#ai">AI and agent systems</a>
+        <a href="services.html#cloud">Cloud on AWS and Azure</a>
+        <a href="services.html#commerce">Retail platforms</a>
+        <a href="services.html#trading">Trading systems</a>
       </div>
       <div>
         <h4>Company</h4>
-        <a href="atlas.html#shift">How we deliver</a>
-        <a href="atlas.html#roi">ROI calculator</a>
         <a href="#company">Our story</a>
-        <a href="#approach">Approach</a>
+        <a href="services.html#approach">Approach</a>
         <a href="#clients">Clients</a>
         <a href="#faq">FAQ</a>
         <a href="press.html">Press</a>
@@ -530,8 +343,8 @@
   </div>
 </footer>
 
-<script src="js/globe.js?v=2026-11-05a"></script>
-<script src="js/story.js?v=2026-11-05e"></script>
+<script src="js/globe.js?v=2026-11-10a"></script>
+<script src="js/story.js?v=2026-11-10b"></script>
 <script>
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   const setMenu = open => { n.classList.toggle('open', open); t.setAttribute('aria-expanded', open); t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
@@ -586,10 +399,6 @@
   }), { rootMargin: '-45% 0px -50% 0px' });
   $$('main section[id]').forEach(s => spy.observe(s));
 
-  // Statement lights up word by word as it scrolls past
-  const statement = $('.statement');
-  statement.innerHTML = statement.textContent.split(' ').map(w => `<span>${w}</span>`).join(' ');
-  const words = [...statement.children];
   const clamp = v => Math.max(0, Math.min(1, v));
   let lastY = 0, up = 0;
   const onScroll = () => {
@@ -600,26 +409,26 @@
     up = scrollY < lastY ? up + lastY - scrollY : 0;
     $('.to-top').classList.toggle('show', scrollY > innerHeight && up > 60 && scrollY + innerHeight < h.scrollHeight - 900);
     lastY = scrollY;
-    const r = statement.getBoundingClientRect();
-    const lit = still ? words.length : Math.round(clamp((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)) * words.length);
-    words.forEach((w, i) => w.classList.toggle('lit', i < lit));
-    const a = $('.steps').getBoundingClientRect();
-    $('.steps').style.setProperty('--p', clamp((innerHeight * 0.75 - a.top) / a.height));
   };
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
   onScroll();
 
   // Product fit picker
+  const sv = (line, points, href) => ({ name: 'Synvord', who: 'owner', c: 'var(--synvord)', line: line + ' Coming soon.', points, href, soon: true });
   const fits = [
-    { name: 'Synvord', who: 'owner', c: 'var(--synvord)', line: 'Run your hotel, restaurant, hospital, school or shop on one platform. Coming soon.',
-      points: ['Start with PMS, RMS, CRM or HMS', 'Share one customer record across every module', 'Keep your data in the region you choose'], href: 'synvord.html', soon: true },
+    sv('Plan, send and measure campaigns on five channels, with one inbox for every reply.', ['Campaigns on five channels', 'One inbox for every conversation', 'Attribution that includes print'], 'synvord-reach.html'),
+    sv('Run a hospital, clinic or care home on one platform.', ['Registration, beds and theatres', 'Pharmacy, lab orders and billing', 'Insurance claims in the same place'], 'synvord-care.html'),
+    sv('Run a school, college or group of campuses on one platform.', ['Admissions and student records', 'Timetable, attendance and fees', 'Child safety built in'], 'synvord.html#m-schools'),
+    sv('Sell at the counter and online, from one stock.', ['Counter billing and an online store', 'Products, offers and loyalty', 'Stock, warehouses and purchasing'], 'synvord.html#m-shops'),
+    sv('Run every property day to day, from hotels and resorts to hostels and PGs.', ['Front desk, rooms and housekeeping', 'Residents, beds and rent for properties', 'Maintenance and the folio'], 'synvord-stay.html'),
+    sv('Run a restaurant or a chain, from the table to the kitchen.', ['QR ordering and kitchen display', 'Reservations and aggregators', 'Food cost under control'], 'synvord-table.html'),
     { name: 'DheQuest', who: 'trader', c: 'var(--dhequest)', line: 'Take a strategy from idea to back-test to live automation, with rules you approve.',
       points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: 'dhequest.html' },
     { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Give it a requirement and get it delivered, using the AI subscription you already pay for.',
       points: ['Run agents in parallel across repositories', 'Review every change as a diff before it lands', 'Keep your code on your own systems'], href: 'atlas.html' },
     { name: 'Custom engineering', who: 'builder', c: 'var(--text)', line: 'One accountable team designs, builds and runs your software, from first spec to production.',
-      points: ['A clickable prototype before the build starts', 'Working software at every release', 'Code, data and IP that belong to you'], href: '#services' },
+      points: ['A clickable prototype before the build starts', 'Working software at every release', 'Code, data and IP that belong to you'], href: 'services.html' },
   ];
   const enquire = name => 'contact.html?product=' + encodeURIComponent(name === 'Custom engineering' ? 'Custom software' : name);
   const answer = $('.fit-answer');
@@ -645,11 +454,7 @@
   dots.forEach((d, i) => d.onclick = () => { say(i); autoplay(); });
   autoplay();
 
-  // Endless strip of the stack
-  const track = $('.marquee .track');
-  track.innerHTML += track.innerHTML;
-
 </script>
-<script src="js/consent.js?v=2026-11-04b" defer></script>
+<script src="js/consent.js?v=2026-11-11a" defer></script>
 </body>
 </html>

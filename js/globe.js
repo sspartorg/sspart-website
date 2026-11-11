@@ -28,7 +28,9 @@ window.Globe = (globe, slot, host) => {
   const zoom = g => { grown = g; R = R0 * (1 + g * 1.5); cy = cy0 + g * H * 0.14; };
   const fit = () => {
     const b = globe.getBoundingClientRect(), s = slot.getBoundingClientRect();
-    W = globe.width = Math.round(b.width * dpr); H = globe.height = Math.round(b.height * dpr);
+    // phones fire resize as the address bar slides; resizing a canvas wipes it, so only when its size really changed
+    const w = Math.round(b.width * dpr), h = Math.round(b.height * dpr);
+    if (w !== W || h !== H) { W = globe.width = w; H = globe.height = h; }
     R0 = s.width * dpr * 0.33; cx = (s.left + s.width / 2 - b.left) * dpr; cy0 = (s.top + s.height / 2 - b.top) * dpr;
     zoom(grown);
   };

@@ -30,7 +30,7 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-05v">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-11j">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body class="atlas-page">
@@ -43,7 +43,7 @@
       <a class="active" href="atlas.html" aria-current="page">Atlas</a>
       <a href="synvord.html">Synvord</a>
       <a href="dhequest.html">DheQuest</a>
-      <a href="index.html#clients">Clients</a>
+      <a href="services.html">Services</a>
       <a class="btn btn-solid" href="contact.html?product=Atlas">Talk to us</a>
     </nav>
   </div>
@@ -51,7 +51,7 @@
 </header>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#what"><span>What you get</span></a><a href="#flagship"><span>See it deliver</span></a><a href="#how"><span>How it works</span></a><a href="#shift"><span>Usual vs Atlas</span></a><a href="#team"><span>The team</span></a><a href="#why"><span>Why Atlas</span></a><a href="#ready"><span>For companies</span></a><a href="#market"><span>Compare</span></a><a href="#roi"><span>ROI</span></a><a href="#editions"><span>Plans</span></a><a href="#pricing"><span>Pricing</span></a><a href="#faq"><span>Questions</span></a>
+  <a href="#what"><span>What you get</span></a><a href="#flagship"><span>See it deliver</span></a><a href="#how"><span>How it works</span></a><a href="#shift"><span>Usual vs Atlas</span></a><a href="#team"><span>The team</span></a><a href="#why"><span>Why Atlas</span></a><a href="#ready"><span>For companies</span></a><a href="#market"><span>Compare</span></a><a href="#editions"><span>Plans</span></a><a href="#pricing"><span>Pricing</span></a><a href="#faq"><span>Questions</span></a>
 </nav>
 
 <main id="top">
@@ -414,57 +414,6 @@
     </div>
   </section>
 
-  <section id="roi">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>See what the spend delivered</h2>
-        <p>The same month of work, three ways: a team doing it by hand, people iterating with AI tools on their own, and Atlas. Atlas records the cost of every step, failed ones included.</p>
-      </div>
-      <div class="calc roi3">
-        <div class="calc-top">
-          <label for="changes">Changes delivered per month</label>
-          <div class="calc-in"><input id="changes" type="range" min="5" max="100" step="5" value="20"><output id="changes-out" for="changes">20</output></div>
-        </div>
-        <div class="roi-cols">
-          <div class="roi-col manual" data-days="3" data-ai="0" data-redo="0" data-turn="5">
-            <h3>Manual team</h3><p class="roi-sub">Engineers write, test and review by hand</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-          <div class="roi-col adhoc" data-days="1.5" data-ai="25" data-redo="0.3" data-turn="3">
-            <h3>People iterating with AI</h3><p class="roi-sub">Each engineer prompts AI tools on their own, then checks and fixes the result</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-          <div class="roi-col atlas" data-days="0.5" data-ai="11.75" data-redo="0" data-turn="1">
-            <h3>With Atlas</h3><p class="roi-sub">Agents deliver, checks run automatically, an engineer steers and signs off</p>
-            <div class="roi-big"><p><span class="v">$0</span><small>cost a month</small></p><p><span class="t">0 days</span><small>per change, request to delivery</small></p></div>
-            <div class="roi-bar"><i></i></div>
-            <dl><div><dt>Engineer time a month</dt><dd class="d">0</dd></div><div><dt>Cost per change</dt><dd class="u">$0</dd></div></dl>
-          </div>
-        </div>
-        <p class="roi-save" id="roi-save"></p>
-        <details class="calc-note">
-          <summary>How these numbers are worked out</summary>
-          <p>A mix of measured and estimated values, not a quote. The Atlas AI cost and run time are measured: in our internal benchmark, 12 representative requests were run end to end on sample repositories. 11 were delivered and 1 stopped for a person by design. Runs took 17 to 78 minutes, at an average of $11.75 per delivered change. Engineer time, the AI spend of people iterating on their own and the rework rate are our estimates from typical projects. Every option is priced at a blended engineer rate of $400 a day. Turnaround is working days from request to delivery for one change.</p>
-          <ul>
-            <li><b>Manual team:</b> 3 engineer-days per change, covering build, testing and review; about 5 working days turnaround once hand-offs and queues are included.</li>
-            <li><b>People iterating with AI:</b> 1.5 engineer-days and about $25 of AI use per change, with 30% of changes needing rework; about 3 working days turnaround.</li>
-            <li><b>With Atlas:</b> half an engineer-day per change to steer and sign off, plus $11.75 of AI, the average cost per delivery in our internal benchmark; delivered within a working day.</li>
-          </ul>
-        </details>
-      </div>
-      <ul class="tracked">
-        <li><i class="fa-solid fa-check"></i>Cost of every delivery, by project</li>
-        <li><i class="fa-solid fa-check"></i>Time from request to delivery</li>
-        <li><i class="fa-solid fa-check"></i>Work right first time, and rework after release</li>
-        <li><i class="fa-solid fa-check"></i>Savings from matching AI effort to each task</li>
-      </ul>
-    </div>
-  </section>
-
   <section class="a-editions" id="editions">
     <div class="wrap">
       <div class="section-head"><h2>Free for one person. Built for your whole team.</h2><p>Start free on your own machine. Choose the Team plan when a whole team needs to work together.</p></div>
@@ -542,6 +491,8 @@
       <div class="section-head"><h2>Questions</h2></div>
       <div class="faq">
         <details><summary>Do we need to buy AI from you?</summary><p>No. Atlas runs Claude Code or GitHub Copilot under each person's own sign-in, or models through Ollama, and you choose which one each agent uses. You keep paying your AI provider directly, and Atlas work counts against that plan's limits.</p></details>
+        <details><summary>How does Atlas make delivery faster and cheaper?</summary><p>Atlas breaks each request into small pieces of work, runs specialised agents on them in parallel and matches the AI effort to each task, so nothing is overspent. Every result is checked and reviewed before an engineer signs off the delivery, and the cost of each delivery is tracked so you see what the spend achieved.</p></details>
+        <details><summary>Does Atlas need access to our cloud?</summary><p>No. Atlas delivers into your repositories, where your team reviews every change. When we build for you, Atlas runs on our systems and the result is deployed to your own AWS or Azure account. If you license Atlas, it runs on your own systems.</p></details>
         <details><summary>Who approves the work?</summary><p>Your team does. Atlas raises each finished change as a pull request and a person approves it. Atlas doesn't merge changes by itself.</p></details>
         <details><summary>Can 100 tasks run at the same moment?</summary><p>Not in one repository. Atlas works on one task at a time per repository and queues the rest, so changes don't collide. Tasks in different repositories can run side by side, up to the limit you set for each workflow.</p></details>
         <details><summary>What do we install?</summary><p>Atlas runs on one server in your organisation, using Docker and Postgres. Each person also runs a small Atlas runner on their own computer, where their agents work. A task needs its owner's runner to be online. You also add your own lint, build and test commands to the workflow, so Atlas can run them.</p></details>
@@ -563,7 +514,7 @@
     <div class="cols">
       <div>
         <h4>SSPART Enterprise Private Limited</h4>
-        <p>Product engineering for retail, capital markets, workforce skills and AI.</p>
+        <p>Product engineering and AI for hospitality, healthcare, education, retail, payments and capital markets.</p>
         <div class="social">
           <a href="https://www.linkedin.com/company/sspart" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://x.com/SSPART_ORG" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -580,18 +531,16 @@
       </div>
       <div>
         <h4>Services</h4>
-        <a href="index.html#services">Product engineering</a>
-        <a href="index.html#services">AI and agent systems</a>
-        <a href="index.html#cloud">Cloud on AWS and Azure</a>
-        <a href="index.html#services">Retail platforms</a>
-        <a href="index.html#services">Trading systems</a>
+        <a href="services.html#product">Product engineering</a>
+        <a href="services.html#ai">AI and agent systems</a>
+        <a href="services.html#cloud">Cloud on AWS and Azure</a>
+        <a href="services.html#commerce">Retail platforms</a>
+        <a href="services.html#trading">Trading systems</a>
       </div>
       <div>
         <h4>Company</h4>
-        <a href="#shift">How we deliver</a>
-        <a href="#roi">ROI calculator</a>
         <a href="index.html#company">Our story</a>
-        <a href="index.html#approach">Approach</a>
+        <a href="services.html#approach">Approach</a>
         <a href="index.html#clients">Clients</a>
         <a href="index.html#faq">FAQ</a>
       </div>
@@ -622,11 +571,11 @@
   n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 </script>
 <script src="js/page.js?v=2026-11-04a"></script>
-<script src="js/product-film.js?v=2026-11-05c"></script>
+<script src="js/product-film.js?v=2026-11-10e"></script>
 <script src="js/atlas-film.js?v=2026-11-05e"></script>
 <script src="js/board.js?v=2026-10-31a"></script>
-<script src="js/atlas.js?v=2026-11-05a"></script>
+<script src="js/atlas.js?v=2026-11-11a"></script>
 <script src="js/console.js?v=2026-11-05a"></script>
-<script src="js/consent.js?v=2026-11-04b" defer></script>
+<script src="js/consent.js?v=2026-11-11a" defer></script>
 </body>
 </html>

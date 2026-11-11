@@ -125,9 +125,9 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 
 /* Industries band */
 .industries { padding: 0; border-block: 1px solid var(--line); background: var(--card); }
-.industries .wrap { display: grid; grid-template-columns: auto repeat(4, 1fr); align-items: stretch; }
+.industries .wrap { display: grid; grid-template-columns: auto repeat(6, 1fr); align-items: stretch; }
 .industries p { padding: 24px 32px 24px 0; color: var(--muted); font-size: 0.95rem; align-self: center; }
-.industries .wrap > div { padding: 24px; border-left: 1px solid var(--line); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.industries .wrap > div { padding: 24px 18px; white-space: nowrap; border-left: 1px solid var(--line); display: flex; align-items: center; gap: 12px; font-weight: 500; }
 .industries i { color: var(--muted); width: 18px; text-align: center; }
 
 /* Section scaffolding */
@@ -309,6 +309,7 @@ footer .cols a { display: block; text-decoration: none; padding: 4px 0; margin-b
 footer a[href^="mailto"] { white-space: nowrap; }
 footer a:hover { color: var(--on-night); }
 .social { display: flex; margin-top: 14px; }
+.social { display: none; } /* off until the accounts have posts: delete this line to show the footer social links again */
 footer .social a { display: inline-grid; place-items: center start; height: 36px; padding: 0 22px 0 0; margin: 0; font-size: 1.1rem; }
 .legal { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--ink-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .legal nav { display: flex; gap: 20px; }
@@ -1091,6 +1092,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .a-shot { max-width: 860px; margin: 56px auto 0; padding-top: 0; }
 .a-shot .window { box-shadow: var(--lift), 0 60px 100px -60px rgb(76 29 149 / 0.45); font-size: 13px; }
 .a-shot .bot.b1 { left: -52px; top: 60px; } .a-shot .bot.b2 { right: -24px; top: 42%; } .a-shot .bot.b3 { left: 46%; bottom: -26px; }
+@media (max-width: 1100px) { .a-shot .bot.b1, .console-stage .bot.b1 { left: -8px; } .a-shot .bot.b2, .console-stage .bot.b2 { right: -8px; } } /* tablets: robots sit on the window's edge, not off the screen */
 
 /* Atlas page: the workflow map. Twelve steps in two rows, the second running back like a route */
 .map-nodes { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 34px 26px; counter-reset: step; }
@@ -1287,8 +1289,10 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 
 /* ---------- Product pages (Synvord, DheQuest): the Atlas page layout, in each product's own colours ---------- */
 .p-logo { display: block; width: auto; height: clamp(48px, 6vw, 72px); margin: 0 auto 32px; }
+.p-name { margin: -20px 0 24px; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--c); }
 .product-page .scream { background: var(--c-deep); }
-.product-page .scream ul { grid-template-columns: repeat(3, 1fr); } /* three facts stay on one row, phones included */
+.product-page .scream ul { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 620px) { .product-page .scream ul { grid-template-columns: 1fr; } } /* facts like '1,00,000' are too wide for three across on a phone */
 .product-page .ready i { background: var(--c); }
 /* Synvord: coming soon */
 .soon-tag { display: inline-block; margin: 0 0 22px; padding: 6px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--c) 40%, #fff);
@@ -1302,6 +1306,8 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
   text-decoration: none; color: var(--text); transition: border-color 0.2s, translate 0.2s; }
 .flag-card:hover { border-color: var(--c); translate: 0 -2px; }
 .flag-card img { height: 44px; width: auto; align-self: flex-start; }
+.flag-card .fc-name { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 1.5rem; font-weight: 800; color: var(--c-deep); }
+.flag-card .fc-name i { color: var(--c); }
 .flag-card b { font-size: 1.15rem; font-weight: 800; }
 .flag-card p { margin: -6px 0 4px; color: var(--muted); font-size: 1rem; }
 .flag-card span { margin-top: auto; font-weight: 700; color: var(--c-deep); }
@@ -1309,12 +1315,16 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .mod-jump a { color: var(--muted); text-underline-offset: 3px; }
 .mod-jump a:hover { color: var(--text); }
 .mod-group + .mod-group { margin-top: 48px; }
-.mod-group h3 { margin: 0 0 18px; font-size: 1.35rem; }
+.mod-group h3 { margin: 0 0 6px; font-size: 1.35rem; }
+.mod-group-for { margin: 0 0 18px; color: var(--muted); }
+.mod-also ul a { font-weight: 700; color: var(--c-deep); text-underline-offset: 3px; }
+.mod:target { outline: 2px solid var(--c); outline-offset: 2px; }
 .mods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .mod { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
 .mod > i { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); margin-bottom: 14px; }
 .mod-flag > i { background: var(--c); color: #fff; }
 .mod h4 { margin: 0 0 6px; font-size: 1.08rem; font-weight: 800; }
+.mod .mod-for { margin: 0 0 2px; font-size: 0.8rem; font-weight: 700; color: var(--c); }
 .mod > p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
 .mod ul { margin: 0; padding: 0; display: grid; gap: 5px; font-size: 0.9rem; }
 .mod ul li { position: relative; padding-left: 16px; }
@@ -1356,6 +1366,9 @@ main > section.sv-film { content-visibility: visible; contain-intrinsic-size: no
 .pin .sv-b3 { place-content: start center; padding-top: calc(var(--head-h, 72px) + 7svh); }
 .pin .sv-chips { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
 .pin .sv-chips li { position: absolute; left: 50%; top: 50%; translate: -50% -50%; padding: 0 14px; opacity: 0; will-change: transform, opacity; }
+/* chips are fixed-size boxes in the film: a label that can't fit on one line wraps instead of spilling out */
+.pin .sv-chips li { gap: 8px; padding: 0 10px; font-size: clamp(0.72rem, 0.35rem + 0.75vw, 0.95rem); }
+.pin .sv-chips li span { min-width: 0; white-space: normal; line-height: 1.1; text-align: start; }
 .pin .sv-narrow .sv-chips li { justify-content: center; padding: 0; }
 .pin .sv-narrow .sv-chips li span { display: none; }
 
@@ -1441,14 +1454,22 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 /* ---------- Home: the SSPART story (js/story.js). Chapters on the left, a sticky stage on the right that changes scene ---------- */
 .story { padding-bottom: 72px; }
 .story-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(32px, 5vw, 88px); }
-.story-text { position: relative; padding-left: 30px; }
-.story-text::before, .story-text::after { content: ""; position: absolute; left: 0; top: calc(var(--head-h, 72px) + 40px); bottom: 64px; width: 3px; border-radius: 3px; background: var(--line); }
+/* the story's timeline: a stop for each chapter from 01 to 06 (js/story.js measures them), the line filling as you read and
+   each stop lighting up once reached. It stands in for the header's progress bar, which hides while the story is read */
+.story-text { --gut: 34px; position: relative; padding-left: var(--gut); }
+.story-text::before, .story-text::after { content: ""; position: absolute; left: 4px; top: var(--t0, 0); height: calc(var(--t1, 0px) - var(--t0, 0px)); width: 2px; border-radius: 2px; background: var(--line); }
 .story-text::after { background: linear-gradient(var(--plan), var(--make), var(--check)); transform-origin: top; transform: scaleY(var(--read, 0)); }
+.story .ch-num { position: relative; }
+.story .ch-num::before { content: ""; position: absolute; left: calc(-1 * var(--gut) - 2px); top: 50%; width: 14px; height: 14px; translate: 0 -50%; box-sizing: border-box; border-radius: 50%;
+  background: var(--page); border: 2px solid var(--line); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+.story .chapter.read .ch-num::before { background: #7c3aed; border-color: #7c3aed; }
+.story .chapter.read.on .ch-num::before { box-shadow: 0 0 0 5px rgb(124 58 237 / 0.18); }
+.progress { transition: opacity 0.3s; } .in-story .progress { opacity: 0; }
 .chapter { min-height: 78svh; display: flex; flex-direction: column; justify-content: center; padding: 56px 0; opacity: 0.32; transition: opacity 0.5s; }
 .chapter.on, html:not(.js) .chapter { opacity: 1; }
 .chapter.ch-hero { min-height: 100svh; padding-top: calc(var(--head-h, 72px) + 24px); }
 .story h1 { max-width: 15ch; margin: 0; text-align: left; } /* the site's one h1 size */
-.story .lede { margin: 24px 0 0; max-width: 44ch; }
+.story .chapter .lede { margin: 24px 0 0; max-width: 44ch; }
 .story .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; justify-content: flex-start; }
 .ch-num { margin: 0; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; color: var(--plan); } /* sentence case, like every other label */
 .chapter h2 { margin: 14px 0 16px; max-width: 16ch; font-size: clamp(2rem, 3.8vw, 3.1rem); } /* the same size as every section heading */
@@ -1516,13 +1537,12 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .sc-board { align-content: center; gap: 18px; }
 .board-head { display: flex; align-items: center; gap: 14px; } .board-head img { height: 40px; width: auto; }
 .soon { padding: 5px 12px; border-radius: 999px; background: color-mix(in srgb, var(--synvord) 12%, #fff); color: var(--synvord); font-size: 0.78rem; font-weight: 800; }
-.mod-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 120px)); gap: 10px; margin: 0; padding: 0; list-style: none; }
-.mod-grid li { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; border-radius: 14px; background: #fff; border: 1px solid var(--line); font-weight: 700; font-size: 0.85rem;
-  opacity: 0; scale: 0.85; transition: opacity 0.4s, scale 0.45s; transition-delay: calc(var(--k) * 45ms); }
-.mod-grid li i { color: var(--synvord); font-size: 1.15rem; }
-.mod-grid li.flag { background: var(--synvord); border-color: var(--synvord); color: #fff; } .mod-grid li.flag i { color: #fff; }
-.mod-grid li.more { justify-content: center; color: var(--synvord); background: color-mix(in srgb, var(--synvord) 8%, #fff); }
-.sc-board.on .mod-grid li { opacity: 1; scale: 1; }
+/* Synvord: its product lines */
+.sv-lines { display: grid; grid-template-columns: repeat(4, minmax(0, 130px)); grid-auto-rows: 1fr; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.sv-lines li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 18px 8px; border-radius: 14px; background: #fff; border: 1px solid var(--line);
+  font-weight: 700; font-size: 0.85rem; text-align: center; opacity: 0; scale: 0.85; transition: opacity 0.4s, scale 0.45s; transition-delay: calc(var(--k) * 45ms); }
+.sv-lines i { color: var(--synvord); font-size: 1.2rem; }
+.sc-board.on .sv-lines li { opacity: 1; scale: 1; }
 /* clients and proof */
 .sc-clients { align-content: center; justify-items: center; gap: 26px; text-align: center; }
 .cl-head { margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--muted); }
@@ -1530,15 +1550,49 @@ main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* u
 .cl-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; max-width: 600px; }
 .cl-proof li { padding: 20px 16px; border-radius: 18px; background: #fff; border: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
 .cl-proof b { display: block; margin-bottom: 4px; font-size: 2rem; letter-spacing: -0.03em; color: var(--plan); }
-/* narrow screens: the stage becomes a band at the top, the chapters scroll beneath it */
+/* narrow screens read the story straight down, nothing pinned and nothing faded: js/story.js moves each scene under its
+   chapter (the globe above the headline, the at-a-glance cards under "Who we are") */
 @media (max-width: 900px) {
   .story-grid { grid-template-columns: 1fr; gap: 0; }
-  .story-stage { order: -1; position: sticky; top: var(--head-h, 72px); z-index: 2; height: 40svh; margin: 0 -16px; background: linear-gradient(var(--page) 85%, transparent); }
-  .stage-sticky { position: absolute; inset: 0; top: 0; height: 100%; }
-  .chapter { min-height: 62svh; } .chapter.ch-hero { min-height: auto; padding-top: 32px; }
-  .story-text { padding-left: 18px; }
-  .scene { transform: scale(0.62); } .scene.on { transform: scale(0.66); }
+  .story-stage { display: none; }
+  .story-text { --gut: 26px; }
+  .chapter, .chapter.ch-hero { min-height: 0; padding: 36px 0; opacity: 1; }
+  .chapter.ch-hero { min-height: 100svh; box-sizing: border-box; padding-top: calc(var(--head-h, 72px) + 8px); margin-left: calc(-1 * var(--gut)); } /* the hero fills the first screen; "Who we are" starts below it */
+  .chapter .scene { position: relative; inset: auto; margin-top: 28px; opacity: 1; visibility: visible; transform: none; filter: none; }
   .ch-svc { grid-template-columns: 1fr; }
+  /* the globe: a square canvas with room around the sphere for its orbits */
+  .chapter .sc-globe { align-self: center; width: min(100vw, 440px, 64svh); aspect-ratio: 1; margin: 0 calc((100% - 100vw) / 2) 4px; } /* the box may run into the page gutters */
+  .chapter .sc-globe .globe-slot { width: 78%; margin: 0; }
+  /* at a glance: the cards roll past in a strip, each on the same loop a fifth apart; the loop (5 cards) is longer than a
+     tablet is wide, so a card jumps back unseen. !important beats the circling js/story.js writes for wide screens */
+  .chapter p.who-head { position: static; translate: none; margin: 36px 0 10px; opacity: 1; } /* p.: beats .chapter p:not(.ch-num) { margin: 0 } */
+  .chapter .who-orbit { position: relative; inset: auto; height: 100px; margin-right: -16px; overflow: hidden; opacity: 1;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent); mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent); }
+  /* one size for every card, whatever its text, so the strip runs level */
+  .who-piece { --w: 236px; top: 8px; width: var(--w); height: 78px; align-content: center; padding: 10px 14px; transform: none !important; opacity: 1 !important; z-index: 1 !important;
+    animation: roll 30s linear infinite; animation-delay: calc(var(--i) * -6s); }
+  .who-piece b { font-size: 1.4rem; }
+  .who-piece span { font-size: 0.78rem; }
+  /* the other scenes, shown whole as they scroll by */
+  .chapter .sc-services { width: 100%; max-width: 440px; }
+  .chapter .svc-nodes li { width: 92px; padding: 10px 6px; font-size: 0.7rem;
+    left: calc(50% + cos(var(--k) * 60deg - 90deg) * 34%); top: calc(50% + sin(var(--k) * 60deg - 90deg) * 34%); }
+  .chapter .svc-nodes li { opacity: 1; scale: 1; }
+  .chapter .sv-lines li { opacity: 1; scale: 1; }
+  .chapter .sc-shot { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chapter .float-card { position: static; opacity: 1; transform: none; animation: none; }
+  .chapter .sc-board, .chapter .sc-clients { justify-items: start; text-align: start; }
+  .chapter .sv-lines { grid-template-columns: repeat(2, 1fr); width: 100%; }
+  .chapter .sv-lines li { flex-direction: row; justify-content: flex-start; gap: 10px; padding: 14px; }
+  .chapter .who-piece { box-shadow: 0 10px 22px -16px rgb(11 16 38 / 0.5); }
+  /* the stats row right after the story already gives these numbers */
+  .chapter .cl-proof { display: none; }
+  .chapter .cl-logos { flex-wrap: wrap; gap: 12px; }
+}
+@keyframes roll { from { translate: calc(4 * (var(--w) + 14px)) 0; } to { translate: calc(-1 * (var(--w) + 14px)) 0; } }
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .chapter .who-orbit { display: flex; gap: 14px; overflow-x: auto; align-items: center; height: auto; padding: 8px 16px 16px 0; -webkit-mask-image: none; mask-image: none; }
+  .who-piece { position: static; flex: none; animation: none; translate: none; }
 }
 
 /* ---------- The SSPART story's AI touches, on the light page: gradient headline, a live agent terminal, a neural network

@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 
 const SB = 'https://test.supabase.co';
-const useConfig = page => page.route('**/js/config.js*', r => r.fulfill({ contentType: 'text/javascript', body: `window.SSPART_SUPABASE = { url: '${SB}', key: 'public-key' };` }));
+const useConfig = (page, url = SB, key = 'public-key') => page.route('**/js/config.js*', r => r.fulfill({ contentType: 'text/javascript', body: `window.SSPART_SUPABASE = { url: '${url}', key: '${key}' };` }));
 const fill = async (page, { mobile = '+91 95150 93965' } = {}) => {
   await page.fill('[name=name]', 'Asha Rao');
   await page.fill('[name=mobile]', mobile);
@@ -73,6 +73,7 @@ for (const [name, setup] of [
 }
 
 test('with no Supabase project configured, the form still points to email and phone', async ({ page }) => {
+  await useConfig(page, '', '');
   await page.goto('/contact.html');
   await fill(page);
   await page.click('button[type=submit]');
@@ -431,6 +432,7 @@ test('owner desk: a sign-in outage is not reported as a wrong password', async (
 });
 
 test('owner desk: never appears in search engines and locks down scripts', async ({ page }) => {
+  await useConfig(page, '', '');
   await page.goto('/admin.html');
   await expect(page.locator('meta[name=robots]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('meta[http-equiv=Content-Security-Policy]')).toHaveAttribute('content', /script-src 'self'/);

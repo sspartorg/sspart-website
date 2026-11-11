@@ -7,10 +7,14 @@ on:
 permissions: {}
 jobs:
   ping:
+    # skipped, not failed, until the repository variables SUPABASE_URL and SUPABASE_ANON_KEY are set
+    if: vars.SUPABASE_URL != ''
     runs-on: ubuntu-latest
     steps:
       - name: Call ping()
         env:
           URL: ${{ vars.SUPABASE_URL }}
           KEY: ${{ vars.SUPABASE_ANON_KEY }}
-        run: curl -fsS -X POST "$URL/rest/v1/rpc/ping" -H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -d '{}'
+        # a block, so the "apikey: ..." headers are not read as YAML keys
+        run: |
+          curl -fsS -X POST "$URL/rest/v1/rpc/ping" -H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -d '{}'

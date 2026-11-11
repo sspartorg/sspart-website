@@ -88,34 +88,13 @@ test('the repeat limit gets its own message', async ({ page }) => {
   await expect(page.locator('#status')).toContainText('in the last hour');
 });
 
-test('atlas page: the board runs, pricing shows and the promises stay true', async ({ page }) => {
+test('atlas page: pricing shows and the promises stay true', async ({ page }) => {
   await page.goto('/atlas.html');
-  await expect(page.locator('#board i')).toHaveCount(100);
-  await page.locator('#board').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
-  await expect(page.locator('#board-count')).not.toHaveText('0', { timeout: 10_000 });
   await expect(page.locator('.tier-main .price')).toContainText('$19');
   const text = await page.locator('body').innerText();
   for (const banned of [/auto.?merge/i, /tamper/i, /SOC 2/i, /SAML/i, /GitLab/i, /Bitbucket/i, /Slack/i, /unlimited/i, /enterprise.ready/i, /Copilot Studio/i, /Watson/i, /\bDevin\b/i, /Cursor/i]) {
     expect(text, String(banned)).not.toMatch(banned);
   }
-});
-
-test('atlas page: the console delivers what the visitor typed, and Atlas pricing is there', async ({ page }) => {
-  await page.goto('/atlas.html');
-  const flag = page.locator('#flagship');
-  await expect(page.locator('#pricing')).toContainText('$19');
-  await expect(flag.locator('#board')).toHaveCount(0);
-  await flag.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
-  await page.fill('#con-req', '<b>Add a refund page</b>');
-  await page.click('#con-form button[type=submit]');
-  await expect(page.locator('#con-log')).toContainText('Failed');
-  await expect(page.locator('#con-done')).toContainText('ready for your approval', { timeout: 15_000 });
-  await expect(page.locator('#con-done b')).toHaveCount(0);
-  await expect(page.locator('#con-rail li.on')).toHaveCount(4);
-  await expect(page.locator('#con-log li.wait')).toHaveCount(0);
-  await expect(page.locator('#sum-checks')).toHaveText('4');
-  await expect(page.locator('#sum-fixes')).toHaveText('1');
-  await expect(page.locator('#sum-who')).toHaveText('You');
 });
 
 test('atlas page: each kind of work lights its own specialists', async ({ page }) => {
@@ -160,17 +139,12 @@ test('atlas page: every workflow step explains itself when selected', async ({ p
   await expect(page.locator('#map-card h3'), 'a chosen step stays chosen').toHaveText('Tests check');
 });
 
-test('atlas page: reduced motion shows the finished board and no animation', async ({ page }) => {
+test('atlas page: reduced motion shows the finished queue and no animation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/atlas.html');
-  await expect(page.locator('#board-count')).toHaveText('100');
-  await expect(page.locator('#board i.s4')).toHaveCount(100);
   await page.locator('#queue').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
   await expect(page.locator('#q-done')).toHaveText('100');
   await expect(page.locator('.film-logo').first(), 'the film is a plain section').toBeVisible();
-  await expect(page.locator('#con-log li')).toHaveCount(11);
-  await page.locator('#console').evaluate(d => d.scrollIntoView({ block: 'center', behavior: 'instant' }));
-  await expect(page.locator('#con-done')).toContainText('ready for your approval');
 });
 
 test('home page: the SSPART story changes the stage as each chapter is read, and links to every product', async ({ page }) => {
@@ -344,7 +318,7 @@ test('home page: every section heading is the same size', async ({ page }) => {
 test('atlas page: every heading is the same size, and real screens are never stretched', async ({ page }) => {
   await page.goto('/atlas.html');
   const sizes = await page.$$eval('main h2:not(.mega):not(.film-logo)', hs => hs.map(h => getComputedStyle(h).fontSize)); // the film's giant ATLAS is a beat, not a heading size
-  expect(sizes.length).toBeGreaterThan(10);
+  expect(sizes.length).toBeGreaterThanOrEqual(8);
   expect(new Set(sizes).size).toBe(1);
   const widest = await page.$$eval('.a-hero .shots img, .a-screens .shots img', is => Math.max(...is.map(i => i.getBoundingClientRect().width)));
   expect(widest, '1440px captures stay sharp at twice the density only up to about 860px').toBeLessThanOrEqual(860);
@@ -376,7 +350,7 @@ test('every page with a nav shares one header', async ({ page }) => {
   };
   const home = await read('/');
   expect(home.links).toEqual(['Atlas', 'Synvord', 'DheQuest', 'Services', 'Talk to us']);
-  for (const url of ['/services.html', '/atlas.html', '/synvord.html', '/dhequest.html', '/synvord-stay.html', '/synvord-care.html']) expect(await read(url)).toEqual(home);
+  for (const url of ['/services.html', '/atlas.html', '/synvord.html', '/dhequest.html']) expect(await read(url)).toEqual(home);
 });
 
 // A small in-memory stand-in for the two tables, enough to walk the desk end to end

@@ -30,14 +30,14 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-11j">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-12e">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body>
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg" alt=""></a>
+    <a class="brand" href="#top"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg?v=2" alt=""></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="atlas.html">Atlas</a>
@@ -86,7 +86,7 @@
         <div class="chapter" data-scene="synvord">
           <p class="ch-num">04 · For every business</p>
           <h2>Synvord: one platform, in order.</h2>
-          <p>Eight product lines on one platform, all sharing one customer record. Coming soon, starting with campaigns, hospitals, hotels and restaurants.</p>
+          <p>Eight product lines on one platform, all sharing one customer record. Coming soon.</p>
           <a class="ch-link" href="synvord.html" style="--c:var(--synvord)">Explore Synvord <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="chapter" data-scene="dhequest">
@@ -415,14 +415,16 @@
   onScroll();
 
   // Product fit picker
-  const sv = (line, points, href) => ({ name: 'Synvord', who: 'owner', c: 'var(--synvord)', line: line + ' Coming soon.', points, href, soon: true });
+  // Synvord: one line per business; the details stay private until launch
+  const sv = (line, href) => ({ name: 'Synvord', who: 'owner', c: 'var(--synvord)', line: line + ' Coming soon.', href, soon: true,
+    points: ['One platform for every business you run', 'One customer record shared across it all', 'Your data kept in the region you choose'] });
   const fits = [
-    sv('Plan, send and measure campaigns on five channels, with one inbox for every reply.', ['Campaigns on five channels', 'One inbox for every conversation', 'Attribution that includes print'], 'synvord-reach.html'),
-    sv('Run a hospital, clinic or care home on one platform.', ['Registration, beds and theatres', 'Pharmacy, lab orders and billing', 'Insurance claims in the same place'], 'synvord-care.html'),
-    sv('Run a school, college or group of campuses on one platform.', ['Admissions and student records', 'Timetable, attendance and fees', 'Child safety built in'], 'synvord.html#m-schools'),
-    sv('Sell at the counter and online, from one stock.', ['Counter billing and an online store', 'Products, offers and loyalty', 'Stock, warehouses and purchasing'], 'synvord.html#m-shops'),
-    sv('Run every property day to day, from hotels and resorts to hostels and PGs.', ['Front desk, rooms and housekeeping', 'Residents, beds and rent for properties', 'Maintenance and the folio'], 'synvord-stay.html'),
-    sv('Run a restaurant or a chain, from the table to the kitchen.', ['QR ordering and kitchen display', 'Reservations and aggregators', 'Food cost under control'], 'synvord-table.html'),
+    sv('Plan, send and measure your campaigns from one place.', 'synvord.html#mod-reach'),
+    sv('Run your hospital or clinic day to day, from admission to discharge.', 'synvord.html#m-hospitals'),
+    sv('Run your school or college, from admissions to fees.', 'synvord.html#m-schools'),
+    sv('Sell at the counter and online, from one system.', 'synvord.html#m-shops'),
+    sv('Control and view every stay in one place, from hotels to hostels and PGs.', 'synvord.html#m-hotels'),
+    sv('Run your restaurants, from the table to the kitchen.', 'synvord.html#m-restaurants'),
     { name: 'DheQuest', who: 'trader', c: 'var(--dhequest)', line: 'Take a strategy from idea to back-test to live automation, with rules you approve.',
       points: ['Test every rule on years of history first', 'Let brokers execute by the rules, not by mood', 'Get levels and setups surfaced continuously'], href: 'dhequest.html' },
     { name: 'Atlas', who: 'engineer', c: 'var(--atlas)', line: 'Give it a requirement and get it delivered, using the AI subscription you already pay for.',

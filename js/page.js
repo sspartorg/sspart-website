@@ -24,4 +24,25 @@
     w.querySelectorAll('.shots img').forEach((x, j) => x.classList.toggle('on', j === i));
     w.querySelector('.bar span').textContent = b.dataset.url;
   });
+
+  // Screenshots open full size, at their largest source: the frames crop tall screens to 16:10
+  const box = document.createElement('dialog');
+  box.className = 'lightbox';
+  box.innerHTML = '<button type="button" class="lightbox-close" aria-label="Close">&times;</button><img alt="">';
+  document.body.append(box);
+  const big = box.querySelector('img');
+  const largest = img => img.srcset ? img.srcset.split(',').map(s => s.trim().split(/\s+/)).sort((a, b) => parseInt(b[1]) - parseInt(a[1]))[0][0] : img.currentSrc;
+  const open = shots => {
+    const img = shots.querySelector('img.on') || shots.querySelector('img'); // the images are stacked; the shown one has .on
+    big.src = largest(img); big.alt = img.alt;
+    box.showModal();
+  };
+  document.querySelectorAll('.window.real .shots').forEach(s => {
+    s.tabIndex = 0; s.setAttribute('role', 'button'); s.setAttribute('aria-label', 'Open this screen full size');
+    s.addEventListener('click', () => open(s));
+    s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(s); } });
+  });
+  // a click anywhere closes it, the picture included, unless the picture is wider than the screen (phones) and is being
+  // swiped across; Esc and the close button always work
+  box.addEventListener('click', e => { if (e.target !== big || big.offsetWidth <= box.clientWidth) box.close(); });
 })();

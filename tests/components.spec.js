@@ -137,3 +137,39 @@ test('cookie panel: closed without choosing, it stays closed on the next page, a
   await page.locator('.cc-cookie').click();
   await expect(page.locator('#cc-panel')).toBeVisible();
 });
+
+test('the first section sits flush under the header, with no strip of page showing above it', async ({ page }) => {
+  for (const url of ['/', '/atlas.html', '/synvord.html', '/dhequest.html', '/services.html']) {
+    await page.goto(url);
+    expect(await page.evaluate(() => document.querySelector('main').firstElementChild.getBoundingClientRect().top), url).toBe(0);
+  }
+});
+
+test('product films: the opening words start at full size and grow as soon as scrolling starts, never shrinking', async ({ page }) => {
+  test.skip(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), 'films are static without motion');
+  const size = () => page.locator('.sv-film .sv-beat').first().evaluate(b => new DOMMatrix(getComputedStyle(b).transform).a);
+  for (const url of ['/atlas.html', '/synvord.html', '/dhequest.html']) {
+    await page.goto(url);
+    expect(await size(), url).toBeCloseTo(1, 3);
+    await page.evaluate(() => scrollTo(0, 150));
+    await page.waitForTimeout(500);
+    expect(await size(), url).toBeGreaterThan(1.01);
+  }
+});
+
+test('screenshots open full size, uncropped, and close with a click or Esc', async ({ page }) => {
+  await page.goto('/atlas.html');
+  const shots = page.locator('.a-hero .window.real .shots');
+  await shots.scrollIntoViewIfNeeded();
+  await shots.click();
+  const box = page.locator('dialog.lightbox');
+  await expect(box).toBeVisible();
+  await expect(box.locator('img')).toHaveAttribute('src', /-1440\.webp/);
+  await page.keyboard.press('Escape');
+  await expect(box).toBeHidden();
+  await shots.focus();
+  await page.keyboard.press('Enter');
+  await expect(box).toBeVisible();
+  await box.click({ position: { x: 5, y: 5 } });
+  await expect(box).toBeHidden();
+});

@@ -10,10 +10,14 @@
   let seed = 5; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
   const order = cells.map((_, i) => [rnd(), i]).sort((a, b) => a[0] - b[0]).map(x => x[1]), rank = [];
   order.forEach((c, k) => { rank[c] = k; });
-  let lastP = -1;
+  // eases toward the scroll position at the same rate as js/product-film.js, so the board keeps time with the beats
+  const FOLLOW = 0.18;
+  let lastP = -1, cur = null;
   const frame = () => {
-    const p = clamp(-film.getBoundingClientRect().top / (film.offsetHeight - innerHeight));
-    if (p === lastP) return;
+    const target = clamp(-film.getBoundingClientRect().top / (film.offsetHeight - innerHeight));
+    cur = cur === null || Math.abs(target - cur) < 0.0005 ? target : cur + (target - cur) * FOLLOW;
+    const p = cur;
+    if (p === lastP) return false;
     lastP = p;
     const done = ease(p, 0.28, 0.46) * 100, taken = ease(p, 0.26, 0.42) * 100;
     count.textContent = Math.round(done);
@@ -24,9 +28,11 @@
       f.style.opacity = ease(p, 0.3, 0.36) * (1 - ease(p, 0.44, 0.5));
       f.style.transform = `translate(${side * (70 - t * 26)}vw, ${[-24, -24, 26][i] + (1 - t) * 12}vh) rotate(${side * (16 - t * 16)}deg)`;
     });
+    return p !== target; // still easing: ask for another frame
   };
   frame();
   let ticking = false;
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { frame(); ticking = false; }); } }, { passive: true });
-  addEventListener('resize', () => { lastP = -1; frame(); });
+  const tick = () => { if (frame()) requestAnimationFrame(tick); else ticking = false; };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }, { passive: true });
+  addEventListener('resize', () => { lastP = -1; cur = null; frame(); });
 })();

@@ -84,7 +84,7 @@ i.fa-solid, i.fa-brands { display: inline-block; min-width: 1em; text-align: cen
 .nav a:hover { color: var(--on-night); }
 .nav .btn { padding: 9px 18px; }
 .nav .btn-solid { color: var(--on-text); }
-.nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--ink-line); border-radius: 10px; cursor: pointer; }
+.nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 0; cursor: pointer; }
 /* Burger: three bars that fold into an X while the menu is open */
 .nav-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--on-night); transition: transform 0.25s, opacity 0.2s; }
 .nav-toggle span:nth-child(1) { top: 15px; }
@@ -447,12 +447,17 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
 .preview-tag { margin-left: 10px; font: 500 10px var(--font); font-style: normal; padding: 2px 8px; border-radius: 999px; background: var(--line); color: var(--muted); }
 .window .bar .expand { margin-left: auto; width: 26px; height: 22px; border: 0; border-radius: 6px; background: none; color: var(--muted); cursor: pointer; font-size: 12px; }
 .window .bar .expand:hover { background: var(--line); color: var(--text); }
-.viewer { width: min(1180px, 100% - 32px); max-width: none; padding: 0; border: 0; background: none; overflow: visible; }
-.viewer::backdrop { background: rgb(18 21 44 / 0.55); backdrop-filter: blur(6px); }
-.viewer[open] { animation: zoom 0.35s cubic-bezier(.2,.7,.2,1); }
-.viewer .window { font-size: 15px; box-shadow: 0 40px 120px -20px rgb(0 0 0 / 0.5); }
-.viewer .app { grid-template-columns: 210px 1fr; min-height: 520px; }
-.viewer-close { position: absolute; top: 4px; right: 8px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--card); color: var(--text); cursor: pointer; font-size: 1rem; }
+/* Screenshots open full size (js/page.js): the frames crop tall screens to 16:10, the viewer shows all of it */
+.window.real .shots { cursor: zoom-in; }
+.lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 16px; border: 0; background: rgb(11 16 38 / 0.9); cursor: zoom-out; }
+.lightbox[open] { display: grid; place-items: center; animation: zoom 0.35s cubic-bezier(.2,.7,.2,1); }
+.lightbox::backdrop { background: none; }
+.lightbox img { max-width: 100%; max-height: calc(100dvh - 32px); width: auto; height: auto; border-radius: 10px; box-shadow: 0 40px 120px -20px rgb(0 0 0 / 0.6); }
+.lightbox-close { position: fixed; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: #0b1026; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+@media (max-width: 620px) { /* phones: the screen at a readable size, swiped across */
+  .lightbox[open] { place-items: center start; overflow: auto; }
+  .lightbox img { width: 960px; max-width: none; max-height: none; cursor: auto; }
+}
 @keyframes zoom { from { opacity: 0; transform: scale(0.96) translateY(10px); } }
 
 
@@ -569,10 +574,20 @@ footer .social a { display: inline-grid; place-items: center start; height: 36px
   .nav.open { display: flex; max-height: calc(100dvh - 72px); overflow-y: auto; overscroll-behavior: contain; }
   .nav a { padding: 14px 16px; }
   .nav .btn { margin: 8px 16px 0; text-align: center; }
+  /* phone menu: no underline; the page you are on is bold on a soft row */
+  .nav a:not(.btn)::after { display: none; }
+  .nav a.active:not(.btn) { font-weight: 700; color: var(--on-night); background: color-mix(in srgb, var(--on-night) 6%, transparent); }
   section { padding: 80px 0; }
 }
 @media (max-width: 620px) {
   .services, .cases, .stack, .features, .steps, .timeline, .form { grid-template-columns: 1fr; }
+  /* phones: each step a compact card, the face beside its number and name, the words full width under them */
+  .steps > li { display: grid; grid-template-columns: 56px 1fr; column-gap: 14px; align-items: center; }
+  .steps > li + li { margin-top: 28px; border-top: 1px solid var(--ink-line) !important; }
+  .steps > li::before { grid-column: 2; grid-row: 1; align-self: end; }
+  .steps > li > .step-peep { grid-column: 1; grid-row: 1 / span 2; width: 56px; height: 56px; margin: 0; }
+  .steps > li > h3 { grid-column: 2; grid-row: 2; align-self: start; margin-top: 2px; }
+  .steps > li > p, .steps > li > ul { grid-column: 1 / -1; }
   .standard { grid-template-columns: 1fr; gap: 8px; }
   .logos { grid-template-columns: repeat(2, 1fr); }
   .industries .wrap { grid-template-columns: 1fr; }
@@ -622,10 +637,6 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
   .product-tabs a { flex: none; padding: 7px 12px; font-size: 0.88rem; }
   .product { scroll-margin-top: 124px; }
   .window:not(.real) .app main { zoom: 0.62; }
-  .shots { cursor: zoom-in; }
-  .viewer { width: calc(100% - 16px); }
-  .viewer .shots { overflow: auto; max-height: 72vh; }
-  .viewer .shots img { width: 960px; max-width: none; }
 }
 /* Phones held sideways: compact header and spacing so content gets the screen */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -757,7 +768,7 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .site-head { background: rgb(255 255 255 / calc(var(--head-a, 1) * 0.94)); border-bottom-color: color-mix(in srgb, var(--plan) calc(var(--head-a, 1) * 14%), transparent);
   box-shadow: 0 12px 30px -22px rgb(11 16 38 / calc(var(--head-a, 1) * 0.3)); transition: box-shadow 0.2s; }
 .site-head:has(.nav.open) { --head-a: 1; }
-.hero { margin-top: calc(-1 * var(--head-h, 72px)); }
+.hero { margin-top: calc(-1 * var(--head-h, 72px) - 1px); } /* - 1px: the header's bottom border */
 .hero-stage { min-height: 100svh; padding-top: calc(var(--head-h, 72px) + 24px); }
 @media (max-width: 900px), (hover: none) { .site-head { backdrop-filter: none; } }
 
@@ -1058,9 +1069,13 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .on-night .nav a:not(.btn) { color: #fff; }
 .on-night .nav a.active::after { background: #fff; }
 .on-night .nav .btn-solid { background: #fff; border-color: #fff; color: var(--plan); }
-.on-night .nav-toggle { background: none; border-color: #7d86a6; }
+.on-night .nav-toggle { background: none; }
 .on-night .nav-toggle span { background: #fff; }
 .on-night .progress { background: #fff; }
+/* the phone menu opened over a dark section: header and panel become one dark block, so the white links read */
+.site-head.on-night:has(.nav.open), .on-night .nav.open { background: #0b1026; }
+.on-night .nav.open { border-bottom-color: rgb(255 255 255 / 0.12); }
+.on-night .nav.open a.active:not(.btn) { color: #fff; background: rgb(255 255 255 / 0.1); }
 
 .pin .hero-pin { height: 460svh; }
 .pin .hero-stick { position: sticky; top: 0; height: 100svh; overflow: hidden; }
@@ -1302,6 +1317,10 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .p-more { margin-top: 40px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .p-more a { color: var(--text); text-underline-offset: 3px; }
 .flag-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.flag-cards.eight { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; } /* Synvord's eight product lines: 4 x 2, every card one size */
+.flag-cards.eight b { min-height: 2lh; } /* who it's for takes the same room in every card, so the lines below start level */
+@media (max-width: 1100px) { .flag-cards.eight { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .flag-cards.eight { grid-template-columns: 1fr; grid-auto-rows: auto; } .flag-cards.eight b { min-height: 0; } }
 .flag-card { display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--card);
   text-decoration: none; color: var(--text); transition: border-color 0.2s, translate 0.2s; }
 .flag-card:hover { border-color: var(--c); translate: 0 -2px; }
@@ -1318,11 +1337,9 @@ main > section:not(.hero) { content-visibility: auto; contain-intrinsic-size: au
 .mod-group h3 { margin: 0 0 6px; font-size: 1.35rem; }
 .mod-group-for { margin: 0 0 18px; color: var(--muted); }
 .mod-also ul a { font-weight: 700; color: var(--c-deep); text-underline-offset: 3px; }
-.mod:target { outline: 2px solid var(--c); outline-offset: 2px; }
 .mods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .mod { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
 .mod > i { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); margin-bottom: 14px; }
-.mod-flag > i { background: var(--c); color: #fff; }
 .mod h4 { margin: 0 0 6px; font-size: 1.08rem; font-weight: 800; }
 .mod .mod-for { margin: 0 0 2px; font-size: 0.8rem; font-weight: 700; color: var(--c); }
 .mod > p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
@@ -1363,14 +1380,13 @@ main > section.sv-film { content-visibility: visible; contain-intrinsic-size: no
 .pin .sv-stick { position: sticky; top: 0; height: 100svh; overflow: hidden; padding: 0; }
 .pin .sv-beat { position: absolute; inset: 0; z-index: 2; padding: var(--head-h, 72px) 16px 0; display: grid; place-content: center; justify-items: center; opacity: 0; visibility: hidden; pointer-events: none; }
 .pin .sv-beat .beat-cta { pointer-events: auto; }
-.pin .sv-b3 { place-content: start center; padding-top: calc(var(--head-h, 72px) + 7svh); }
+.pin .sv-beat, .pin .fly { will-change: transform, opacity; } /* own layers: the big shadowed words and the robots move every frame */
+.pin .sv-film:has(.sv-chips) .sv-b3 { place-content: start center; padding-top: calc(var(--head-h, 72px) + 7svh); } /* only where the tile grid sits under the words; elsewhere it stays centred */
 .pin .sv-chips { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
 .pin .sv-chips li { position: absolute; left: 50%; top: 50%; translate: -50% -50%; padding: 0 14px; opacity: 0; will-change: transform, opacity; }
 /* chips are fixed-size boxes in the film: a label that can't fit on one line wraps instead of spilling out */
-.pin .sv-chips li { gap: 8px; padding: 0 10px; font-size: clamp(0.72rem, 0.35rem + 0.75vw, 0.95rem); }
+.pin .sv-chips li { gap: 8px; padding: 0 12px; font-size: clamp(0.85rem, 0.35rem + 0.75vw, 0.95rem); }
 .pin .sv-chips li span { min-width: 0; white-space: normal; line-height: 1.1; text-align: start; }
-.pin .sv-narrow .sv-chips li { justify-content: center; padding: 0; }
-.pin .sv-narrow .sv-chips li span { display: none; }
 
 /* ---------- Pills: letters centred the same way in every browser ----------
    Chrome and Safari place Overpass up to 2px apart inside a line box, so plain padding can't centre pill text in both.
@@ -1404,7 +1420,7 @@ main > section.sv-film { content-visibility: visible; contain-intrinsic-size: no
 .film-logo { margin: 14px 0 6px; line-height: 0; }
 .film-logo img { width: auto; height: clamp(72px, min(15vw, 24svh), 200px); max-width: 88vw; object-fit: contain; }
 .film-hero .film-head { max-width: 21ch; margin-inline: auto; color: var(--text); font-size: clamp(2.5rem, 5vw, 5.3rem); font-weight: 800; line-height: 0.96; letter-spacing: -0.05em; text-wrap: balance; }
-main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px)); } /* under the clear header, like a hero */
+main > .sv-film:first-child { margin-top: calc(-1 * var(--head-h, 72px) - 1px); } /* under the clear header, like a hero */
 /* the page's own hero follows the film: no longer under the header */
 .film-hero + .hero, .sv-film + .hero { margin-top: 0; }
 .film-hero + .a-hero, .sv-film + .a-hero { padding-top: clamp(56px, 7vw, 88px); }

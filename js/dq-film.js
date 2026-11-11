@@ -44,10 +44,10 @@
     }
     // the tested equity curve, with its buys
     const t = ease(p, 0.52, 0.76), n = Math.round(t * (N - 1));
-    cx.globalAlpha = 1 - 0.75 * ease(p, 0.8, 0.88);
+    cx.globalAlpha = 0.5 * (1 - 0.75 * ease(p, 0.8, 0.88)); // a backdrop: soft enough that the words always read over it
     if (n > 0) {
-      cx.save(); cx.shadowColor = CURVE; cx.shadowBlur = 18 * dpr;
-      cx.strokeStyle = CURVE; cx.lineWidth = 3 * dpr; cx.lineJoin = cx.lineCap = 'round';
+      cx.save(); cx.shadowColor = CURVE; cx.shadowBlur = 10 * dpr;
+      cx.strokeStyle = CURVE; cx.lineWidth = 2.5 * dpr; cx.lineJoin = cx.lineCap = 'round';
       cx.beginPath(); for (let i = 0; i <= n; i++) i ? cx.lineTo(X(i), EY(eq[i])) : cx.moveTo(X(i), EY(eq[i])); cx.stroke(); cx.restore();
       cx.fillStyle = CURVE;
       for (let i = 6; i <= n; i += 9) { const x = X(i), y = EY(eq[i]) + 16 * dpr; cx.beginPath(); cx.moveTo(x, y - 7 * dpr); cx.lineTo(x - 6 * dpr, y + 4 * dpr); cx.lineTo(x + 6 * dpr, y + 4 * dpr); cx.fill(); }

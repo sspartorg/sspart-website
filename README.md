@@ -15,10 +15,11 @@ See `tests/README.md`; in short: `cd tests && npm install && npm run setup && np
 
 ## Files
 
-- `index.html` — the home page: slim product cards linking to atlas.html, synvord.html and dhequest.html (each page opens with its product film), clients, story, contact
+- `index.html` — the home page: the SSPART story (each product chapter links to its page), clients, our story, questions, contact
+- `services.html` — every service line, how an engagement runs, engineering standards and the ROI calculator
 - `css/styles.css` — all styles; colours are the tokens at the top
 - `privacy.html`, `terms.html`, `cookies.html` — legal pages
-- `atlas.html` — the Atlas detail page behind "Know more": plans, market comparison, pricing. The home page carries the summary; `js/console.js` drives the home page console, `js/atlas.js` and `js/board.js` the Atlas page
+- `atlas.html` — the Atlas detail page behind "Know more": market comparison, pricing. `js/atlas.js` drives its interactive sections and `js/atlas-film.js` its opening film
 - `contact.html` — enquiry form; visitors need no account
 - `admin.html`, `js/admin.js`, `css/desk.css` — private enquiry desk (sign-in, mobile search, status, comments)
 - `js/config.js` — Supabase URL and publishable key; `js/vendor/supabase.js` is supabase-js 2.118.0

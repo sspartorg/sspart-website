@@ -30,14 +30,14 @@
   <link rel="preload" href="resources/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-11j">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-12e">
   <script>document.documentElement.classList.add('js'); if (!matchMedia('(prefers-reduced-motion: reduce)').matches && CSS.supports('height', '1svh') && [].findLast) document.documentElement.classList.add('pin')</script>
 </head>
 <body class="atlas-page">
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg" alt=""></a>
+    <a class="brand" href="index.html"><img src="resources/brand/sspart-logo-header.svg" alt="SSPART home"><img class="logo-night" src="resources/brand/sspart-logo-header-night.svg?v=2" alt=""></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a class="active" href="atlas.html" aria-current="page">Atlas</a>
@@ -51,7 +51,7 @@
 </header>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#what"><span>What you get</span></a><a href="#flagship"><span>See it deliver</span></a><a href="#how"><span>How it works</span></a><a href="#shift"><span>Usual vs Atlas</span></a><a href="#team"><span>The team</span></a><a href="#why"><span>Why Atlas</span></a><a href="#ready"><span>For companies</span></a><a href="#market"><span>Compare</span></a><a href="#editions"><span>Plans</span></a><a href="#pricing"><span>Pricing</span></a><a href="#faq"><span>Questions</span></a>
+  <a href="#how"><span>How it works</span></a><a href="#shift"><span>Usual vs Atlas</span></a><a href="#team"><span>The team</span></a><a href="#ready"><span>For companies</span></a><a href="#market"><span>Compare</span></a><a href="#pricing"><span>Pricing</span></a><a href="#faq"><span>Questions</span></a>
 </nav>
 
 <main id="top">
@@ -77,7 +77,7 @@
       <div class="sv-beat sv-b4">
         <p class="beat-huge">Available now.</p>
         <p class="beat-line">Free to start. $19 per user a month for teams.</p>
-        <div class="beat-cta"><a class="btn" href="#what">See what you get</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
+        <div class="beat-cta"><a class="btn" href="#how">See how it works</a><a class="btn btn-ghost" href="contact.html?product=Atlas">Talk to us</a></div>
       </div>
     </div>
   </section>
@@ -112,53 +112,6 @@
         <li><b>$11.75</b><span>average AI cost per delivered change in that benchmark</span></li>
         <li><b>$0</b><span>to start, then $19 per user a month for teams</span></li>
       </ul>
-    </div>
-  </section>
-
-  <section class="a-ready" id="what">
-    <div class="wrap">
-      <div class="section-head"><h2>What you get</h2><p>For engineering teams, free to start, running on your own systems.</p></div>
-      <ul class="ready">
-        <li><i class="fa-solid fa-diagram-project"></i><b>Work split, not piled up</b><span>Every request becomes small, testable pieces of work, delivered together as one finished change.</span></li>
-        <li><i class="fa-solid fa-sliders"></i><b>Right-sized AI</b><span>Each task gets the AI effort it needs, and none is spent where it is not needed.</span></li>
-        <li><i class="fa-solid fa-circle-check"></i><b>Verified before delivery</b><span>Every result is checked automatically and reviewed before it reaches you.</span></li>
-        <li><i class="fa-solid fa-chart-column"></i><b>Spend you can see</b><span>Cost, speed and quality of every delivery, tracked as it happens.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="flagship">
-    <div class="fl">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>See it deliver.</h2>
-          <p>Atlas is our flagship product. We run our own delivery on it, and now your team can too, using the AI subscription you already pay for.</p>
-        </div>
-        <div class="stage console-stage" style="--c:var(--plan)">
-          <img loading="lazy" decoding="async" class="bot b1" src="resources/people/agent-1.svg" alt=""><img loading="lazy" decoding="async" class="bot b2" src="resources/people/agent-2.svg" alt="">
-          <div class="window console" id="console">
-            <div class="bar"><i></i><i></i><i></i><span>atlas / new task</span><em class="preview-tag">Illustrative preview</em></div>
-            <form class="con-ask" id="con-form">
-              <label for="con-req">What do you need?</label>
-              <div class="con-row"><input id="con-req" maxlength="80" autocomplete="off" value="Add GST to invoices"><button class="btn btn-solid" type="submit">Deliver it</button></div>
-              <div class="con-chips" role="group" aria-label="Example requirements"><button type="button">Add GST to invoices</button><button type="button">Fix the login timeout</button><button type="button">Add an export button</button></div>
-            </form>
-            <div class="con-grid">
-              <div>
-                <ol class="con-rail" id="con-rail" aria-hidden="true"><li>Planned</li><li>Built</li><li>Checked</li><li>Delivered</li></ol>
-                <ol class="con-log" id="con-log" aria-hidden="true"></ol>
-              </div>
-              <dl class="con-sum" aria-hidden="true">
-                <div><dt>Now with</dt><dd id="sum-who">You</dd></div>
-                <div><dt>Specialists</dt><dd id="sum-agents">0</dd></div>
-                <div><dt>Checks run</dt><dd id="sum-checks">0</dd></div>
-                <div><dt>Fixes made</dt><dd id="sum-fixes">0</dd></div>
-              </dl>
-            </div>
-            <p class="con-done" id="con-done" role="status"></p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -274,33 +227,6 @@
       </div>
   </section>
 
-  <section class="a-two" id="why">
-    <div class="wrap">
-      <div class="section-head"><h2>100 changes shouldn't mean 100 conversations</h2><p>Chatting with AI means explaining, checking and copying the result across yourself. Atlas gives you one list, and each item comes back finished.</p></div>
-      <div class="two-ways">
-        <div class="way way-chat">
-          <h3>Chatting with AI</h3>
-          <ol aria-label="Example of a chat conversation">
-            <li>Can you update the pricing page?</li>
-            <li class="me">Here is a version. Which file should it go in?</li>
-            <li>That broke the header. Try again.</li>
-            <li class="me">Sorry about that. Could you paste the file again?</li>
-            <li>It's still wrong on phones.</li>
-            <li class="me">Let's try another approach.</li>
-          </ol>
-          <p class="way-count">Conversation 1 of 100</p>
-        </div>
-        <figure class="board way" aria-label="Illustration of 100 tasks moving from queued to delivered">
-          <h3>With Atlas</h3>
-          <figcaption class="board-head" aria-hidden="true"><strong id="board-count">0</strong><span>of 100 tasks delivered</span></figcaption>
-          <div class="board-grid" id="board" aria-hidden="true"></div>
-          <p class="board-now" id="board-now" aria-hidden="true">Waiting for the first task</p>
-          <p class="board-note">Illustration. Atlas works one task at a time per repository, and real speed depends on your code, your checks and your AI plan.</p>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <section class="fl-dark">
       <div class="wrap">
         <div class="section-head"><h2>Put the whole list in. Get finished work back.</h2><p>Each item runs on the AI you already pay for, and comes back finished for your approval.</p></div>
@@ -327,18 +253,6 @@
         </div>
         <p class="fl-fine">Illustration. Real speed depends on your code, your checks and your AI plan.</p>
       </div>
-  </section>
-
-  <section class="a-ai-band">
-    <div class="wrap">
-      <div class="section-head"><h2>Bring your own AI</h2><p>Atlas has no AI of its own, and it doesn't resell any. Your work runs under your own sign-in, on your own computers.</p></div>
-      <ol class="flowline">
-        <li><b>Your AI plan</b><span>Claude Code, GitHub Copilot, or models through Ollama</span></li>
-        <li><b>Your computer</b><span>A small Atlas runner works under your own sign-in</span></li>
-        <li><b>Your Atlas server</b><span>One shared place for your team's tasks and history</span></li>
-        <li><b>Your repository</b><span>Finished changes arrive for your team to approve</span></li>
-      </ol>
-    </div>
   </section>
 
   <section class="a-screens">
@@ -414,34 +328,7 @@
     </div>
   </section>
 
-  <section class="a-editions" id="editions">
-    <div class="wrap">
-      <div class="section-head"><h2>Free for one person. Built for your whole team.</h2><p>Start free on your own machine. Choose the Team plan when a whole team needs to work together.</p></div>
-      <div class="scan" data-scroll-x>
-        <table class="compare">
-          <thead><tr><th scope="col"><span class="vh">Feature</span></th><th scope="col">Free</th><th scope="col">Team</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Licence</th><td>Open source (AGPL-3.0)</td><td>Commercial</td></tr>
-            <tr><th scope="row">Who uses it</th><td>One person, on their own machine</td><td>Your whole team, on one shared server</td></tr>
-            <tr><th scope="row">How a task runs</th><td>One agent does the whole task</td><td>A chain of specialist agents, each checking the last</td></tr>
-            <tr><th scope="row">Ready-made agents</th><td>7</td><td>24, including 18 for software delivery</td></tr>
-            <tr><th scope="row">Workflows</th><td>Not included</td><td>6 templates and a visual builder</td></tr>
-            <tr><th scope="row">Checks before delivery</th><td>Left to the agent</td><td>Atlas runs your checks itself. A check that couldn't run never counts as a pass</td></tr>
-            <tr><th scope="row">After delivery</th><td>Not included</td><td>If GitHub checks fail, up to 2 automatic fix attempts</td></tr>
-            <tr><th scope="row">Work side by side</th><td>One agent at a time</td><td>Up to 10 runs per workflow once configured, across different repositories</td></tr>
-            <tr><th scope="row">Sign-in</th><td>Not needed</td><td>Single sign-on through OpenID Connect, or email and password</td></tr>
-            <tr><th scope="row">Roles</th><td>Not needed</td><td>Admin or member across the organisation. Admin, member or viewer on each project</td></tr>
-            <tr><th scope="row">Audit log</th><td>Not included</td><td>Sign-ins, secret views, role changes, and runs started or stopped</td></tr>
-            <tr><th scope="row">Analytics</th><td>The basics</td><td>Delivery, workflow and spend, with spend by reporting line</td></tr>
-            <tr><th scope="row">Connects to</th><td>GitHub, Jira Cloud, Teams and Telegram alerts</td><td>GitHub, Jira Cloud, Teams and Telegram alerts</td></tr>
-            <tr><th scope="row">Support</th><td>Community, on GitHub</td><td>Direct from SSPART</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="alt a-pricing" id="pricing">
+  <section class="a-pricing" id="pricing">
     <div class="wrap">
       <div class="section-head"><h2>Pricing</h2></div>
       <div class="tiers">
@@ -486,7 +373,7 @@
     </div>
   </section>
 
-  <section class="a-faq" id="faq">
+  <section class="alt a-faq" id="faq">
     <div class="wrap">
       <div class="section-head"><h2>Questions</h2></div>
       <div class="faq">
@@ -570,12 +457,10 @@
   t.onclick = () => setMenu(!n.classList.contains('open'));
   n.onclick = e => { if (e.target.tagName === 'A') setMenu(false); };
 </script>
-<script src="js/page.js?v=2026-11-04a"></script>
-<script src="js/product-film.js?v=2026-11-10e"></script>
-<script src="js/atlas-film.js?v=2026-11-05e"></script>
-<script src="js/board.js?v=2026-10-31a"></script>
+<script src="js/page.js?v=2026-11-11c"></script>
+<script src="js/product-film.js?v=2026-11-12b"></script>
+<script src="js/atlas-film.js?v=2026-11-11a"></script>
 <script src="js/atlas.js?v=2026-11-11a"></script>
-<script src="js/console.js?v=2026-11-05a"></script>
 <script src="js/consent.js?v=2026-11-11a" defer></script>
 </body>
 </html>
